@@ -47,10 +47,11 @@ docs/FAILURES.md      failure library
 ## Definition of Done (ทุก task)
 1. behavior ตรงกับ acceptance criteria ใน task contract
 2. `npx tsc --noEmit` ผ่าน
-3. `npm run validate:data` ผ่าน (ถ้า task แตะ data หรือ hotspot)
-4. diff ไม่มีไฟล์ที่ไม่เกี่ยวข้อง
-5. ทดสอบบนเครื่องจริงแล้วถ้าเป็น UI (Poco X7 / Tab S9 FE+)
-6. มี evidence report
+3. `npx expo export -p web` bundle ผ่าน (ถ้า task แตะโค้ดใน `src/`) — tsc ผ่านไม่ได้แปลว่า bundle ได้
+4. `npm run validate:data` ผ่าน (ถ้า task แตะ data หรือ hotspot)
+5. diff ไม่มีไฟล์ที่ไม่เกี่ยวข้อง
+6. ทดสอบบนเครื่องจริงแล้วถ้าเป็น UI (Poco X7 / Tab S9 FE+)
+7. มี evidence report
 
 ## Known constraints
 - เครื่องเป้าหมาย: Poco X7 (6.7") และ Galaxy Tab S9 FE+ (12.4") aspect ratio ต่างกันมาก

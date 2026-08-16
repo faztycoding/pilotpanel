@@ -25,6 +25,8 @@
 
 ## Verification
 - ก่อนบอกว่าเสร็จ ต้องรัน `npm run validate:data` และ `npx tsc --noEmit`
+- ถ้า task แตะโค้ดใน `src/` ต้องรัน `npx expo export -p web` ด้วย
+  `tsc` ผ่านไม่ได้แปลว่า bundle ได้ — `require()` คืน `any` เลยไม่จับ path ที่ resolve ไม่ได้ (ดู docs/FAILURES.md)
 - รายงานคำสั่งที่รันจริงและผลลัพธ์จริง ห้ามเขียนว่า "tests pass" ลอย ๆ
 - ถ้ารันไม่ได้ให้บอกว่ารันไม่ได้ ห้ามเดาผลลัพธ์
 

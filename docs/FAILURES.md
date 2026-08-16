@@ -52,6 +52,20 @@ heading ที่ไม่มีเลข **และไม่มี `(N)` ต�
 
 ผลหลังแก้: f_ctl 53->8, eng 11->10 (MCDU หลุดออก), pedestal = 111 ในหน้า ECAM + 53 ปุ่มกายภาพ = 164 เท่าเดิม
 
+### FL: setup.sh เขียนทับ tsconfig.json ทั้งไฟล์ ทำ alias หาย
+- **Symptom** — bundle พังแต่ `tsc` ผ่าน: `Unable to resolve module @/assets/images/tutorial-web.png`
+  กระทบ 5 ไฟล์ที่ import `@/assets/*` (`explore.tsx`, `animated-icon.tsx`, `animated-icon.web.tsx`,
+  `app-tabs.tsx`, `web-badge.tsx`) — `tsc` จับไม่ได้เพราะเรียกผ่าน `require()` ซึ่งคืน `any`
+- **Root cause** — template ของ expo ตั้ง alias ไว้ 2 ตัว (`@/*` -> `./src/*` และ `@/assets/*` -> `./assets/*`)
+  แต่ `setup.sh` ใช้ `cat > tsconfig.json` เขียนทับทั้งไฟล์เหลือตัวเดียว
+  `include` ก็หาย `.expo/types/**/*.ts` กับ `expo-env.d.ts` ไปด้วย ซึ่งจำเป็นกับ `typedRoutes` ที่เปิดอยู่
+- **Detection** — เจอตอน `npx expo export -p web` **ไม่ใช่ตอน typecheck** gate ที่มีอยู่จับไม่ได้เลย
+- **Prevention** — script ที่แก้ config ของ template ต้อง **merge ไม่ใช่ overwrite**
+  แก้แล้วใน `setup.sh`: อ่าน JSON เดิม เติมเฉพาะคีย์ที่ต้องการ เติม alias เฉพาะที่ยังไม่มี
+  ถ้าไฟล์เดิม parse ไม่ได้ให้ exit 1 ไม่แตะต้อง (`set -e` จะหยุด setup ทันที)
+- **Guardrail** — เพิ่ม `npx expo export -p web` เข้า verification checklist
+  `tsc --noEmit` ผ่านไม่ได้แปลว่า bundle ได้ ต้องรัน bundler จริงเมื่อแตะโค้ดใน `src/`
+
 ## Open items
 
 - callout count ยืนยันด้วยตาแล้ว 5 หน้า (hyd 13, apu 10, wheel 10, cond 6, f_ctl 8 — ตรงทั้งหมด)
