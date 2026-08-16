@@ -57,6 +57,8 @@ docs/FAILURES.md      failure library
 - เครื่องเป้าหมาย: Poco X7 (6.7") และ Galaxy Tab S9 FE+ (12.4") aspect ratio ต่างกันมาก
 - hit target ต่ำสุด 44x44 dp หลัง zoom ถ้าเล็กกว่านั้นต้องบังคับซูมก่อนกด
 - APK ควรต่ำกว่า 100MB -> รูปทุกใบต้องเป็น WebP
+- แอปบังคับ `landscape` เสมอ (`app.json`) — panel ทุกใบเป็นแถบกว้าง เข้ากับ landscape มากกว่า portrait
+  container width/height ที่ใช้คำนวณ hotspot มาจาก `onLayout` เสมอ ไม่ต้องแก้สูตรตาม orientation
 
 ## Git workflow policy
 กฎ Git แบบละเอียด (บังคับ) อยู่ใน `.windsurfrules` — ดูที่นั่นเป็นแหล่งจริง
