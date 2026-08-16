@@ -57,6 +57,12 @@ docs/FAILURES.md      failure library
 - hit target ต่ำสุด 44x44 dp หลัง zoom ถ้าเล็กกว่านั้นต้องบังคับซูมก่อนกด
 - APK ควรต่ำกว่า 100MB -> รูปทุกใบต้องเป็น WebP
 
+## Git workflow policy
+- **ทุกครั้งที่ทำงานเสร็จเป็นก้อน (task/feature/fix)**: ให้ `git add -A && git commit` แล้ว `git push` ไปที่ `origin main` ทันที ไม่ต้องรอให้ user สั่งซ้ำทุกรอบ
+- เขียน commit message สั้น กระชับ บอกว่า "ทำไม" มากกว่า "ทำอะไร"
+- ยกเว้น: งานที่ยังไม่เสร็จ/พังอยู่ระหว่างทำ (WIP กลางคัน), หรือ diff มีไฟล์ credential/secret หลุดมา ให้หยุดถามก่อน
+- ห้าม force push / rewrite history โดยไม่ถาม user ก่อนเสมอ
+
 ## Risk levels
 | งาน | risk | autonomy ที่ให้ agent |
 |---|---|---|
