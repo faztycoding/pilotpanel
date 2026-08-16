@@ -3,8 +3,8 @@
   "title": "Overhead Panel",
   "image": "overhead.webp",
   "imageSize": {
-    "w": 0,
-    "h": 0
+    "w": 1007,
+    "h": 913
   },
   "sections": [],
   "controls": [
