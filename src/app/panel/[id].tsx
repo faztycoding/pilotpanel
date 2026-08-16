@@ -2,6 +2,7 @@ import { Stack, useLocalSearchParams } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { ControlSheet } from '@/components/control-sheet';
 import { HotspotLayer } from '@/components/hotspot-layer';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
@@ -9,6 +10,7 @@ import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { shouldHintZoom, type Size } from '@/lib/layout';
 import { getPanel, getPanelImage, placedControls } from '@/lib/panels';
+import type { Control, Hotspot } from '@/lib/types';
 
 const ZOOM_HINT_THRESHOLD = 2;
 
@@ -18,22 +20,25 @@ export default function PanelScreen() {
   const panel = getPanel(id);
   const image = panel ? getPanelImage(panel.panelId) : undefined;
 
-  const [zoomedEnough, setZoomedEnough] = useState(false);
+  const [scale, setScale] = useState(1);
   const [display, setDisplay] = useState<Size>({ width: 0, height: 0 });
+  const [selected, setSelected] = useState<Control | null>(null);
 
   const controls = useMemo(() => (panel ? placedControls(panel) : []), [panel]);
-  const handleZoomedEnoughChange = useCallback((next: boolean) => setZoomedEnough(next), []);
+  const hotspots = useMemo(() => controls.map((control) => control.hotspot), [controls]);
+
   const handleDisplayChange = useCallback((next: Size) => setDisplay(next), []);
+  const handleScaleSettled = useCallback((next: number) => setScale(next), []);
+  const handlePress = useCallback((control: Control & { hotspot: Hotspot }) => {
+    setSelected(control);
+  }, []);
+  const handleClose = useCallback(() => setSelected(null), []);
 
   // เตือนให้ซูมเมื่อยังซูมไม่พอ และ hotspot ส่วนใหญ่เล็กกว่านิ้ว (เคส glareshield 7.6:1)
   const showHint =
-    !zoomedEnough &&
+    scale < ZOOM_HINT_THRESHOLD &&
     display.height > 0 &&
-    shouldHintZoom(
-      controls.map((control) => control.hotspot),
-      display,
-      1
-    );
+    shouldHintZoom(hotspots, display, scale);
 
   if (!panel || image === undefined) {
     return (
@@ -51,10 +56,17 @@ export default function PanelScreen() {
       <ZoomableImage
         source={image}
         imageSize={panel.imageSize}
-        zoomHintThreshold={ZOOM_HINT_THRESHOLD}
-        onZoomedEnoughChange={handleZoomedEnoughChange}
+        onScaleSettled={handleScaleSettled}
         onDisplayChange={handleDisplayChange}
-        renderOverlay={(size) => <HotspotLayer controls={controls} display={size} debug />}
+        renderOverlay={(size) => (
+          <HotspotLayer
+            controls={controls}
+            display={size}
+            scale={scale}
+            onPress={handlePress}
+            debug
+          />
+        )}
       />
 
       {showHint ? (
@@ -62,6 +74,8 @@ export default function PanelScreen() {
           <ThemedText type="small">บีบนิ้วเพื่อซูมดูปุ่ม</ThemedText>
         </View>
       ) : null}
+
+      <ControlSheet control={selected} onClose={handleClose} />
     </View>
   );
 }

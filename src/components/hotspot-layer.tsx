@@ -1,32 +1,46 @@
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 
-import { hotspotToBox, type Size } from '@/lib/layout';
+import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import type { Control, Hotspot } from '@/lib/types';
 
 /**
- * กล่อง hotspot วางทับรูป — พิกัดเป็น ratio คูณกับขนาดรูปบนจอเท่านั้น
+ * ปุ่มที่วางทับรูป — พิกัดเป็น ratio คูณกับขนาดรูปบนจอเท่านั้น
  *
  * component นี้ต้องเป็นลูกของ Animated.View ที่ถือ transform ของรูป
- * จะได้ขยับ/ขยายตามรูปเองโดยไม่ต้องรู้เรื่อง scale หรือ translate
- *
- * ยังไม่รับ tap ในขั้นนี้ (ทำใน T1 ขั้นถัดไป) ตอนนี้แสดงกรอบเพื่อตรวจว่าพิกัดตรงปุ่มจริง
+ * RN จะใส่ transform เดียวกันให้ทั้ง hit area ด้วย ปุ่มจึงขยับ/ขยายตามรูปเอง
+ * ไม่ต้องคำนวณ inverse transform ตอนแตะ = ไม่มีทางที่พิกัดกดจะเพี้ยนจากพิกัดที่เห็น
  */
 
+type PlacedControl = Control & { hotspot: Hotspot };
+
 type Props = {
-  controls: (Control & { hotspot: Hotspot })[];
+  controls: PlacedControl[];
   display: Size;
-  /** แสดงกรอบให้เห็นตอนพัฒนา ปิดได้เมื่อไม่ต้องตรวจพิกัด */
+  /** scale ปัจจุบัน ใช้ขยาย hitSlop ตอนกล่องเล็กกว่านิ้ว */
+  scale: number;
+  onPress: (control: PlacedControl) => void;
+  /** แสดงกรอบให้เห็นตอนพัฒนา */
   debug?: boolean;
 };
 
-export function HotspotLayer({ controls, display, debug = false }: Props) {
+export function HotspotLayer({ controls, display, scale, onPress, debug = false }: Props) {
   return (
     <>
       {controls.map((control) => {
         const box = hotspotToBox(control.hotspot, display);
+        const slop = hitSlopFor(box, scale);
         return (
-          <View
+          <Pressable
             key={control.id}
+            onPress={() => onPress(control)}
+            // hitSlop หน่วย dp เป็นค่าของนิ้วมนุษย์ ไม่ใช่ค่าของรูป จึงไม่ขัดกฎห้าม px ในการคำนวณพิกัด
+            // หารด้วย scale เพราะ hitSlop ถูกขยายด้วย transform ของ parent ไปแล้ว
+            hitSlop={{
+              left: slop.horizontal / scale,
+              right: slop.horizontal / scale,
+              top: slop.vertical / scale,
+              bottom: slop.vertical / scale,
+            }}
             style={[
               styles.hotspot,
               debug && styles.debug,
@@ -42,8 +56,6 @@ export function HotspotLayer({ controls, display, debug = false }: Props) {
 const styles = StyleSheet.create({
   hotspot: {
     position: 'absolute',
-    // ยังไม่รับ tap ในขั้นนี้ — เปิดเป็น Pressable ตอนทำ tap logic
-    pointerEvents: 'none',
   },
   debug: {
     borderWidth: StyleSheet.hairlineWidth,

@@ -30,9 +30,11 @@ type Props = {
   renderOverlay?: (display: Size) => ReactNode;
   /** แจ้งขนาดรูปบนจอหลัง layout ให้หน้าจอด้านนอกใช้ตัดสินใจเรื่อง UI ได้ */
   onDisplayChange?: (display: Size) => void;
-  /** แจ้งเมื่อระดับซูมข้ามเกณฑ์ที่ถือว่า "ซูมพอแล้ว" ใช้ตัดสินใจแสดง hint */
-  zoomHintThreshold?: number;
-  onZoomedEnoughChange?: (zoomedEnough: boolean) => void;
+  /**
+   * แจ้ง scale ตอน "นิ่งแล้ว" (ปล่อยนิ้ว) ไม่ใช่ทุกเฟรม
+   * ใช้คำนวณ hitSlop กับตัดสินใจแสดง hint — ระหว่างบีบนิ้วไม่มีใครแตะปุ่ม ค่าค้างจึงไม่เป็นปัญหา
+   */
+  onScaleSettled?: (scale: number) => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -41,14 +43,15 @@ export function ZoomableImage({
   imageSize,
   renderOverlay,
   onDisplayChange,
-  zoomHintThreshold = 2,
-  onZoomedEnoughChange,
+  onScaleSettled,
   style,
 }: Props) {
   const [container, setContainer] = useState<Size>({ width: 0, height: 0 });
 
   const scale = useSharedValue(MIN_SCALE);
   const savedScale = useSharedValue(MIN_SCALE);
+  // scale ที่นิ่งแล้ว ใช้ส่งขึ้น JS thread — แยกจาก scale ที่วิ่งทุกเฟรม
+  const settledScale = useSharedValue(MIN_SCALE);
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
   const savedTranslateX = useSharedValue(0);
@@ -74,6 +77,7 @@ export function ZoomableImage({
       .onEnd(() => {
         'worklet';
         savedScale.value = scale.value;
+        settledScale.value = scale.value;
         const limit = maxTranslate(container, display, scale.value);
         translateX.value = clamp(translateX.value, -limit.width, limit.width);
         translateY.value = clamp(translateY.value, -limit.height, limit.height);
@@ -111,19 +115,20 @@ export function ZoomableImage({
     savedTranslateX,
     savedTranslateY,
     scale,
+    settledScale,
     translateX,
     translateY,
   ]);
 
-  // ส่งค่าข้าม thread เฉพาะตอน "ข้ามเกณฑ์" ไม่ใช่ทุกเฟรม
+  // ส่งค่าข้าม thread เฉพาะตอนซูมนิ่งแล้ว ไม่ใช่ทุกเฟรม
   useAnimatedReaction(
-    () => scale.value >= zoomHintThreshold,
-    (zoomedEnough, previous) => {
-      if (previous !== null && zoomedEnough !== previous && onZoomedEnoughChange) {
-        runOnJS(onZoomedEnoughChange)(zoomedEnough);
+    () => settledScale.value,
+    (next, previous) => {
+      if (previous !== null && next !== previous && onScaleSettled) {
+        runOnJS(onScaleSettled)(next);
       }
     },
-    [zoomHintThreshold, onZoomedEnoughChange]
+    [onScaleSettled]
   );
 
   const animatedStyle = useAnimatedStyle(() => ({
@@ -141,6 +146,7 @@ export function ZoomableImage({
     // จอเปลี่ยนขนาดแล้ว ค่าซูม/เลื่อนเดิมอาจเกินขอบใหม่ กลับไปตั้งต้นเพื่อไม่ให้ค้างนอกกรอบ
     scale.value = withTiming(MIN_SCALE);
     savedScale.value = MIN_SCALE;
+    settledScale.value = MIN_SCALE;
     translateX.value = withTiming(0);
     translateY.value = withTiming(0);
     savedTranslateX.value = 0;
