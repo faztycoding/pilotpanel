@@ -37,3 +37,29 @@ ECAM Control Panel (`pedestal/image3.jpeg` 1024x326) ไม่ใช่ตำแ
 แต่เนื้อหาคือหน้า WHEEL — **ห้าม map รูปกับ section ด้วยลำดับ anchor ต้องดูเนื้อหาจริง**
 
 แยกประเภทรูปเร็ว ๆ ได้ด้วยความสว่างเฉลี่ย: หน้า ECAM พื้นดำ (brightness < 90), แผงกายภาพเทาอ่อน (> 90)
+
+## Failures
+
+### extractor ดูดปุ่มกายภาพเข้า section ของหน้า ECAM
+`current_section` ไม่มีเงื่อนไขปิด พอเจอ heading `F/CTL` แล้วทุก control หลังจากนั้นจนจบไฟล์
+ตกเป็นของ `f_ctl` หมด — f_ctl บวมเป็น 53 ทั้งที่หน้า F/CTL จริงมี callout แค่ 8
+
+แก้ด้วยกฎจากหลักฐานในเอกสารเอง: รายการหน้า ECAM ขึ้นต้นด้วย `(N)` เสมอ ปุ่มกายภาพไม่มีเลข
+heading ที่ไม่มีเลข **และไม่มี `(N)` ตามมาอีกก่อนถึง section ถัดไป** = ปิด section (`section_continues()`)
+
+ต้องมี lookahead เพราะมีบรรทัด legend แทรกกลาง เช่น `C = Cold (Valve closed)` ระหว่าง (3) กับ (4)
+ของ BLEED ถ้าปิด section ทันทีที่เจอ heading ไม่มีเลข bleed จะตกจาก 17 เหลือ 3
+
+ผลหลังแก้: f_ctl 53->8, eng 11->10 (MCDU หลุดออก), pedestal = 111 ในหน้า ECAM + 53 ปุ่มกายภาพ = 164 เท่าเดิม
+
+## Open items
+
+- callout count ยืนยันด้วยตาแล้ว 5 หน้า (hyd 13, apu 10, wheel 10, cond 6, f_ctl 8 — ตรงทั้งหมด)
+  เหลือ **press 7, door 7, elec 12, fuel 11, bleed 17** ที่ยังไม่ได้นับ callout จริง
+  ไม่ต้องนับตอนนี้ — ตอนวาง hotspot ต้องเปิดรูปอยู่แล้ว ถ้าเลขไม่พอกับจำนวน control จะเห็นทันทีใน mapper
+- `bleed` มี control ปลอม 2 ตัวจาก legend: `cp_c_cold_valve_closed`, `cp_h_hot_valve_open`
+  (`validate:data` จับได้แล้วว่า empty body)
+- `(4) Pack Compressor Outlet Temperature ...` ของ BLEED ยาวเกิน `MAX_HEADING_CHARS` (70)
+  เลยไม่ถูกจับเป็น control — ชื่อกับคำอธิบายติดกันในย่อหน้าเดียว
+- `overhead` / `instrument` / `glareshield` ยังไม่มี section เลย เพราะเอกสารไม่ได้ใช้ pattern ALLCAPS + `(1)`
+  โซนของ overhead เป็นสิ่งที่เรากำหนดเอง ต้องกรอกผ่าน `data/sections-manual.json` (extractor รองรับแล้ว)

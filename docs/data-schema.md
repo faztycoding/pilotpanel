@@ -35,6 +35,30 @@
 }
 ```
 
+## Section: 2 โหมด
+
+section รองรับ 2 แบบ ขึ้นกับว่าโซนนั้นอยู่บนรูป panel เดิมหรือเป็นรูปคนละใบ
+
+**โหมด viewport** — โซนบนรูป panel เดียวกัน (ใช้กับ overhead) ชั้น 3 คือ zoom ไปที่กรอบนี้
+```json
+{ "id": "elec", "name": "ELEC", "viewport": { "x": 0.30, "y": 0.10, "w": 0.20, "h": 0.30 } }
+```
+
+**โหมด image** — โซนที่เป็นรูปคนละใบ (ใช้กับหน้า ECAM ของ pedestal) ชั้น 3 คือ render รูปนี้แทน
+```json
+{
+  "id": "hyd",
+  "name": "HYD",
+  "image": "pedestal_ecam_hyd.webp",
+  "imageSize": { "w": 1291, "h": 1267 }
+}
+```
+
+กติกาการ render ชั้น 3:
+- ถ้า section มี `image` -> ใช้รูปนั้น และ `hotspot` ของ control ในโซนนี้อ้างอิงกับ `section.imageSize`
+- ถ้าไม่มี `image` -> zoom ไปที่ `viewport` บนรูป panel เดิม `hotspot` อ้างอิงกับ `panel.imageSize` ตามปกติ
+- ทั้ง `viewport` และ `image` เป็น optional ถ้าไม่มีทั้งคู่ = section เป็นแค่ป้ายจัดกลุ่ม ไม่มีชั้น 3
+
 ## Field rules
 
 | field | rule |
@@ -45,6 +69,9 @@
 | `controls[].type` | `pushbutton` \| `knob` \| `selector` \| `switch` \| `lever` \| `light` \| `display` \| `area` |
 | `hotspot` | ทุกค่าเป็น ratio 0..1 เทียบกับรูป ห้าม px |
 | `body[].kind` | `p` \| `bullet` \| `note` \| `warning` \| `heading` |
+| `sections[].image` | optional ชื่อไฟล์ใน `assets/panels/` ถ้ามี = โซนนี้ใช้รูปของตัวเอง |
+| `sections[].imageSize` | บังคับเมื่อมี `image` ขนาดจริงของไฟล์นั้น |
+| `sections[].viewport` | optional ratio 0..1 บนรูป panel เดิม ใช้เมื่อไม่มี `image` |
 | `sourceRef` | ชี้กลับไปย่อหน้าต้นทางใน docx ใช้ตอน QA |
 | `needsReview` | `true` เมื่อ extractor ไม่มั่นใจ ต้องเป็น `false` ทั้งหมดก่อนส่งงาน |
 
