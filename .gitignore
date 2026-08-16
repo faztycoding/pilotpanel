@@ -48,3 +48,7 @@ example
 # รูปต้นฉบับที่ดึงออกจาก docx — ไฟล์ใหญ่ ไม่ต้องขึ้น repo
 # หมายเหตุ: source/*.docx ยัง commit ขึ้นเพราะเป็น source of truth
 assets/raw/
+
+# รูป panel ที่ลอง AI-gen ไว้ระหว่างทดลองสไตล์ใหม่ (ดู docs/FAILURES.md)
+# ยังไม่ผ่านการตรวจ hotspot/mapping เป็นทางการ ไม่ใช่ asset จริงที่ใช้ในแอป
+assets/ai-candidates/
