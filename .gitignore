@@ -41,3 +41,10 @@ example
 # generated native folders
 /ios
 /android
+
+# python venv (Pillow + python-docx สำหรับ extract.py / แปลงรูป)
+.venv/
+
+# รูปต้นฉบับที่ดึงออกจาก docx — ไฟล์ใหญ่ ไม่ต้องขึ้น repo
+# หมายเหตุ: source/*.docx ยัง commit ขึ้นเพราะเป็น source of truth
+assets/raw/
