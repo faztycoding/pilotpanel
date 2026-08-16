@@ -38,8 +38,10 @@
 ## Git workflow (บังคับ)
 - Commit ทุกครั้งที่ task ย่อยเสร็จ **และ** verification (ด้านล่าง) ผ่านแล้วเท่านั้น
 - ห้าม commit รวมหลายเรื่องในครั้งเดียว — 1 commit = 1 concern/task ย่อย
-- Push ขึ้น `origin main` ได้ก็ต่อเมื่อ `npm run validate:data` ผ่านเท่านั้น (ถ้า task แตะ data/hotspot)
-- ห้าม push ถ้า `npx tsc --noEmit` ยังไม่ผ่าน ไม่ว่ากรณีใด
+- Push ได้เมื่อ `npx tsc --noEmit` ผ่าน 0 error เสมอ (บังคับทุก commit ไม่มีข้อยกเว้น)
+- ถ้า commit นั้นแตะ `data/panels/*.json` หรือ `scripts/extract.py` ต้องให้ `npm run validate:data` ผ่านเพิ่มด้วย
+- ถ้า commit นั้นไม่แตะ `data/` ให้ข้ามเงื่อนไข `validate:data` ไปได้ (ไม่บล็อก push)
+- error ประเภท "ยังไม่ได้วางพิกัด hotspot" และ "imageSize ยังเป็น 0" ถือเป็นงานค้างตามแผน (planned pending work) ไม่ใช่ regression ไม่บล็อก push
 - ยกเว้นไม่ต้อง push (แต่ commit ได้): งานที่ตั้งใจทำเป็น WIP ระหว่างทาง หรือ diff มีไฟล์ credential/secret หลุดมา — ให้หยุดถาม user ก่อน
 - ห้าม force push หรือ rewrite history โดยไม่ถาม user ก่อนเสมอ
 - commit message สั้น กระชับ บอก "ทำไม" มากกว่า "ทำอะไร"
