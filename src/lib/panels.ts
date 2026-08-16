@@ -37,6 +37,13 @@ const DETAIL_IMAGES: Record<string, PanelImage> = {
   'glareshield:gs_barometer_reference_selector': require('@/assets/detail/glareshield/gs_barometer_reference_selector.webp'),
   'glareshield:gs_flight_director_fd_push_button': require('@/assets/detail/glareshield/gs_flight_director_fd_push_button.webp'),
   'glareshield:gs_ls_push_button': require('@/assets/detail/glareshield/gs_ls_push_button.webp'),
+  'glareshield:gs_operational_data_display_constraints': require('@/assets/detail/glareshield/gs_operational_data_display_constraints.webp'),
+  'glareshield:gs_operational_data_display_waypoints': require('@/assets/detail/glareshield/gs_operational_data_display_waypoints.webp'),
+  'glareshield:gs_operational_data_display_vor_dme': require('@/assets/detail/glareshield/gs_operational_data_display_vor_dme.webp'),
+  'glareshield:gs_operational_data_display_ndb': require('@/assets/detail/glareshield/gs_operational_data_display_ndb.webp'),
+  'glareshield:gs_operational_data_display_airports': require('@/assets/detail/glareshield/gs_operational_data_display_airports.webp'),
+  'glareshield:gs_range_select_switch': require('@/assets/detail/glareshield/gs_range_select_switch.webp'),
+  'glareshield:gs_adf_vor_select_switches': require('@/assets/detail/glareshield/gs_adf_vor_select_switches.webp'),
 };
 
 export function getDetailImage(panelId: string, controlId: string): PanelImage | undefined {

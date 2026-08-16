@@ -72,7 +72,12 @@
       "id": "gs_operational_data_display_constraints",
       "name": "Operational data display (Constraints)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.317,
+        "y": 0.2557,
+        "w": 0.0122,
+        "h": 0.108
+      },
       "body": [
         {
           "kind": "p",
@@ -80,13 +85,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p15",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_operational_data_display_constraints.webp"
     },
     {
       "id": "gs_operational_data_display_waypoints",
       "name": "Operational data display (Waypoints)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3313,
+        "y": 0.2557,
+        "w": 0.0117,
+        "h": 0.108
+      },
       "body": [
         {
           "kind": "p",
@@ -94,13 +105,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p22",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_operational_data_display_waypoints.webp"
     },
     {
       "id": "gs_operational_data_display_vor_dme",
       "name": "Operational data display (VOR/DME)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3445,
+        "y": 0.2557,
+        "w": 0.0122,
+        "h": 0.108
+      },
       "body": [
         {
           "kind": "p",
@@ -108,13 +125,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p29",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_operational_data_display_vor_dme.webp"
     },
     {
       "id": "gs_operational_data_display_ndb",
       "name": "Operational data display (NDB)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3588,
+        "y": 0.2557,
+        "w": 0.0117,
+        "h": 0.108
+      },
       "body": [
         {
           "kind": "p",
@@ -122,13 +145,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p32",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_operational_data_display_ndb.webp"
     },
     {
       "id": "gs_operational_data_display_airports",
       "name": "Operational data display (Airports)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3726,
+        "y": 0.2557,
+        "w": 0.0117,
+        "h": 0.108
+      },
       "body": [
         {
           "kind": "p",
@@ -140,13 +169,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p35",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_operational_data_display_airports.webp"
     },
     {
       "id": "gs_range_select_switch",
       "name": "Range Select Switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3547,
+        "y": 0.4432,
+        "w": 0.0316,
+        "h": 0.25
+      },
       "body": [
         {
           "kind": "p",
@@ -154,13 +189,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p40",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_range_select_switch.webp"
     },
     {
       "id": "gs_adf_vor_select_switches",
       "name": "ADF/VOR Select Switches",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3262,
+        "y": 0.7727,
+        "w": 0.0499,
+        "h": 0.0966
+      },
       "body": [
         {
           "kind": "p",
@@ -168,7 +209,8 @@
         }
       ],
       "sourceRef": "glareshield.docx#p43",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_adf_vor_select_switches.webp"
     },
     {
       "id": "gs_fcu_window",
