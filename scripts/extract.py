@@ -157,6 +157,24 @@ def is_section_heading(text: str, next_text: str | None) -> bool:
     return bool(re.match(r"^\(\s*1\s*\)", next_text))
 
 
+def section_continues(items: list[tuple[int, str]], pos: int) -> bool:
+    """
+    หลังตำแหน่ง pos ยังมีรายการ "(N)" ของหน้า ECAM เดิมเหลืออยู่ไหม
+    (หยุดนับเมื่อเจอ section heading ถัดไป)
+
+    ใช้ตัดสินว่า heading ที่ไม่มีเลขคือ "ออกจากหน้า ECAM แล้ว" หรือแค่บรรทัด legend
+    แทรกกลาง เช่น "C = Cold (Valve closed)" ที่อยู่ระหว่าง (3) กับ (4)
+    """
+    for look in range(pos + 1, len(items)):
+        text = items[look][1]
+        next_text = items[look + 1][1] if look + 1 < len(items) else None
+        if is_section_heading(text, next_text):
+            return False
+        if RE_NUMBERED.match(text):
+            return True
+    return False
+
+
 def is_control_heading(text: str) -> tuple[bool, bool, str]:
     """
     คืน (เป็น heading ไหม, มั่นใจไหม, ชื่อที่สกัดได้)
@@ -282,6 +300,13 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
         heading, confident, name = is_control_heading(text)
 
         if heading:
+            # รายการบนหน้า ECAM ขึ้นต้นด้วย "(N)" เสมอ ส่วนปุ่มกายภาพเป็น heading ธรรมดา
+            # เจอ heading ที่ไม่มีเลขและไม่มี "(N)" ตามมาอีก = ออกจากหน้า ECAM แล้ว ต้องปิด section
+            # ไม่งั้นปุ่มกายภาพท้ายเอกสารจะถูกดูดเข้า section สุดท้ายทั้งหมด
+            numbered = bool(RE_NUMBERED.match(text))
+            if not numbered and not section_continues(items, pos):
+                current_section = None
+
             inline = ""
             _, raw = strip_marker(text)
             if ":" in raw and raw.split(":", 1)[0].strip() == name:
