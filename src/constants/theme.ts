@@ -14,6 +14,10 @@ export const Colors = {
     backgroundElement: '#F0F0F3',
     backgroundSelected: '#E0E1E6',
     textSecondary: '#60646C',
+    note: '#8F6424',
+    noteBackground: '#FBF3E2',
+    warning: '#C62A2F',
+    warningBackground: '#FDF0EF',
   },
   dark: {
     text: '#ffffff',
@@ -21,6 +25,10 @@ export const Colors = {
     backgroundElement: '#212225',
     backgroundSelected: '#2E3135',
     textSecondary: '#B0B4BA',
+    note: '#F0C000',
+    noteBackground: '#2C2210',
+    warning: '#FF9592',
+    warningBackground: '#331416',
   },
 } as const;
 

@@ -1,0 +1,102 @@
+/**
+ * คณิตศาสตร์ของพิกัด hotspot — ฟังก์ชันบริสุทธิ์ทั้งไฟล์ ไม่มี React ไม่มี side effect
+ *
+ * กฎเหล็ก:
+ *   - ขนาดรูปบนจอ (displayW/H) ต้องมาจาก onLayout ของ container เท่านั้น
+ *     ห้ามใช้ imageSize จาก JSON เป็นขนาด และห้ามใช้ Dimensions.get()
+ *   - imageSize ใช้เป็น "อัตราส่วน" อย่างเดียว
+ *   - พิกัด hotspot เป็น ratio 0..1 คูณกับ displayW/H เท่านั้น ไม่มี px คงที่
+ */
+
+import type { Hotspot, ImageSize } from './types';
+
+export type Size = {
+  width: number;
+  height: number;
+};
+
+export type Box = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+};
+
+/** ขนาดต่ำสุดของ hit target ตาม AGENTS.md — ค่าของนิ้วมนุษย์ ไม่ใช่ค่าของรูป */
+export const MIN_HIT_TARGET_DP = 44;
+
+const MIN_MAX_SCALE = 6;
+const MAX_MAX_SCALE = 20;
+
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}
+
+/**
+ * จัดรูปแบบ contain: รูปพอดีใน container โดยคงอัตราส่วนเดิม
+ * เคส glareshield 7.6:1 บนจอตั้งจะติดความกว้าง เหลือที่ว่างบนล่างเยอะ (letterbox)
+ */
+export function fitContain(container: Size, image: ImageSize): Size {
+  if (container.width <= 0 || container.height <= 0 || image.w <= 0 || image.h <= 0) {
+    return { width: 0, height: 0 };
+  }
+  const fitScale = Math.min(container.width / image.w, container.height / image.h);
+  return { width: image.w * fitScale, height: image.h * fitScale };
+}
+
+/**
+ * แปลง hotspot ratio -> กล่องบน view ของรูป (ตอน scale=1 translate=0)
+ *
+ * ไม่ต้องคูณ scale หรือบวก translate ที่นี่ เพราะกล่องนี้เป็นลูกของ Animated.View
+ * ตัวเดียวกับรูป transform จึงถูกใส่ให้โดย RN เอง
+ */
+export function hotspotToBox(hotspot: Hotspot, display: Size): Box {
+  return {
+    left: hotspot.x * display.width,
+    top: hotspot.y * display.height,
+    width: hotspot.w * display.width,
+    height: hotspot.h * display.height,
+  };
+}
+
+/**
+ * ระยะ pan สูงสุดที่ยอมได้ก่อนรูปจะหลุดขอบ container
+ * ถ้ารูป (หลังซูม) เล็กกว่า container ในแกนไหน แกนนั้นได้ 0 = ล็อกกลาง
+ * เคส glareshield ที่ scale=1: displayH เล็กกว่า containerH มาก -> maxY = 0
+ */
+export function maxTranslate(container: Size, display: Size, scale: number): Size {
+  return {
+    width: Math.max(0, (display.width * scale - container.width) / 2),
+    height: Math.max(0, (display.height * scale - container.height) / 2),
+  };
+}
+
+/**
+ * ซูมสูงสุด: ปกติ 6x แต่รูปที่แบนมาก (glareshield) ต้องซูมได้ลึกกว่านั้น
+ * เพราะที่ 1x ความสูงบนจอน้อยจนกดปุ่มไม่โดน
+ */
+export function maxScaleFor(container: Size, display: Size): number {
+  if (display.height <= 0) return MIN_MAX_SCALE;
+  return clamp(container.height / display.height, MIN_MAX_SCALE, MAX_MAX_SCALE);
+}
+
+/** hitSlop ต่อด้าน เพื่อดันกล่องที่เล็กกว่านิ้วให้ถึง MIN_HIT_TARGET_DP */
+export function hitSlopFor(box: Box, scale: number): { horizontal: number; vertical: number } {
+  return {
+    horizontal: Math.max(0, (MIN_HIT_TARGET_DP - box.width * scale) / 2),
+    vertical: Math.max(0, (MIN_HIT_TARGET_DP - box.height * scale) / 2),
+  };
+}
+
+/**
+ * ควรบอกผู้ใช้ให้ซูมก่อนไหม — จริงเมื่อเกินครึ่งของ hotspot เล็กกว่านิ้ว
+ * ใช้ตัดสินใจแสดง hint ไม่ได้ใช้คำนวณพิกัด
+ */
+export function shouldHintZoom(hotspots: Hotspot[], display: Size, scale: number): boolean {
+  if (hotspots.length === 0) return false;
+  const tooSmall = hotspots.filter((hotspot) => {
+    const box = hotspotToBox(hotspot, display);
+    return box.width * scale < MIN_HIT_TARGET_DP || box.height * scale < MIN_HIT_TARGET_DP;
+  });
+  return tooSmall.length * 2 > hotspots.length;
+}
