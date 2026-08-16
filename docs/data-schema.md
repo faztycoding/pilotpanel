@@ -35,6 +35,18 @@
 }
 ```
 
+## หน้าแรก: `data/panels/_home.json`
+
+ไฟล์ที่ขึ้นต้นด้วย `_` ถูก `validate-data.mjs` ข้าม เพราะไม่ใช่ panel ที่มี baseline count
+
+`_home.json` เก็บกรอบที่กดได้บนภาพรวม cockpit ทุก control เป็น `type: "area"` และมี `target`
+ชี้ไป `panelId` ปลายทาง — หลายกรอบชี้ปลายทางเดียวกันได้ (เช่นจอกัปตันกับจอผู้ช่วยไปหน้า
+`instrument` ทั้งคู่) `id` ใช้ระบุ "กรอบ" ส่วน `target` ใช้ระบุ "ปลายทาง" จึงต้องแยกกัน
+
+```json
+{ "id": "home_instrument_capt", "name": "PFD / ND กัปตัน", "type": "area", "target": "instrument" }
+```
+
 ## Section: 2 โหมด
 
 section รองรับ 2 แบบ ขึ้นกับว่าโซนนั้นอยู่บนรูป panel เดิมหรือเป็นรูปคนละใบ
@@ -70,6 +82,7 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 | `hotspot` | ทุกค่าเป็น ratio 0..1 เทียบกับรูป ห้าม px |
 | `body[].kind` | `p` \| `bullet` \| `note` \| `warning` |
 | `body[].label` | optional มีได้เฉพาะ `kind: "bullet"` — label สั้นที่ `extract.py` แยกออกมา เช่น `ON` / `FAULT` render เป็นตัวหนานำหน้า `text` |
+| `controls[].target` | optional `panelId` ปลายทาง ถ้ามี = แตะแล้ว navigate ไปหน้านั้นแทนการเปิดคำอธิบาย |
 | `sections[].image` | optional ชื่อไฟล์ใน `assets/panels/` ถ้ามี = โซนนี้ใช้รูปของตัวเอง |
 | `sections[].imageSize` | บังคับเมื่อมี `image` ขนาดจริงของไฟล์นั้น |
 | `sections[].viewport` | optional ratio 0..1 บนรูป panel เดิม ใช้เมื่อไม่มี `image` |

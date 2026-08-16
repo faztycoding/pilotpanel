@@ -19,6 +19,7 @@
       "sectionId": "panels",
       "name": "Overhead Panel",
       "type": "area",
+      "target": "overhead",
       "hotspot": null,
       "body": [
         {
@@ -34,6 +35,7 @@
       "sectionId": "panels",
       "name": "Glareshield",
       "type": "area",
+      "target": "glareshield",
       "hotspot": null,
       "body": [
         {
@@ -45,15 +47,64 @@
       "needsReview": false
     },
     {
-      "id": "home_instrument",
+      "id": "home_instrument_capt",
       "sectionId": "panels",
-      "name": "Instrument Panel",
+      "name": "PFD / ND กัปตัน",
       "type": "area",
+      "target": "instrument",
       "hotspot": null,
       "body": [
         {
           "kind": "p",
-          "text": "Instrument Panel (แผงหน้าปัด) — 31 controls"
+          "text": "PFD / ND กัปตัน (จอหลักฝั่งกัปตัน) — 31 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    },
+    {
+      "id": "home_instrument_center",
+      "sectionId": "panels",
+      "name": "จอกลางซ้าย",
+      "type": "area",
+      "target": "instrument",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "จอกลางซ้าย (จอเล็กกลางซ้าย) — 31 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    },
+    {
+      "id": "home_instrument_ecam",
+      "sectionId": "panels",
+      "name": "ECAM / ENGINE",
+      "type": "area",
+      "target": "instrument",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ECAM / ENGINE (จอระบบและเครื่องยนต์) — 31 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    },
+    {
+      "id": "home_instrument_fo",
+      "sectionId": "panels",
+      "name": "PFD / ND ผู้ช่วยนักบิน",
+      "type": "area",
+      "target": "instrument",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "PFD / ND ผู้ช่วยนักบิน (จอหลักฝั่งผู้ช่วย) — 31 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -64,6 +115,7 @@
       "sectionId": "panels",
       "name": "Center Pedestal",
       "type": "area",
+      "target": "pedestal",
       "hotspot": null,
       "body": [
         {

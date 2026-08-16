@@ -48,6 +48,8 @@ export type Control = {
   sourceRef: string;
   needsReview: boolean;
   sectionId?: string;
+  /** panelId ปลายทาง — ถ้ามี แตะแล้ว navigate ไปหน้านั้นแทนการเปิดคำอธิบาย (ใช้ใน _home.json) */
+  target?: string;
 };
 
 export type Section = {

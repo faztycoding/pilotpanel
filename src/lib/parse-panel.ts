@@ -99,6 +99,9 @@ function parseControl(value: unknown, path: string): Control {
   if (raw.sectionId !== undefined) {
     control.sectionId = asString(raw.sectionId, `${path}.sectionId`);
   }
+  if (raw.target !== undefined) {
+    control.target = asString(raw.target, `${path}.target`);
+  }
   return control;
 }
 
