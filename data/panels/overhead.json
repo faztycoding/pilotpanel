@@ -1,0 +1,2835 @@
+{
+  "panelId": "overhead",
+  "title": "Overhead Panel",
+  "image": "overhead.webp",
+  "imageSize": {
+    "w": 0,
+    "h": 0
+  },
+  "sections": [],
+  "controls": [
+    {
+      "id": "oh_data_selector_knob",
+      "name": "Data Selector Knob",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "bullet",
+          "text": "*Selects information to be displayed in the ADIRS display window"
+        },
+        {
+          "kind": "bullet",
+          "text": ":TEST",
+          "label": "TEST"
+        },
+        {
+          "kind": "p",
+          "text": "ENT+CLR buttons switch on and the display show all 8's"
+        },
+        {
+          "kind": "bullet",
+          "text": ":TK/GSN",
+          "label": "TK/GSN"
+        },
+        {
+          "kind": "p",
+          "text": "Display shows true track + Ground speed"
+        },
+        {
+          "kind": "bullet",
+          "text": ":PPOS",
+          "label": "PPOS"
+        },
+        {
+          "kind": "p",
+          "text": "Display shows current latitude/longitude"
+        },
+        {
+          "kind": "bullet",
+          "text": ":WIND",
+          "label": "WIND"
+        },
+        {
+          "kind": "p",
+          "text": "Displays shows true wind direction + Speed"
+        },
+        {
+          "kind": "bullet",
+          "text": ":HDG",
+          "label": "HDG"
+        },
+        {
+          "kind": "p",
+          "text": "Display shows true heading and time remaining for alignment completion in minutes"
+        },
+        {
+          "kind": "bullet",
+          "text": ":STS",
+          "label": "STS"
+        },
+        {
+          "kind": "p",
+          "text": "Shows an action code"
+        },
+        {
+          "kind": "p",
+          "text": "SYS selector knob"
+        },
+        {
+          "kind": "bullet",
+          "text": ":OFF",
+          "label": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "CDU display is not energized but the ADIRS are if associated IR mode rotary selectors are not off."
+        },
+        {
+          "kind": "bullet",
+          "text": ":T1/2/3",
+          "label": "T1/2/3"
+        },
+        {
+          "kind": "p",
+          "text": "System selected for data display"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p5",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ir_1_2_3_light",
+      "name": "IR 1/2/3 Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "note",
+          "text": "*PS: The 'ON BAT' display above these displays in Amber when one or more IRs is supplied only by AC battery. It also comes on for a short while during start of a full alignment."
+        },
+        {
+          "kind": "bullet",
+          "text": "*FAULT",
+          "label": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Indicates in amber with an ECAM caution when a fault affects a respective IR"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Steady Light = respective IR is Lost."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Flashing Light = attitude + heading information may be recovered in ATT mode."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Align"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Steady = respective IR"
+        },
+        {
+          "kind": "p",
+          "text": "operating normal during align."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Flashing = IR"
+        },
+        {
+          "kind": "p",
+          "text": "alignment fault, no current position entered after 10 minutes or difference between shutdown and entered position is greater than 1° of Latitude/Longitude."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Extinguished Light = Alignment is complete."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p34",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ir_1_2_3_mode_rotary_selector",
+      "name": "IR 1/2/3 Mode Rotary Selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "bullet",
+          "text": "-OFF",
+          "label": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "ADIRU is not energized and ADR/IR data not available"
+        },
+        {
+          "kind": "bullet",
+          "text": "-NAV",
+          "label": "NAV"
+        },
+        {
+          "kind": "p",
+          "text": "This is the normal mode of operation. It gives full inertial data to aircraft systems."
+        },
+        {
+          "kind": "bullet",
+          "text": "-ATT",
+          "label": "ATT"
+        },
+        {
+          "kind": "p",
+          "text": "IR mode supplies only attitude/heading information if the system loses its function/ability to navigate/ The heading has to be entered via the CDU keypad and requires updates at least every 10 minutes."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ADR 1/2/3 push button"
+        },
+        {
+          "kind": "bullet",
+          "text": "-OFF",
+          "label": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Air data output is disconnected"
+        },
+        {
+          "kind": "bullet",
+          "text": "-FAULT",
+          "label": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Amber light comes on with an ECAM caution if a fault is sensed in the air data reference part ."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p47",
+      "needsReview": true
+    },
+    {
+      "id": "oh_blower_and_extract_push_buttons",
+      "name": "Blower and Extract push buttons",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "On the ground when both switches are in auto and before takeoff power is set, the ventilation system is in an open circuit configuration. (Closed circuit when skin temperature is below the ground threshold). After takeoff power is set and airborne, the system is in the closed circuit configuration."
+        },
+        {
+          "kind": "p",
+          "text": "OVRD"
+        },
+        {
+          "kind": "p",
+          "text": "The system goes into the closed circuit configuration when either switch is set to OVRD. Air from the air conditioning system is added to ventilation air. Note that the blower fan stops if it is the one set to OVRD."
+        },
+        {
+          "kind": "p",
+          "text": "If both buttons are set to OVRD, the air flows from the air conditioning system and then overboard. The extract fan continues to run."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p65",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Illuminates in amber with ECAM activation."
+        },
+        {
+          "kind": "p",
+          "text": "Blower Fault light comes on if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Blowing pressure is low (*)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The duct overheats (*)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Computer power fails"
+        },
+        {
+          "kind": "warning",
+          "text": "*Smoke warning is activated"
+        },
+        {
+          "kind": "p",
+          "text": "Extract Fault light comes on if:"
+        },
+        {
+          "kind": "p",
+          "text": "(*) Extract pressure is low"
+        },
+        {
+          "kind": "p",
+          "text": "(*)Computer power fails"
+        },
+        {
+          "kind": "warning",
+          "text": "(*)Smoke warning is activated"
+        },
+        {
+          "kind": "warning",
+          "text": "(*)= If warning occurs whilst on the ground with engines stopped, the external horn will sound."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p71",
+      "needsReview": false
+    },
+    {
+      "id": "oh_cabin_fans_push_button",
+      "name": "CABIN FANS push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON: Both cabin fans are on."
+        },
+        {
+          "kind": "p",
+          "text": "OFF: Both cabin fans are off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p85",
+      "needsReview": false
+    },
+    {
+      "id": "oh_eng_main_start_push_buttons",
+      "name": "ENG MAIN START push buttons",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This is related to the engine of course but is represented here for your information."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The start valve opens if engine mode selector is set to CRANK or IGN/START and N2 < 20%. Both pack valves close during the start sequence. The start valve will close automatically when N2 ≥ 50%. When on, the buttons lights up in blue"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "When set to off, the start valve closes if the master switch of the engine is off."
+        },
+        {
+          "kind": "p",
+          "text": "COMMAND push button (guarded switch)"
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "bullet",
+          "text": "*In the flight deck the EVAC light flashes red."
+        },
+        {
+          "kind": "bullet",
+          "text": "*In the Cabin the EVAC lights flash at the FWD/AFT flight attendant panels and the evacuation tone sounds."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The alert is stopped but EVAC light flashes red when the alert has been activated."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p89",
+      "needsReview": false
+    },
+    {
+      "id": "oh_horn_shut_off_button",
+      "name": "HORN SHUT OFF button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressing this button silences the cockpit"
+        },
+        {
+          "kind": "p",
+          "text": "sounding horn"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p108",
+      "needsReview": false
+    },
+    {
+      "id": "oh_capt_and_purs_capt_switch",
+      "name": "(CAPT AND PURS)/CAPT switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "CAPT & PURS = alert can be activated from cockpit or cabin"
+        },
+        {
+          "kind": "p",
+          "text": "CAPT = alert can only be activated from cockpit"
+        },
+        {
+          "kind": "p",
+          "text": "DISCH push button"
+        },
+        {
+          "kind": "p",
+          "text": "This button ignites the squib to discharge the fire extinguisher agent in the related cargo compartment"
+        },
+        {
+          "kind": "p",
+          "text": "(FWD and AFT)."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p113",
+      "needsReview": false
+    },
+    {
+      "id": "oh_smoke_disch_light",
+      "name": "SMOKE/DISCH Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "SMOKE"
+        },
+        {
+          "kind": "warning",
+          "text": "Red light and associated ECAM warning come on when the system detects smoke in the indicated compartment. The light comes on if: both channels detect smoke or one channel detects smoke and the other is faulty."
+        },
+        {
+          "kind": "p",
+          "text": "DISCH"
+        },
+        {
+          "kind": "p",
+          "text": "Once the discharge push button has been pressed, within 60 seconds this amber light comes on indicating that the agent bottle has been fully discharged."
+        },
+        {
+          "kind": "p",
+          "text": "TEST push button"
+        },
+        {
+          "kind": "warning",
+          "text": "Pressing this button for at least 3 seconds and before it is released tests the smoke detectors, turns on the red smoke lights twice, displays ECAM warning and also turns on the amber discharge light."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p130",
+      "needsReview": false
+    },
+    {
+      "id": "oh_hot_air_push_button",
+      "name": "HOT AIR push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally is left in Auto mode for operation. This enables the cargo heat temperature selector to control the aft cargo temperature. The aft cargo heat is made for the A320"
+        },
+        {
+          "kind": "p",
+          "text": "type variant only. A controller allows operation of the heat inlet and outlet isolation valves together with an extraction fan. The packs provide hot trim air for temperature control via the hot air pressure-regulating valve."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p140",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_2",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Illuminates in amber when a duct overheat is detected."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p143",
+      "needsReview": false
+    },
+    {
+      "id": "oh_aft_isol_valve_push_button",
+      "name": "AFT ISOL VALVE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Usually left in Auto for normal operation. In this mode the cargo ventilation controller opens the inlet and outlet isolation valves and switches on the aft cargo extraction fan. In case of smoke detection, the controller closes both valves and turns this extraction fan off."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Closes the inlet and outlet isolation valves and also turns off the extraction fan. In this case, ventilation is lost."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p149",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_3",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Light illuminates in amber when either inlet or outlet valve is in a disagreed position with the selected position."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p153",
+      "needsReview": false
+    },
+    {
+      "id": "oh_cargo_temperature_selector",
+      "name": "CARGO TEMPERATURE selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This knob is used to select the temperature in the aft cargo compartment."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p156",
+      "needsReview": false
+    },
+    {
+      "id": "oh_elac_1_2_push_button",
+      "name": "ELAC 1/2 Push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Controls the elevator+aileron control computers"
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "ELAC 1/2 carries out the following functions:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Normal pitch/roll"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Alternate pitch"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Direct pitch/roll"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Abnormal attitude"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Aileron droop"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Intake of autopilot orders"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Corresponding computer is not active. Switching it OFF and then ON resets the computer"
+        },
+        {
+          "kind": "p",
+          "text": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Comes on amber with an ECAM caution when a failure is detected or during ELAC power-up test (~8 seconds). The light goes away if the Pilot switches the push-button OFF or at the end of this test if successful"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p161",
+      "needsReview": false
+    },
+    {
+      "id": "oh_sec_1_2_3_push_button",
+      "name": "SEC 1/2/3 push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Controls the spoiler+elevator (SEC) computers."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "SEC 1/2/3 carries out the following functions:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Normal roll via spoiler control"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Speed brakes/ground spoilers"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Alternate pitch (SEC 1 AND 2 ONLY)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Direct pitch (SEC 1 and 2 only)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Direct roll"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Abnormal attitude"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Corresponding computer is not active. Switching it OFF and then ON resets the computer"
+        },
+        {
+          "kind": "p",
+          "text": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Comes on amber with an ECAM caution when a failure is detected. Light goes off if switch is selected OFF"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p175",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fac_1_2_push_button",
+      "name": "FAC 1/2 Push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Controls the flight augmentation computers"
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "FAC 1/2 carry out the following functions:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Normal roll with turn co-ordination + dutch roll damping"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Rudder trim"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Rudder travel limit"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Alternate yaw"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Corresponding computer is not active. Switching it OFF and then ON resets the computer"
+        },
+        {
+          "kind": "p",
+          "text": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Comes on amber with an ECAM caution when a failure is detected. Light goes off if switch is selected OFF."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p189",
+      "needsReview": false
+    },
+    {
+      "id": "oh_emer_gen_test_guarded_push_button",
+      "name": "EMER GEN TEST guarded push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressed and held:- (two cases below)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*If AC Normal Buses are supplied, the EMER GEN is driven hydraulically if blue electric pump is running."
+        },
+        {
+          "kind": "p",
+          "text": "The AC ESS BUS and the DC ESS BUS are connected to the emergency generator. On the ground the ECAM displays the ELEC page automatically."
+        },
+        {
+          "kind": "bullet",
+          "text": "*If only batteries supply aircraft power then the static inverter powers the AC ESS BUS."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p213",
+      "needsReview": false
+    },
+    {
+      "id": "oh_gen_1_line_push_button",
+      "name": "GEN 1 LINE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The GEN 1 line contactor opens and the AC BUS 1 is supplied from GEN 2 via the bus tie contactors."
+        },
+        {
+          "kind": "p",
+          "text": "(Used in the smoke drill)"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p220",
+      "needsReview": false
+    },
+    {
+      "id": "oh_smoke_light",
+      "name": "SMOKE Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Comes ON in amber together with an ECAM warning when smoke is detected in the avionics ventilation duct."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p224",
+      "needsReview": false
+    },
+    {
+      "id": "oh_rat_and_emer_gen_light",
+      "name": "RAT AND EMER GEN light",
+      "type": "light",
+      "hotspot": null,
+      "body": [],
+      "sourceRef": "Overhead Panel (finish).docx#p227",
+      "needsReview": true
+    },
+    {
+      "id": "oh_fault_light_4",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Comes on in red if the emergency generator fails to supply power in the event AC BUS 1 and 2 are not powered."
+        },
+        {
+          "kind": "p",
+          "text": "MAN ON push button (guarded switch)"
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "Takes action when AC BUS 1 and 2 are not electrically supplied and aircraft speed is greater than 100 knots. In this case the RAT extends, the blue hydraulic system drives the emergency generator and once the generators electrical parameters are within tolerance;- the generator is connected to the aircraft."
+        },
+        {
+          "kind": "p",
+          "text": "Pressed Manually: Selects manual RAT extension and generator coupling occurs 3 seconds after the RAT starts supplying emergency generator."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p228",
+      "needsReview": false
+    },
+    {
+      "id": "oh_mask_man_on_push_button",
+      "name": "MASK MAN ON push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch has a guard to maintain it in the auto position."
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "In this case, the mask doors open automatically when the cabin altitude exceeds 14,000 feet"
+        },
+        {
+          "kind": "p",
+          "text": "If pressed: The mask doors open."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p244",
+      "needsReview": false
+    },
+    {
+      "id": "oh_passenger_sys_on_light",
+      "name": "PASSENGER SYS ON Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The light comes on in white when the control for the oxygen mask doors is activated."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p250",
+      "needsReview": false
+    },
+    {
+      "id": "oh_crew_supply_push_button",
+      "name": "CREW SUPPLY push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When selected to on, it supplies low-pressure oxygen to the crew oxygen masks."
+        },
+        {
+          "kind": "p",
+          "text": "EMER call push button"
+        },
+        {
+          "kind": "p",
+          "text": "When pressed, it triggers the following aural/visual calls in the cabin:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Two pink lights flash on all area call panels"
+        },
+        {
+          "kind": "bullet",
+          "text": "*An 'Emergency Call message appears on all AIPS"
+        },
+        {
+          "kind": "bullet",
+          "text": "*A high-low chime sounds 3 times on all loud speakers"
+        },
+        {
+          "kind": "p",
+          "text": "In the cockpit, the ON light flashes in white and the CALL light flashes amber."
+        },
+        {
+          "kind": "p",
+          "text": "If the emergency call is made from the cabin, the ON light flashes in white and CALL light flashes amber."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p253",
+      "needsReview": false
+    },
+    {
+      "id": "oh_rain_rplnt_switch",
+      "name": "RAIN RPLNT switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "There are two of these switches for Captain/First Officer windscreen. When pressed, a timer sprays a certain amount of rain repellent liquid on the windscreens. The function is inhibited when aircraft is on the ground and engines are stopped."
+        },
+        {
+          "kind": "p",
+          "text": "WIPER rotary switch"
+        },
+        {
+          "kind": "p",
+          "text": "The switch has a slow and high position for wiper speed operation and in the off position it stores away."
+        },
+        {
+          "kind": "p",
+          "text": "TERR push button"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "warning",
+          "text": "Inhibits the terrain awareness display and terrain clearance floor modes. It does not affect the basic GPWS modes 1-5 functions. If selected to OFF then ECAM caution NAV GPWS TERR DET FAULT displays."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p264",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_5",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "If terrain awareness display + clearance floor modes fail, the light comes on in amber and ECAM caution is triggered. Terrain is not shown anymore on the Navigation display however the basic GPWS modes 1-5 are still operative if the SYS push button OFF or FAULT lights are not illuminated."
+        },
+        {
+          "kind": "p",
+          "text": "SYS push button"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "All the basic GPWS from modes 1 to 5 are inhibited"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p283",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_6",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light comes on together with ECAM caution if basic GPWS modes 1-5 malfunction in any form"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p292",
+      "needsReview": false
+    },
+    {
+      "id": "oh_g_s_mode_push_button",
+      "name": "G/S MODE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "In this case, the Glideslope (mode 5) function is inhibited"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p295",
+      "needsReview": false
+    },
+    {
+      "id": "oh_flap_mode_push_button",
+      "name": "FLAP MODE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The flap mode (mode 4)-\"too low flaps\" is inhibited. It is switched to off if landing in an abnormal flap setting to avoid unwanted warnings."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p299",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ldg_flap_3_push_button",
+      "name": "LDG FLAP 3 push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "In this case, Flap mode is inhibited if landing with CONF 3 is selected by the crew. A memo displays this as Flaps 3 instead of CONF FULL."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p303",
+      "needsReview": false
+    },
+    {
+      "id": "oh_gnd_ctl_switch",
+      "name": "GND CTL switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The CVR, DFDR and QAR are on. ON light comes illuminated in blue."
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "The CVR, DFDR and QAR are on in accordance with airbus logic."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p311",
+      "needsReview": false
+    },
+    {
+      "id": "oh_cvr_erase_push_button",
+      "name": "CVR ERASE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "If pressed for more than 2 seconds, it completely erases the recording tape provided the aircraft is on the ground with parking brake on."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p316",
+      "needsReview": false
+    },
+    {
+      "id": "oh_cvr_test_push_button",
+      "name": "CVR TEST push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "If pressed and held in, it activates the test if CVR is on, GND CTL pressed or during first 5 minutes after aircraft is energized with electric power plus parking brake on."
+        },
+        {
+          "kind": "p",
+          "text": "AGENT 1 and 2 (Engines) and APU Agent push button"
+        },
+        {
+          "kind": "p",
+          "text": "The corresponding Agent switches become active once the associated red Fire push buttons (Either engines or APU) are pressed. As you can see each engine has two agents | and the APU has only one. Pressing an Agent button discharges the corresponding fire bottle."
+        },
+        {
+          "kind": "bullet",
+          "text": "*'SQUIB`lights up in white when the fire push button is pressed showing it's available and help flight crew identify which agent to be activated."
+        },
+        {
+          "kind": "bullet",
+          "text": "*'DISCH` lights up in amber when its fire extinguisher bottle has lost pressure showing therefore empty."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p318",
+      "needsReview": false
+    },
+    {
+      "id": "oh_eng_1_2_fire_push_button",
+      "name": "ENG 1/2 FIRE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Under normal circumstances, the push button is guarded and locked in. When pushed it releases out sending an electrical signal that carries the following functions for its associated engine:"
+        },
+        {
+          "kind": "warning",
+          "text": "*Silences the aural fire warning"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Arms the fire extinguisher squibs"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Closes the low-pressure fuel valve"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Closes the hydraulic fire shut off valve"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Closes the engine bleed valve"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Closes the pack flow control valve"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Cuts off the FADEC power supply"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Deactivates the engines| Integrated Drive Generator (IDG)"
+        },
+        {
+          "kind": "warning",
+          "text": "The ENG 1/2 red light illuminates regardless if the push button has been pressed or not when ever there is a fire warning for the related engine."
+        },
+        {
+          "kind": "p",
+          "text": "The test button close to the fire push button allows flight crew to test the operation of the engine fire detection and extinguishing system."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p332",
+      "needsReview": false
+    },
+    {
+      "id": "oh_apu_fire_push_button",
+      "name": "APU FIRE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Like the engines, this button is also locked in and guarded. It is pushed to release and trigger the following:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Shut down APU"
+        },
+        {
+          "kind": "warning",
+          "text": "*Silence the aural warning"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Arm the fire squib for APU extinguisher"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Close the low-pressure fuel valve"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Shut off the APU fuel pump"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Close the APU bleed valve and cross-bleed valve and also deactivates the APU generator"
+        },
+        {
+          "kind": "warning",
+          "text": "The red APU FIRE light comes on when the APU fire warning is active regardless of button position."
+        },
+        {
+          "kind": "p",
+          "text": "The test button under the fire push button allows flight crew to test the operation of the APU fire detection and extinguishing system."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p348",
+      "needsReview": false
+    },
+    {
+      "id": "oh_test_push_button_eng_and_apu",
+      "name": "TEST Push-button (ENG and APU)",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This button allows crew to test operation of either the related engine or APU fire detection and extinguishing system. When pressed:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*A continuous repetitive chime sounds."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p361",
+      "needsReview": false
+    },
+    {
+      "id": "oh_associated_master_warning_lights_illuminate",
+      "name": "Associated MASTER Warning lights illuminate",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "flashing in red."
+        },
+        {
+          "kind": "warning",
+          "text": "*ENG FIRE or APU FIRE warning appears on ECAM."
+        },
+        {
+          "kind": "p",
+          "text": "On the overhead fire pane here, the push buttons illuminate in red, the SQUIB lights come on white if discharge supplies are available and DISCH lights come on in amber."
+        },
+        {
+          "kind": "p",
+          "text": "For the Engines, the FIRE lights also illuminate in red on the pedestal panel just below thrust master switches."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p364",
+      "needsReview": true
+    },
+    {
+      "id": "oh_eng_1_2_pump_push_button",
+      "name": "ENG 1/2 PUMP push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Pump pressurizes the system provided associated engine is running"
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Pump is depressurized and generation of hydraulic power stops"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p372",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_7",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "The amber light illuminates and ECAM caution appears when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir level is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir overheats"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir air pressure is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Pump pressure is low (inhibited on the ground when engine not running)"
+        },
+        {
+          "kind": "p",
+          "text": "The light goes out once crew selects pump off unless it's overheat. In this case it stays on as long as the situation lasts."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p380",
+      "needsReview": false
+    },
+    {
+      "id": "oh_rat_man_on_push_button",
+      "name": "RAT MAN ON push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The crew can extend the RAT manually by pressing this button but note that in a normal case, the RAT should deploy automatically if AC BUS 1 and 2 are lost."
+        },
+        {
+          "kind": "p",
+          "text": "BLUE ELEC PUMP guarded push button"
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "In flight or on the ground with one engine running, the pump operates automatically. You can also use pump on the ground by pressing an override switch on the maintenance panel."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The pump is de-energized"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p388",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_8",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "The amber light The amber light illuminates and ECAM caution appears when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir level is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir overheats"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir air pressure is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Pump is giving a low output pressure (inhibited on ground when engines not running)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Pump overheats The light goes out once crew selects pump off unless it's overheat. In this case it stays on as long as the situation lasts."
+        },
+        {
+          "kind": "p",
+          "text": "PTU push button"
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "It runs automatically if difference between green and yellow hydraulic systems is greater than 500 psi. The PTU is armed and both the yellow and green electrohydraulic valves are | open. PTU is inhibited during first engine start and goes through an automatic test during second engine start."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Both the green/yellow PTU electrohydraulic valves close and power transfer stops."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p400",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_9",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "The amber light illuminates and ECAM caution appears when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Green or yellow reservoir overheats"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Green or yellow reservoir has low air pressure"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Green or yellow reservoir has a low fluid level"
+        },
+        {
+          "kind": "p",
+          "text": "The light goes out once crew selects pump off unless it's overheat. In this case it stays on as long as the situation lasts."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p416",
+      "needsReview": false
+    },
+    {
+      "id": "oh_yellow_elec_pump_push_button",
+      "name": "YELLOW ELEC PUMP push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The pump is on. If electrical supply is removed the pump switches off and stays that way even when electric power is re-applied."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The pump is off. It automatically comes on when the cargo door manual selector valve is set to open/close. It inhibits the operation of other yellow system functions except alternate braking + engine 2 reverse."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p423",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_10",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "The amber light illuminates and ECAM caution appears when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir level is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir air pressure is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Reservoir overheats"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Pump pressure is low"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Pump overheats"
+        },
+        {
+          "kind": "p",
+          "text": "The light goes out once crew selects pump off unless it's overheat. In this case it stays on as long as the situation lasts."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p431",
+      "needsReview": false
+    },
+    {
+      "id": "oh_left_right_tk_pumps_1_2_push_buttons",
+      "name": "Left/Right TK PUMPS 1/2 push buttons",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Pump is on but fuel feeds only when center tank pumps delivery drops below certain threshold."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Pump is off and the button illuminates off in white."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p444",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_11",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light plus ECAM caution appears when pump delivery pressure drops. No fault appears if pump is in off position."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p451",
+      "needsReview": false
+    },
+    {
+      "id": "oh_x_feed_push_button",
+      "name": "X FEED push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The valve closes and the button does not come on."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The valve opens and the ON push button lights up in white"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p454",
+      "needsReview": false
+    },
+    {
+      "id": "oh_open_light",
+      "name": "OPEN Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Green light comes on when the valve is fully open"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p462",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ctr_tk_pump_1_2_push_button",
+      "name": "CTR TK PUMP 1/2 push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "If MAN mode is selected on the MODE SEL button then the pump runs. It is automatically controlled when AUTO is selected."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Pump is off and the button illuminates off in white."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p465",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_12",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light plus ECAM caution appears when pump is in operation and its delivery pressure drops."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p472",
+      "needsReview": false
+    },
+    {
+      "id": "oh_mode_sel_push_button",
+      "name": "MODE SEL push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "Center tank pumps are controlled automatically."
+        },
+        {
+          "kind": "p",
+          "text": "The pumps run at engine start for 2 minutes."
+        },
+        {
+          "kind": "p",
+          "text": "Before/after the engine start sequence, the pumps run if the slats are retracted and they stop automatically 5 minutes after center tank low level is reached."
+        },
+        {
+          "kind": "p",
+          "text": "MAN"
+        },
+        {
+          "kind": "p",
+          "text": "The crew manually controls the center tank pumps via the push buttons."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p478",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_13",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light and ECAM caution appear when center tank has more than 250 kg (550 lb) of fuel and the L/R wing tank has less than 5000 kg (11,000 lb)."
+        },
+        {
+          "kind": "p",
+          "text": "COMMERCIAL push button"
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The aircraft's all commercial electrical loads are supplied when on.These include: cabin/cargo lights, water & toilet system, drain mast ice protection, galley, passenger entertainment and semi-automatic cargo loading if included."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "This switches off all commercial electrical loads."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p487",
+      "needsReview": false
+    },
+    {
+      "id": "oh_galy_cab_push_button",
+      "name": "GALY & CAB push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "The main galley, secondary galley, in-seat power and entertainment system are all supplied electrical The main galley, in-seat power and entertainment system automatically shed in flight if only one generator is operative or on the ground with only one engine generator is running. This is not the case though if APU or EXT Power are available and supplying electric power."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The main galley, secondary galley in-seat power and entertainment system are not supplied any electric power. Also the electrical supply of the heating floor panels is shed."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p501",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_14",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light and ECAM caution appear when the load on any generator is more than 100% of rated output."
+        },
+        {
+          "kind": "p",
+          "text": "IDG 1/2 guarded push button"
+        },
+        {
+          "kind": "p",
+          "text": "The IDG switches are normally spring-loaded out. If pressed, the IDG disconnects from its driveshaft and it can only be reset on the ground by maintenance"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p508",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_15",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Comes on in amber with ECAM caution when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*IDG oil outlet overheats (>185 °C) or"
+        },
+        {
+          "kind": "bullet",
+          "text": "*IDG oil pressure is low (this is inhibited at low engine speeds i.e. N2 < 14%)"
+        },
+        {
+          "kind": "p",
+          "text": "The light goes out when the IDG is disconnected."
+        },
+        {
+          "kind": "note",
+          "text": "Note: holding the IDG push button for more than 3 seconds may damage the IDG disconnection mechanism and you should disconnect the IDG only when associated engine is running/windmilling or else the IDG will be damaged when starting that engine."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p514",
+      "needsReview": false
+    },
+    {
+      "id": "oh_apu_gen_push_button",
+      "name": "APU GEN push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The APU generator field is energized and its line contactor closes if all parameters are normal and EXT PWR line contactor is open. The bus tie contactor 1/2 close automatically if GEN 1/2 are not operating."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Generator field is de-energized and line contactor opens. The fault circuit is reset."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p522",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_16",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Amber light comes on and ECAM caution appears if the associated generator control unit (GCU) trips it or if the line contactor opens. The APU GEN FAULT Light is inhibited if APU speed is too low or if the APU GEN line contactor opens after EXT PWR or ENG GEN takes over."
+        },
+        {
+          "kind": "p",
+          "text": "BAT 1/2 push button"
+        },
+        {
+          "kind": "p",
+          "text": "Controls the operation of the related battery charge limiter (BCL). Next to the battery switches is also an indication of each batteries voltage value."
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "The BCL controls automatically the connection/disconnection of the related battery to the DC BAT BUS by closing & opening the battery line contactor. The batteries are connected to the DC BAT BUS when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*APU MASTER switch is pressed ON starting"
+        },
+        {
+          "kind": "p",
+          "text": "and N <95% but the connection is limited to 3 minutes when the emergency generator is running."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Battery voltage is below 26.5 Volts (Battery charge). Charge cycle ends when current goes below 4 Amps. On the ground this happens immediately and in flight there is a delay of about 30 minutes."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Loss of AC BUS 1/2 when below 100 knots and EMER GEN is not supplying. Battery 1 supplies the AC Static Inverter bus and also the AC Essential Bus if speed is greater than 50 knots. Battery 2 supplies the DC Essential bus."
+        },
+        {
+          "kind": "p",
+          "text": "In normal situations, the batteries are disconnected most of the time. A logic system prevents the batteries from discharging completely when the aircraft is on the ground parked. Automatic battery contactors open when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The aircraft is on the ground"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The BAT push button are in auto"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Main power supply i.e.EXT PWR + GEN are cut off"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Battery voltage is low The crew can reset thecontactors by pressing the BAT switches off then back to AUTO."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The BCL is not operating and the line contactor is open. OFF illuminates in white on the button if the DC BAT BUS is supplied and the Hot buses remain supplied and the Hot buses remain supplied"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p529",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_17",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Comes on in amber with ECAM caution when the charging current for the related battery is outside limits. In this case the battery contactor opens."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p551",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ac_ess_feed_push_button",
+      "name": "AC ESS FEED push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally supplied by AC BUS 1 but can be supplied by AC BUS 2 via this AC ESS FEED switch."
+        },
+        {
+          "kind": "p",
+          "text": "NORMAL"
+        },
+        {
+          "kind": "p",
+          "text": "AC ESS BUS is supplied by AC BUS 1"
+        },
+        {
+          "kind": "p",
+          "text": "ALTN"
+        },
+        {
+          "kind": "p",
+          "text": "AC ESS BUS is supplied by AC BUS 2"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p556",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_18",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light comes on with ECAM caution when the AC ESS BUS is not electrically supplied."
+        },
+        {
+          "kind": "p",
+          "text": "(Note: if you lose both main generators, the AC ESS BUS is automatically supplied by emergency generator or if needed by the static inverter)"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p566",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ext_pwr_push_button",
+      "name": "EXT PWR push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AVAIL light appears in green when the external power is plugged in and all parameters are normal. When the button is pressed momentarily, as long as the AVAIL light is on, then the external power line contactor closes, the AVAIL light goes off and the ON light appears in blue. Pressing it then again has the opposite effect of this i.e. disconnects external power and AVAIL light comes on again."
+        },
+        {
+          "kind": "p",
+          "text": "External power has priority over the APU generator and the engine generators have priority over the external."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p570",
+      "needsReview": false
+    },
+    {
+      "id": "oh_bus_tie_push_button",
+      "name": "BUS TIE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "Bus tie contactors automatically open/close to maintain power supply to both AC Bus 1 and 2. One contactor closes when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*One engine generator supplies the related AC Bus and"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The APU generator /external power supplies the other side Both contactors close during single engine operation or if operating on APU/External power."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Both bus tie contactor open."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p574",
+      "needsReview": false
+    },
+    {
+      "id": "oh_pack_flow_selector",
+      "name": "PACK FLOW Selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Allows the selection of pack flow in accordance to the number of passengers and ambient conditions i.e. smoke removal, hot or wet conditions. Three basic flow settings: LO (80%), NORM (100%) and HI (120%). Manual selection is not relevant if in single pack operation or if APU bleed is the supply source as in these cases the flow automatically selects HI flow. If LO is selected, the pack flow can be automatically selected up to 100% if cooling demands are not met"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p583",
+      "needsReview": false
+    },
+    {
+      "id": "oh_zone_temperature_selectors",
+      "name": "Zone Temperature Selectors",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "3 rotary switches to independently control cockpit, forward and aft zone temperatures. You can rotate the switches to any setting between COLD and HOT. Below are the temperature targets for different switch positions:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*12 o'clock position as shown: 24°C (76°F)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*COLD position: 18°C (64°F)"
+        },
+        {
+          "kind": "bullet",
+          "text": "*HOT position: 30°C (86°F)"
+        },
+        {
+          "kind": "p",
+          "text": "PACK push button"
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Pack flow control valve is automatically controlled. It opens except when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Upstream pressure drops below minimum"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Compressor outlet overheats"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Engine start sequence:"
+        },
+        {
+          "kind": "p",
+          "text": "i. If cross bleed valve is closed, the valve on the | starting engine side closes immediately once the mode selector is set to IGN/CRK."
+        },
+        {
+          "kind": "p",
+          "text": "ii. It remains closed on starting side as long as cross bleed valve is closed and the MASTER switch or MAN START switch is set to ON, start valve is open and N2 < 50%. (If cross bleed valve is open during start sequence, both pack flow control valves close)"
+        },
+        {
+          "kind": "p",
+          "text": "ii. On the ground, reopening of the valves is delayed for 30 seconds to avoid a supplementary pack closure cycle during second engine start."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Fire push button of the related engine is pushed"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Ditching is selected"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p586",
+      "needsReview": false
+    },
+    {
+      "id": "oh_eng_1_and_2_bleed_push_buttons",
+      "name": "ENG 1 and 2 BLEED push buttons",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The bleed valve opens if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Upstream pressure is above 8 PSI"
+        },
+        {
+          "kind": "bullet",
+          "text": "*APU BLEED push button is off or its bleed valve is closed"
+        },
+        {
+          "kind": "bullet",
+          "text": "*No onside pylon or wing leak and no over-pressure or temperature has been detected"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The ENG FIRE push has not been released out"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Engine start valve is closed"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p605",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_19",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light appears together with ECAM caution if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*There is an over-pressure situation downstream of bleed valve"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Bleed air overheat"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Wing or engine leak on | related side"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Bleed valve is not closed during start sequence"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Bleed valve is not closed with APU bleed ON"
+        },
+        {
+          "kind": "p",
+          "text": "The light goes out once the ENG BLEED push button has been switched OFF and provided the fault has disappeared."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The bleed valve and HP valve close and the white OFF light comes on."
+        },
+        {
+          "kind": "p",
+          "text": "RAM AIR guarded push button"
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "The ON light appears in white. If ditching push button which is on the CABIN PRESS panel is in normal state/position then:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The Ram air inlet opens"
+        },
+        {
+          "kind": "bullet",
+          "text": "*If △p ≥ 1 PSI, then the outflow valve control remains normal and no emergency ram air flows in."
+        },
+        {
+          "kind": "bullet",
+          "text": "*If △p < 1 PSI, the outflow valve opens to about 50% if under automatic control and does not automatically open when under manual control."
+        },
+        {
+          "kind": "p",
+          "text": "Emergency ram airflow is directly supplied to the misery unit."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The RAM air inlet closes."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p613",
+      "needsReview": false
+    },
+    {
+      "id": "oh_apu_bleed_push_button",
+      "name": "APU BLEED push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "In this case the APU valve opens if N>95% and no leak detected in the APU or left side bleed. If there is a leak on the right side, then the cross bleed valve closes. The blue ON light appears."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The APU valve closes."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p638",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_20",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light and ECAM caution appears when system detects an APU leak."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p645",
+      "needsReview": false
+    },
+    {
+      "id": "oh_x_bleed_selector",
+      "name": "X-BLEED selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Three possible positions for the switch:"
+        },
+        {
+          "kind": "p",
+          "text": "1. AUTO = cross bleed valve is open if the APU bleed valve is open and the cross bleed valve is closed if the APU bleed valve is closed or in situations of wing, pylon and/or APU leak (engine start sequence excluded)."
+        },
+        {
+          "kind": "p",
+          "text": "2.OPEN = cross bleed valve is open."
+        },
+        {
+          "kind": "p",
+          "text": "3.CLOSE = cross bleed valve is closed."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p648",
+      "needsReview": false
+    },
+    {
+      "id": "oh_wing_anti_ice_push_button",
+      "name": "WING ANTI ICE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Used to control the wing anti icing systems on both sides at the same time."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Lights up blue and ECAM MEMO - 'WING A.ICE' appears. The wing anti ice control valves open if a pneumatic supply is available. If button pressed on the ground, the valves open for a 30 second test sequence only."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The blue On light goes out and the wing anti icing control valves close."
+        },
+        {
+          "kind": "p",
+          "text": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Amber light appears with ECAM caution if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Position of the anti-icing control valves is not in the required one or..."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Low pressure is detected"
+        },
+        {
+          "kind": "warning",
+          "text": "Do not confuse the light for a fault as sometimes it may come on briefly during valve transit period."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p654",
+      "needsReview": false
+    },
+    {
+      "id": "oh_eng_1_and_2_anti_ice_push_button",
+      "name": "ENG 1 and 2 ANTI ICE push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Switch lights up blue and ECAM MEMO displays-'ENG A. ICE'. The anti icing valves open if bleed air is available from the engines."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "The ON light goes out and the anti icing valves close."
+        },
+        {
+          "kind": "p",
+          "text": "FAULT"
+        },
+        {
+          "kind": "warning",
+          "text": "Amber light appears with ECAM caution if position of anti-icing valves disagrees with the ENG 1/2 push button selection. Like the wing anti ice, the light comes on briefly during valve transit period."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p665",
+      "needsReview": false
+    },
+    {
+      "id": "oh_probe_window_heat_push_button",
+      "name": "PROBE/WINDOW HEAT push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "The probes and windows are heated automatically in flight or on the ground (except TAT probes) as long as one engine is at least running."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Switches the probes and windows heating to on permanently and a blue light illuminates."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p672",
+      "needsReview": false
+    },
+    {
+      "id": "oh_man_v_s_ctl_toggle_switch",
+      "name": "MAN V/S CTL toggle switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "It is a spring-loaded switch that returns to neutral upon release. It controls the outflow valve position through the MAN motor when the MODE SEL is set to MAN. It is a very sensitive switch and if to be used, then it is better to apply it in short bursts or inputs as it has a lot of lag."
+        },
+        {
+          "kind": "p",
+          "text": "UP"
+        },
+        {
+          "kind": "p",
+          "text": "Valve moves towards open position"
+        },
+        {
+          "kind": "p",
+          "text": "DN"
+        },
+        {
+          "kind": "p",
+          "text": "Valve moves towards closed position"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p680",
+      "needsReview": false
+    },
+    {
+      "id": "oh_mode_sel_push_button_2",
+      "name": "MODE SEL push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "The outflow valve is automatically controlled"
+        },
+        {
+          "kind": "p",
+          "text": "using one of the two available systems."
+        },
+        {
+          "kind": "p",
+          "text": "Switching the button to MAN for about 10 seconds and then back to AUTO switches between these two systems."
+        },
+        {
+          "kind": "p",
+          "text": "MAN"
+        },
+        {
+          "kind": "p",
+          "text": "Appears in white and FAULT does not illuminate then the crew has to manually control the outflow valve using the MAN V/S CTL toggle."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p686",
+      "needsReview": false
+    },
+    {
+      "id": "oh_fault_light_21",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Appears in amber and an ECAM caution light comes on only if both automatic systems are faulty."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p695",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ldg_elev_knob",
+      "name": "LDG ELEV knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "Pressurization system takes elevation data from the FMGS to construct an optimized pressure change schedule. To gain manual control,pull knob and turn selector."
+        },
+        {
+          "kind": "p",
+          "text": "Numbered position (-2 to 14)"
+        },
+        {
+          "kind": "p",
+          "text": "This time the system does not take data from FMGS but instead uses selected landing elevation reference for its computation. You can therefore select elevations ranging from -2,000 feet (-2) to +14,000 (14) feet. The switches scale is only a rough indication therefore to fine tune you should refer to indication shown on ECAM."
+        },
+        {
+          "kind": "p",
+          "text": "DITCHING guarded push button"
+        },
+        {
+          "kind": "p",
+          "text": "Normal"
+        },
+        {
+          "kind": "p",
+          "text": "System functions normally."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "A 'close' signal is sent to the outflow valve,emergency ram air inlet, avionics ventilation inlet /extract valves and pack flow control valves."
+        },
+        {
+          "kind": "p",
+          "text": "Remember that if the cabin pressure is under manual control then it will not close via this button."
+        },
+        {
+          "kind": "warning",
+          "text": "CAUTION: If pressed on the ground with the low-pressure ground cart connected and all doors closed, a differential pressure will build up!"
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p697",
+      "needsReview": false
+    },
+    {
+      "id": "oh_strobe_switch",
+      "name": "STROBE switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch turn on/off the 3 synchronized strobe lights on the aircraft. A blue light below each strobe light of the new sharklets allows monitoring of the lights with LED technology."
+        },
+        {
+          "kind": "p",
+          "text": "When strobe switch is off or beacon is on, this light flashes in blue if the strobe lights need replacing."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Strobe lights flash white"
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "Lights come on automatically when main gear strut is not compressed."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p721",
+      "needsReview": false
+    },
+    {
+      "id": "oh_beacon_switch",
+      "name": "BEACON switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch turns on/off the two flashing red beacon lights of the aircraft."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p733",
+      "needsReview": false
+    },
+    {
+      "id": "oh_wing_switch",
+      "name": "WING switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Turns on/off two beam lights on each side of the fuselage to illuminate the leading edge of the wings and engine intake for visual ice detection."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p736",
+      "needsReview": false
+    },
+    {
+      "id": "oh_nav_logo_switch",
+      "name": "NAV & LOGO switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Turns the navigation lights on/off. There are dual navigation lights on each sharklet and in the APU tail cone. (LED technology blue light also monitors the navigation lights like with the strobes). When NAV switch is ON, this light flashes blue to indicate if lights need replacing. Logo lights are in the upper surface of each horizontal stabilizer to illuminate company logo provided the main gear struts are compressed or the flaps are extended at least 15°."
+        },
+        {
+          "kind": "p",
+          "text": "1: turns on logo lights and first set of navigation lights."
+        },
+        {
+          "kind": "p",
+          "text": "2: turns on logo lights and second set of navigation lights."
+        },
+        {
+          "kind": "p",
+          "text": "OFF: all lights are off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p739",
+      "needsReview": false
+    },
+    {
+      "id": "oh_rwy_turn_off_switch",
+      "name": "RWY TURN OFF switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch turns the runway turn-off lights on/off. These lights switch off automatically when landing gear is retracted."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p747",
+      "needsReview": false
+    },
+    {
+      "id": "oh_l_and_r_land_switch",
+      "name": "L and R LAND switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "These switches control the landing lights."
+        },
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Extends the left/right landing light, which comes on automatically when fully extended."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Shuts off the landing light but leaves it extended."
+        },
+        {
+          "kind": "p",
+          "text": "RETRACT"
+        },
+        {
+          "kind": "p",
+          "text": "Retracts the landing light and shuts it off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p750",
+      "needsReview": false
+    },
+    {
+      "id": "oh_nose_switch",
+      "name": "NOSE switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch turns the taxi & takeoff lights on/off."
+        },
+        {
+          "kind": "p",
+          "text": "TO"
+        },
+        {
+          "kind": "p",
+          "text": "Turns on both taxi and takeoff lights."
+        },
+        {
+          "kind": "p",
+          "text": "TAXI"
+        },
+        {
+          "kind": "p",
+          "text": "Turns on only the taxi light."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Switches off both lights These two lights automatically go off when the landing gear is retracted."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p766",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ovhd_integ_light_knob",
+      "name": "OVHD INTEG light knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Turns the overhead panels lighting on/off together with brightness control."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p785",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ice_ind_stby_compass_switch",
+      "name": "ICE IND & STBY COMPASS switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Turns the integral lighting for the standby compass and the visual ice indicator outside windows on/off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p787",
+      "needsReview": false
+    },
+    {
+      "id": "oh_dome_selector",
+      "name": "DOME selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Controls both dome lights in the flight deck."
+        },
+        {
+          "kind": "p",
+          "text": "BRT: both lights are on and bright."
+        },
+        {
+          "kind": "p",
+          "text": "DIM: both lights are on and dim."
+        },
+        {
+          "kind": "p",
+          "text": "OFF: both lights are off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p790",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ann_light_switch",
+      "name": "ANN Light switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Sets the brightness of all cockpit annunciator lights at either bright or dim and also tests them to check functionality."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p798",
+      "needsReview": false
+    },
+    {
+      "id": "oh_seat_belts_switch",
+      "name": "SEAT BELTS switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Fasten seat belts and return to seats signs come on together with a low toned chime."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Above signs are off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p801",
+      "needsReview": false
+    },
+    {
+      "id": "oh_no_smoking_selector",
+      "name": "NO SMOKING selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "No smoking and Exit signs come on together with a low toned chime."
+        },
+        {
+          "kind": "p",
+          "text": "AUTO"
+        },
+        {
+          "kind": "p",
+          "text": "No smoking and Exit signs come on when the landing gear is extended and go off when gear retracted."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "Both signs above are off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p807",
+      "needsReview": false
+    },
+    {
+      "id": "oh_emer_exit_lt_off_light",
+      "name": "EMER EXIT LT-OFF light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Light illuminates in amber when the EMER EXIT LT selector is placed to off."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p816",
+      "needsReview": false
+    },
+    {
+      "id": "oh_emer_exit_lt_selector",
+      "name": "EMER EXIT LT selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "Overhead emergency lights, exit signs and proximity marking systems come on."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "All of the above lights are off."
+        },
+        {
+          "kind": "p",
+          "text": "ARM"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Exit markers come on when the normal aircraft electric power or DC SHED ESS BUS is lost."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Overhead Emergency lights come on if normal aircraft electric power fails, DC SHED ESS BUS fails or AC BUS 1 fails."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Exit signs come on if normal aircraft electric power is lost or DC SHED ESS BUS fails The purser's panel in the cabin also has a switch to turn on the emergency lighting if required."
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p819",
+      "needsReview": false
+    }
+  ]
+}

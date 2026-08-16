@@ -1,0 +1,1013 @@
+{
+  "panelId": "instrument",
+  "title": "Instrument Panel",
+  "image": "instrument.webp",
+  "imageSize": {
+    "w": 0,
+    "h": 0
+  },
+  "sections": [],
+  "controls": [
+    {
+      "id": "ip_primary_flight_display",
+      "name": "Primary Flight Display",
+      "type": "light",
+      "hotspot": null,
+      "body": [],
+      "sourceRef": "Instrument Panel.docx#p2",
+      "needsReview": true
+    },
+    {
+      "id": "ip_fma_flight_mode_annunciator",
+      "name": "FMA Flight Mode Annunciator",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This section of the PFD shows the status of the A/THR and AP/FD vertical and lateral modes,approach capabilities, and the engagement status. A white box is displayed for 10 seconds around each new annunciation. In some mode reversion cases it displays for 15 seconds if associated with an aural triple click."
+        },
+        {
+          "kind": "p",
+          "text": "Three left Columns"
+        },
+        {
+          "kind": "bullet",
+          "text": "*First line shows engaged modes in green."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Second line shows armed modes in magenta or blue. (Magenta color indicates modes are armed/engaged due to a constraint."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Third line is for special messages and those related to flight controls have first priority whilst FMGS ones have second priority:"
+        },
+        {
+          "kind": "p",
+          "text": "\"MAN PITCH TRIM ONLY\""
+        },
+        {
+          "kind": "p",
+          "text": "in red, flashes for 9 sec then steady."
+        },
+        {
+          "kind": "p",
+          "text": "\"USE MAN PITCH TRIM\""
+        },
+        {
+          "kind": "p",
+          "text": "in amber, pulses for 9 sec then steady."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p12",
+      "needsReview": false
+    },
+    {
+      "id": "ip_fourth_column",
+      "name": "Fourth Column",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays approach capabilities in white and the minimum in blue."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p25",
+      "needsReview": true
+    },
+    {
+      "id": "ip_fifth_column",
+      "name": "Fifth Column",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays engagement status of the AP, FD and A/THR in white."
+        },
+        {
+          "kind": "p",
+          "text": "Shows a white box around the FD for 10 sec in case of automatic FMGC switching. It also displays A/THR in blue when armed but not active."
+        },
+        {
+          "kind": "p",
+          "text": "COLUMN 1 ANNUCIATIONS"
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the first line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*MAN TOGA - Displays in white with white box. Means A/THR is armed and at least one thrust lever is in the TOGA"
+        },
+        {
+          "kind": "bullet",
+          "text": "*MAN FLX XX -",
+          "label": "MAN FLX XX -"
+        },
+        {
+          "kind": "p",
+          "text": "Displays in white with white box and blue numbers (XX). Means A/THR is armed and at least one thrust lever is in the MCT/FLX detent with FLX TO temp set at XX°. The other thrust lever is at or below the MCT/FLX detent."
+        },
+        {
+          "kind": "bullet",
+          "text": "*MAN MCT - Displays in white with white box. Means A/THR is armed and at least one thrust lever is in the MCT/FLX detent whilst the other is at or below this detent."
+        },
+        {
+          "kind": "bullet",
+          "text": "*MAN THR - Displays white with amber box. Means A/THR is armed and the most forward thrust lever above the CL detent (2 engines operating) or one above the MCT/FLX detent when single engine ops."
+        },
+        {
+          "kind": "bullet",
+          "text": "*THR MCT - Displays green. Shows A/THR is active and the most advanced thrust lever is in the MCT/FLX detent (engine-out)."
+        },
+        {
+          "kind": "bullet",
+          "text": "*THR CLB - Displays green. A/THR is active in thrust mode and the most advanced thrust lever is in the CLB detent."
+        },
+        {
+          "kind": "bullet",
+          "text": "*THR IDLE - Displays green. A/THR is active in thrust mode and orders idle thrust."
+        },
+        {
+          "kind": "bullet",
+          "text": "*THR LVR - Displays green. A/THR is active in thrust mode with both levers below CL detent or the live engine lever is below MCT."
+        },
+        {
+          "kind": "bullet",
+          "text": "*SPEED or MACH -Displays green. A/THR is active in Speed or Mach mode."
+        },
+        {
+          "kind": "bullet",
+          "text": "*A.FLOOR - Displays green with amber box.A/THR is active and commands TOGA thrust whilst α-FLOOR conditions are met."
+        },
+        {
+          "kind": "bullet",
+          "text": "*TOGA LK - Displays green with amber box. A/THR is active and TOGA thrust is locked in (α-FLOOR conditions are no longer met)."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the third line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*LVR CLB (flashing) -Displays in white."
+        },
+        {
+          "kind": "p",
+          "text": "Requests to set thrust levers into CLB detent."
+        },
+        {
+          "kind": "bullet",
+          "text": "*LVR MCT (flashing)-"
+        },
+        {
+          "kind": "p",
+          "text": "Displays in white. Requests to set the live thrust lever into the MCT/FLX detent."
+        },
+        {
+          "kind": "bullet",
+          "text": "*LVR ASSYM - Displays amber. Applies to both engines operative situation when one lever is in the CL or MCT/FLX detent whilst the other is not."
+        },
+        {
+          "kind": "bullet",
+          "text": "*THR LK (flashing) Displays amber. When A/THR is disconnected by a failure or by crew, thrust gets frozen or locked. Both thrust levers being in CL detent or one in MCT/FLX (single engine) detent."
+        },
+        {
+          "kind": "warning",
+          "text": "Amber caution light flashes and a single chime sounds every 5 seconds as long as the situation exists when: THR LK,LVR CLB and LVB MCT."
+        },
+        {
+          "kind": "p",
+          "text": "COLUMN 2 ANNUCIATIONS"
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the first line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*SRS - Displays green. Means takeoff or go-around mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*CLB - Displays green. FMGS target altitude is higher than actual altitude and climb mode is engaged. ALT CSTR is taken into account."
+        },
+        {
+          "kind": "bullet",
+          "text": "*OP CLB - Displays green. Open climb mode is engaged and the FCU selected altitude is higher than current actual altitude. In this case ALT CSTR are disregarded."
+        },
+        {
+          "kind": "bullet",
+          "text": "*EXP CLB - Displays green. Expedite climb is engaged and the FCU selected altitude is higher than current actual altitude. Green dot speed is maintained and ALT CSTR is disregarded."
+        },
+        {
+          "kind": "p",
+          "text": "ALT or ALT CST* -Displays green. Works when ALT CAPTURE is engaged. ALT* shows green when FCU selected altitude is being | captured and ALT CST* shows in green when ALT CSTR is being captured in vertical profile."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ALT or ALT CST -Displays green. Works when ALTITUDE HOLD mode is engaged.ALT is green when FCU selected altitude is held and ALT CST is in green | when ALT CSTR is maintained in vertical profile."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ALT CRZ - Displays green. Shows when ALT mode engaged and CRZ | FL is maintained."
+        },
+        {
+          "kind": "bullet",
+          "text": "*DES - Displays green. FMGS target altitude is lower than actual altitude and descent mode is engaged. ALT CSTR is taken into account."
+        },
+        {
+          "kind": "bullet",
+          "text": "*OP DES - Displays green. Open descent mode is engaged and the FCU selected altitude is lower than current actual altitude. In this case ALT CSTR are disregarded."
+        },
+        {
+          "kind": "bullet",
+          "text": "*EXP DES - Displays green. Expedite descent | is engaged and the FCU selected altitude is lower than current actual altitude. Mach 0.80 or 340 knots speed is maintained and ALT CSTR are disregarded."
+        },
+        {
+          "kind": "p",
+          "text": "G/S - Displays green. Shows when the glide slope capture mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*V/S °XXXX - Displays in green with blue numbers. Vertical speed mode is engaged to hold the selected V/S in the FCU. ALT CSTR is disregarded. If the aircraft reaches VLs or VMax, and cannot maintain the target, the indication gets boxed in amber and flashes whilst the target pulses."
+        },
+        {
+          "kind": "bullet",
+          "text": "*FPA °XX - Displays green with blue numbers. Flight path angle mode is engaged to hold the FPA selected on the FCU.ALT CSTR is disregarded. If the aircraft reaches VLs or VMax, and cannot maintain the target, the indication gets boxed in amber and flashes whilst the target pulses."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the second line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*CLB - Displays blue. Means climb mode is armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ALT - Displays in blue or magenta. Altitude mode is armed. In blue it means the target altitude is the FCU selected one and in magenta the target is an ALT CSTR."
+        },
+        {
+          "kind": "bullet",
+          "text": "*DES - Displays blue.Descent mode is armed before the descent phase."
+        },
+        {
+          "kind": "bullet",
+          "text": "*G/S - Displays blue. Indicates that the glide slope is armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*FINAL - Displays blue. Final descent mode is armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ALT G/S - Displays both in blue. ALT and G/S modes are both armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ALT G/S - Displays magenta/blue. ALT CST and G/S modes are armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ALT FINAL - Displays both in blue. ALT and FINAL are armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*DES G/S - Displays both in blue. DES and G/S are armed."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the third line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*SPEED SEL:XXX-Displays in blue.Indicates a preset speed associated with the cruise or climb phase.",
+          "label": "SPEED SEL"
+        },
+        {
+          "kind": "bullet",
+          "text": "*MACH SEL:XX-Displays in blue. Indicates a preset Mach associated with the cruise or climb phase.",
+          "label": "MACH SEL"
+        },
+        {
+          "kind": "p",
+          "text": "The above two messages use both columns 1 and 2."
+        },
+        {
+          "kind": "p",
+          "text": "COLUMN 3 ANNUNCIATIONS"
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the first line includes:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*RWY - Displays green."
+        },
+        {
+          "kind": "p",
+          "text": "RWY mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*RWY TRK - Displays green. RWY mode is engaged once the aircraft is airborne at or above 30 feet RA"
+        },
+        {
+          "kind": "bullet",
+          "text": "*HDG - Displays green. Heading mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*TRK - Displays green. Track mode is engaged."
+        },
+        {
+          "kind": "p",
+          "text": "NAV - Displays green.NAV mode is engaged to guide aircraft along the programmed FM lateral flight plan."
+        },
+        {
+          "kind": "p",
+          "text": "LOC - Displays green.LOC capture mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*LOC - Displays green. LOC track mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*APP NAV - Displays green. NAV mode is engaged during a non-precision approach i.e. non-ILS."
+        },
+        {
+          "kind": "bullet",
+          "text": "*GA TRK - Displays green. GO-AROUND Track mode is engaged."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the second line includes:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*NAV - Displays blue.NAV mode is armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*LOC - Displays blue.LOC mode is armed."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ΑΡΡ NAV - Displays blue. NAV mode is armed for a non-ILS/non-precision approach."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p28",
+      "needsReview": true
+    },
+    {
+      "id": "ip_column_2_and_3_annuciations",
+      "name": "COLUMN 2 and 3 ANNUCIATIONS",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "bullet",
+          "text": "*LAND - Displays green. Below 400 feet RA, land mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*FLARE - Displays green. Flare mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*ROLL OUT - Displays green. Roll out mode is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*FINAL APP - Displays green. APP NAV and Final modes are engaged (non- ILS/non-precision approach)."
+        },
+        {
+          "kind": "p",
+          "text": "There are also certain Special messages that can appear in columns 1 and 2 combined."
+        },
+        {
+          "kind": "p",
+          "text": "These also depend on the software the aircraft is equipped and installed with and you should refer to your aircraft FCOM for further details on this."
+        },
+        {
+          "kind": "p",
+          "text": "COLUMN 4 ANNUCIATIONS"
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the first line includes:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*CAT 1 - Displays in White. Indicates CAT 1 capability available."
+        },
+        {
+          "kind": "bullet",
+          "text": "*CAT 2 - Displays in White. Indicates CAT 2 capability available."
+        },
+        {
+          "kind": "bullet",
+          "text": "*CAT 3 - Displays in White. Indicates CAT 3 capability available."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the second line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*SINGLE - Displays white. Shows CAT 3 capability is available with FAIL PASSIVE condition."
+        },
+        {
+          "kind": "bullet",
+          "text": "*DUAL - Displays white.Shows CAT 3 capability is available with FAIL OPERATIONAL condition."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the third line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*BARO XXXX -Displays white with blue numbers. Minimum descent altitude/height as inserted in the MCDU PERF APPR page."
+        },
+        {
+          "kind": "bullet",
+          "text": "*RADIO XXX/NO DH -",
+          "label": "RADIO XXX/NO DH -"
+        },
+        {
+          "kind": "p",
+          "text": "Displays white with blue numbers. Decision height as inserted in MCDU or NO DH when 'NO' is inserted in Perf page."
+        },
+        {
+          "kind": "p",
+          "text": "COLUMN 5 ANNUCIATIONS"
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the first line Includes:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*AP1 + 2 - Displays white. Shows Autopilot 1 and 2 are engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*AP1 - Displays white. Shows Autopilot 1 is engaged."
+        },
+        {
+          "kind": "bullet",
+          "text": "*AP2 - Displays white. Shows Autopilot 2 is engaged."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the second line include:"
+        },
+        {
+          "kind": "p",
+          "text": "X FD Y - Displays in white. X and Y indicate the FD engagement status on PFD 1 and PFD 2. X and Y can be 1, 2 or - (dash)."
+        },
+        {
+          "kind": "p",
+          "text": "1.The dash symbol means there is no FD engagement on the corresponding PFD."
+        },
+        {
+          "kind": "p",
+          "text": "2. The 'l' symbol indicated FD1 is engaged on the corresponding PFD."
+        },
+        {
+          "kind": "p",
+          "text": "3. The '2' symbol indicated FD2 is engaged on the corresponding PFD."
+        },
+        {
+          "kind": "p",
+          "text": "Under Normal conditions with both FD's engaged, the indications should show 1 FD 2."
+        },
+        {
+          "kind": "p",
+          "text": "Those appearing on the third line include:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*A/THR - Displays white. Means A/THR is active."
+        },
+        {
+          "kind": "bullet",
+          "text": "*A/THR - In blue means A/THR is armed."
+        },
+        {
+          "kind": "p",
+          "text": "Roll Index (yellow)"
+        },
+        {
+          "kind": "p",
+          "text": "This indicates the bank angle. When the angle exceeds 45°, all the PFD symbols, except those for attitude, speed, heading, altitude and vertical speed disappear. Display returns to normal once the angle is less than 40°."
+        },
+        {
+          "kind": "p",
+          "text": "Sideslip Index (yellow)"
+        },
+        {
+          "kind": "p",
+          "text": "It's in the shape of a trapezium and it moves beneath the roll index. On the ground it represents the lateral acceleration of the aircraft. In flight it shows sideslip as computer by the FAC's. One centimeter of displacement equates to 0.2g. The index reaches against its stop at 0.3g. In the event of operating in single engine mode during takeoff/go-around, the sideslip index turns blue into a beta target. This occurs if CONF 1,2 or 3 is selected and any engine N1>80% and the difference between the engine N1's exceeds 35%."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p114",
+      "needsReview": true
+    },
+    {
+      "id": "ip_roll_scale",
+      "name": "Roll Scale",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "It is a white colored scale with markers at 0, 10, 20, 30 and 45° of bank."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p182",
+      "needsReview": true
+    },
+    {
+      "id": "ip_flight_control_protection_symbols",
+      "name": "Flight Control Protection Symbols",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "These are green equal (=) sign symbols. On the roll scale they mark the bank angle protection availability and on the pitch scale they are shown at 15° nose down and 30° nose up to mark pitch limits. An Amber 'x' replaces these symbols when protections are lost e.g. alternate law."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p185",
+      "needsReview": false
+    },
+    {
+      "id": "ip_fixed_aircraft_symbol",
+      "name": "Fixed Aircraft Symbol",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Symbol is in black with yellow outline. The outline gets dimmed if crew selects TRK-FPA, unless the FMA is in TOGA or FLX mode."
+        },
+        {
+          "kind": "p",
+          "text": "Pitch Scale (white)"
+        },
+        {
+          "kind": "p",
+          "text": "The scale has markers every 10° between 80° nose up and 80° nose down. It also indicates every 2.5° between 10° nose down and 30° nose up. When the pitch angle exceeds 25° nose up or 13° nose down, all PFD displays except attitude, speed, speed trend, heading, altitude and vertical speed disappear. Above 30°, large red arrowheads indicate that the attitude is excessive and shows direction to reduce this. The display returns to normal when pitch angle becomes less than 22° nose up or 10° nose down. Within the pitch scale the numbers in green as shown in image are the radio altitude indication which show below 2500 feet."
+        },
+        {
+          "kind": "p",
+          "text": "ECON Speed range (magenta)"
+        },
+        {
+          "kind": "p",
+          "text": "When in descent mode with ECON/AUTO SPD mode active, these two magenta lines replace the selected speed symbol showing the upper and lower limits calculated by the FMGC."
+        },
+        {
+          "kind": "p",
+          "text": "The upper speed limit is target speed +20 knots, limited to VMAX or VMO -3 knots or MMO -0.006, whichever is lowest.The lower speed limit is the target speed -20 knots, limited to green dot, F,or VLS speed, whichever is higher."
+        },
+        {
+          "kind": "p",
+          "text": "Speed Protection (green)"
+        },
+        {
+          "kind": "p",
+          "text": "This symbol indicates the speed (VMO +6 knots or MMO +0.01) at which the over-speed protection system becomes active."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p188",
+      "needsReview": true
+    },
+    {
+      "id": "ip_actual_airspeed_reference_line_and_scale",
+      "name": "Actual Airspeed Reference Line and Scale",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Includes a white scale on a grey background, which moves in front of a fixed yellow line to indicate airspeed. The minimum indication is at 30 knots."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p220",
+      "needsReview": true
+    },
+    {
+      "id": "ip_speed_trend_arrow_yellow",
+      "name": "Speed Trend Arrow (yellow)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This pointer begins at the speed symbol and the tip of the arrow indicates what speed the aircraft will be at in 10 seconds time if the acceleration/deceleration remained constant. The pointer appears when it is greater than 2 knots and disappears when less than 1 knot. It also disappears if the FAC's fail."
+        },
+        {
+          "kind": "p",
+          "text": "Target Airspeed (magenta or blue)"
+        },
+        {
+          "kind": "p",
+          "text": "Symbol indicates target airspeed or that corresponding to the target Mach number. Target airspeed is that which is computed by the FMGC in managed speed mode (magenta), or also speed that is entered manually into the FCU in selected mode (blue). This is indicated then by either a magenta or blue triangle.When the target speed is off the speed scale, then its value is displayed as numbers either above/below the scale."
+        },
+        {
+          "kind": "p",
+          "text": "Mach Number (green)"
+        },
+        {
+          "kind": "p",
+          "text": "Displays the Mach number when its value is greater than 0.5 Mach."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p223",
+      "needsReview": true
+    },
+    {
+      "id": "ip_vertical_deviation_vdev_magenta",
+      "name": "Vertical Deviation VDEV (magenta)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This symbol appears next to the altitude scale corresponding to the theoretical vertical profile computed by FMGC. It displays from the top of descent down to the missed approach altitude. VDEV can be read directly from the scale and gives a range of ±500 feet. When the deviation exceeds this value then the magenta symbol sits at the top/bottom of the scale and the exact value can then be read from the PROG page of the MCDU."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p234",
+      "needsReview": true
+    },
+    {
+      "id": "ip_altitude_indication",
+      "name": "Altitude Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This appears both as a white scale moving scale, and a s a green readout on a grey background. White marks on the scale also indicate round values e.g. 280, 290 etc. If the altitude if the altitude is below zero,then the words 'NEG' appear in the window to indicate this.The altitude window changes from yellow to amber if the aircraft deviates from the FCU selected altitude/flight-level. This also occurs when there is an approach minimum set in the FMGS and so as aircraft goes below this minimum the altitude numbers changes from green to amber."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p237",
+      "needsReview": true
+    },
+    {
+      "id": "ip_target_altitude_or_selected_flight_level_sym",
+      "name": "Target Altitude or Selected Flight Level Symbol (blue)",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This symbol indicates the selected altitude or flight level depending on whether a QNH or STD"
+        },
+        {
+          "kind": "p",
+          "text": "barometric setting is used.If the target altitude is gained from the FMGS like with ALT CSTR then the symbol appears magenta.When the target altitude/level is on the scale, the symbol is displayed and the numerical value appears inside it. If the target altitude/level is off the scale, then only the numerical value is shown above/below the scale."
+        },
+        {
+          "kind": "p",
+          "text": "Landing Elevation (brown)"
+        },
+        {
+          "kind": "p",
+          "text": "This is the top of the brown area on the altitude scale and it represents the landing elevation at the flight-planned destination.It is only displayed during flight phases 7 and 8 provided the STD barometric setting is not selected."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p240",
+      "needsReview": false
+    },
+    {
+      "id": "ip_target_altitude_or_selected_flight_level_sym_2",
+      "name": "Target Altitude or Selected Flight Level Symbol (blue)",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This symbol indicates the selected altitude or flight level depending on whether a QNH or STD barometric setting is used.If the target altitude is gained from the FMGS like with ALT CSTR then the symbol appears magenta.When the target altitude/level is on the scale, the symbol is displayed and the numerical value appears inside it. If the target altitude/level is off the scale, then only the numerical value is shown above/below the scale."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p247",
+      "needsReview": false
+    },
+    {
+      "id": "ip_altitude_indication_scale",
+      "name": "Altitude Indication Scale",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This window displays a moving scale every 20 feet that continuously updates as the aircraft climbs/descents. Once the altitude/level approaches another thousand feet, then the larger numbers change and the scale continues to update."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p250",
+      "needsReview": true
+    },
+    {
+      "id": "ip_analog_pointer",
+      "name": "Analog Pointer",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This is a green pointer on the vertical speed scale which points to a white vertical speed scale displayed on a grey background. It is graduated at intervals of 500ft/min. if the V/S is greater than 6000ft/min then the pointer sits at the end of the scale."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p253",
+      "needsReview": false
+    },
+    {
+      "id": "ip_digital_readout",
+      "name": "Digital Readout",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This is green number representing the vertical speed in hundreds of feet per minute. It disappears if the V/S is less than 200ft/min. The analog pointer and digital readout become amber if: V/S exceeds 6000ft/min, V/S is greater than 2000ft/min in descent when 1000ft < RA < 2500ft or also when V/S is greater than 1200ft/min during descent and RA < 1000ft"
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p256",
+      "needsReview": true
+    },
+    {
+      "id": "ip_ground_reference",
+      "name": "Ground Reference",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This is a red ribbon on the right side of the altitude scale and it represents field elevation. It is driven by the radio altimeters signal and is only displayed below 570 ft. Once the aircraft has touched down on landing, the top of this ribbon sits at the middle of the altitude window."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p262",
+      "needsReview": true
+    },
+    {
+      "id": "ip_barometric_reference",
+      "name": "Barometric Reference",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The display either shows STD or QNH setting. With QNH it also displays the numerical value in blue. The display pulses if the selection made by the crew is incorrect e.g. when STD is not selected above transition altitude in climb or STD is still selected in approach below transition level."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p265",
+      "needsReview": true
+    },
+    {
+      "id": "ip_ils_information",
+      "name": "ILS Information",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This side of the PFD, to the left of the heading scale is the ILS tuned information giving the Ident, frequency and distance in a magenta display."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p280",
+      "needsReview": true
+    },
+    {
+      "id": "ip_ils_course",
+      "name": "ILS Course",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This box includes the ILS course in magenta."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p283",
+      "needsReview": true
+    },
+    {
+      "id": "ip_selected_heading_or_track_index_blue",
+      "name": "Selected Heading or Track Index (blue)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This pointer is in blue and indicates the heading/track displayed on the FCU HDG-TRK window. The index is replaced by a digital readout on either side when the selected value is off scale. If the FD push buttons are off, a second heading/track symbol appears on the horizon line with markers displayed every 10°."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p286",
+      "needsReview": true
+    },
+    {
+      "id": "ip_heading_reference_line_yellow_and_scale",
+      "name": "Heading reference Line (Yellow) and Scale",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "A white scale on a grey background moves in front of a yellow line, which is the actual magnetic heading. The word 'TRUE' appears when the display indicates the True heading rather than the Magnetic one. This is mainly the case when the latitude is above 73° North or below 60K South."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p289",
+      "needsReview": true
+    },
+    {
+      "id": "ip_ils_course_pointer_magenta",
+      "name": "ILS Course Pointer (magenta)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This appears on the PFD when the crew has selected an ILS frequency and course and the LS push buttons on. The course pointer is replaced by a digital reading in a white box on either side if the ILS course value is off scale."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p291",
+      "needsReview": false
+    },
+    {
+      "id": "ip_actual_track_symbol_green",
+      "name": "Actual Track Symbol (green)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "A small green diamond symbol indicates the actual track of the aircraft."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p294",
+      "needsReview": true
+    },
+    {
+      "id": "ip_heading_scale",
+      "name": "Heading Scale",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The heading scale is shown with white numbers on a grey background and it moves when the aircraft is in a bank to update the heading/track."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p297",
+      "needsReview": true
+    },
+    {
+      "id": "ip_barometric_reference_2",
+      "name": "Barometric Reference",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The display either shows STD or QNH setting. With QNH it also displays the numerical value in blue. The display pulses if the selection made by the crew is incorrect e.g. when STD is not selected above transition altitude in climb or STD is still selected in approach below transition level."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p300",
+      "needsReview": true
+    },
+    {
+      "id": "ip_navigational_display",
+      "name": "Navigational Display",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ECAM"
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p306",
+      "needsReview": false
+    },
+    {
+      "id": "ip_idle_indication",
+      "name": "IDLE Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This appears in green when both engines are at idle power. It flashes for 10 seconds then stays steady."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p329",
+      "needsReview": true
+    },
+    {
+      "id": "ip_lp_rotor_speed_n1",
+      "name": "LP Rotor Speed (N1)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "(A) Actual N1 Both the N1 needle and digital indication are shown in green. They pulse in Amber when the actual N1 is above the N1 MAX (indicated by E). The pulse change appears Red when the actual Nlis above the N1 Red Line (104%). When the N1 is degraded in case of both sensors failing then the last digit of the digital readout is dashed in amber."
+        },
+        {
+          "kind": "p",
+          "text": "(B) N1 Command (Trend) The green needle corresponds to the N1 requested by the FADEC and next to this the green triangle indicates the tendency of the N1 command. They are only displayed wher the A/ THR is active"
+        },
+        {
+          "kind": "p",
+          "text": "(C) Transient N1 Shows the difference between the N1 command and the actual N1. Only displayed when A/THR active."
+        },
+        {
+          "kind": "p",
+          "text": "(D) N1 TLA (Blue circle symbol) Shows N1 corresponding to the trust lever position."
+        },
+        {
+          "kind": "p",
+          "text": "(E) MAX N1 This index is shown in amber to indicate N1 the engines produce when thrust levers are in full forward position or when MAX REVERSE is set."
+        },
+        {
+          "kind": "p",
+          "text": "(F) MAX Permissible N1 Shown as a red arc to indicate the prohibited area of operation and starts at 104%."
+        },
+        {
+          "kind": "p",
+          "text": "(G) N1 exceeding If N1 exceeds 104% during flight, this red mark appears and remains at the highest N1 attained . It only disappears after a new engine start on the ground or through maintenance action via MCDU."
+        },
+        {
+          "kind": "p",
+          "text": "(H) REV Appears in amber if any reverser blocker door is un-stowed or unlocked. Indication appears in green when all four blocker doors are fully deployed. If a door unlocks in flight, the indication flashes first for 9 seconds then remains steady."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p332",
+      "needsReview": true
+    },
+    {
+      "id": "ip_egt_indicator",
+      "name": "EGT Indicator",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "(A) Actual EGT Normally appears in green. It will pulse amber above 915°C except during high power operations such as FLEX TO. Thrust levers above MCT, MAX REV or during Alpha- Floor activation It pulses in amber above 725°C during start sequence and will pulse red above 950°C and numerical readout also turns red."
+        },
+        {
+          "kind": "p",
+          "text": "(B) MAXEGT This amber index appears at 725°C during engine start and thereafter at 915°C."
+        },
+        {
+          "kind": "p",
+          "text": "(C) MAX Permissible EGT Indicated by a red line at 950°C. The display shows a red arc between 950°C and the end of scale."
+        },
+        {
+          "kind": "p",
+          "text": "(D) EGT exceeding If EGT increases beyond 950C, a red mark appears at its maximum value. It only disappears after a new takeoff or via maintenance action through MCDU."
+        },
+        {
+          "kind": "p",
+          "text": "4). HP Rotor Speed N2 Usually indicated in green. During start sequence the indication includes a grey background. If N2 goes above 105%, the indication turns red and a red cross appears next to it. If the N2 value is degraded in case both sensors fail, then the last digit is dashed and shown in amber."
+        },
+        {
+          "kind": "p",
+          "text": "5). ECAM Actions/Memo Information This space displays various ECAM alerts and actions for the crew including takeoff/landing Memos. The right side split shows further memos as required."
+        },
+        {
+          "kind": "p",
+          "text": "6). Thrust Limit Mode Displays in blue to show TOGA, FLX, CL, MCT, or MREV limit mode, selected by the position of the furthest thrust lever."
+        },
+        {
+          "kind": "p",
+          "text": "7). N1 Rating Limit Computed by the FADEC for the current thrust lever angle and is displayed in green. When aircraftii on the ground with engines running, the indication will either show TOGA or FLEX N1."
+        },
+        {
+          "kind": "p",
+          "text": "8). FLEX Temperature If FLEX mode is selected through the MCDU, the FLEX temperature from it is displayed here in blue."
+        },
+        {
+          "kind": "p",
+          "text": "9). Flap Position Indication Displays the current selected Flap/Slat position as selected using the lever."
+        },
+        {
+          "kind": "p",
+          "text": "10). Fuel Flow Indicated in green. If the system detects a discrepancy between N1, N2, EGT and the fuel flow values on the FADEC-DMC bus and the corresponding displayed value, an amber 'CHECK' appears underneath the affected parameter"
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p349",
+      "needsReview": false
+    }
+  ]
+}

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<!--
+  Switch 320 — Hotspot Mapper
+  ไฟล์เดียว ไม่มี build step ไม่มี CDN ทำงาน offline 100%
+
+  วิธีใช้
+    1. เปิดไฟล์นี้ใน Chrome
+    2. โหลดรูป panel (.webp/.png) + ไฟล์ JSON ของ panel นั้น
+    3. คลิกเลือก control ในลิสต์ซ้าย -> ลากกรอบบนรูป
+    4. กด Enter ข้ามไปตัวถัดไปที่ยังไม่มีพิกัด
+    5. กด Export ดาวน์โหลด JSON กลับไปทับไฟล์เดิม
+
+  คีย์ลัด
+    Enter / ↓   ตัวถัดไปที่ยังไม่มีพิกัด
+    ↑           ตัวก่อนหน้า
+    Ctrl+Z      undo
+    Delete      ลบพิกัดของตัวที่เลือกอยู่
+    Space+ลาก   pan   (หรือคลิกขวาลาก)
+    Scroll      zoom ที่ตำแหน่งเมาส์
+    F           ซูมพอดีจอ
+-->
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>Switch 320 — Hotspot Mapper</title>
+<style>
+  :root {
+    --bg: #14161a; --panel: #1c1f26; --line: #2c313b;
+    --fg: #e6e8ec; --muted: #8b93a1;
+    --done: #3fb950; --todo: #d29922; --bad: #f85149; --sel: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; height: 100vh; display: flex; overflow: hidden;
+    background: var(--bg); color: var(--fg);
+    font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+  #side {
+    width: 340px; flex: none; display: flex; flex-direction: column;
+    border-right: 1px solid var(--line); background: var(--panel);
+  }
+  #head { padding: 12px; border-bottom: 1px solid var(--line); }
+  #head h1 { margin: 0 0 10px; font-size: 14px; letter-spacing: .3px; }
+  .row { display: flex; gap: 6px; margin-bottom: 6px; }
+  button {
+    background: #262b34; color: var(--fg); border: 1px solid var(--line);
+    border-radius: 5px; padding: 6px 10px; cursor: pointer; font-size: 12px;
+  }
+  button:hover:not(:disabled) { background: #303743; }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  button.primary { background: #1f6feb; border-color: #1f6feb; }
+  button.primary:hover:not(:disabled) { background: #2a7bf5; }
+  input[type=file] { font-size: 11px; width: 100%; color: var(--muted); }
+  #bar { height: 5px; background: #2c313b; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+  #barFill { height: 100%; width: 0; background: var(--done); transition: width .15s; }
+  #stat { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  #filter {
+    width: 100%; padding: 6px 8px; background: #14161a; color: var(--fg);
+    border: 1px solid var(--line); border-radius: 5px; font-size: 12px;
+  }
+  #list { flex: 1; overflow-y: auto; }
+  .item {
+    padding: 7px 12px; border-bottom: 1px solid #21252d; cursor: pointer;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .item:hover { background: #232831; }
+  .item.active { background: #1f2937; box-shadow: inset 3px 0 0 var(--sel); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex: none; background: var(--todo); }
+  .item.placed .dot { background: var(--done); }
+  .item.review .name::after { content: " ⚠"; color: var(--todo); }
+  .name { flex: 1; min-width: 0; }
+  .sub { font-size: 10px; color: var(--muted); }
+  #main { flex: 1; position: relative; overflow: hidden; }
+  canvas { display: block; cursor: crosshair; }
+  canvas.panning { cursor: grabbing; }
+  #hud {
+    position: absolute; left: 12px; bottom: 12px; padding: 6px 10px;
+    background: rgba(0,0,0,.72); border-radius: 5px; font-size: 11px;
+    color: var(--muted); pointer-events: none; white-space: pre;
+  }
+  #toast {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    background: #1f6feb; padding: 7px 14px; border-radius: 5px; font-size: 12px;
+    opacity: 0; transition: opacity .2s; pointer-events: none;
+  }
+  #toast.show { opacity: 1; }
+  #toast.err { background: var(--bad); }
+  #empty {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    justify-content: center; color: var(--muted); font-size: 14px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="side">
+  <div id="head">
+    <h1>Hotspot Mapper</h1>
+    <div class="row"><input type="file" id="fImg" accept="image/*"></div>
+    <div class="row"><input type="file" id="fJson" accept=".json,application/json"></div>
+    <div class="row">
+      <button class="primary" id="bExport" disabled>Export JSON</button>
+      <button id="bFit" disabled>Fit (F)</button>
+      <button id="bUndo" disabled>Undo</button>
+    </div>
+    <div id="bar"><div id="barFill"></div></div>
+    <div id="stat">ยังไม่ได้โหลดไฟล์</div>
+  </div>
+  <div style="padding:8px 12px;border-bottom:1px solid var(--line)">
+    <input id="filter" placeholder="กรองรายชื่อ… (พิมพ์ ! เพื่อดูเฉพาะที่ยังไม่วาง)">
+  </div>
+  <div id="list"></div>
+</div>
+
+<div id="main">
+  <canvas id="cv"></canvas>
+  <div id="empty">โหลดรูป panel และไฟล์ JSON เพื่อเริ่ม</div>
+  <div id="hud"></div>
+  <div id="toast"></div>
+</div>
+
+<script>
+"use strict";
+
+const AUTOSAVE_KEY = "switch320-mapper-autosave";
+const MIN_RATIO = 0.02;          // ตรงกับ MIN_HOTSPOT_RATIO ใน validate-data.mjs
+const MAX_OVERLAP = 0.3;         // ตรงกับ MAX_OVERLAP_RATIO
+
+const $ = (id) => document.getElementById(id);
+const cv = $("cv"), ctx = cv.getContext("2d");
+
+let img = null;                  // HTMLImageElement
+let panel = null;                // JSON ที่โหลดมา
+let selected = -1;               // index ของ control ที่กำลังทำ
+let undoStack = [];              // [{id, hotspot}]
+
+let scale = 1, offX = 0, offY = 0;
+let dragging = null;             // {x0,y0,x1,y1} ในพิกัดภาพ
+let panning = null;              // {sx,sy,ox,oy}
+let spaceDown = false;
+
+// ---------------------------------------------------------------- utils
+
+function toast(msg, isErr) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.className = "show" + (isErr ? " err" : "");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => (t.className = ""), 1800);
+}
+
+const controls = () => (panel && panel.controls) || [];
+
+// screen <-> image coordinate
+const toImg = (sx, sy) => ({ x: (sx - offX) / scale, y: (sy - offY) / scale });
+const toScreen = (ix, iy) => ({ x: ix * scale + offX, y: iy * scale + offY });
+
+function overlapRatio(a, b) {
+  const ox = Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x));
+  const oy = Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
+  const inter = ox * oy;
+  if (!inter) return 0;
+  const smaller = Math.min(a.w * a.h, b.w * b.h);
+  return smaller ? inter / smaller : 1;
+}
+
+function badOverlap(i) {
+  const c = controls()[i];
+  if (!c || !c.hotspot) return false;
+  return controls().some((o, j) =>
+    j !== i && o.hotspot && overlapRatio(c.hotspot, o.hotspot) > MAX_OVERLAP
+  );
+}
+
+// ---------------------------------------------------------------- render
+
+function resize() {
+  cv.width = cv.parentElement.clientWidth;
+  cv.height = cv.parentElement.clientHeight;
+  draw();
+}
+
+function fit() {
+  if (!img) return;
+  const pad = 40;
+  scale = Math.min((cv.width - pad) / img.width, (cv.height - pad) / img.height);
+  offX = (cv.width - img.width * scale) / 2;
+  offY = (cv.height - img.height * scale) / 2;
+  draw();
+}
+
+function drawBox(hs, color, width, label) {
+  const p = toScreen(hs.x * img.width, hs.y * img.height);
+  const w = hs.w * img.width * scale;
+  const h = hs.h * img.height * scale;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  ctx.strokeRect(p.x, p.y, w, h);
+  ctx.fillStyle = color.replace("rgb", "rgba").replace(")", ",0.12)");
+  ctx.fillRect(p.x, p.y, w, h);
+  if (label) {
+    ctx.font = "11px ui-sans-serif, system-ui, sans-serif";
+    const tw = ctx.measureText(label).width;
+    ctx.fillStyle = "rgba(0,0,0,.78)";
+    ctx.fillRect(p.x, p.y - 17, tw + 8, 16);
+    ctx.fillStyle = "#fff";
+    ctx.fillText(label, p.x + 4, p.y - 5);
+  }
+}
+
+function draw() {
+  ctx.fillStyle = "#0d0f12";
+  ctx.fillRect(0, 0, cv.width, cv.height);
+  if (!img) return;
+
+  ctx.imageSmoothingEnabled = scale < 2;
+  ctx.drawImage(img, offX, offY, img.width * scale, img.height * scale);
+
+  controls().forEach((c, i) => {
+    if (!c.hotspot) return;
+    if (i === selected) return;
+    drawBox(c.hotspot, badOverlap(i) ? "rgb(248,81,73)" : "rgb(63,185,80)", 1.5, null);
+  });
+
+  const cur = controls()[selected];
+  if (cur && cur.hotspot) {
+    drawBox(cur.hotspot, "rgb(88,166,255)", 2.5, cur.name.slice(0, 40));
+  }
+
+  if (dragging) {
+    const hs = normDrag();
+    if (hs) drawBox(hs, "rgb(88,166,255)", 2, null);
+  }
+
+  const hudLines = [
+    `zoom ${(scale * 100).toFixed(0)}%`,
+    cur ? `กำลังทำ: ${cur.name}` : "เลือก control จากลิสต์ซ้ายก่อน",
+  ];
+  $("hud").textContent = hudLines.join("\n");
+}
+
+function normDrag() {
+  if (!dragging) return null;
+  const x = Math.min(dragging.x0, dragging.x1) / img.width;
+  const y = Math.min(dragging.y0, dragging.y1) / img.height;
+  const w = Math.abs(dragging.x1 - dragging.x0) / img.width;
+  const h = Math.abs(dragging.y1 - dragging.y0) / img.height;
+  if (w <= 0 || h <= 0) return null;
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  return {
+    x: +clamp(x).toFixed(4), y: +clamp(y).toFixed(4),
+    w: +clamp(w).toFixed(4), h: +clamp(h).toFixed(4),
+  };
+}
+
+// ---------------------------------------------------------------- list UI
+
+function renderList() {
+  const q = $("filter").value.trim().toLowerCase();
+  const onlyTodo = q.startsWith("!");
+  const term = onlyTodo ? q.slice(1).trim() : q;
+  const box = $("list");
+  box.innerHTML = "";
+
+  controls().forEach((c, i) => {
+    if (onlyTodo && c.hotspot) return;
+    if (term && !c.name.toLowerCase().includes(term) && !c.id.includes(term)) return;
+
+    const el = document.createElement("div");
+    el.className = "item"
+      + (c.hotspot ? " placed" : "")
+      + (i === selected ? " active" : "")
+      + (c.needsReview ? " review" : "");
+    el.innerHTML =
+      `<div class="dot"></div><div class="name">${escapeHtml(c.name)}` +
+      `<div class="sub">${escapeHtml(c.id)}${c.sectionId ? " · " + escapeHtml(c.sectionId) : ""}</div></div>`;
+    el.onclick = () => select(i);
+    box.appendChild(el);
+  });
+
+  const done = controls().filter((c) => c.hotspot).length;
+  const total = controls().length;
+  $("barFill").style.width = total ? (done / total) * 100 + "%" : "0";
+  const overlaps = controls().filter((_, i) => badOverlap(i)).length;
+  $("stat").textContent =
+    `${done} / ${total} วางแล้ว` + (overlaps ? `  ·  ⚠ ทับกัน ${overlaps}` : "");
+  $("bExport").disabled = !panel;
+  $("bUndo").disabled = !undoStack.length;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"]/g, (m) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
+}
+
+function select(i) {
+  selected = i;
+  renderList();
+  draw();
+  const active = document.querySelector(".item.active");
+  if (active) active.scrollIntoView({ block: "nearest" });
+}
+
+function nextUnplaced(dir) {
+  const cs = controls();
+  if (!cs.length) return;
+  for (let k = 1; k <= cs.length; k++) {
+    const i = (selected + dir * k + cs.length * 2) % cs.length;
+    if (!cs[i].hotspot) return select(i);
+  }
+  toast("วางครบทุกตัวแล้ว");
+}
+
+// ---------------------------------------------------------------- edit
+
+function setHotspot(i, hs) {
+  const c = controls()[i];
+  if (!c) return;
+  undoStack.push({ id: c.id, hotspot: c.hotspot ? { ...c.hotspot } : null });
+  if (undoStack.length > 50) undoStack.shift();
+  c.hotspot = hs;
+  autosave();
+  renderList();
+  draw();
+}
+
+function undo() {
+  const last = undoStack.pop();
+  if (!last) return;
+  const c = controls().find((x) => x.id === last.id);
+  if (c) c.hotspot = last.hotspot;
+  autosave();
+  renderList();
+  draw();
+  toast("undo");
+}
+
+function autosave() {
+  if (!panel) return;
+  try {
+    localStorage.setItem(AUTOSAVE_KEY, JSON.stringify({
+      panelId: panel.panelId,
+      at: Date.now(),
+      hotspots: Object.fromEntries(
+        controls().filter((c) => c.hotspot).map((c) => [c.id, c.hotspot])
+      ),
+    }));
+  } catch (e) { /* โควตาเต็มก็ข้ามไป ไม่ให้ล้มงาน */ }
+}
+
+function restoreAutosave() {
+  try {
+    const raw = localStorage.getItem(AUTOSAVE_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    if (!panel || saved.panelId !== panel.panelId) return;
+    const n = controls().filter((c) => !c.hotspot && saved.hotspots[c.id]).length;
+    if (!n) return;
+    if (!confirm(`พบงานค้างของ ${saved.panelId} จำนวน ${n} จุด ต้องการกู้คืนไหม`)) return;
+    controls().forEach((c) => {
+      if (!c.hotspot && saved.hotspots[c.id]) c.hotspot = saved.hotspots[c.id];
+    });
+    toast(`กู้คืน ${n} จุด`);
+  } catch (e) { /* ignore */ }
+}
+
+// ---------------------------------------------------------------- files
+
+$("fImg").onchange = (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const url = URL.createObjectURL(f);
+  const im = new Image();
+  im.onload = () => {
+    img = im;
+    $("empty").style.display = "none";
+    $("bFit").disabled = false;
+    if (panel && (!panel.imageSize || !panel.imageSize.w)) {
+      panel.imageSize = { w: img.width, h: img.height };
+      toast(`กรอก imageSize ให้แล้ว ${img.width}x${img.height}`);
+    }
+    fit();
+  };
+  im.onerror = () => toast("โหลดรูปไม่สำเร็จ", true);
+  im.src = url;
+};
+
+$("fJson").onchange = (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if (!Array.isArray(data.controls)) throw new Error("ไม่มี controls array");
+      panel = data;
+      selected = -1;
+      undoStack = [];
+      if (img && (!panel.imageSize || !panel.imageSize.w)) {
+        panel.imageSize = { w: img.width, h: img.height };
+      }
+      restoreAutosave();
+      renderList();
+      draw();
+      toast(`โหลด ${panel.panelId} · ${controls().length} controls`);
+      nextUnplaced(1);
+    } catch (err) {
+      toast("JSON ไม่ถูกต้อง: " + err.message, true);
+    }
+  };
+  r.readAsText(f);
+};
+
+$("bExport").onclick = () => {
+  if (!panel) return;
+  const missing = controls().filter((c) => !c.hotspot).length;
+  const overlaps = controls().filter((_, i) => badOverlap(i)).length;
+  let msg = "";
+  if (missing) msg += `ยังไม่ได้วาง ${missing} จุด\n`;
+  if (overlaps) msg += `มีกรอบทับกันเกิน 30% อยู่ ${overlaps} จุด\n`;
+  if (msg && !confirm(msg + "\nยัง export ต่อไหม")) return;
+
+  const blob = new Blob([JSON.stringify(panel, null, 2) + "\n"],
+    { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${panel.panelId}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast("export แล้ว — เอาไปทับ data/panels/");
+};
+
+$("bFit").onclick = fit;
+$("bUndo").onclick = undo;
+$("filter").oninput = renderList;
+
+// ---------------------------------------------------------------- mouse
+
+cv.addEventListener("mousedown", (e) => {
+  if (!img) return;
+  const r = cv.getBoundingClientRect();
+  const sx = e.clientX - r.left, sy = e.clientY - r.top;
+
+  if (e.button === 2 || spaceDown) {
+    panning = { sx, sy, ox: offX, oy: offY };
+    cv.classList.add("panning");
+    return;
+  }
+  if (e.button !== 0) return;
+  if (selected < 0) { toast("เลือก control จากลิสต์ซ้ายก่อน", true); return; }
+
+  const p = toImg(sx, sy);
+  dragging = { x0: p.x, y0: p.y, x1: p.x, y1: p.y };
+});
+
+window.addEventListener("mousemove", (e) => {
+  if (!img) return;
+  const r = cv.getBoundingClientRect();
+  const sx = e.clientX - r.left, sy = e.clientY - r.top;
+
+  if (panning) {
+    offX = panning.ox + (sx - panning.sx);
+    offY = panning.oy + (sy - panning.sy);
+    draw();
+    return;
+  }
+  if (dragging) {
+    const p = toImg(sx, sy);
+    dragging.x1 = p.x;
+    dragging.y1 = p.y;
+    draw();
+  }
+});
+
+window.addEventListener("mouseup", () => {
+  if (panning) { panning = null; cv.classList.remove("panning"); return; }
+  if (!dragging) return;
+  const hs = normDrag();
+  dragging = null;
+  if (!hs) { draw(); return; }
+  if (hs.w < 0.002 || hs.h < 0.002) { draw(); return; }  // คลิกพลาด ไม่ใช่การลาก
+  setHotspot(selected, hs);
+  if (hs.w < MIN_RATIO || hs.h < MIN_RATIO) {
+    toast("กรอบเล็กกว่าเกณฑ์ อาจกดไม่โดนบนมือถือ", true);
+  }
+});
+
+cv.addEventListener("contextmenu", (e) => e.preventDefault());
+
+cv.addEventListener("wheel", (e) => {
+  if (!img) return;
+  e.preventDefault();
+  const r = cv.getBoundingClientRect();
+  const sx = e.clientX - r.left, sy = e.clientY - r.top;
+  const before = toImg(sx, sy);
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  scale = Math.max(0.05, Math.min(40, scale * factor));
+  offX = sx - before.x * scale;
+  offY = sy - before.y * scale;
+  draw();
+}, { passive: false });
+
+// ---------------------------------------------------------------- keyboard
+
+window.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT") {
+    if (e.key === "Escape") e.target.blur();
+    return;
+  }
+  if (e.code === "Space") { spaceDown = true; e.preventDefault(); return; }
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); return; }
+
+  switch (e.key) {
+    case "Enter":
+    case "ArrowDown":
+      e.preventDefault(); nextUnplaced(1); break;
+    case "ArrowUp":
+      e.preventDefault(); nextUnplaced(-1); break;
+    case "Delete":
+    case "Backspace":
+      if (selected >= 0 && controls()[selected].hotspot) {
+        e.preventDefault();
+        setHotspot(selected, null);
+        toast("ลบพิกัดแล้ว");
+      }
+      break;
+    case "f":
+    case "F":
+      fit(); break;
+    case "Escape":
+      selected = -1; renderList(); draw(); break;
+  }
+});
+
+window.addEventListener("keyup", (e) => {
+  if (e.code === "Space") spaceDown = false;
+});
+
+window.addEventListener("resize", resize);
+window.addEventListener("beforeunload", (e) => {
+  if (panel && controls().some((c) => c.hotspot)) {
+    e.preventDefault();
+    e.returnValue = "";
+  }
+});
+
+resize();
+renderList();
+</script>
+</body>
+</html>

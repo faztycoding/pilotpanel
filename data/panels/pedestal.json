@@ -1,0 +1,3609 @@
+{
+  "panelId": "pedestal",
+  "title": "Center Pedestal",
+  "image": "pedestal.webp",
+  "imageSize": {
+    "w": 0,
+    "h": 0
+  },
+  "sections": [
+    {
+      "id": "eng",
+      "name": "ENG"
+    },
+    {
+      "id": "bleed",
+      "name": "BLEED"
+    },
+    {
+      "id": "press",
+      "name": "PRESS"
+    },
+    {
+      "id": "hyd",
+      "name": "HYD"
+    },
+    {
+      "id": "apu",
+      "name": "APU"
+    },
+    {
+      "id": "cond",
+      "name": "COND"
+    },
+    {
+      "id": "door",
+      "name": "DOOR"
+    },
+    {
+      "id": "wheel",
+      "name": "WHEEL"
+    },
+    {
+      "id": "elec",
+      "name": "ELEC"
+    },
+    {
+      "id": "fuel",
+      "name": "FUEL"
+    },
+    {
+      "id": "f_ctl",
+      "name": "F/CTL"
+    }
+  ],
+  "controls": [
+    {
+      "id": "cp_att_hdg_selector",
+      "name": "ATT HDG selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "NORM: ADIRU 1 supplies data to PFD 1, ND 1, RMI and VOR/DME. ADIRU 2 supplies data to PFD 2 and ND 2."
+        },
+        {
+          "kind": "p",
+          "text": "CAPT 3: ADR 3 or IR 3 replaces ADR 1 or IR 1."
+        },
+        {
+          "kind": "p",
+          "text": "F/O 3: ADR 3 or IR 3 replaces ADR 2 or IR 2."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p3",
+      "needsReview": false
+    },
+    {
+      "id": "cp_air_data_selector",
+      "name": "AIR DATA selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "NORM: ADIRU 1 supplies data to PFD 1, ND 1, RMI and VOR/DME. ADIRU 2 supplies data to PFD 2 and ND 2."
+        },
+        {
+          "kind": "p",
+          "text": "CAPT 3: ADR 3 or IR 3 replaces ADR 1 or IR 1."
+        },
+        {
+          "kind": "p",
+          "text": "F/O 3: ADR 3 or IR 3 replaces ADR 2 or IR 2."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p8",
+      "needsReview": false
+    },
+    {
+      "id": "cp_eis_dmc_rotary_selector",
+      "name": "EIS DMC rotary selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "NORM: DMC 1 supplies CAPT'S PFD and ND and the ECAM's DU's. DMC 2 supplies the F/O's PFD and ND."
+        },
+        {
+          "kind": "p",
+          "text": "CAPT 3: DMC 3 replaces DMC 1."
+        },
+        {
+          "kind": "p",
+          "text": "F/O 3: DMC 3 replaces DMC 2."
+        },
+        {
+          "kind": "p",
+          "text": "If a DMC fails, each of its related DU's displays an \"INVALID DATA” message."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p13",
+      "needsReview": false
+    },
+    {
+      "id": "cp_ecam_nd_xfr_rotary_selector",
+      "name": "ECAM/ND XFR rotary selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This selector transfers the system/status display either the Captains or First Officers ND. The \"ECAM ON ND\" message is displayed on the lower ECAM display."
+        },
+        {
+          "kind": "note",
+          "text": "Note: If both ECAM DU's fail (E/WD and SD), the crew can use this selector to transfer the E/WD to either ND. In this case the"
+        },
+        {
+          "kind": "p",
+          "text": "''ECAM ON ND'' message does not display."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p19",
+      "needsReview": false
+    },
+    {
+      "id": "cp_off_brt_knobs",
+      "name": "OFF/BRT Knobs",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "These are used to turn the ECAM display units on and off together with brightness control. If the upper display knob is set to OFF, then the"
+        },
+        {
+          "kind": "p",
+          "text": "E/WD display appears on the lower screen display unit."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p25",
+      "needsReview": false
+    },
+    {
+      "id": "cp_t_o_config_push_button",
+      "name": "T.O CONFIG push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressing this button simulates application of takeoff power in order to test if aircraft is in proper takeoff configuration. A warning triggers if aircraft is not in the correct configuration. If the configuration is correct then the E/WD displays 'TO CONFIG NORMAL' message in the memo section."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p29",
+      "needsReview": false
+    },
+    {
+      "id": "cp_emer_canc_push_button",
+      "name": "EMER CANC push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This button has a transparent guard on it. It affects the following:"
+        },
+        {
+          "kind": "bullet",
+          "text": "-WARNINGS:",
+          "label": "WARNINGS"
+        },
+        {
+          "kind": "warning",
+          "text": "*Cancels/Stops any aural warning for as long as the condition continues."
+        },
+        {
+          "kind": "warning",
+          "text": "*Extinguishes the MASTER WARNING lights."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Does not affect the ECAM displayed message."
+        },
+        {
+          "kind": "bullet",
+          "text": "-CAUTIONS:",
+          "label": "CAUTIONS"
+        },
+        {
+          "kind": "warning",
+          "text": "*Cancels any current caution (single chime, master caution lights, ECAM message) for the rest of the flight duration."
+        },
+        {
+          "kind": "warning",
+          "text": "*Automatically calls up the STATUS page showing | the title of the CANCELLED CAUTION"
+        },
+        {
+          "kind": "p",
+          "text": "together with a message,"
+        },
+        {
+          "kind": "warning",
+          "text": "'CANCELLED CAUTION'."
+        },
+        {
+          "kind": "p",
+          "text": "Inhibition is automatically suppressed when in flight phase 1 and the crew can restore it manually also by pressing the RCL button"
+        },
+        {
+          "kind": "p",
+          "text": "for more than 3 seconds. Note that this push button should only be used to suppress spurious MASTER CAUTIONS."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p32",
+      "needsReview": false
+    },
+    {
+      "id": "cp_fuel_used",
+      "name": "Fuel Used",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The Green number is the fuel used as computed by the DMC. This number is only resets on the ground when the engine is started (i.e. Master switch ON)."
+        },
+        {
+          "kind": "p",
+          "text": "The Green numbered value is frozen at shutdown at the last value until the next engine start. The fuel used indication is dashed when the indication is inaccurate due to the loss of fuel flow data for more than 1 minute."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p51",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_oil_quantity",
+      "name": "Oil Quantity",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Both the needles/values are shown in Green. The indication pulses if oil quantity decreases below 3 quarts or increases above 5 quarts."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p55",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_oil_pressure",
+      "name": "Oil Pressure",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Both needles/values are indicated in Green. The oil | pressure pulses if it exceeds 90 psi and stops pulsing if it drops below 85 psi. It also pulses if below 16 psi and stops if it returns to above 20 psi. The pressure indication turns Red together with ECAM displays an alert, 'ENG 1(2) OIL LO PR' if the pressure goes below 13 psi."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p58",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_oil_temperature",
+      "name": "Oil Temperature",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Values are indicated in Green. The value pulses if the temp exceeds 140°C and stops pulsing when temp drops below 135°C. The value turns Amber and an ECAM alert appears, 'ENG 1(2) OIL HI TEMP' if the temp exceeds 140°C for over 15 minutes. This alert and Amber caution also appears if the temp rapidly exceeds 155°C."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p63",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_vib",
+      "name": "VIB",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This legend is indicated in Green. N1 VIB pulses if it goes above 6 and N2 VIB pulses above 4.3."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p66",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_oil_filter_clog",
+      "name": "Oil Filter Clog",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "CLOG appears in Amber, if there is an excessive pressure loss across the main oil scavenge filter."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p69",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_fuel_filter_clog",
+      "name": "Fuel Filter Clog",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "CLOG appears in Amber, if there is an excessive pressure loss across the fuel filter."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p72",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_ignition",
+      "name": "Ignition",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "IGN appears in white during a start sequence and the letters A, B or AB appear in Green to indicate which respective igniters are firing up."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p77",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_start_valve_position",
+      "name": "Start Valve Position",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): The valve is fully open."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): The valve is fully closed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p80",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_engine_bleed_pressure",
+      "name": "Engine Bleed Pressure",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "These Green numbers indicate the bleed pressure upstream of the pre-cooler. They turn Amber when the pressure drops below 21 psi with N2 ≥ 10%, or also in case of an over-pressure."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p84",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_mcdu_multi_purpose_control_and_display_unit",
+      "name": "MCDU (Multi-Purpose Control and Display Unit)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "There are two MCDU's installed in the A320 on the pedestal for flight crew. They are used for loading and display of data. They enable the crew to interface with the FMGC by selection of a flight plan including its lateral/vertical trajectories and speed profiles. The crew can also modify any selected navigation or performance data within the MCDU. The MCDU also enables for specific functions of flight management such as, revising a flight plan, engine-out procedures, secondary flight plans etc."
+        },
+        {
+          "kind": "p",
+          "text": "The MCDU's also allow additional data such as Centralized Fault Display System (CFDS), ARINC Communication Addressing and Reporting System (ACARS), Air Traffic Service Unit (ATSU) and more to be accessed. Any data input into the MCDU, which is unallowable by the aircraft or beyond its capabilities, will automatically be disregarded or will generate an advisory message. Below is an image from the Airbus FCOM source showing the different keys on the MCDU."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p95",
+      "needsReview": false,
+      "sectionId": "eng"
+    },
+    {
+      "id": "cp_ram_air_inlet",
+      "name": "RAM AIR Inlet",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): Flap is normally closed."
+        },
+        {
+          "kind": "p",
+          "text": "In-Transit (Amber): Flap is partially open."
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): Flap is fully open on the ground."
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Green): Flap is fully open in flight."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p103",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_pack_outlet_temperature",
+      "name": "Pack Outlet Temperature",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Green. It Turns Amber if the temp exceeds 90°C."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p109",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_pack_bypass_valve_position",
+      "name": "Pack Bypass valve Position",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indicated in Green."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p112",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_c_cold_valve_closed",
+      "name": "C = Cold (Valve closed)",
+      "type": "area",
+      "hotspot": null,
+      "body": [],
+      "sourceRef": "Center Pedestal (finish).docx#p114",
+      "needsReview": true,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_h_hot_valve_open",
+      "name": "H = Hot (Valve open)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "(4) Pack Compressor Outlet Temperature Appears in Green and turns Amber if the temp exceeds 260°C."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p115",
+      "needsReview": true,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_pack_flow",
+      "name": "Pack Flow",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Green and turns | Amber if the pack flow control valve is closed. Also note that the pack flow indication can be up to 30% below the actual flow rate."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p119",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_pack_flow_control_valve",
+      "name": "Pack Flow Control Valve",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): Open"
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): Open and does not agree with the control position"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): Fully closed"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Fully closed and does not agree with the control position"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p122",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_user_indication",
+      "name": "User Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Green and turns Amber in flight when RAM AIR flap is not fully open and both pack flow valves are closed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p128",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_arrow",
+      "name": "Arrow",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally not displayed when corresponding valve | is closed. Appears in Green when corresponding valve is open. It turns Amber"
+        },
+        {
+          "kind": "p",
+          "text": "when the valve is open and | air pressure is low/high or if the valve is open on ground for more than 10 seconds."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p131",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_anti_ice_indication",
+      "name": "ANTI ICE Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displayed in white when wing anti ice is 'ON'."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p135",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_engine_bleed_indication",
+      "name": "Engine Bleed Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The top number is the pre-cooler inlet pressure indication. It is normally indicated in Green. It turns Amber when pressure is under 4 psi, or if over-pressure is detected by the BMC"
+        },
+        {
+          "kind": "p",
+          "text": "(threshold between 57 and 60 psi)."
+        },
+        {
+          "kind": "p",
+          "text": "The bottom number displays the pre-cooler outlet temperature. Normally shown in Green"
+        },
+        {
+          "kind": "p",
+          "text": "but turns Amber when the BMC detects an overheat or low temperature situation. Overheat situation is when the temp exceeds:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*290°C for > 5 seconds or"
+        },
+        {
+          "kind": "bullet",
+          "text": "*270°C for > 15 seconds or"
+        },
+        {
+          "kind": "bullet",
+          "text": "*257°C for > 55 seconds."
+        },
+        {
+          "kind": "p",
+          "text": "Low temp is detected if temp < 150 °C. If operating engines at idle and depending on ambient conditions, the pre-cooler temp may be below 150 °C and so it displays in Amber."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p138",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_engine_identification_1_2",
+      "name": "Engine Identification 1(2)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in white but turns Amber when N2 is below idle."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p150",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_engine_bleed_valves",
+      "name": "Engine Bleed Valves",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): Valve normally open"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): Valve normally fully closed"
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): Valve not in commanded (open) position"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Valve not in commanded (closed) position"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p153",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_hp_valves",
+      "name": "HP Valves",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): Valve normally fully closed In Line (Green): Valve not fully closed"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Valve not in commanded (closed) position"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p159",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_apu_bleed_valve",
+      "name": "APU Bleed Valve",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): APU valve is not fully open and the APU Master switch is ON In Line (Green): APU valve is fully open and the APU Master switch is ON"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): APU valve is fully closed and the APU Master switch is ON + APU Bleed switch is ON for > 10 seconds"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p163",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_cross_bleed_valve",
+      "name": "Cross-Bleed Valve",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Cross-line (Green): Valve is normally closed In Line (Green): Valve is normally open"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Valve not in commanded (closed) position"
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): Valve not in commanded (open) position"
+        },
+        {
+          "kind": "p",
+          "text": "Transit (Amber): Valve is in transit"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p170",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_gnd_hp_ground_connection_indication",
+      "name": "GND HP Ground Connection Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays in white when aircraft on ground."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p176",
+      "needsReview": false,
+      "sectionId": "bleed"
+    },
+    {
+      "id": "cp_ldg_elev_auto_man",
+      "name": "LDG ELEV AUTO/MAN",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "LDG ELEV AUTO:"
+        },
+        {
+          "kind": "p",
+          "text": "Appears in Green when the LDG ELEV selector is in Auto."
+        },
+        {
+          "kind": "p",
+          "text": "LDG ELEV MAN:"
+        },
+        {
+          "kind": "p",
+          "text": "Appears in Green when the LDG ELEV selector is not in Auto. Neither of the above appears when the indications from SDAC are not valid."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p184",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_p_psi_cabin_differential_pressure",
+      "name": "ΔP PSI (Cabin Differential Pressure)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Both the analog/digital presentations appear in Green when AP is in the normal range. They appear in Amber when Delta*P <= - 0.4 psi or ≥8.5 psi."
+        },
+        {
+          "kind": "p",
+          "text": "The digital readout pulses if ΔP > 1.5 psi (resets at 1 psi) during flight phase 7."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p190",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_landing_elevation",
+      "name": "Landing Elevation",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indicates landing elevation selected either"
+        },
+        {
+          "kind": "p",
+          "text": "automatically by the FMGS or manually by the pilot. It appears in Green but not when the MODE SEL push button is in MAN."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p194",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_v_s_ft_min_cabin_vertical_speed",
+      "name": "V/S FT/MIN (Cabin Vertical Speed)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Both analog/digital readouts appear in Green when in the normal range but the digital readout pulses when V/S > 1750 ft/min (resets at 1650 ft/min)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p198",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_cab_alt_ft_cabin_altitude",
+      "name": "CAB ALT FT (Cabin Altitude)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Both the analog/digital readout appears in Green when in normal range."
+        },
+        {
+          "kind": "p",
+          "text": "They appear in Red if the cabin attitude goes above 9550 feet. The digital readout pulses if the cabin altitude is at or above 8800 feet (resets at 8600ft)"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p201",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_active_system_indication_sys_1_or_sys_2_or_m",
+      "name": "Active System Indication (SYS 1 or SYS 2 or MAN)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "SYS 1 or SYS 2 appears in Green when active and in Amber when faulty. When || either is inactive, no title appears. MAN appears in"
+        },
+        {
+          "kind": "p",
+          "text": "Green when the MODE SEL switch is in MAN."
+        },
+        {
+          "kind": "p",
+          "text": "(7) Safety Valve Position 'SAFETY' appears in white and the diagram in Green when both safety valves are fully closed. Both appear in Amber when either valve is not closed."
+        },
+        {
+          "kind": "note",
+          "text": "note: that the safety valve opens when the cabin differential pressure is in the range of between 8.2 and 8.9 psi."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p205",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_outflow_valve_position",
+      "name": "Outflow Valve Position",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Diagram shows in Green when the valve is operating normally. It turns Amber when the valve opens more than 95% during flight."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p212",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_rat",
+      "name": "RAT",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "See image below"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p231",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_eng_pump_control_and_low_pressure_indication",
+      "name": "ENG PUMP Control and Low Pressure Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): The designated Pump push button is ON and hydraulic pressure is normal."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Push button switch for designated Pump is OFF."
+        },
+        {
+          "kind": "p",
+          "text": "'LO' (Amber): Push button switch for the designated Pump is ON and hydraulic pressure is Low."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p234",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_pump",
+      "name": "PUMP",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in white but becomes Amber when N2 is below idle."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p239",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_reservoir_quantity",
+      "name": "Reservoir Quantity",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Indicated in Green unless the fluid level goes below the warning level (Amber). The low warning levels for the three different systems are as follows: Blue system (2.4L), Yellow system (3.5L) and Green system (3.5L)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p242",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_system_label",
+      "name": "System Label",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indicates the particular hydraulic system. Normally displays the name e.g. 'YELLOW' in white and its arrow 'Δ' symbol below it in Green at Pressure > 1450 psi. Both indications turn Amber when Pressure < 1450 psi."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p245",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_system_pressure",
+      "name": "System Pressure",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in Green but becomes Amber when system pressure drops below 1450 psi."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p248",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_ptu_control",
+      "name": "PTU Control",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "1. (Green)- The PTU button is in AUTO and the PTU is not transferring pressure."
+        },
+        {
+          "kind": "p",
+          "text": "(Amber)- PTU button is OFF."
+        },
+        {
+          "kind": "p",
+          "text": "2. (Green)- PTU is supplying the Green hydraulic system."
+        },
+        {
+          "kind": "p",
+          "text": "3. (Green)- PTU is supplying the Yellow hydraulic system."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p255",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_elec",
+      "name": "ELEC",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in white but turns Amber if associated power supply fails."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p263",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_ovht",
+      "name": "OVHT",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber if the Electric pump for the system (Blue or Yellow) overheats."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p266",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_yellow_elec_pump_control",
+      "name": "YELLOW ELEC PUMP Control",
+      "type": "area",
+      "hotspot": null,
+      "body": [],
+      "sourceRef": "Center Pedestal (finish).docx#p271",
+      "needsReview": true,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_fire_valve",
+      "name": "FIRE VALVE",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Valve is fully closed. In-Line (Green): Valve is not fully closed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p273",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_reservoir_lo_air_press",
+      "name": "Reservoir LO AIR PRESS",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Appears in Amber with ECAM Caution if the air pressure for the indicated reservoir drops below normal."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p276",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_reservoir_ovht",
+      "name": "Reservoir OVHT",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Appears in Amber with an ECAM Caution if the temperature of the returning hydraulic fluid at the inlet to its reservoir is above normal."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p279",
+      "needsReview": false,
+      "sectionId": "hyd"
+    },
+    {
+      "id": "cp_apu_gen_line_contactor_indication",
+      "name": "APU GEN Line Contactor Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays in Green when the APU GEN Line contactor is closed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p287",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_apu_gen_parameters",
+      "name": "APU GEN Parameters",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Similar to the APU GEN Parameters on the ELEC Page."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p290",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_apu_n",
+      "name": "APU N",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays APU speed (Green)"
+        },
+        {
+          "kind": "p",
+          "text": "Turns Amber when N ≥ 102%"
+        },
+        {
+          "kind": "p",
+          "text": "Turns Red when N ≥ 107%"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p293",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_apu_egt",
+      "name": "APU EGT",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays APU EGT in Green. Becomes Amber when EGT > EGT MAX * - 33°C and Red when EGT > EGT MAX* (In this case, automatic shutdown starts)."
+        },
+        {
+          "kind": "bullet",
+          "text": "* ECB calculates EGT MAX and transmits"
+        },
+        {
+          "kind": "p",
+          "text": "that data to the ECAM. It is a function of N during start and ambient temperature when APU is running."
+        },
+        {
+          "kind": "p",
+          "text": "MAX EGT during start = 1090°C"
+        },
+        {
+          "kind": "p",
+          "text": "MAX EGT with APU running = 675°C"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p300",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_avail",
+      "name": "AVAIL",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Green when APU N is above 95%."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p308",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_apu_bleed_air_valve_position",
+      "name": "APU Bleed Air Valve Position",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): APU bleed air valve is not closed."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line(Green): APU Bleed air valve is closed"
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Amber): APU bleed air valve is closed and the APU bleed is ON."
+        },
+        {
+          "kind": "p",
+          "text": "XX (Amber): APU bleed air valve or the APU BLEED push-button status information is not available"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p311",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_apu_bleed_air_pressure",
+      "name": "APU Bleed Air Pressure",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This box displays the relative bleed air pressure in Green. Amber crosses 'XX' appear when the ADIRS 1 is not available or selected OFF or data from the ECB is invalid/not transmitted."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p320",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_fuel_lo_pr",
+      "name": "FUEL LO PR",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber if APU fuel pressure gets low."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p323",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_flap_open",
+      "name": "FLAP OPEN",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays in Green if APU air intake flap is fully open."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p326",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_low_oil_level",
+      "name": "LOW OIL LEVEL",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displayed as an Advisory if the ECB detects a low APU oil level when the aircraft is on the ground and APU not running."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p329",
+      "needsReview": false,
+      "sectionId": "apu"
+    },
+    {
+      "id": "cp_cabin_fan_fault_indication",
+      "name": "Cabin FAN Fault Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber if the recirculation fan is detected as faulty."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p335",
+      "needsReview": false,
+      "sectionId": "cond"
+    },
+    {
+      "id": "cp_zone_temperature",
+      "name": "Zone Temperature",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indicates the various zone temperatures in Green for CKPT, FWD and AFT."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p338",
+      "needsReview": false,
+      "sectionId": "cond"
+    },
+    {
+      "id": "cp_zone_duct_temperature",
+      "name": "Zone Duct Temperature",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Green and turns Amber at 80°C."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p341",
+      "needsReview": false,
+      "sectionId": "cond"
+    },
+    {
+      "id": "cp_zone_trim_air_valve_position",
+      "name": "Zone Trim Air Valve Position",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Arrow is displayed Green. It changes to Amber crosses 'XX' if the valve fails."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p344",
+      "needsReview": false,
+      "sectionId": "cond"
+    },
+    {
+      "id": "cp_temp",
+      "name": "TEMP",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indicates unit of measure for temperature in cyan (either °C or °F)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p347",
+      "needsReview": false,
+      "sectionId": "cond"
+    },
+    {
+      "id": "cp_hot_air_pressure_regulating_valve",
+      "name": "Hot Air Pressure Regulating Valve",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): Valve is normally open."
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): Valve is abnormally open and disagrees with control position."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Green): Valve is normally fully closed."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Amber): Valve is closed and push-button OFF, or valve position disagrees with control position."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p350",
+      "needsReview": false,
+      "sectionId": "cond"
+    },
+    {
+      "id": "cp_oxy_pressure_indication",
+      "name": "OXY Pressure Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "bullet",
+          "text": "-Indicated in Green when pressure is ≥ 800 psi."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Pulses in Green when the pressure is < 800 psi and in this instance the DOOR/OXY page is automatically displayed."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Turns Amber when the pressure is < 400 psi."
+        },
+        {
+          "kind": "bullet",
+          "text": "-On the ground, an Amber half frame line appears at the bottom of the value when Oxygen pressure is < 1500 psi. (In this case, the crew should check the remaining quantity is not below the minimum required)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p370",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_ckpt_oxy_indication",
+      "name": "CKPT OXY Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally displayed in white but turns Amber when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Pressure goes < 400 psi."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Low Oxygen pressure detected."
+        },
+        {
+          "kind": "bullet",
+          "text": "-The overhead panels OXYGEN CREW SUPPLY push-button is OFF."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p379",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_regul_lo_pr_indication",
+      "name": "REGUL LO PR Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber if Oxygen pressure on the low pressure circuit is low (50 psi)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p384",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_door_indication",
+      "name": "Door Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber when the door is not locked."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p386",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_stair_symbol",
+      "name": "Stair Symbol",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber when the stair door is not closed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p388",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_slide_indication",
+      "name": "Slide Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in white when the slide is armed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p390",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_door_symbol",
+      "name": "Door Symbol",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "bullet",
+          "text": "-Appear in Green when doors are closed and locked."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Appear in Amber when doors are not locked."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p392",
+      "needsReview": false,
+      "sectionId": "door"
+    },
+    {
+      "id": "cp_n_w_steering_label",
+      "name": "N/W STEERING Label",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears in Amber when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Nose-wheel steering is lost, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Both BSCU (Brake Steering Control Unit) channels fail, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Yellow hydraulic system low pressure, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-A/SKID & N/W STRG switch is off."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p402",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_n_w_steering_hydraulic_supply_indication",
+      "name": "N/W STEERING Hydraulic Supply Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears when the N/W STEERING label is displayed:"
+        },
+        {
+          "kind": "bullet",
+          "text": "- 'Y' displays in Green in case the yellow hydraulic is not failed."
+        },
+        {
+          "kind": "bullet",
+          "text": "-'Y' displays in Amber in case of yellow system low pressure."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p409",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_anti_skid_indication",
+      "name": "ANTI SKID Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Includes an 'ANTI SKID' label and a Number 1 or 2 or both next to it. The number indicates the particular BSCU 1(2)."
+        },
+        {
+          "kind": "p",
+          "text": "The label appears in"
+        },
+        {
+          "kind": "p",
+          "text": "Amber with an ECAM"
+        },
+        {
+          "kind": "warning",
+          "text": "Caution in case:"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Total BSCU failure, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-A/SKID & N/W STRG switch is OFF, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-BSCU detects an ANTI-SKID failure, or"
+        },
+        {
+          "kind": "p",
+          "text": "Normal braking + Yellow hydraulic system low pressure."
+        },
+        {
+          "kind": "p",
+          "text": "The label displays in Green in case of auto brake, normal braking or alternate braking failure but with anti-skid still available."
+        },
+        {
+          "kind": "p",
+          "text": "The number appears when the 'ANTISKID' label is displayed and indicates the number of the failed BSCU channel system(s) in Amber."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p414",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_brake_temperature",
+      "name": "Brake Temperature",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally appears in Green and a Green arc appears on the hottest wheel when one | brake temp exceeds 100°C."
+        },
+        {
+          "kind": "warning",
+          "text": "The indication turns Amber with an ECAM Caution when the related brake temp exceeds 300°C."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p428",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_wheel_number",
+      "name": "Wheel Number",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displays in white to identify individual wheels of the main landing gear."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p432",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_auto_brk",
+      "name": "AUTO BRK",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This legend appears in Green when the auto-brake is armed. It flashes in Green for 10 seconds after auto-brake disengagement."
+        },
+        {
+          "kind": "warning",
+          "text": "The indication turns Amber with an ECAM caution to indicate a system failure. Underneath the label, MED, LO or MAX appears to indicate which mode has been selected."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p435",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_norm_brk_indication",
+      "name": "NORM BRK Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This label appears in Green when auto-brake or alternate braking system has failed but normal"
+        },
+        {
+          "kind": "p",
+          "text": "braking still functioning."
+        },
+        {
+          "kind": "p",
+          "text": "It turns Amber when normal braking has failed due to:"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Total loss of BSCU, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Loss of Green hydraulic pressure, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Loss of anti-skid."
+        },
+        {
+          "kind": "p",
+          "text": "To the left of the label is an indication of the NORM BRK hydraulic supply i.e. 'G' appears in Green when B Green hydraulic pressure is available and it becomes Amber in case the Green system pressure is low."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p439",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_altn_brk_label",
+      "name": "ALTN BRK Label",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The label 'ALTN BRK' appears in Green if:"
+        },
+        {
+          "kind": "p",
+          "text": "Braking system is in alternate mode and not failed, or In case auto-brake or normal braking has failed | but with alternate braking still available. The Indication label turns Amber if the alternate braking system fails."
+        },
+        {
+          "kind": "p",
+          "text": "To the left of the label above is the hydraulic supply indication (Y). It appears in Green when"
+        },
+        {
+          "kind": "p",
+          "text": "Yellow system pressure is available and turns Amber in case Yellow system pressure is low."
+        },
+        {
+          "kind": "p",
+          "text": "Below the label is the Accumulator (ACCU) indication. It appears in Green with a downward arrow as shown in image when the yellow hydraulic system pressure is available. It turns Amber with no arrow when the system (Yellow) and Accumulator have low pressure."
+        },
+        {
+          "kind": "p",
+          "text": "The ACCU indication appears with an upward arrow in Green when the alternate braking system is pressurized by the Yellow accumulator."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p450",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_release_indicators",
+      "name": "Release Indicators",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Usually in Green but appear in Amber in case of brake release fault."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p457",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_spoilers_speed_brakes_indication",
+      "name": "Spoilers/Speed-brakes Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "See F/CTL page for description of these."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p460",
+      "needsReview": false,
+      "sectionId": "wheel"
+    },
+    {
+      "id": "cp_battery_indication",
+      "name": "Battery Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When the battery push button on the overhead panel is OFF, then the indication displays 'OFF' in white."
+        },
+        {
+          "kind": "p",
+          "text": "When in AUTO, then the display appears as shown in image with label, Voltage and Current indication."
+        },
+        {
+          "kind": "bullet",
+          "text": "-The Label indicates in white the battery i.e. either 1 or 2."
+        },
+        {
+          "kind": "warning",
+          "text": "-The label turns Amber when the Voltage and Current indications turn to Amber and also in case of 'BAT FAULT' warning."
+        },
+        {
+          "kind": "p",
+          "text": "The Voltage indication is normally Green but turns Amber if V > 31 Volts or when V <25 V. The Current indication is normally Green but turns Amber if discharge current is >5A."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p467",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_bus_indication",
+      "name": "Bus Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in Green but turns Amber when the corresponding bus is off. 'SHED' appears in Amber when AC or DC SHED ESS BUS is off."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p475",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_ess_tr_indication",
+      "name": "ESS TR Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The indication is the same as for normal TR 's numbered (9). The Voltage/Current are not displayed when the essential TR contactor is open."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p478",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_gen_1_2_indications",
+      "name": "GEN 1(2) Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When the GEN push button on overhead panel is off, the GEN label is in Amber and 'OFF' is indicated in white. The '1' or '2' indication is in white if its related side engine is running, else it appears in Amber."
+        },
+        {
+          "kind": "p",
+          "text": "When the push button is ON, then GEN1 or GEN2 displays normally in white but turns Amber if the Percentage Load (%), Voltage (V) or Frequency (Hz) is Amber."
+        },
+        {
+          "kind": "bullet",
+          "text": "-The Load (%) is normally Green but turns Amber if Load > 100%."
+        },
+        {
+          "kind": "bullet",
+          "text": "-The Voltage (V) is normally Green but turns Amber if V > 120V or V < 110V."
+        },
+        {
+          "kind": "bullet",
+          "text": "-The Frequency (Hz) is normally Green and turns Amber if F > 410Hz or F < 390Hz."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p482",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_rise_indication",
+      "name": "RISE Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Displayed in Green. It is the difference between the temperature at the IDG inlet and outlet."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p489",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_apu_gen_indication",
+      "name": "APU GEN Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When the APU Master switch is OFF, the legend appears in white regardless of the position of the APU GEN push button."
+        },
+        {
+          "kind": "p",
+          "text": "When the Master switch is ON and APU GEN button is OFF, then 'APU GEN' legend is in Amber and the 'OFF' legend is white."
+        },
+        {
+          "kind": "p",
+          "text": "When the master switch is ON and the APU GEN push button is ON, then the indications are the same as GEN 1(2) -(Numbered 5 above)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p492",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_dc_bat_indication",
+      "name": "DC BAT Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in Green but turns Amber if DC BAT Voltage ≤ 25V."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p499",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_tr_1_2_indication",
+      "name": "TR 1(2) Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The 'TR 1 (2)' legend normally appears in white but turns Amber if the Voltage and Current indications turn Amber."
+        },
+        {
+          "kind": "p",
+          "text": "The TR voltage is normally indicated in Green but turns Amber if V > 31V or when V < 25V."
+        },
+        {
+          "kind": "p",
+          "text": "The Current is normally indicated in Green but turns Amber when the TR Current is ≤ 5 A."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p502",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_emer_gen_indication",
+      "name": "EMER GEN Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The title legend normally appears in white but turns Amber when either Voltage or Frequency turns Amber."
+        },
+        {
+          "kind": "p",
+          "text": "The Voltage (V) is normally indicated in Green but turns Amber if V > 120V or when V < 110V"
+        },
+        {
+          "kind": "p",
+          "text": "The Frequency (Hz) is normally indicated in Green but turns Amber if F > 410Hz or F <390Hz. Voltage/Frequency indications are not displayed if EMER GEN line contactor is open."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p509",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_idg_indications",
+      "name": "IDG Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The IDG 1(2) legend is normally white but turns Amber if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Oil outlet temp > 185°C."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Oil pressure gets too low."
+        },
+        {
+          "kind": "bullet",
+          "text": "*IDG becomes disconnected."
+        },
+        {
+          "kind": "p",
+          "text": "IDG 1(2) is displayed in white if its related engine is running and in Amber if not and FADEC is powered."
+        },
+        {
+          "kind": "p",
+          "text": "The 'DISC' Indication appears in Amber when the IDG is disconnected. 'LO PR' appears in Amber when IDG low pressure is detected and the related engine is running."
+        },
+        {
+          "kind": "p",
+          "text": "The temperature indication is the Oil Outlet Temp. Normally appears in Green but turns"
+        },
+        {
+          "kind": "p",
+          "text": "Amber if T > 185°C. It flashes if 147°C <T < 185°C (Advisory appears)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p516",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_ext_pwr_indication",
+      "name": "EXT PWR Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When the box is blank then it means external power is not available."
+        },
+        {
+          "kind": "p",
+          "text": "When available, the indications shown are the Label (EXT PWR), Voltage (V) and Frequency (Hz)."
+        },
+        {
+          "kind": "p",
+          "text": "The label normally appears in white but turns Amber if either the Voltage or Frequency turns Amber."
+        },
+        {
+          "kind": "p",
+          "text": "The Voltage (V) normally appears in Green but turns Amber if V > 120V or when V < 110V."
+        },
+        {
+          "kind": "p",
+          "text": "The Frequency (Hz) normally appears in Green but turns Amber if F > 410 Hz or if F < 390 Hz."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p528",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_galley_shed_indication",
+      "name": "GALLEY SHED Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Normal configuration, this legend does not display. The legend appears in white when:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The GALLEY push button is OFF, or"
+        },
+        {
+          "kind": "bullet",
+          "text": "*When the main galleys are shed. In flight this would mean only one generator is working and on the ground it means one engine generator is supplying the aircraft only."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p539",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
+      "id": "cp_fuel_used_indication",
+      "name": "Fuel Used Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The top number '1' or '2' represents the engine. It appears in Amber when the engine is below idle. At or above idle, it appears in white."
+        },
+        {
+          "kind": "p",
+          "text": "The bottom number e.g. 100 appears in Green and indicates the fuel used. It appears from flight phase 2, until electrical power is cut off at the end of the flight. It automatically resets once engine is started again. Its units can be represented as both KG or LB depending on the DMC program set."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p559",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_apu_indications",
+      "name": "APU Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "See Image below:"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p563",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_wing_pump_indications",
+      "name": "Wing Pump Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In-Line (Green): Pump pressure is normal and its contactor is on."
+        },
+        {
+          "kind": "p",
+          "text": "'LO' (Amber): Pump pressure is low and its contactor is on."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-line (Amber): Pump contactor is off."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p567",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_fuel_quantity_indication",
+      "name": "Fuel Quantity Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "bullet",
+          "text": "- Normally indications are in Green."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Amber line appears across the last two digits, when the fuel quantity indicator FQI is inaccurate. Outer indication is boxed"
+        },
+        {
+          "kind": "bullet",
+          "text": "-Amber if both transfer valves fail to open when Inner is at low level."
+        },
+        {
+          "kind": "bullet",
+          "text": "-Center tank indication becomes boxed"
+        },
+        {
+          "kind": "p",
+          "text": "Amber if both center tank pumps fail or are OFF."
+        },
+        {
+          "kind": "bullet",
+          "text": "- An Advisory appears in flight phases2 and 6, when difference between the fuel quantities in the two wings is > 1500 kg (3300 lb). The wing Inner and Outer tank indications pulse when with the highest fuel level."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p572",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_fuel_flow_indications",
+      "name": "Fuel Flow Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The total fuel flow is displayed here in kg/min or lb/min depending on units used by DMC. Normally indications appear in Green but can be replaced by Amber 'XX' if there is no valid data."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p581",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_fuel_on_board_indication_fob",
+      "name": "Fuel On Board Indication (FOB)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally indicated in Green but an Amber line can appear across the last two digits when the FQI is inaccurate."
+        },
+        {
+          "kind": "p",
+          "text": "Indication can be half-boxed in Amber if center tank pumps fail/are OFF or when both transfer valves fail to open when the inner tank reaches low level."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p584",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_lp_valve_eng_indications",
+      "name": "LP Valve (ENG) Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): Valve is open."
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): Valve is open with ENG MASTER switch OFF."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Amber): ENG valve is fully closed."
+        },
+        {
+          "kind": "p",
+          "text": "Transit (Amber): Valve is in transit."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p588",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_x_feed_indications",
+      "name": "X feed Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): Valve is open."
+        },
+        {
+          "kind": "p",
+          "text": "In Line (Amber): valve is open with x-feed button off."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Green): Valve is closed."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Amber): Valve is closed with x-feed button on."
+        },
+        {
+          "kind": "p",
+          "text": "Transit (Amber): Valve is in transit."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p594",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_ctr_tank_pump_indications",
+      "name": "CTR Tank Pump Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "In Line (Green): Pump pressure is normal and its contactor is on."
+        },
+        {
+          "kind": "p",
+          "text": "'LO' (Amber): Pump pressure is low and its contactor is on."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Green): Pump contactor is off and auto shut-off is required."
+        },
+        {
+          "kind": "p",
+          "text": "Cross-Line (Amber): Pump contactor is off and auto shut-off is not required."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p601",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_transfer_valve_indications",
+      "name": "Transfer Valve Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Image below shows Outer to Inner transfer with details."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p607",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_fuel_temperature_indication",
+      "name": "Fuel Temperature Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Appears normally in Green when its"
+        },
+        {
+          "kind": "p",
+          "text": "associated temperature sensor is wet. An advisory only appears in phases 2 and 6 when the fuel temperature is:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Above 45°C for the inner cell, or 55KC for outer."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Below -40°C."
+        },
+        {
+          "kind": "warning",
+          "text": "Indications become Amber together with ECAM Caution if the temperature goes above the high limit or below the low limit."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p610",
+      "needsReview": false,
+      "sectionId": "fuel"
+    },
+    {
+      "id": "cp_spoilers_speed_brakes_indication_2",
+      "name": "Spoilers/Speed-Brakes Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "See image below:"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p636",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_aileron_position_indication",
+      "name": "Aileron Position Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indicated by a white scale with a Green index. It changes to Amber when neither (Green or Blue) servo-jack is available."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p639",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_elac_sec_indication",
+      "name": "ELAC/SEC Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Both the 'ELAC' and 'SEC' labels are indicated in white. The numbers are usually displayed in Green with a Grey box and represent the particular computer number. Both the number and box turn Amber if the computer fails or is switched OFF."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p642",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_pitch_trim_position_indicator",
+      "name": "Pitch Trim Position Indicator",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pitch trim numerical numbers appear in Green and turn Amber if the Green and yellow hydraulic system pressure decreases. The legend shown 'PITCH TRIM' appears in white and becomes Amber if the trim jams."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p645",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_aileron_and_elevator_actuator_indications",
+      "name": "Aileron and Elevator Actuator Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "'G' and 'B' are normally shown in Green. They turn Amber if the Green/blue hydraulic system has low system pressure. The partial box also turns Amber if the related computer or actuator fails."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p649",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_elevator_position_indicator",
+      "name": "Elevator Position Indicator",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Shown in a white scale with a Green index. The index turns Amber when both associated actuators are not available."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p652",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_hydraulic_system_pressure_indication",
+      "name": "Hydraulic System Pressure Indication",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Normally shown in Green but turns Amber if the hydraulic systems pressure decreases."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p655",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_yaw_control_indications",
+      "name": "Yaw Control Indications",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "(A) Rudder position indication: Normally appears in Green but becomes Amber if the blue, green and yellow hydraulic pressures are low."
+        },
+        {
+          "kind": "p",
+          "text": "(B) Rudder travel limiter: Normally appears Green but turns Amber when travel limiter 1 and 2 are faulty. Two TLU messages are displayed in Amber when the TLU indexes are suppressed."
+        },
+        {
+          "kind": "p",
+          "text": "(C) Rudder trim position: Normally shown in Blue but turns Amber if the rudder trim reset fails."
+        },
+        {
+          "kind": "p",
+          "text": "ALL push button"
+        },
+        {
+          "kind": "p",
+          "text": "If pressed and held down, the system display screen successively displays each system at one-second intervals. Incase the ECAM control panel fails; the crew can use this button to page through the system pages until the required page is displayed. Releasing the button in this case then selects the page."
+        },
+        {
+          "kind": "p",
+          "text": "CLR push button"
+        },
+        {
+          "kind": "warning",
+          "text": "It remains illuminated as long as the E/WD is displaying a warning/caution message, or a status message on the SD. In this case, pressing it changes the ECAM display."
+        },
+        {
+          "kind": "p",
+          "text": "STS push button"
+        },
+        {
+          "kind": "p",
+          "text": "Used to display the STATUS page on the lower SD. The button stays illuminates as long as the SD displays the STS page.If the system has no status messages, then the system displays 'NORMAL' for 5 seconds. You can also clear"
+        },
+        {
+          "kind": "p",
+          "text": "the status page by manually pressing the CLR button or re-pressing the STS page again."
+        },
+        {
+          "kind": "p",
+          "text": "RCL push button"
+        },
+        {
+          "kind": "p",
+          "text": "When the RCL button is pressed, the E/WD displays:"
+        },
+        {
+          "kind": "warning",
+          "text": "*All warning, caution and status messages/pages that have been suppressed by the activation of the CLR button."
+        },
+        {
+          "kind": "bullet",
+          "text": "*All the alerts that are still active but inhibited in the whole active flight phase."
+        },
+        {
+          "kind": "p",
+          "text": "In case there are no suppressed warnings/cautions, the E/WD shows 'NORMAL' for 5 seconds. Pressing and holding the RCL button more than 3 seconds enables the E/WD to display to any caution messages that were suppressed by the EMER CANC button."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p658",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_mcdu_multi_purpose_control_and_display_unit_2",
+      "name": "MCDU (Multi-Purpose Control and Display Unit)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "There are two MCDU's installed in the A320 on the pedestal for flight crew. They are used for loading and display of data. They enable the crew to interface with the FMGC by selection of a flight plan including its lateral/vertical trajectories and speed profiles. The crew can also modify any selected navigation or performance data within the MCDU. The MCDU also enables for specific functions of flight management such as, revising a flight plan, engine-out procedures, secondary flight plans etc."
+        },
+        {
+          "kind": "p",
+          "text": "The MCDU's also allow additional data such as Centralized Fault Display System (CFDS), ARINC Communication Addressing and Reporting System (ACARS), Air Traffic Service Unit (ATSU) and more to be accessed. Any data input into the MCDU, which is unallowable by the aircraft or beyond its capabilities, will automatically be disregarded or will generate an advisory message. Below is an image from the Airbus FCOM source showing the different keys on the MCDU."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p693",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_frequency_display_active_stby_crs",
+      "name": "Frequency Display (ACTIVE + STBY/CRS)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The screen labeled 'ACTIVE' displays the frequency of the selected navaid, which can be identified by a green monitor light on the selection key. The screen labeled 'STBY/CRS' can be used to set up a secondary frequency, which can be made active by pressing the transfer key shown by the green double arrow symbol between these two displays. The frequency in this display can be changed via the circular white frequency selector knob underneath it."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p711",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_transfer_key",
+      "name": "Transfer Key",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "As mentioned above, this button is used to transfer the frequency from the STBY display into the active one so the receiver can tune it. In simple terms, the button is used to interchange the ACTIVE and STBY frequencies."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p715",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_radio_com_selection_keys",
+      "name": "Radio Com Selection Keys",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When one of these is pressed (excluding the SEL Indicator):"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The ACTIVE window displays frequency set on that radio."
+        },
+        {
+          "kind": "bullet",
+          "text": "*The STBY/CRS window displays the selected standby frequency/course."
+        },
+        {
+          "kind": "bullet",
+          "text": "*The selected key illuminates a Green monitor light."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p718",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_sel_indicator",
+      "name": "SEL Indicator",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The SEL Indicator on both RMP's appears Amber when a transceiver which is normally associated with one RMP, is tuned by another. (For further info on this check the Airbus FCOM regarding whether 2 or 3 RMP's are installed)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p724",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_am_push_button",
+      "name": "AM Push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "If the aircraft is equipped with HF radios and an HF frequency is selected by the crew, this switch selects the AM mode as the default is SSB (Single-Side band mode)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p730",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_frequency_selector_knobs",
+      "name": "Frequency Selector Knobs",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "These concentric knobs are used to select the STBY frequency or CRS. The outer knob controls the whole numbers whilst the inner one controls its decimal values e.g. 132.075."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p733",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_nav_push_button_includes_transparent_guard",
+      "name": "NAV Push-button(Includes transparent Guard)",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The crew presses this button to select navigation receivers and courses through the RMP. It does not affect the normal communication radios and their respective frequencies."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p736",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_radio_navigation_selection_keys",
+      "name": "Radio Navigation Selection Keys",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The crew presses one of these keys to select a navigation radio to control through this RMP. The keys illuminate Green when pressed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p739",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_on_off_switch",
+      "name": "ON/OFF Switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This switch controls the RMP's power supply."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p743",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_transmission_keys",
+      "name": "Transmission Keys",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressed: The related channel is elected for transmission and the three Green lines illuminate. If pressed again or another key pressed, then the channel is deselected."
+        },
+        {
+          "kind": "p",
+          "text": "CALL: Flashes Amber and a buzzer sounds when the SELCAL system detects a call."
+        },
+        {
+          "kind": "p",
+          "text": "MECH: Flashes Amber and a buzzer sounds when call is made from the nose gear bay. The MECH light goes off after 60 seconds if not reset."
+        },
+        {
+          "kind": "p",
+          "text": "ATT: Flashes Amber and a buzzer sounds when a call from a cabin crewmember is made. The ATT light goes off after 60 seconds if not reset."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p746",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_reception_knobs",
+      "name": "Reception Knobs",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressing and releasing these out selects the associated audio reception channel and its integral white light illuminates. Pressing the knob back in disconnects the associated reception channel and the light goes off. Rotating the knob adjusts the related volume."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p755",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_int_rad_switch",
+      "name": "INT/RAD switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This switch can operate as a press-to-talk button for boom mike or oxygen mask mike."
+        },
+        {
+          "kind": "p",
+          "text": "INT: The boom/mask mikes transmit on interphone regardless of which transmission key is selected. To gain reception on interphone, the crew must have INT selected and the INT reception knob pressed out."
+        },
+        {
+          "kind": "warning",
+          "text": "Neutral: Reception is normal. Boom/mask mikes do not transmit in this case."
+        },
+        {
+          "kind": "p",
+          "text": "RAD (press + hold):"
+        },
+        {
+          "kind": "p",
+          "text": "Boom/mask mikes transmit on the radio selected on the ACP."
+        },
+        {
+          "kind": "p",
+          "text": "ON VOICE Key"
+        },
+        {
+          "kind": "p",
+          "text": "This key allows the crew to inhibit the audio navigation signals from beacons like the VOR/ADF. When pressed, the key filters out audio ident signals and Green light comes on."
+        },
+        {
+          "kind": "p",
+          "text": "SELCAL/RESET key"
+        },
+        {
+          "kind": "p",
+          "text": "Pressing this button switches off the CALL, MECH and ATT lights."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p758",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_passenger_address_pa_function",
+      "name": "Passenger Address (PA) function",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The system includes a PA reception knob and a transmission key as seen."
+        },
+        {
+          "kind": "p",
+          "text": "The transmission key, when pressed and held"
+        },
+        {
+          "kind": "p",
+          "text": "(Three Green lights come on), allows crew to make a PA announcement via either boom, mask or hand held mike. The reception knob, when pressed and released out allows the message to go through loudspeaker, and the integral white light illuminates. The knob can be turned to adjust volume."
+        },
+        {
+          "kind": "p",
+          "text": "When pressed in, the reception to the loudspeakers is disconnected and white lights go out."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p775",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_thrust_levers_trim_wheel",
+      "name": "Thrust Levers + Trim Wheel",
+      "type": "lever",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The thrust levers are used for the following:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*Manually select engine thrust."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Arm and activate the auto-thrust (A/THR)."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Engage reverse thrust."
+        },
+        {
+          "kind": "bullet",
+          "text": "*Engage the TOGA mode (Take Off and Go-Around)."
+        },
+        {
+          "kind": "p",
+          "text": "When the auto thrust is inactive, the levers are used to control the thrust directly. Each levers"
+        },
+        {
+          "kind": "p",
+          "text": "position corresponds to a given thrust setting including the set detents available and as shown in the image. These detents are as follows:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*TOGA: Maximum takeoff thrust.",
+          "label": "TOGA"
+        },
+        {
+          "kind": "bullet",
+          "text": "*FLX MCT: Maximum continuous thrust (or FLX at takeoff).",
+          "label": "FLX MCT"
+        },
+        {
+          "kind": "bullet",
+          "text": "*CL: Maximum climb thrust.",
+          "label": "CL"
+        },
+        {
+          "kind": "bullet",
+          "text": "*IDLE: Sets idle thrust for both forward and reverse",
+          "label": "IDLE"
+        },
+        {
+          "kind": "bullet",
+          "text": "*MAX REV: Maximum",
+          "label": "MAX REV"
+        },
+        {
+          "kind": "p",
+          "text": "reverse thrust."
+        },
+        {
+          "kind": "p",
+          "text": "On each lever handles sides are red instinctive sides are red instinctive auto thrust disconnect push buttons. Pressing these disconnects the auto thrust and the crew should first move the levers to match the current engine thrust level on the E/WD before disconnecting auto thrust."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p785",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_pitch_trim_wheel",
+      "name": "Pitch Trim Wheel",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "On either side of the thrust levers are also the Pitch Trim Wheels. Both wheels provide mechanical control of the THS and have priority over electrical control. Manually moving it disconnects the autopilot. Before takeoff, the crew sets the THS to a value on the trims CG scale as calculated in the performance figures, which| are determined as a function of the aircraft CG. The limits of the THS normal setting for takeoff are indicated by a green band on the pitch trim wheel."
+        },
+        {
+          "kind": "p",
+          "text": "In flight, when in direct law, the crew uses the THS conventionally to fly in trim. In flight, the aircraft pitch trim setting depends on the CG, weight, altitude and speed."
+        },
+        {
+          "kind": "p",
+          "text": "On landing, once the nose wheel touches down, as the pitch attitude becomes less than 2.5° for more than 5 seconds, the pitch trim automatically resets to zero. (Not operative if green or yellow hydraulic system not pressurized)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p802",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_radar_switch",
+      "name": "Radar switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch sets the radar to ON (1 or 2) or OFF."
+        },
+        {
+          "kind": "p",
+          "text": "In a case where only one radar is installed on the aircraft then:"
+        },
+        {
+          "kind": "bullet",
+          "text": "-An \"INOP\" or \"DEACT\""
+        },
+        {
+          "kind": "p",
+          "text": "label replaces the \"2\", or"
+        },
+        {
+          "kind": "bullet",
+          "text": "-An \"ON/OFF\" Radar switch replaces the"
+        },
+        {
+          "kind": "p",
+          "text": "\"1/OFF/2\" switch."
+        },
+        {
+          "kind": "p",
+          "text": "In the above case, weather returns are only displayed on the ND when switch is set to \"1\"."
+        },
+        {
+          "kind": "p",
+          "text": "Display Mode Selector"
+        },
+        {
+          "kind": "p",
+          "text": "WX (Weather Mode) Colors indicate the intensity of the weather returns/precipitation."
+        },
+        {
+          "kind": "p",
+          "text": "(Black for the lowest intensity, green, amber and red indicate higher intensities)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p819",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_wx_turb_weather_turbulence_modes",
+      "name": "WX/TURB (Weather + Turbulence Modes)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The ND shows precipitation and turbulence areas. Turbulence is displayed in | magenta (within 40nm)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p833",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_map_map_mode",
+      "name": "MAP (Map Mode)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Radar operates in ground mapping mode. Black indicates water, green indicates ground and amber indicates cities/mountains."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p836",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_tilt_knob",
+      "name": "TILT Knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Adjusts the antenna tilt above/below the horizon. Zero indicates the horizon reference, as supplied by the ADIRS."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p839",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_gain_knob",
+      "name": "GAIN Knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Used to adjust the sensitivity of the radar. In AUTO mode, the radar automatically adjusts the gain to the optimum setting."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p842",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_windshear_switch",
+      "name": "WINDSHEAR Switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "AUTO: This activates the predictive windshear"
+        },
+        {
+          "kind": "p",
+          "text": "function. Such areas can be detected when radio height is below 1500 feet, even if the radar switch is set to OFF."
+        },
+        {
+          "kind": "p",
+          "text": "OFF: Turns off the predictive windshear function."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p845",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_capt_fo_display_mode_selector",
+      "name": "CAPT/FO DISPLAY Mode Selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "OFF - weather data is not displayed on the related ND display. If the WXR/PWS switch is not set to OFF, the Predictive Windshear (PWS) function is active during takeoff and landing."
+        },
+        {
+          "kind": "p",
+          "text": "ALL WX - ND shows the ON PATH and OFF PATH weather. PWS and Turbulence display are also available."
+        },
+        {
+          "kind": "p",
+          "text": "PATH WX - ND shows ON PATH weather only. PWS and Turbulence display are also available."
+        },
+        {
+          "kind": "p",
+          "text": "ELEVN - ND shows the weather data at a selected altitude only via use of the ELEVN knob. PWS and Turbulence display are also available."
+        },
+        {
+          "kind": "p",
+          "text": "MAP - ND only shows ground echoes. PWS"
+        },
+        {
+          "kind": "p",
+          "text": "display is available but Turbulence and HZD function are not available"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p851",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_elevn_knob",
+      "name": "ELEVN Knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When the display mode selector is set to ELEVN, the crew can use this knob to rotate and set the altitude or Flight level of the weather return to be shown on the ND."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p864",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_wxr_pws_switch",
+      "name": "WXR/PWS switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The switch turns one radar to ON or turns off both radars."
+        },
+        {
+          "kind": "note",
+          "text": "Note:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*If only one radar is installed, a DEACT label is placed next to the 2 label to indicate system 2 is deactivated."
+        },
+        {
+          "kind": "bullet",
+          "text": "*When radar is switched ON, a 30 second delay occurs before weather is displayed. This is the time needed to scan the entire volume ahead of the aircraft for the first time."
+        },
+        {
+          "kind": "bullet",
+          "text": "*The Predictive Windshear (PWS) detection is available as soon as radar is set to ON and activation conditions are satisfied."
+        },
+        {
+          "kind": "p",
+          "text": "TURB and HZD mode selection"
+        },
+        {
+          "kind": "p",
+          "text": "TURB button - during normal operation, the TURB function is active (TURB light illuminated on). The crew can remove the turbulence display from the ND (e.g. for de-cluttering purposes) by pushing the TURB button again (light off). Turbulence zones are shown in Magenta color on the ND (within 60 NM)."
+        },
+        {
+          "kind": "p",
+          "text": "HZD button - This shows the hail and lightning zones on the ND. In normal operations, the HZD"
+        },
+        {
+          "kind": "p",
+          "text": "function is active (HZD button light on). The crew can remove the HZD icon displays from the ND (e.g. for de-cluttering purposes) by pushing the HZD button again (light off)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p867",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_gain_knob_2",
+      "name": "GAIN knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This knob allows adjusting of the sensitivity of the radar around a certain calibrated position (AUTO). The crew can manually adjust the gain of the weather radar display using the knob. Normally this should be set to AUTO."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p882",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_eng_1_2_master_switch",
+      "name": "ENG 1(2) MASTER Switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ON"
+        },
+        {
+          "kind": "p",
+          "text": "When ON, the LP fuel valve opens (provided engine fire push-button is in)."
+        },
+        {
+          "kind": "p",
+          "text": "During an automatic start sequence, the HP fuel valve opens if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The ENG MODE selector is set to IGN/START."
+        },
+        {
+          "kind": "bullet",
+          "text": "*N2 is above the following threshold: 22% on the ground and 15% in flight."
+        },
+        {
+          "kind": "p",
+          "text": "During a manual start, the HP fuel valve opens if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*The ENG MODE selector is set to IGN/START."
+        },
+        {
+          "kind": "bullet",
+          "text": "*The MAN START push-button is ON."
+        },
+        {
+          "kind": "p",
+          "text": "OFF"
+        },
+        {
+          "kind": "p",
+          "text": "When OFF, close signals are sent directly to the HP and LP fuel valves. These signals cause both FADEC channels to be reset."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p891",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_eng_1_2_fault_light",
+      "name": "ENG 1(2) FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [],
+      "sourceRef": "Center Pedestal (finish).docx#p907",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_fault_light",
+      "name": "FAULT Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "Amber light illuminates and an ECAM Caution appears if:"
+        },
+        {
+          "kind": "bullet",
+          "text": "*There is an automatic start abort."
+        },
+        {
+          "kind": "bullet",
+          "text": "*There is disagreement between the HP fuel valve position and its commanded position."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p909",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_fire_light",
+      "name": "FIRE light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "warning",
+          "text": "This light indicates the engine to be shut down in case of a fire. It appears in Red when an engine fire warning is triggered."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p914",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_eng_mode_selector",
+      "name": "ENG MODE selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "CRANK"
+        },
+        {
+          "kind": "p",
+          "text": "Start valves open if the MAN START button is ON. Ignition does not fire."
+        },
+        {
+          "kind": "p",
+          "text": "NORM"
+        },
+        {
+          "kind": "p",
+          "text": "Turns on continuous ignition (A and B) when the engine is running and either when a flameout is detected or an EIU fails."
+        },
+        {
+          "kind": "p",
+          "text": "IGN/START"
+        },
+        {
+          "kind": "p",
+          "text": "If Master switch is on and N2 ≥ idle, this position selects continuous ignition (A and B):"
+        },
+        {
+          "kind": "bullet",
+          "text": "*During an automatic start on the ground, when N2 passes 16%, ignition switches to A or B. Note that if there is an ignition delay during start sequence, ignition is continuous."
+        },
+        {
+          "kind": "bullet",
+          "text": "*In flight, continuous ignition begins when the MATER switch is set to ON."
+        },
+        {
+          "kind": "p",
+          "text": "On the ground, ignition shuts off automatically at the end of a start sequence when N * 2 > 50% The pack valves close automatically during a start sequence."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p917",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_auto_on_selector",
+      "name": "AUTO/ON selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "When ON, all intruders are displayed and in AUTO only proximate and other intruders are displayed, if a TA or RA is already presented. Some Panels indicate this switch with THRT/ALL and the associated functions remain the same. STBY puts the system in standby mode."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p935",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_xpndr_selector",
+      "name": "XPNDR Selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Selects ATC transponder 1 or 2."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p938",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_traffic_selector",
+      "name": "TRAFFIC selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "ABV: The altitude range is set to +7000 ft above the aircraft and -2700 ft below."
+        },
+        {
+          "kind": "p",
+          "text": "N: Neutral position sets range to ±2700 ft."
+        },
+        {
+          "kind": "p",
+          "text": "BLW: The altitude range is set to -7000 ft below the aircraft and +2700 ft above."
+        },
+        {
+          "kind": "p",
+          "text": "Keyboard"
+        },
+        {
+          "kind": "p",
+          "text": "Crew uses these push buttons to set the transponder code assigned by ATC or the relevant emergency codes such as 7700 (emergency), 7600 (radio/com failure) and 7500 (hijack)."
+        },
+        {
+          "kind": "p",
+          "text": "CLR push button"
+        },
+        {
+          "kind": "p",
+          "text": "Clears the code display."
+        },
+        {
+          "kind": "p",
+          "text": "ATC FAIL"
+        },
+        {
+          "kind": "p",
+          "text": "Light comes on if the selected transponder 1 or 2 fails."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p941",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_code_display",
+      "name": "Code display",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This window displays the selected code."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p957",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_ident_switch",
+      "name": "IDENT switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The crew presses this to send an aircraft identification signal to ATC."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p960",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_mode_selector",
+      "name": "Mode selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "STBY"
+        },
+        {
+          "kind": "p",
+          "text": "Both ATC transponders and TCAS are electronically supplied, but stay on standby."
+        },
+        {
+          "kind": "p",
+          "text": "ALT RPTG OFF"
+        },
+        {
+          "kind": "p",
+          "text": "No altitude data is transmitted."
+        },
+        {
+          "kind": "p",
+          "text": "XPNDR"
+        },
+        {
+          "kind": "p",
+          "text": "In flight, the selected ATC transponder operates in all modes and the aircraft barometric data is also transmitted. ATC 1 uses ADR 1 or 3 and ATC 2 uses ADR 2 or 3. The TCAS in this case remains on standby."
+        },
+        {
+          "kind": "p",
+          "text": "On the ground, the selected ATC transponder only operates in mode S (Selective aircraft interrogation mode)."
+        },
+        {
+          "kind": "p",
+          "text": "TA ONLY"
+        },
+        {
+          "kind": "p",
+          "text": "Used in case of degraded aircraft performance issues such as, engine failures, landing gear extended, or approach on parallel runways. All RA's are converted into TA's. The display shows TA's, proximate and other intruders."
+        },
+        {
+          "kind": "p",
+          "text": "TA/RA"
+        },
+        {
+          "kind": "p",
+          "text": "This is the normal position. TA's, RA's, proximate and other intruders are all displayed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p966",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_lever",
+      "name": "Lever",
+      "type": "lever",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The lever controls the position of the speed brake surfaces. As you move the lever down, the surfaces extend by a certain value and there is even a 1⁄2 way mark indicate along the scale. In the A320, extending the speed brakes with autopilot on is limited to only half value despite full down position. When the lever is pulled up from its top position (RET); this action arms the ground spoilers. During landing or rejected takeoff (> 70 knots), when the spoilers are armed like this they automatically deploy or when reverse thrust is selected."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1001",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_rud_trim_rotary_switch_reset_button_position",
+      "name": "RUD TRIM Rotary switch/Reset button/Position Indicator",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The rotary switch controls the rudder trim actuator, which moves the neutral point of the artificial feel by an equivalent of one degree of rudder travel per second. The rotary switch has no effect if the Autopilot is engaged."
+        },
+        {
+          "kind": "p",
+          "text": "The RESET button to its left orders the Zero trim position at 1.5°/s. After pressing the RESET, an indication of up to 0.3° (L or R) may be seen in the position indicator above it. The button is non-active when AP is engaged."
+        },
+        {
+          "kind": "p",
+          "text": "The Position indication above the RESET button displays the rudder trim direction (L or R) and the relevant value (0 - 20°)."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1004",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_flap_lever",
+      "name": "FLAP lever",
+      "type": "lever",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The lever offers 5 positions: 0, 1, 2, 3 and FULL. The flap lever selects the operation of the slats/flaps simultaneously. The image below shows these five lever positions correspond to the following surface positions and when they are mainly utilized:"
+        },
+        {
+          "kind": "p",
+          "text": "When carrying out a takeoff in Configuration 1, the Slat/Flap setting is 1+ F (18°/10°). If not done by crew, then the Slats/Flaps auto retract at a speed of 210 knots."
+        },
+        {
+          "kind": "p",
+          "text": "Below is an image showing how the Slat/Flap indication is presented on the upper ECAM display."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1011",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_cockpit_door_toggle_switch_fault_light",
+      "name": "Cockpit Door Toggle switch + Fault light",
+      "type": "switch",
+      "hotspot": null,
+      "body": [],
+      "sourceRef": "Center Pedestal (finish).docx#p1017",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_toggle_switch",
+      "name": "Toggle switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "UNLOCK: Enables cabin crew to open the door when the switch is pushed and maintained in this position."
+        },
+        {
+          "kind": "p",
+          "text": "NORM: All latches are locked, and only emergency access is possible for cabin crew."
+        },
+        {
+          "kind": "p",
+          "text": "LOCK: In this position the door is locked. Emergency access, the buzzer and the keypad are inhibited for a preselected period (5-20 minutes)."
+        },
+        {
+          "kind": "bullet",
+          "text": "-If the pilots have not used the LOCK position for at least 5 to 20 minutes, the cabin crew can request emergency access to open the door."
+        },
+        {
+          "kind": "bullet",
+          "text": "-The UNLOCK position overrides and resets any previous selections made by crew."
+        },
+        {
+          "kind": "bullet",
+          "text": "- If there is an electrical supply failure, the cockpit door is automatically unlocked, but remains closed."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1018",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_fault_light_2",
+      "name": "Fault Light",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "OPEN Light ON: Door is not closed/locked."
+        },
+        {
+          "kind": "p",
+          "text": "OPEN Light flashing: Cabin crew is commencing the emergency access procedure. If the pilots don't react then the door will unlock at the end of the adjustment delay period (15 to 120 seconds)."
+        },
+        {
+          "kind": "p",
+          "text": "FAULT Light: A failure has been detected in the cockpit door system."
+        },
+        {
+          "kind": "p",
+          "text": "Printer"
+        },
+        {
+          "kind": "p",
+          "text": "Prints reports from the following systems (if installed) via the MCDU: ACARS, AIDS, FMGC, CFDIU and EVMU."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1026",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_parking_brk_handle",
+      "name": "PARKING BRK handle",
+      "type": "lever",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pulling this handle and turning it clockwise to ON sets the parking brake. An ECAM memo displays 'PARK BRK'. If the pointer is not at ON, then the brake is OFF."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1035",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_gravity_gear_extn",
+      "name": "Gravity GEAR EXTN",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The crew can pull the gear crank out and turn it clockwise for 3 turns to extend the landing gear using gravity. Operating this handle, the cutout valve shuts off hydraulic pressure to the landing gear system and depressurizes it."
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1038",
+      "needsReview": true,
+      "sectionId": "f_ctl"
+    }
+  ]
+}

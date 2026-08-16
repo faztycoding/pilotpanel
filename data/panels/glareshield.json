@@ -1,0 +1,338 @@
+{
+  "panelId": "glareshield",
+  "title": "Glareshield",
+  "image": "glareshield.webp",
+  "imageSize": {
+    "w": 0,
+    "h": 0
+  },
+  "sections": [],
+  "controls": [
+    {
+      "id": "gs_barometer_reference_selector",
+      "name": "Barometer Reference Selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The outer ring can be turned to choose between hecto Pascals or mercury inches. Unit selector information does not appear on the PFD. The inner knob is used to select the value displayed in the barometer display window, which is located above the knob (shown reading 1013 in the image). The value also displays on the PFD below the altitude scale. When you pull the knob it automatically reverts to setting the standard value, which is used above transition altitude during operation (i.e. 1013). The window and PFD then indicate 'STD\". when you push on the knob it reverts to manual entry of a pressure setting which is used below transition and therefore crews can push and select the required value."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p4",
+      "needsReview": false
+    },
+    {
+      "id": "gs_flight_director_fd_push_button",
+      "name": "Flight Director (FD) push- button",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressing this either removes or adds the flight director bars/flight path director symbol on the Primary Flight Display (PFD). When ON, it lights up green."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p8",
+      "needsReview": false
+    },
+    {
+      "id": "gs_ls_push_button",
+      "name": "LS push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressing this displays the ILS information on the PFD. This includes the Localizer and Glideslope scales and deviation symbols appear if there is a valid signal with the ILS. When ON. it lights up in green."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p11",
+      "needsReview": false
+    },
+    {
+      "id": "gs_operational_data_display_constraints",
+      "name": "Operational data display (Constraints)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pushing this displays all flight path constraints such as altitudes/speeds within the Navigation Display (ND) screen that have been programmed into the system/MCDU. The button lights up green to indicate its selection."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p15",
+      "needsReview": false
+    },
+    {
+      "id": "gs_operational_data_display_waypoints",
+      "name": "Operational data display (Waypoints)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pushing this displays all nearby airports within the Navigation Display (ND) screen that have been programmed into the system. Do note that the actual flight path waypoints will still show if they are part of the programmed route. The button lights up green to indicate its selection."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p22",
+      "needsReview": false
+    },
+    {
+      "id": "gs_operational_data_display_vor_dme",
+      "name": "Operational data display (VOR/DME)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pushing this displays all nearby VOR/DME's within the Navigation Display (ND) screen that have been programmed into the system. The button lights up green to indicate its selection."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p29",
+      "needsReview": false
+    },
+    {
+      "id": "gs_operational_data_display_ndb",
+      "name": "Operational data display (NDB)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pushing this displays all NDB's within the Navigation Display (D) screen that have been programmed into the system. The button lights up green to indicate its selection."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p32",
+      "needsReview": false
+    },
+    {
+      "id": "gs_operational_data_display_airports",
+      "name": "Operational data display (Airports)",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pushing this displays all nearby airports within the Navigation Display (ND) screen that have been programmed into the system. The button lights up green to indicate its selection."
+        },
+        {
+          "kind": "p",
+          "text": "Mode Select Switch: This switches between various navigation display modes on the related ND display. The display modes include: Rose (ILS, VOR and NAV), ARC and PLAN. Each one shifts the ND's displays to display their relevant information and layout difference."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p35",
+      "needsReview": false
+    },
+    {
+      "id": "gs_range_select_switch",
+      "name": "Range Select Switch",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This changes the range for the related ND display screen. You can select between 10 and 320 nm ranges as seen from the switch itself. If the mode or range data fails, the default selection is the ROSE NAV mode and 80nm."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p40",
+      "needsReview": false
+    },
+    {
+      "id": "gs_adf_vor_select_switches",
+      "name": "ADF/VOR Select Switches",
+      "type": "switch",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Allows you to select ADF or VOR pointers with DME on the related ND display. II also gives the corresponding NAVAID data except if in PLAN mode."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p43",
+      "needsReview": false
+    },
+    {
+      "id": "gs_fcu_window",
+      "name": "FCU Window",
+      "type": "display",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This displays the various buttons/knob selections as mentioned. When the aircraft uses target values from the FMGS (managed) the FCU windows display dashes and the white dots next to those windows light up. When the aircraft uses value selected by the flight crew, then the window displays the actual numbers/ values and the white dots doesn't light up."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p49",
+      "needsReview": false
+    },
+    {
+      "id": "gs_spd_mach_push_button",
+      "name": "SPD/MACH push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pressing this changes the SPD target to the converted MACH target and vice versa."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p52",
+      "needsReview": false
+    },
+    {
+      "id": "gs_spd_mach_knob",
+      "name": "SPD/MACH Knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Allows for speed selection range of 100 to 399 knots and Mach range of 0.10 to 0.99 One rotation corresponds to about 32 knots or 0.32 Mach."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p58",
+      "needsReview": false
+    },
+    {
+      "id": "gs_hdg_trk_knob",
+      "name": "HDG/TRK Knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Allows for full compass selection of between 0° and 359° One rotation of the knob equals about 32° movement (each click =1°) The knob is pulled to select a heading or pushed to engage managed FMGC navigation."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p61",
+      "needsReview": false
+    },
+    {
+      "id": "gs_loc_push_button",
+      "name": "LOC push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Pushing this button arms, engages or disengages the tuned or programmed localizer. Lights up green when ON."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p65",
+      "needsReview": false
+    },
+    {
+      "id": "gs_hdg_v_s_or_trk_fpa_push_button",
+      "name": "HDG V/S or TRK FPA push- button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Used to select either HDG with vertical speed or TRK with flight path angle indication on the PFD. Pushing the button displays the Flight path vector on the PFD or removing it. The FD crossbars, which in HDG V/S mode display the crosses in reference to attitude, change into displaying in reference to the flight path vector. The heading reference changes into a track reference and vice versa. The vertical speed reference changes into the flight path angel reference and vice versa."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p68",
+      "needsReview": false
+    },
+    {
+      "id": "gs_autopilot_1_and_2_push_button_ap1_ap2",
+      "name": "Autopilot 1 and 2 push button AP1/AP2",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The pilots use these buttons to engage/ disengage the Autopilots. The buttons illuminate green when ON."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p71",
+      "needsReview": false
+    },
+    {
+      "id": "gs_auto_thrust_a_thr_push_button",
+      "name": "Auto-Thrust A/THR push- button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The Pilots use this button to engage/disengage the Auto thrust. It lights up green when on."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p76",
+      "needsReview": false
+    },
+    {
+      "id": "gs_altitude_selector_knob",
+      "name": "Altitude Selector Knob",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This button has two rings; inner and outer. The display range is from 100 feet to 49,000 feet. The outer knob allows you to select whether you want to change indication by 100 or 1000. You can set it to either one. The inner knob sets the altitude in the FCU window above it. When you select an altitude and pull the knob, the aircraft follows the Open mode of climb/descent whilst pushing uses the managed modes of climb/ descent and therefore will automatically adhere to any set constraints in the MCDU if possible of course."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p79",
+      "needsReview": false
+    },
+    {
+      "id": "gs_exped_push_button",
+      "name": "EXPED push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Used to engage the expedite mode during climb or descent. For this button to function the aircraft must have been in flight for more than 5 seconds and managed speed must be available. When pressed the button illuminates green and either EXP CLB or EXP DES activates depending on whether the FCU selected altitude is higher/ lower than current altitude."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p87",
+      "needsReview": false
+    },
+    {
+      "id": "gs_metric_altitude_push_button",
+      "name": "Metric Altitude push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This button can be used to display the FCU altitude in meters on the ECAM."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p90",
+      "needsReview": false
+    },
+    {
+      "id": "gs_v_s_or_fpa_knob",
+      "name": "V/S or FPA Knob",
+      "type": "knob",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The vertical speed selection ranges from ±6000 ft/min and the FPA ±9.9 °. The crew turns this knob to set the value of the vertical speed or flight path angle to be displayed in the FCU window above it. This works in relation to the previous button HDG V/S or TRK FPA push button. If the button is pressed to indicate FPA then this knob reverts to selecting the desired angle and if in HDG V/S mode. then of course the selection offers ft/min values. One complete rotation of the knob sets a FPA of 3.2 ° or V/S of 1600 ft/min. This knob also has another feature useful to the crew. If pushed in. the aircraft immediately commands a level off by setting the FPA or V/S to zero and the PFD indicates this by displaying \"V/S =0 in green. The crew can then adjust the intended vertical path accordingly. It is the best way to level off the aircraft quickly using automation if required for e.g. if ATC suddenly ask for a level off or to stop climb."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p93",
+      "needsReview": false
+    },
+    {
+      "id": "gs_appr_push_button",
+      "name": "APPR push-button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This button arms, disarms, engages or disengages the approach modes. If an ILS is selected in the active flight plan then it handles the LOC and G/S mode and if a non-precision approach is active in the flight plan (e.g. VOR Approach), then it uses the APP NAV-FINAL modes."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p97",
+      "needsReview": false
+    }
+  ]
+}
