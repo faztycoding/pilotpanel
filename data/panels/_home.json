@@ -1,0 +1,78 @@
+{
+  "panelId": "_home",
+  "title": "Cockpit Overview",
+  "titleTh": "ภาพรวมห้องนักบิน",
+  "image": "cockpit_home.webp",
+  "imageSize": {
+    "w": 2360,
+    "h": 1640
+  },
+  "sections": [
+    {
+      "id": "panels",
+      "name": "Panels"
+    }
+  ],
+  "controls": [
+    {
+      "id": "home_overhead",
+      "sectionId": "panels",
+      "name": "Overhead Panel",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Overhead Panel (แผงเหนือศีรษะ) — 93 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    },
+    {
+      "id": "home_glareshield",
+      "sectionId": "panels",
+      "name": "Glareshield",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Glareshield (แผงบังแดด) — 23 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    },
+    {
+      "id": "home_instrument",
+      "sectionId": "panels",
+      "name": "Instrument Panel",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Instrument Panel (แผงหน้าปัด) — 31 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    },
+    {
+      "id": "home_pedestal",
+      "sectionId": "panels",
+      "name": "Center Pedestal",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "Center Pedestal (แผงกลาง) — 164 controls"
+        }
+      ],
+      "sourceRef": "รูปตอนเข้า.png",
+      "needsReview": false
+    }
+  ]
+}
