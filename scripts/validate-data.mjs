@@ -27,7 +27,8 @@ const MIN_HOTSPOT_RATIO = 0.02;
 const MAX_OVERLAP_RATIO = 0.3;
 
 const VALID_TYPES = ["pushbutton","knob","selector","switch","lever","light","display","area"];
-const VALID_KINDS = ["p","bullet","note","warning","heading"];
+// ไม่มี "heading" เพราะ extract.py ไม่เคยผลิตออกมาเลย — schema ต้องสะท้อนของจริง
+const VALID_KINDS = ["p","bullet","note","warning"];
 
 const errors = [];
 const warnings = [];

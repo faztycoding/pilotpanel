@@ -68,7 +68,8 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 | `controls[].id` | `<panelPrefix>_<snake_case>` ต้อง unique ทั้งไฟล์ **ห้ามเปลี่ยนหลังสร้าง** |
 | `controls[].type` | `pushbutton` \| `knob` \| `selector` \| `switch` \| `lever` \| `light` \| `display` \| `area` |
 | `hotspot` | ทุกค่าเป็น ratio 0..1 เทียบกับรูป ห้าม px |
-| `body[].kind` | `p` \| `bullet` \| `note` \| `warning` \| `heading` |
+| `body[].kind` | `p` \| `bullet` \| `note` \| `warning` |
+| `body[].label` | optional มีได้เฉพาะ `kind: "bullet"` — label สั้นที่ `extract.py` แยกออกมา เช่น `ON` / `FAULT` render เป็นตัวหนานำหน้า `text` |
 | `sections[].image` | optional ชื่อไฟล์ใน `assets/panels/` ถ้ามี = โซนนี้ใช้รูปของตัวเอง |
 | `sections[].imageSize` | บังคับเมื่อมี `image` ขนาดจริงของไฟล์นั้น |
 | `sections[].viewport` | optional ratio 0..1 บนรูป panel เดิม ใช้เมื่อไม่มี `image` |
