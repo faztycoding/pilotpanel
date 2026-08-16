@@ -50,6 +50,12 @@ export type Control = {
   sectionId?: string;
   /** panelId ปลายทาง — ถ้ามี แตะแล้ว navigate ไปหน้านั้นแทนการเปิดคำอธิบาย (ใช้ใน _home.json) */
   target?: string;
+  /**
+   * ไฟล์ใน assets/detail/<panelId>/ — โคลสอัพจริงจาก docx ของปุ่มนี้
+   * วางทับตำแหน่ง hotspot บนรูปแผงโดยตรง (คนละที่กับรูปใน bottom sheet ซึ่งลูกค้าห้าม)
+   * แก้ปัญหารูปแผงเต็มความละเอียดต่ำเกินกว่าจะอ่านรายละเอียดปุ่มออกตอนซูม
+   */
+  detailImage?: string;
 };
 
 export type Section = {

@@ -60,11 +60,11 @@ export default function PanelScreen() {
         onDisplayChange={handleDisplayChange}
         renderOverlay={(size) => (
           <HotspotLayer
+            panelId={panel.panelId}
             controls={controls}
             display={size}
             scale={scale}
             onPress={handlePress}
-            debug
           />
         )}
       />

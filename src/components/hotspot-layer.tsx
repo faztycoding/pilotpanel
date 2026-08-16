@@ -1,6 +1,8 @@
+import { Image } from 'expo-image';
 import { Pressable, StyleSheet } from 'react-native';
 
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
+import { getDetailImage } from '@/lib/panels';
 import type { Control, Hotspot } from '@/lib/types';
 
 /**
@@ -9,11 +11,16 @@ import type { Control, Hotspot } from '@/lib/types';
  * component นี้ต้องเป็นลูกของ Animated.View ที่ถือ transform ของรูป
  * RN จะใส่ transform เดียวกันให้ทั้ง hit area ด้วย ปุ่มจึงขยับ/ขยายตามรูปเอง
  * ไม่ต้องคำนวณ inverse transform ตอนแตะ = ไม่มีทางที่พิกัดกดจะเพี้ยนจากพิกัดที่เห็น
+ *
+ * ถ้า control มี detailImage จะวาดรูปโคลสอัพจริง (จาก docx) ทับพื้นที่ hotspot ก่อน
+ * เพราะรูปแผงเต็มความละเอียดต่ำเกินกว่าจะอ่านรายละเอียดปุ่มออกตอนซูม — คนละที่กับรูปใน
+ * bottom sheet ซึ่งลูกค้าห้ามใส่รูปประกอบ อันนี้คือตัวปุ่มบนรูปแผงเอง ไม่ใช่กล่องคำอธิบาย
  */
 
 type PlacedControl = Control & { hotspot: Hotspot };
 
 type Props = {
+  panelId: string;
   controls: PlacedControl[];
   display: Size;
   /** scale ปัจจุบัน ใช้ขยาย hitSlop ตอนกล่องเล็กกว่านิ้ว */
@@ -23,12 +30,13 @@ type Props = {
   debug?: boolean;
 };
 
-export function HotspotLayer({ controls, display, scale, onPress, debug = false }: Props) {
+export function HotspotLayer({ panelId, controls, display, scale, onPress, debug = false }: Props) {
   return (
     <>
       {controls.map((control) => {
         const box = hotspotToBox(control.hotspot, display);
         const slop = hitSlopFor(box, scale);
+        const detailImage = getDetailImage(panelId, control.id);
         return (
           <Pressable
             key={control.id}
@@ -45,8 +53,11 @@ export function HotspotLayer({ controls, display, scale, onPress, debug = false 
               styles.hotspot,
               debug && styles.debug,
               { left: box.left, top: box.top, width: box.width, height: box.height },
-            ]}
-          />
+            ]}>
+            {detailImage ? (
+              <Image source={detailImage} style={StyleSheet.absoluteFill} contentFit="cover" />
+            ) : null}
+          </Pressable>
         );
       })}
     </>

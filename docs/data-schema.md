@@ -83,6 +83,7 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 | `body[].kind` | `p` \| `bullet` \| `note` \| `warning` |
 | `body[].label` | optional มีได้เฉพาะ `kind: "bullet"` — label สั้นที่ `extract.py` แยกออกมา เช่น `ON` / `FAULT` render เป็นตัวหนานำหน้า `text` |
 | `controls[].target` | optional `panelId` ปลายทาง ถ้ามี = แตะแล้ว navigate ไปหน้านั้นแทนการเปิดคำอธิบาย |
+| `controls[].detailImage` | optional path ใน `assets/detail/<panelId>/` รูปโคลสอัพจริงจาก docx ของปุ่มนั้น วางทับ hotspot box แทนพื้นเบลอ (ไม่ใช่รูปใน sheet คำอธิบาย ลูกค้าห้าม) |
 | `sections[].image` | optional ชื่อไฟล์ใน `assets/panels/` ถ้ามี = โซนนี้ใช้รูปของตัวเอง |
 | `sections[].imageSize` | บังคับเมื่อมี `image` ขนาดจริงของไฟล์นั้น |
 | `sections[].viewport` | optional ratio 0..1 บนรูป panel เดิม ใช้เมื่อไม่มี `image` |

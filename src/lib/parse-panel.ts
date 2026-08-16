@@ -102,6 +102,9 @@ function parseControl(value: unknown, path: string): Control {
   if (raw.target !== undefined) {
     control.target = asString(raw.target, `${path}.target`);
   }
+  if (raw.detailImage !== undefined) {
+    control.detailImage = asString(raw.detailImage, `${path}.detailImage`);
+  }
   return control;
 }
 

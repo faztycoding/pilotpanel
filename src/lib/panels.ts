@@ -29,6 +29,20 @@ const PANEL_IMAGES: Record<string, PanelImage> = {
   pedestal: require('@/assets/panels/pedestal.webp'),
 };
 
+/**
+ * รูปโคลสอัพจริงต่อปุ่ม (จาก assets/detail/<panelId>/) — Metro ต้อง require() แบบ static เท่านั้น
+ * เพิ่ม key ใหม่ทุกครั้งที่ทำ detailImage ให้ control เพิ่ม (คีย์ = "<panelId>:<controlId>")
+ */
+const DETAIL_IMAGES: Record<string, PanelImage> = {
+  'glareshield:gs_barometer_reference_selector': require('@/assets/detail/glareshield/gs_barometer_reference_selector.webp'),
+  'glareshield:gs_flight_director_fd_push_button': require('@/assets/detail/glareshield/gs_flight_director_fd_push_button.webp'),
+  'glareshield:gs_ls_push_button': require('@/assets/detail/glareshield/gs_ls_push_button.webp'),
+};
+
+export function getDetailImage(panelId: string, controlId: string): PanelImage | undefined {
+  return DETAIL_IMAGES[`${panelId}:${controlId}`];
+}
+
 const cache = new Map<string, Panel>();
 
 export function getPanel(panelId: string | undefined): Panel | undefined {
