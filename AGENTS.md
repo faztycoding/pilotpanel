@@ -5,7 +5,7 @@ Offline Android app (APK) สำหรับนักเรียนการบ
 โมเดลการใช้งาน: เปิดแอป -> เห็นภาพ cockpit -> แตะเลือก panel -> ซูม -> แตะปุ่ม -> อ่านคำอธิบาย
 
 **หัวใจของโปรเจกต์คือ data pipeline ไม่ใช่ UI**
-ตัวแอปเป็น image map ธรรมดา งานจริง 80% คือแปลง .docx 4 ไฟล์ -> JSON 291 controls
+ตัวแอปเป็น image map ธรรมดา งานจริง 80% คือแปลง .docx 4 ไฟล์ -> JSON 311 controls
 พร้อมพิกัด hotspot ที่กดถูกตัว
 
 ## Architecture
@@ -23,16 +23,16 @@ Offline Android app (APK) สำหรับนักเรียนการบ
 ## Data source of truth
 | ไฟล์ต้นทาง | Panel | controls โดยประมาณ |
 |---|---|---|
-| Overhead Panel (finish).docx | overhead | 151 |
-| Center Pedestal (finish).docx | pedestal | 98 |
+| Overhead Panel (finish).docx | overhead | 93 |
+| Center Pedestal (finish).docx | pedestal | 164 |
 | glareshield.docx | glareshield | 23 |
-| Instrument Panel.docx | instrument | 19 |
+| Instrument Panel.docx | instrument | 31 |
 
 ตัวเลขนี้คือ baseline ถ้า `validate:data` รายงานจำนวนต่างจากนี้เกิน ±5 แปลว่า extractor พัง
 
 ## Directory map
 ```
-app/                  expo-router screens
+src/app/              expo-router screens
 src/components/       UI ที่ reuse ได้
 src/lib/              logic (search, hotspot math, types)
 data/panels/*.json    GENERATED ห้ามแก้มือ
@@ -58,10 +58,7 @@ docs/FAILURES.md      failure library
 - APK ควรต่ำกว่า 100MB -> รูปทุกใบต้องเป็น WebP
 
 ## Git workflow policy
-- **ทุกครั้งที่ทำงานเสร็จเป็นก้อน (task/feature/fix)**: ให้ `git add -A && git commit` แล้ว `git push` ไปที่ `origin main` ทันที ไม่ต้องรอให้ user สั่งซ้ำทุกรอบ
-- เขียน commit message สั้น กระชับ บอกว่า "ทำไม" มากกว่า "ทำอะไร"
-- ยกเว้น: งานที่ยังไม่เสร็จ/พังอยู่ระหว่างทำ (WIP กลางคัน), หรือ diff มีไฟล์ credential/secret หลุดมา ให้หยุดถามก่อน
-- ห้าม force push / rewrite history โดยไม่ถาม user ก่อนเสมอ
+กฎ Git แบบละเอียด (บังคับ) อยู่ใน `.windsurfrules` — ดูที่นั่นเป็นแหล่งจริง
 
 ## Risk levels
 | งาน | risk | autonomy ที่ให้ agent |

@@ -35,6 +35,15 @@
 - สิ่งที่ยังไม่ได้ทำ / ความเสี่ยงที่เหลือ
 - assumption ที่ตั้งเอง (ถ้ามี)
 
+## Git workflow (บังคับ)
+- Commit ทุกครั้งที่ task ย่อยเสร็จ **และ** verification (ด้านล่าง) ผ่านแล้วเท่านั้น
+- ห้าม commit รวมหลายเรื่องในครั้งเดียว — 1 commit = 1 concern/task ย่อย
+- Push ขึ้น `origin main` ได้ก็ต่อเมื่อ `npm run validate:data` ผ่านเท่านั้น (ถ้า task แตะ data/hotspot)
+- ห้าม push ถ้า `npx tsc --noEmit` ยังไม่ผ่าน ไม่ว่ากรณีใด
+- ยกเว้นไม่ต้อง push (แต่ commit ได้): งานที่ตั้งใจทำเป็น WIP ระหว่างทาง หรือ diff มีไฟล์ credential/secret หลุดมา — ให้หยุดถาม user ก่อน
+- ห้าม force push หรือ rewrite history โดยไม่ถาม user ก่อนเสมอ
+- commit message สั้น กระชับ บอก "ทำไม" มากกว่า "ทำอะไร"
+
 ## Out of scope ของทั้งโปรเจกต์
 - iOS build
 - backend / API / database / login
