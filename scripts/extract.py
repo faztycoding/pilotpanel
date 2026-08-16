@@ -35,6 +35,9 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE_DIR = ROOT / "source"
 OUT_DIR = ROOT / "data" / "panels"
+# โซนที่เรากำหนดเอง (เช่น ELEC / HYD บน overhead) — ไม่ได้อยู่ในเอกสาร จึงดึงจาก docx ไม่ได้
+# แต่ต้องผ่าน pipeline เหมือนกัน ห้ามไปแก้ generated JSON ด้วยมือ
+MANUAL_SECTIONS = ROOT / "data" / "sections-manual.json"
 
 PANELS = [
     # (panelId, ชื่อไฟล์ docx, title, prefix ของ id)
@@ -350,6 +353,52 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
     return (panel, unassigned), []
 
 
+def load_manual_sections() -> dict:
+    """
+    อ่าน data/sections-manual.json ถ้ามี
+
+    {
+      "overhead": [
+        { "id": "elec", "name": "ELEC", "controlIds": ["oh_bat_1", "oh_bat_2"] }
+      ]
+    }
+    """
+    if not MANUAL_SECTIONS.exists():
+        return {}
+    try:
+        return json.loads(MANUAL_SECTIONS.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        print(f"  ✗ {MANUAL_SECTIONS.name} อ่านไม่ได้: {e}")
+        return {}
+
+
+def apply_manual_sections(panel: dict, manual: dict) -> list[str]:
+    """merge โซนที่กำหนดเองเข้า panel คืน list ของ warning"""
+    entries = manual.get(panel["panelId"])
+    if not entries:
+        return []
+
+    by_id = {c["id"]: c for c in panel["controls"]}
+    existing = {s["id"] for s in panel["sections"]}
+    warns: list[str] = []
+
+    for entry in entries:
+        sid = entry.get("id")
+        if not sid:
+            warns.append("section ไม่มี id — ข้าม")
+            continue
+        if sid not in existing:
+            panel["sections"].append({"id": sid, "name": entry.get("name", sid)})
+            existing.add(sid)
+        for cid in entry.get("controlIds", []):
+            control = by_id.get(cid)
+            if control is None:
+                warns.append(f"{panel['panelId']}: ไม่พบ control id '{cid}' ที่ระบุใน section '{sid}'")
+                continue
+            control["sectionId"] = sid
+    return warns
+
+
 def merge_hotspots(new_panel: dict, out_path: Path) -> int:
     """คงพิกัดที่วางไว้แล้วตอนรัน extractor ซ้ำ — กันงาน mapper หายทั้งหมด"""
     if not out_path.exists():
@@ -388,6 +437,8 @@ def main() -> int:
 
     total_c = total_r = total_u = 0
     all_unassigned: list[dict] = []
+    manual = load_manual_sections()
+    manual_warns: list[str] = []
     failed = False
 
     for panel_id, filename, title, prefix in PANELS:
@@ -399,6 +450,7 @@ def main() -> int:
             continue
 
         panel, unassigned = result
+        manual_warns.extend(apply_manual_sections(panel, manual))
         controls = panel["controls"]
         review = sum(1 for c in controls if c["needsReview"])
         blocks = sum(len(c["body"]) for c in controls)
@@ -432,6 +484,8 @@ def main() -> int:
         )
         print(f"  เขียนไฟล์ลง {OUT_DIR}")
 
+    for w in manual_warns:
+        print(f"  ⚠  {w}")
     if total_r:
         print(f"\n  ⚠  มี {total_r} control ที่ needsReview=true — ต้องเปิด docx เทียบด้วยตาก่อนส่งงาน")
     if total_u:
