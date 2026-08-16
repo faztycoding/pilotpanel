@@ -64,8 +64,8 @@ export function ZoomableImage({
   }, [display, onDisplayChange, ready]);
 
   const gesture = useMemo(() => {
-    const limitFor = (nextScale: number) => maxTranslate(container, display, nextScale);
-
+    // ห้ามสร้าง closure ธรรมดามาเรียกใน worklet — เรียก maxTranslate ตรง ๆ เท่านั้น
+    // (ตัวมันมี 'worklet' แล้ว) ไม่งั้น crash ระดับ native ตอนแตะครั้งแรก
     const pinch = Gesture.Pinch()
       .onUpdate((event) => {
         'worklet';
@@ -74,7 +74,7 @@ export function ZoomableImage({
       .onEnd(() => {
         'worklet';
         savedScale.value = scale.value;
-        const limit = limitFor(scale.value);
+        const limit = maxTranslate(container, display, scale.value);
         translateX.value = clamp(translateX.value, -limit.width, limit.width);
         translateY.value = clamp(translateY.value, -limit.height, limit.height);
         savedTranslateX.value = translateX.value;
@@ -84,7 +84,7 @@ export function ZoomableImage({
     const pan = Gesture.Pan()
       .onUpdate((event) => {
         'worklet';
-        const limit = limitFor(scale.value);
+        const limit = maxTranslate(container, display, scale.value);
         translateX.value = clamp(
           savedTranslateX.value + event.translationX,
           -limit.width,

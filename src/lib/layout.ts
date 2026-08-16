@@ -28,7 +28,13 @@ export const MIN_HIT_TARGET_DP = 44;
 const MIN_MAX_SCALE = 6;
 const MAX_MAX_SCALE = 20;
 
+/**
+ * ฟังก์ชันนี้ถูกเรียกจาก gesture callback ที่รันบน UI thread ต้องมี 'worklet'
+ * ถ้าไม่มี react-native-worklets จะ crash ระดับ native (ไม่ใช่ red box) ดู docs/FAILURES.md
+ * ตอนรันใน node ธรรมดา directive นี้เป็นแค่ string ไม่มีผล จึงยังทดสอบแยกได้
+ */
 export function clamp(value: number, min: number, max: number): number {
+  'worklet';
   return Math.min(Math.max(value, min), max);
 }
 
@@ -65,6 +71,7 @@ export function hotspotToBox(hotspot: Hotspot, display: Size): Box {
  * เคส glareshield ที่ scale=1: displayH เล็กกว่า containerH มาก -> maxY = 0
  */
 export function maxTranslate(container: Size, display: Size, scale: number): Size {
+  'worklet';
   return {
     width: Math.max(0, (display.width * scale - container.width) / 2),
     height: Math.max(0, (display.height * scale - container.height) / 2),
