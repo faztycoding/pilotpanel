@@ -44,6 +44,19 @@ const DETAIL_IMAGES: Record<string, PanelImage> = {
   'glareshield:gs_operational_data_display_airports': require('@/assets/detail/glareshield/gs_operational_data_display_airports.webp'),
   'glareshield:gs_range_select_switch': require('@/assets/detail/glareshield/gs_range_select_switch.webp'),
   'glareshield:gs_adf_vor_select_switches': require('@/assets/detail/glareshield/gs_adf_vor_select_switches.webp'),
+  'glareshield:gs_fcu_window': require('@/assets/detail/glareshield/gs_fcu_window.webp'),
+  'glareshield:gs_spd_mach_push_button': require('@/assets/detail/glareshield/gs_spd_mach_push_button.webp'),
+  'glareshield:gs_spd_mach_knob': require('@/assets/detail/glareshield/gs_spd_mach_knob.webp'),
+  'glareshield:gs_hdg_trk_knob': require('@/assets/detail/glareshield/gs_hdg_trk_knob.webp'),
+  'glareshield:gs_loc_push_button': require('@/assets/detail/glareshield/gs_loc_push_button.webp'),
+  'glareshield:gs_hdg_v_s_or_trk_fpa_push_button': require('@/assets/detail/glareshield/gs_hdg_v_s_or_trk_fpa_push_button.webp'),
+  'glareshield:gs_autopilot_1_and_2_push_button_ap1_ap2': require('@/assets/detail/glareshield/gs_autopilot_1_and_2_push_button_ap1_ap2.webp'),
+  'glareshield:gs_auto_thrust_a_thr_push_button': require('@/assets/detail/glareshield/gs_auto_thrust_a_thr_push_button.webp'),
+  'glareshield:gs_altitude_selector_knob': require('@/assets/detail/glareshield/gs_altitude_selector_knob.webp'),
+  'glareshield:gs_exped_push_button': require('@/assets/detail/glareshield/gs_exped_push_button.webp'),
+  'glareshield:gs_metric_altitude_push_button': require('@/assets/detail/glareshield/gs_metric_altitude_push_button.webp'),
+  'glareshield:gs_v_s_or_fpa_knob': require('@/assets/detail/glareshield/gs_v_s_or_fpa_knob.webp'),
+  'glareshield:gs_appr_push_button': require('@/assets/detail/glareshield/gs_appr_push_button.webp'),
 };
 
 export function getDetailImage(panelId: string, controlId: string): PanelImage | undefined {

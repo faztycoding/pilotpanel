@@ -216,7 +216,12 @@
       "id": "gs_fcu_window",
       "name": "FCU Window",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4027,
+        "y": 0.142,
+        "w": 0.1835,
+        "h": 0.2443
+      },
       "body": [
         {
           "kind": "p",
@@ -224,13 +229,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p49",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_fcu_window.webp"
     },
     {
       "id": "gs_spd_mach_push_button",
       "name": "SPD/MACH push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3965,
+        "y": 0.4318,
+        "w": 0.0163,
+        "h": 0.1364
+      },
       "body": [
         {
           "kind": "p",
@@ -238,13 +249,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p52",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_spd_mach_push_button.webp"
     },
     {
       "id": "gs_spd_mach_knob",
       "name": "SPD/MACH Knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4098,
+        "y": 0.4545,
+        "w": 0.0214,
+        "h": 0.2727
+      },
       "body": [
         {
           "kind": "p",
@@ -252,13 +269,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p58",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_spd_mach_knob.webp"
     },
     {
       "id": "gs_hdg_trk_knob",
       "name": "HDG/TRK Knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4393,
+        "y": 0.4545,
+        "w": 0.0224,
+        "h": 0.3409
+      },
       "body": [
         {
           "kind": "p",
@@ -266,13 +289,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p61",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_hdg_trk_knob.webp"
     },
     {
       "id": "gs_loc_push_button",
       "name": "LOC push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.445,
+        "y": 0.7841,
+        "w": 0.0178,
+        "h": 0.125
+      },
       "body": [
         {
           "kind": "p",
@@ -280,13 +309,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p65",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_loc_push_button.webp"
     },
     {
       "id": "gs_hdg_v_s_or_trk_fpa_push_button",
       "name": "HDG V/S or TRK FPA push- button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4817,
+        "y": 0.4261,
+        "w": 0.0168,
+        "h": 0.142
+      },
       "body": [
         {
           "kind": "p",
@@ -294,13 +329,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p68",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_hdg_v_s_or_trk_fpa_push_button.webp"
     },
     {
       "id": "gs_autopilot_1_and_2_push_button_ap1_ap2",
       "name": "Autopilot 1 and 2 push button AP1/AP2",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4715,
+        "y": 0.5852,
+        "w": 0.0382,
+        "h": 0.1534
+      },
       "body": [
         {
           "kind": "p",
@@ -308,13 +349,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p71",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_autopilot_1_and_2_push_button_ap1_ap2.webp"
     },
     {
       "id": "gs_auto_thrust_a_thr_push_button",
       "name": "Auto-Thrust A/THR push- button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4715,
+        "y": 0.7557,
+        "w": 0.0382,
+        "h": 0.1705
+      },
       "body": [
         {
           "kind": "p",
@@ -322,13 +369,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p76",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_auto_thrust_a_thr_push_button.webp"
     },
     {
       "id": "gs_altitude_selector_knob",
       "name": "Altitude Selector Knob",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.501,
+        "y": 0.4545,
+        "w": 0.0341,
+        "h": 0.3239
+      },
       "body": [
         {
           "kind": "p",
@@ -336,13 +389,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p79",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_altitude_selector_knob.webp"
     },
     {
       "id": "gs_exped_push_button",
       "name": "EXPED push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5138,
+        "y": 0.7841,
+        "w": 0.0352,
+        "h": 0.125
+      },
       "body": [
         {
           "kind": "p",
@@ -350,13 +409,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p87",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_exped_push_button.webp"
     },
     {
       "id": "gs_metric_altitude_push_button",
       "name": "Metric Altitude push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5301,
+        "y": 0.4318,
+        "w": 0.0178,
+        "h": 0.1932
+      },
       "body": [
         {
           "kind": "p",
@@ -364,13 +429,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p90",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_metric_altitude_push_button.webp"
     },
     {
       "id": "gs_v_s_or_fpa_knob",
       "name": "V/S or FPA Knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5505,
+        "y": 0.4261,
+        "w": 0.0459,
+        "h": 0.3409
+      },
       "body": [
         {
           "kind": "p",
@@ -378,13 +449,19 @@
         }
       ],
       "sourceRef": "glareshield.docx#p93",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_v_s_or_fpa_knob.webp"
     },
     {
       "id": "gs_appr_push_button",
       "name": "APPR push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5591,
+        "y": 0.7557,
+        "w": 0.0158,
+        "h": 0.1534
+      },
       "body": [
         {
           "kind": "p",
@@ -392,7 +469,8 @@
         }
       ],
       "sourceRef": "glareshield.docx#p97",
-      "needsReview": false
+      "needsReview": false,
+      "detailImage": "gs_appr_push_button.webp"
     }
   ]
 }
