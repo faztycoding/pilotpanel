@@ -3,6 +3,11 @@
  * schema เป็น contract ระหว่าง extract.py, hotspot-mapper และแอป
  */
 
+import type { ImageSource } from 'expo-image';
+
+/** require() ของ asset คืน number บน native และ object บน web */
+export type PanelImage = ImageSource | number;
+
 export const CONTROL_TYPES = [
   'pushbutton',
   'knob',

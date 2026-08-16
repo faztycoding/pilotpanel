@@ -12,7 +12,12 @@
       "id": "gs_barometer_reference_selector",
       "name": "Barometer Reference Selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2844,
+        "y": 0.7066,
+        "w": 0.0219,
+        "h": 0.1506
+      },
       "body": [
         {
           "kind": "p",
@@ -26,7 +31,12 @@
       "id": "gs_flight_director_fd_push_button",
       "name": "Flight Director (FD) push- button",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2798,
+        "y": 0.8649,
+        "w": 0.0148,
+        "h": 0.0734
+      },
       "body": [
         {
           "kind": "p",
@@ -40,7 +50,12 @@
       "id": "gs_ls_push_button",
       "name": "LS push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2961,
+        "y": 0.8649,
+        "w": 0.0138,
+        "h": 0.0734
+      },
       "body": [
         {
           "kind": "p",

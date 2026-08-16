@@ -9,7 +9,7 @@ import overheadJson from '@data/panels/overhead.json';
 import pedestalJson from '@data/panels/pedestal.json';
 
 import { parsePanel } from './parse-panel';
-import type { Control, Hotspot, Panel } from './types';
+import type { Control, Hotspot, Panel, PanelImage } from './types';
 
 const RAW_PANELS: Record<string, unknown> = {
   glareshield: glareshieldJson,
@@ -18,13 +18,16 @@ const RAW_PANELS: Record<string, unknown> = {
   pedestal: pedestalJson,
 };
 
-/** รูป panel ต้อง require แบบ static ตอน build เพื่อให้ bundler เก็บไฟล์ไปด้วย */
-const PANEL_IMAGES = {
+/**
+ * รูป panel ต้อง require แบบ static ตอน build เพื่อให้ bundler เก็บไฟล์ไปด้วย
+ * require ของ asset คืน number บน native แต่คืน object บน web จึงต้องรับทั้งสองแบบ
+ */
+const PANEL_IMAGES: Record<string, PanelImage> = {
   glareshield: require('@/assets/panels/glareshield.webp'),
   instrument: require('@/assets/panels/instrument.webp'),
   overhead: require('@/assets/panels/overhead.webp'),
   pedestal: require('@/assets/panels/pedestal.webp'),
-} as const;
+};
 
 const cache = new Map<string, Panel>();
 
@@ -42,11 +45,8 @@ export function getPanel(panelId: string | undefined): Panel | undefined {
   return panel;
 }
 
-export function getPanelImage(panelId: string): number | undefined {
-  if (panelId in PANEL_IMAGES) {
-    return PANEL_IMAGES[panelId as keyof typeof PANEL_IMAGES];
-  }
-  return undefined;
+export function getPanelImage(panelId: string): PanelImage | undefined {
+  return PANEL_IMAGES[panelId];
 }
 
 /** hotspot ที่วางแล้วเท่านั้น — ตัวที่เป็น null ต้องไม่ถูก render */
