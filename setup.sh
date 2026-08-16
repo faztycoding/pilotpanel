@@ -25,17 +25,31 @@ console.log("  ✓ scripts เพิ่มแล้ว");
 '
 
 echo "→ เปิด TypeScript strict"
-cat > tsconfig.json <<'JSON'
-{
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "paths": { "@/*": ["./src/*"] }
-  },
-  "include": ["**/*.ts", "**/*.tsx"]
+# merge เท่านั้น ห้ามเขียนทับทั้งไฟล์
+# template ของ expo ตั้ง paths ("@/assets/*") กับ include (".expo/types") ที่จำเป็นไว้แล้ว
+# ถ้าเขียนทับ ของพวกนั้นหาย -> bundle พังแต่ tsc ผ่าน เพราะ require() คืน any (ดู docs/FAILURES.md)
+node -e '
+const fs=require("fs");
+const path="tsconfig.json";
+let t={};
+if (fs.existsSync(path)) {
+  try { t=JSON.parse(fs.readFileSync(path,"utf8")); }
+  catch (e) { console.error("  ✗ tsconfig.json อ่านไม่ได้ ไม่แตะต้อง: "+e.message); process.exit(1); }
 }
-JSON
+t.extends = t.extends ?? "expo/tsconfig.base";
+const co = t.compilerOptions = t.compilerOptions ?? {};
+co.strict = true;
+co.noUncheckedIndexedAccess = true;
+// เติม alias เฉพาะที่ยังไม่มี ของเดิมต้องอยู่ครบ
+const paths = co.paths = co.paths ?? {};
+for (const [k,v] of Object.entries({"@/*":["./src/*"],"@data/*":["./data/*"]})) {
+  if (!paths[k]) paths[k] = v;
+}
+// include ต้องครอบ .ts/.tsx และ type ที่ expo generate ให้
+t.include = Array.from(new Set([...(t.include ?? []), "**/*.ts", "**/*.tsx"]));
+fs.writeFileSync(path, JSON.stringify(t,null,2)+"\n");
+console.log("  ✓ compilerOptions merged, paths ที่มีอยู่เดิมคงไว้: "+Object.keys(paths).join(" "));
+'
 
 echo "→ สร้างโฟลเดอร์ที่เหลือ"
 mkdir -p app src/components src/lib assets/panels source
