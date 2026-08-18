@@ -43,6 +43,7 @@ WEBP_QUALITY = 88
 SOURCES = {
     "overhead": ("Overhead_Complete (3438 x 3124 px).pdf", 3438),
     "pedestal": ("Center Pedestral_Complete (2918 x 3438 px).pdf", 2918),
+    "instrument": ("Instrument_Complete (3438 x 1050 px).pdf", 3438),
 }
 
 # จุดที่ต้องลบออกจากรูปที่ render มา — วิธีลบคือก๊อปพื้นจากบริเวณข้างเคียงที่ลายเหมือนกัน
