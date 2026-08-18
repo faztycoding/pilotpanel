@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -33,6 +34,31 @@ CAND_DIR = ROOT / "assets" / "raw" / "hotspot-candidates"
 
 # คะแนนขั้นต่ำที่ยอมให้เขียนอัตโนมัติ ต่ำกว่านี้ต้องคนยืนยันผ่าน manual override
 MIN_SCORE = 0.85
+
+# control ที่เป็น "ไฟบนปุ่ม" ไม่ใช่ปุ่มแยก — บน A320 ปุ่มกดหนึ่งปุ่มแบ่งเป็นสองส่วน
+# ครึ่งบนคือไฟแจ้งเตือน (FAULT / SMOKE / OPEN) ครึ่งล่างคือป้ายชื่อปุ่มที่กดได้
+# เอกสารจึงแยกเป็นสองรายการติดกัน: ปุ่มแม่มาก่อน แล้วไฟตามมาทันที
+# วางไฟไว้ครึ่งบนของปุ่มแม่ = ตรงกับของจริง และทำให้กดอ่านคำอธิบายไฟได้แยกจากปุ่ม
+LIGHT_NAME = r"\bLIGHTS?\b"
+# ชื่อที่มีคำว่า light แต่เป็น "ตัวควบคุม" ไม่ใช่ไฟแจ้งเตือน เช่น
+#   "OVHD INTEG light knob" (ลูกบิดหมุนปรับไฟ) / "ANN Light switch" (สวิตช์ทดสอบไฟ)
+# ถ้าไม่คัดออก จะถูกวางทับครึ่งบนของปุ่มอื่นแบบผิดตำแหน่ง (เจอจาก overlay: ไปกองที่ปุ่ม WING)
+NOT_A_LIGHT = r"\b(KNOB|SWITCH|SELECTOR|BUTTON)\b"
+LIGHT_TOP_RATIO = 0.45
+
+# ขนาดกรอบเวลาวางจากตำแหน่งป้าย (ป้ายอยู่เหนือตัวควบคุมเสมอบนแผงนี้)
+# หน่วยเป็น px ของรูปเต็ม วัดจากปุ่ม/ลูกบิดจริงบน overhead.webp
+BOX_BY_TYPE = {
+    "knob": (190, 190),
+    "selector": (190, 190),
+    "switch": (120, 175),
+    "pushbutton": (150, 130),
+    "light": (150, 70),
+    "lever": (120, 200),
+    "display": (200, 120),
+    "area": (200, 200),
+}
+LABEL_GAP = 12  # ระยะจากขอบล่างของป้ายถึงขอบบนของกรอบ
 
 
 def main() -> int:
@@ -84,6 +110,77 @@ def main() -> int:
             continue  # มีพิกัดอยู่แล้ว (วางด้วย hotspot-mapper) ไม่ทับของเดิม
         control["hotspot"] = cand["hotspot"]
         written += 1
+
+    # ---- ชั้นที่ 2: ไฟบนปุ่ม -> ครึ่งบนของปุ่มแม่ที่อยู่ก่อนหน้าในเอกสาร
+    lights = 0
+    controls = panel["controls"]
+    for i, control in enumerate(controls):
+        if control.get("hotspot") or not re.search(LIGHT_NAME, control["name"], re.I):
+            continue
+        if re.search(NOT_A_LIGHT, control["name"], re.I):
+            continue
+        # ต้องเป็น control ที่อยู่ติดกันในเอกสารเท่านั้น
+        # ถ้าไล่ย้อนขึ้นไปหลายตัว จะไปเจอปุ่มคนละโซนแล้ววางผิดที่ (เจอจาก overlay รอบก่อน)
+        if i == 0:
+            continue
+        parent = controls[i - 1]
+        if not parent.get("hotspot") or re.search(LIGHT_NAME, parent["name"], re.I):
+            continue
+        box = parent["hotspot"]
+        top_h = round(box["h"] * LIGHT_TOP_RATIO, 4)
+        control["hotspot"] = {"x": box["x"], "y": box["y"], "w": box["w"], "h": top_h}
+        # ปุ่มแม่เหลือครึ่งล่าง เพื่อไม่ให้สองกรอบทับกันแล้วกดปนกัน
+        parent["hotspot"] = {
+            "x": box["x"],
+            "y": round(box["y"] + top_h, 4),
+            "w": box["w"],
+            "h": round(box["h"] - top_h, 4),
+        }
+        lights += 1
+    print(f"  ไฟบนปุ่ม (วางครึ่งบนของปุ่มแม่): {lights} ตัว")
+
+    # ---- ชั้นที่ 3: วางจากตำแหน่งป้าย vector สำหรับลูกบิด/สวิตช์ที่ตรวจจับไม่เจอ
+    anchored = 0
+    labels_path = CAND_DIR / f"{args.panel}-label-anchors.json"
+    if labels_path.exists():
+        anchors = json.loads(labels_path.read_text("utf-8"))
+        img_w, img_h = panel["imageSize"]["w"], panel["imageSize"]["h"]
+        for control_id, ref in anchors.items():
+            control = by_id.get(control_id)
+            if control is None or control.get("hotspot"):
+                continue
+            cx = (ref["x0"] + ref["x1"]) / 2
+            # ถ้ามีปุ่มที่ตรวจจับเจอ "ใต้ป้ายนี้พอดี" ให้ใช้กรอบจริงของปุ่มนั้น แม่นกว่ากรอบเดา
+            # (ตรวจจับเจอตำแหน่งจริงระดับพิกเซล แต่จับคู่ชื่อไม่ได้ ป้ายเป็นตัวบอกว่าปุ่มไหน)
+            snap = None
+            for cand in candidates:
+                if cand["controlId"] and cand["controlId"] in chosen:
+                    continue  # ปุ่มนี้ถูกใช้ไปแล้ว
+                p = cand["px"]
+                if p["x0"] - 30 <= cx <= p["x1"] + 30 and ref["y1"] - 25 <= p["y0"] <= ref["y1"] + 170:
+                    if snap is None or p["y0"] < snap["y0"]:
+                        snap = p
+            if snap is not None:
+                control["hotspot"] = {
+                    "x": round(snap["x0"] / img_w, 4),
+                    "y": round(snap["y0"] / img_h, 4),
+                    "w": round((snap["x1"] - snap["x0"]) / img_w, 4),
+                    "h": round((snap["y1"] - snap["y0"]) / img_h, 4),
+                }
+                anchored += 1
+                continue
+            bw, bh = BOX_BY_TYPE.get(control["type"], (150, 150))
+            top = ref["y1"] + LABEL_GAP
+            x0 = max(0, min(img_w - bw, cx - bw / 2))
+            y0 = max(0, min(img_h - bh, top))
+            control["hotspot"] = {
+                "x": round(x0 / img_w, 4),
+                "y": round(y0 / img_h, 4),
+                "w": round(bw / img_w, 4),
+                "h": round(bh / img_h, 4),
+            }
+            anchored += 1
+        print(f"  วางจากตำแหน่งป้าย: {anchored} ตัว")
 
     total = len(panel["controls"])
     placed = sum(1 for c in panel["controls"] if c.get("hotspot"))

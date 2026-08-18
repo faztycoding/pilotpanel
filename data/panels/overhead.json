@@ -82,9 +82,9 @@
       "type": "selector",
       "hotspot": {
         "x": 0.1158,
-        "y": 0.6255,
+        "y": 0.6411,
         "w": 0.0355,
-        "h": 0.0346
+        "h": 0.019
       },
       "body": [
         {
@@ -113,7 +113,12 @@
       "id": "oh_ir_1_2_3_light",
       "name": "IR 1/2/3 Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1158,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0156
+      },
       "body": [
         {
           "kind": "note",
@@ -340,7 +345,12 @@
       "id": "oh_eng_main_start_push_buttons",
       "name": "ENG MAIN START push buttons",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7699,
+        "y": 0.8156,
+        "w": 0.0436,
+        "h": 0.0416
+      },
       "body": [
         {
           "kind": "p",
@@ -394,7 +404,12 @@
       "id": "oh_horn_shut_off_button",
       "name": "HORN SHUT OFF button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1802,
+        "y": 0.4776,
+        "w": 0.0436,
+        "h": 0.0416
+      },
       "body": [
         {
           "kind": "p",
@@ -432,9 +447,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.299,
-        "y": 0.1274,
+        "y": 0.143,
         "w": 0.0343,
-        "h": 0.0346
+        "h": 0.019
       },
       "body": [
         {
@@ -453,7 +468,12 @@
       "id": "oh_smoke_disch_light",
       "name": "SMOKE/DISCH Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.299,
+        "y": 0.1274,
+        "w": 0.0343,
+        "h": 0.0156
+      },
       "body": [
         {
           "kind": "p",
@@ -500,9 +520,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.6847,
-        "y": 0.6274,
+        "y": 0.6432,
         "w": 0.0349,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -521,7 +541,12 @@
       "id": "oh_fault_light_2",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6847,
+        "y": 0.6274,
+        "w": 0.0349,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "p",
@@ -537,9 +562,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.8941,
-        "y": 0.5538,
+        "y": 0.5696,
         "w": 0.0349,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -562,7 +587,12 @@
       "id": "oh_fault_light_3",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8941,
+        "y": 0.5538,
+        "w": 0.0349,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "p",
@@ -719,7 +749,12 @@
       "id": "oh_fac_1_2_push_button",
       "name": "FAC 1/2 Push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.203,
+        "y": 0.4014,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -806,9 +841,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.1204,
-        "y": 0.5519,
+        "y": 0.5677,
         "w": 0.0355,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -831,7 +866,12 @@
       "id": "oh_smoke_light",
       "name": "SMOKE Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1204,
+        "y": 0.5519,
+        "w": 0.0355,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -1016,7 +1056,12 @@
       "id": "oh_wiper_rotary_switch",
       "name": "WIPER rotary switch",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1888,
+        "y": 0.8854,
+        "w": 0.0553,
+        "h": 0.0608
+      },
       "body": [
         {
           "kind": "p",
@@ -1032,9 +1077,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.0727,
-        "y": 0.6255,
+        "y": 0.6411,
         "w": 0.0355,
-        "h": 0.0346
+        "h": 0.019
       },
       "body": [
         {
@@ -1053,7 +1098,12 @@
       "id": "oh_fault_light_5",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0727,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0156
+      },
       "body": [
         {
           "kind": "p",
@@ -1067,7 +1117,12 @@
       "id": "oh_sys_push_button",
       "name": "SYS push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1536,
+        "y": 0.1501,
+        "w": 0.0436,
+        "h": 0.0416
+      },
       "body": [
         {
           "kind": "p",
@@ -1399,9 +1454,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.3642,
-        "y": 0.29,
+        "y": 0.3058,
         "w": 0.0349,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -1428,7 +1483,12 @@
       "id": "oh_fault_light_7",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3642,
+        "y": 0.29,
+        "w": 0.0349,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -1464,9 +1524,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.4386,
-        "y": 0.2702,
+        "y": 0.2976,
         "w": 0.0326,
-        "h": 0.0608
+        "h": 0.0334
       },
       "body": [
         {
@@ -1501,7 +1561,12 @@
       "id": "oh_fault_light_8",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4386,
+        "y": 0.2702,
+        "w": 0.0326,
+        "h": 0.0274
+      },
       "body": [
         {
           "kind": "warning",
@@ -1537,9 +1602,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.5887,
-        "y": 0.2631,
+        "y": 0.2784,
         "w": 0.0332,
-        "h": 0.0339
+        "h": 0.0186
       },
       "body": [
         {
@@ -1566,7 +1631,12 @@
       "id": "oh_fault_light_9",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5887,
+        "y": 0.2631,
+        "w": 0.0332,
+        "h": 0.0153
+      },
       "body": [
         {
           "kind": "warning",
@@ -1702,9 +1772,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.502,
-        "y": 0.347,
+        "y": 0.3632,
         "w": 0.0355,
-        "h": 0.0359
+        "h": 0.0197
       },
       "body": [
         {
@@ -1731,7 +1801,12 @@
       "id": "oh_open_light",
       "name": "OPEN Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.502,
+        "y": 0.347,
+        "w": 0.0355,
+        "h": 0.0162
+      },
       "body": [
         {
           "kind": "p",
@@ -1747,9 +1822,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.4619,
-        "y": 0.4033,
+        "y": 0.4191,
         "w": 0.0355,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -1776,7 +1851,12 @@
       "id": "oh_fault_light_12",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4619,
+        "y": 0.4033,
+        "w": 0.0355,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -1792,9 +1872,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.5026,
-        "y": 0.4033,
+        "y": 0.4191,
         "w": 0.0349,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -1829,7 +1909,12 @@
       "id": "oh_fault_light_13",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5026,
+        "y": 0.4033,
+        "w": 0.0349,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -1876,9 +1961,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.3147,
-        "y": 0.5019,
+        "y": 0.5177,
         "w": 0.0343,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -1905,7 +1990,12 @@
       "id": "oh_fault_light_14",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3147,
+        "y": 0.5019,
+        "w": 0.0343,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -1919,7 +2009,12 @@
       "id": "oh_idg_1_2_guarded_push_button",
       "name": "IDG 1/2 guarded push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3159,
+        "y": 0.5538,
+        "w": 0.0361,
+        "h": 0.0378
+      },
       "body": [
         {
           "kind": "p",
@@ -1965,9 +2060,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.441,
-        "y": 0.5551,
+        "y": 0.5709,
         "w": 0.0355,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -1994,7 +2089,12 @@
       "id": "oh_fault_light_16",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.441,
+        "y": 0.5551,
+        "w": 0.0355,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "p",
@@ -2010,9 +2110,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.4648,
-        "y": 0.4622,
+        "y": 0.478,
         "w": 0.0727,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -2079,7 +2179,12 @@
       "id": "oh_fault_light_17",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4648,
+        "y": 0.4622,
+        "w": 0.0727,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -2095,9 +2200,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.5963,
-        "y": 0.4846,
+        "y": 0.5004,
         "w": 0.0343,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -2128,7 +2233,12 @@
       "id": "oh_fault_light_18",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5963,
+        "y": 0.4846,
+        "w": 0.0343,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -2198,7 +2308,12 @@
       "id": "oh_pack_flow_selector",
       "name": "PACK FLOW Selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3179,
+        "y": 0.6226,
+        "w": 0.0553,
+        "h": 0.0608
+      },
       "body": [
         {
           "kind": "p",
@@ -2295,9 +2410,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.3618,
-        "y": 0.7286,
+        "y": 0.7444,
         "w": 0.0343,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -2336,7 +2451,12 @@
       "id": "oh_fault_light_19",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3618,
+        "y": 0.7286,
+        "w": 0.0343,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -2431,9 +2551,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.5055,
-        "y": 0.7286,
+        "y": 0.7444,
         "w": 0.0343,
-        "h": 0.0352
+        "h": 0.0194
       },
       "body": [
         {
@@ -2460,7 +2580,12 @@
       "id": "oh_fault_light_20",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5055,
+        "y": 0.7286,
+        "w": 0.0343,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "warning",
@@ -2474,7 +2599,12 @@
       "id": "oh_x_bleed_selector",
       "name": "X-BLEED selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.562,
+        "y": 0.7049,
+        "w": 0.0553,
+        "h": 0.0608
+      },
       "body": [
         {
           "kind": "p",
@@ -2645,7 +2775,12 @@
       "id": "oh_mode_sel_push_button_2",
       "name": "MODE SEL push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.498,
+        "y": 0.4078,
+        "w": 0.0436,
+        "h": 0.0416
+      },
       "body": [
         {
           "kind": "p",
@@ -2758,7 +2893,12 @@
       "id": "oh_strobe_switch",
       "name": "STROBE switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3015,
+        "y": 0.8828,
+        "w": 0.0349,
+        "h": 0.056
+      },
       "body": [
         {
           "kind": "p",
@@ -2792,7 +2932,12 @@
       "id": "oh_beacon_switch",
       "name": "BEACON switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3524,
+        "y": 0.8828,
+        "w": 0.0349,
+        "h": 0.056
+      },
       "body": [
         {
           "kind": "p",
@@ -2825,7 +2970,12 @@
       "id": "oh_nav_logo_switch",
       "name": "NAV & LOGO switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4501,
+        "y": 0.8828,
+        "w": 0.0349,
+        "h": 0.056
+      },
       "body": [
         {
           "kind": "p",
@@ -2851,7 +3001,12 @@
       "id": "oh_rwy_turn_off_switch",
       "name": "RWY TURN OFF switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3009,
+        "y": 0.944,
+        "w": 0.0349,
+        "h": 0.056
+      },
       "body": [
         {
           "kind": "p",
@@ -2903,7 +3058,12 @@
       "id": "oh_nose_switch",
       "name": "NOSE switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4507,
+        "y": 0.944,
+        "w": 0.0349,
+        "h": 0.056
+      },
       "body": [
         {
           "kind": "p",
