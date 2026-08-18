@@ -80,7 +80,12 @@
       "id": "oh_sys_selector_knob",
       "name": "SYS selector knob",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1158,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "bullet",
@@ -312,7 +317,12 @@
       "id": "oh_cabin_fans_push_button",
       "name": "CABIN FANS push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.9058,
+        "y": 0.751,
+        "w": 0.0337,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -420,7 +430,12 @@
       "id": "oh_disch_push_button",
       "name": "DISCH push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.299,
+        "y": 0.1274,
+        "w": 0.0343,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
@@ -464,7 +479,12 @@
       "id": "oh_test_push_button",
       "name": "TEST push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4753,
+        "y": 0.1152,
+        "w": 0.0849,
+        "h": 0.0743
+      },
       "body": [
         {
           "kind": "warning",
@@ -478,7 +498,12 @@
       "id": "oh_hot_air_push_button",
       "name": "HOT AIR push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6847,
+        "y": 0.6274,
+        "w": 0.0349,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -510,7 +535,12 @@
       "id": "oh_aft_isol_valve_push_button",
       "name": "AFT ISOL VALVE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8941,
+        "y": 0.5538,
+        "w": 0.0349,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -560,7 +590,12 @@
       "id": "oh_elac_1_2_push_button",
       "name": "ELAC 1/2 Push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7691,
+        "y": 0.4872,
+        "w": 0.0308,
+        "h": 0.0327
+      },
       "body": [
         {
           "kind": "p",
@@ -738,7 +773,12 @@
       "id": "oh_emer_gen_test_guarded_push_button",
       "name": "EMER GEN TEST guarded push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0727,
+        "y": 0.5378,
+        "w": 0.0279,
+        "h": 0.0557
+      },
       "body": [
         {
           "kind": "p",
@@ -764,7 +804,12 @@
       "id": "oh_gen_1_line_push_button",
       "name": "GEN 1 LINE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1204,
+        "y": 0.5519,
+        "w": 0.0355,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -800,7 +845,12 @@
       "id": "oh_rat_and_emer_gen_light",
       "name": "RAT AND EMER GEN light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1728,
+        "y": 0.5519,
+        "w": 0.0355,
+        "h": 0.0352
+      },
       "body": [],
       "sourceRef": "Overhead Panel (finish).docx#p227",
       "needsReview": true
@@ -839,7 +889,12 @@
       "id": "oh_mask_man_on_push_button",
       "name": "MASK MAN ON push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1286,
+        "y": 0.7465,
+        "w": 0.0268,
+        "h": 0.0519
+      },
       "body": [
         {
           "kind": "p",
@@ -865,7 +920,12 @@
       "id": "oh_passenger_sys_on_light",
       "name": "PASSENGER SYS ON Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1745,
+        "y": 0.7599,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -879,7 +939,12 @@
       "id": "oh_crew_supply_push_button",
       "name": "CREW SUPPLY push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2222,
+        "y": 0.7593,
+        "w": 0.0349,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
@@ -893,7 +958,12 @@
       "id": "oh_emer_call_push_button",
       "name": "EMER call push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2216,
+        "y": 0.8233,
+        "w": 0.0355,
+        "h": 0.0403
+      },
       "body": [
         {
           "kind": "p",
@@ -927,7 +997,12 @@
       "id": "oh_rain_rplnt_switch",
       "name": "RAIN RPLNT switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1262,
+        "y": 0.8918,
+        "w": 0.025,
+        "h": 0.0275
+      },
       "body": [
         {
           "kind": "p",
@@ -955,7 +1030,12 @@
       "id": "oh_terr_push_button",
       "name": "TERR push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0727,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
@@ -1019,7 +1099,12 @@
       "id": "oh_g_s_mode_push_button",
       "name": "G/S MODE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1559,
+        "y": 0.6255,
+        "w": 0.0343,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
@@ -1037,7 +1122,12 @@
       "id": "oh_flap_mode_push_button",
       "name": "FLAP MODE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.192,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
@@ -1055,7 +1145,12 @@
       "id": "oh_ldg_flap_3_push_button",
       "name": "LDG FLAP 3 push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2298,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
@@ -1073,7 +1168,12 @@
       "id": "oh_gnd_ctl_switch",
       "name": "GND CTL switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1239,
+        "y": 0.6857,
+        "w": 0.0355,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1099,7 +1199,12 @@
       "id": "oh_cvr_erase_push_button",
       "name": "CVR ERASE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1798,
+        "y": 0.6889,
+        "w": 0.0244,
+        "h": 0.0269
+      },
       "body": [
         {
           "kind": "p",
@@ -1113,7 +1218,12 @@
       "id": "oh_cvr_test_push_button",
       "name": "CVR TEST push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2269,
+        "y": 0.6889,
+        "w": 0.0244,
+        "h": 0.0262
+      },
       "body": [
         {
           "kind": "p",
@@ -1287,7 +1397,12 @@
       "id": "oh_eng_1_2_pump_push_button",
       "name": "ENG 1/2 PUMP push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3642,
+        "y": 0.29,
+        "w": 0.0349,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1347,7 +1462,12 @@
       "id": "oh_rat_man_on_push_button",
       "name": "RAT MAN ON push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4386,
+        "y": 0.2702,
+        "w": 0.0326,
+        "h": 0.0608
+      },
       "body": [
         {
           "kind": "p",
@@ -1415,7 +1535,12 @@
       "id": "oh_ptu_push_button",
       "name": "PTU push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5887,
+        "y": 0.2631,
+        "w": 0.0332,
+        "h": 0.0339
+      },
       "body": [
         {
           "kind": "p",
@@ -1575,7 +1700,12 @@
       "id": "oh_x_feed_push_button",
       "name": "X FEED push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.502,
+        "y": 0.347,
+        "w": 0.0355,
+        "h": 0.0359
+      },
       "body": [
         {
           "kind": "p",
@@ -1615,7 +1745,12 @@
       "id": "oh_ctr_tk_pump_1_2_push_button",
       "name": "CTR TK PUMP 1/2 push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4619,
+        "y": 0.4033,
+        "w": 0.0355,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1655,7 +1790,12 @@
       "id": "oh_mode_sel_push_button",
       "name": "MODE SEL push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5026,
+        "y": 0.4033,
+        "w": 0.0349,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1703,7 +1843,12 @@
       "id": "oh_commercial_push_button",
       "name": "COMMERCIAL push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3159,
+        "y": 0.4584,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1729,7 +1874,12 @@
       "id": "oh_galy_cab_push_button",
       "name": "GALY & CAB push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3147,
+        "y": 0.5019,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1813,7 +1963,12 @@
       "id": "oh_apu_gen_push_button",
       "name": "APU GEN push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.441,
+        "y": 0.5551,
+        "w": 0.0355,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1853,7 +2008,12 @@
       "id": "oh_bat_1_2_push_button",
       "name": "BAT 1/2 push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4648,
+        "y": 0.4622,
+        "w": 0.0727,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -1933,7 +2093,12 @@
       "id": "oh_ac_ess_feed_push_button",
       "name": "AC ESS FEED push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5963,
+        "y": 0.4846,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -2073,7 +2238,12 @@
       "id": "oh_pack_push_button",
       "name": "PACK push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6847,
+        "y": 0.6786,
+        "w": 0.0349,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -2123,7 +2293,12 @@
       "id": "oh_eng_1_and_2_bleed_push_buttons",
       "name": "ENG 1 and 2 BLEED push buttons",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3618,
+        "y": 0.7286,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -2207,7 +2382,12 @@
       "id": "oh_ram_air_guarded_push_button",
       "name": "RAM AIR guarded push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4346,
+        "y": 0.7266,
+        "w": 0.0355,
+        "h": 0.0371
+      },
       "body": [
         {
           "kind": "p",
@@ -2249,7 +2429,12 @@
       "id": "oh_apu_bleed_push_button",
       "name": "APU BLEED push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5055,
+        "y": 0.7286,
+        "w": 0.0343,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -2399,7 +2584,12 @@
       "id": "oh_probe_window_heat_push_button",
       "name": "PROBE/WINDOW HEAT push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5061,
+        "y": 0.8105,
+        "w": 0.0349,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -2529,7 +2719,12 @@
       "id": "oh_ditching_guarded_push_button",
       "name": "DITCHING guarded push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6777,
+        "y": 0.8105,
+        "w": 0.0343,
+        "h": 0.0384
+      },
       "body": [
         {
           "kind": "p",
@@ -2611,7 +2806,12 @@
       "id": "oh_wing_switch",
       "name": "WING switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3048,
+        "y": 0.8099,
+        "w": 0.0349,
+        "h": 0.0359
+      },
       "body": [
         {
           "kind": "p",
