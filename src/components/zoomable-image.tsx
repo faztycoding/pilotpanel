@@ -12,7 +12,7 @@ import Animated, {
 
 import {
     clamp,
-    fillHeightScale,
+    fillScreenScale,
     fitContain,
     maxScaleFor,
     maxTranslate,
@@ -36,10 +36,10 @@ type Props = {
   /**
    * ซูมตั้งต้นตอนเปิดหน้า
    *   'contain'    = เห็นรูปทั้งใบพอดีจอ (letterbox) เหมาะกับหน้าภาพรวม
-   *   'fillHeight' = เต็มความสูงจอ ล้นความกว้างแล้วให้ผู้ใช้เลื่อนซ้ายขวาเอง
+   *   'fillScreen' = เต็มจอแบบ cover โผล่กลางรูป ล้นแกนไหนก็เลื่อนแกนนั้น
    *                  เหมาะกับหน้า panel ที่ต้องอ่านตัวอักษรบนปุ่มให้ออกตั้งแต่เปิดมา
    */
-  initialZoom?: 'contain' | 'fillHeight';
+  initialZoom?: 'contain' | 'fillScreen';
   /** render ทับบนรูป ได้รับขนาดรูปจริงบนจอเพื่อคูณกับ ratio */
   renderOverlay?: (display: Size) => ReactNode;
   /** แจ้งขนาดรูปบนจอหลัง layout ให้หน้าจอด้านนอกใช้ตัดสินใจเรื่อง UI ได้ */
@@ -162,7 +162,7 @@ export function ZoomableImage({
     // ต้องคำนวณจาก container ใหม่ตรงนี้ ไม่ใช่จาก display ใน useMemo ซึ่งยังเป็นค่าของรอบก่อน
     const nextDisplay = fitContain(nextContainer, imageSize);
     const initialScale =
-      initialZoom === 'fillHeight' ? fillHeightScale(nextContainer, nextDisplay) : MIN_SCALE;
+      initialZoom === 'fillScreen' ? fillScreenScale(nextContainer, nextDisplay) : MIN_SCALE;
     // จอเปลี่ยนขนาดแล้ว ค่าซูม/เลื่อนเดิมอาจเกินขอบใหม่ กลับไปตั้งต้นเพื่อไม่ให้ค้างนอกกรอบ
     scale.value = withTiming(initialScale);
     savedScale.value = initialScale;

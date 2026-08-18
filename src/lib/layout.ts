@@ -85,25 +85,26 @@ export function maxTranslate(container: Size, display: Size, scale: number): Siz
 }
 
 /**
- * สเกลที่ทำให้รูปเต็มความสูงจอ (ล้นความกว้างออกไปแล้วให้ผู้ใช้เลื่อนเอง)
- * ใช้เป็นค่าซูมเริ่มต้นของหน้า panel: เปิดมาเห็นปุ่มใหญ่พออ่านได้เลย ไม่ต้องบีบนิ้วก่อน
+ * สเกลที่ทำให้รูปเต็มจอพอดี (แบบ cover) ล้นแกนไหนก็ให้ผู้ใช้เลื่อนแกนนั้น
+ * ใช้เป็นค่าซูมเริ่มต้นของหน้า panel: เปิดมาโผล่กลางรูป ปุ่มใหญ่พออ่านได้ทันที
  *
- * คืน 1 เมื่อรูปติดความสูงอยู่แล้วหลัง fitContain (เคสรูปเกือบจัตุรัสอย่าง overhead)
- * เพราะซูมเกินกว่านั้นไม่ได้ทำให้เห็นมากขึ้น แค่ทำให้ต้องเลื่อนสองแกน
+ * หลัง fitContain รูปจะติดขอบจอแกนเดียว อีกแกนเหลือที่ว่าง — สูตรนี้เลือกแกนที่เหลือที่ว่าง
+ * ไปขยายให้เต็ม ผลคือรูปแบน (glareshield) ล้นซ้ายขวาให้เลื่อนแนวนอน
+ * ส่วนรูปเกือบจัตุรัส (overhead/pedestal) ล้นบนล่างให้เลื่อนแนวตั้ง — กฎเดียวใช้ได้ทุก panel
  */
-export function fillHeightScale(container: Size, display: Size): number {
-  if (display.height <= 0) return 1;
-  return Math.max(1, container.height / display.height);
+export function fillScreenScale(container: Size, display: Size): number {
+  if (display.width <= 0 || display.height <= 0) return 1;
+  return Math.max(container.width / display.width, container.height / display.height, 1);
 }
 
 /**
  * ซูมสูงสุด: ปกติ 6x แต่รูปที่แบนมาก (glareshield) ต้องซูมได้ลึกกว่านั้น
- * เพราะค่าเริ่มต้นของมันคือ fillHeightScale ซึ่งสูงอยู่แล้ว ถ้าเพดานไม่เผื่อ headroom
+ * เพราะค่าเริ่มต้นของมันคือ fillScreenScale ซึ่งสูงอยู่แล้ว ถ้าเพดานไม่เผื่อ headroom
  * ผู้ใช้จะซูมเข้าต่อไม่ได้เลยตั้งแต่เปิดหน้ามา
  */
 export function maxScaleFor(container: Size, display: Size): number {
   if (display.height <= 0) return MIN_MAX_SCALE;
-  return clamp(fillHeightScale(container, display) * ZOOM_HEADROOM, MIN_MAX_SCALE, MAX_MAX_SCALE);
+  return clamp(fillScreenScale(container, display) * ZOOM_HEADROOM, MIN_MAX_SCALE, MAX_MAX_SCALE);
 }
 
 /** hitSlop ต่อด้าน เพื่อดันกล่องที่เล็กกว่านิ้วให้ถึง MIN_HIT_TARGET_DP */
