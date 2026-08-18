@@ -55,6 +55,9 @@ CONTROL_NOUNS = (
     r"guards?|panels?|buttons?|controls?|pointers?"
 )
 RE_CONTROL_NOUN = re.compile(CONTROL_NOUNS, re.IGNORECASE)
+# เหมือนกันแต่บังคับว่าคำนามต้องอยู่ท้ายบรรทัด — ใช้แยก "ALL push button" (ชื่อ)
+# จาก "Two pink lights flash on..." (ประโยค ที่บังเอิญมีคำนามอยู่กลางประโยค)
+RE_CONTROL_NOUN_AT_END = re.compile(r"(?:" + CONTROL_NOUNS + r")s?\s*[.)]?\s*$", re.IGNORECASE)
 
 # map คำใน heading -> type ตาม schema (เรียงตามลำดับความจำเพาะ)
 TYPE_RULES = [
@@ -214,6 +217,16 @@ def is_control_heading(text: str) -> tuple[bool, bool, str]:
 
     has_noun = bool(RE_CONTROL_NOUN.search(body))
     ratio = cap_ratio(body)
+
+    # กรณีคำนามอยู่ท้ายบรรทัดพอดี (ไม่ใช่กลางประโยค) — คำนวณ ratio จากส่วน "ชื่อ" ก่อนคำนาม
+    # แทน เพราะคำนามพวกนี้เขียนเป็นตัวเล็กเสมอในเอกสาร มันเจือจาง ratio ของชื่อสั้น เช่น
+    # "ALL push button" ratio เดิม = 1/3 (แค่ ALL ตัวใหญ่) ไม่ผ่าน threshold ทั้งที่เป็นชื่อปุ่มจริง
+    # ต้องบังคับว่าคำนามอยู่ท้ายบรรทัดเท่านั้น ไม่งั้นประโยคที่บังเอิญมีคำนามกลางประโยคจะหลุดผ่านด้วย
+    end_match = RE_CONTROL_NOUN_AT_END.search(body)
+    if end_match:
+        name_prefix = body[: end_match.start()].strip()
+        if name_prefix:
+            ratio = max(ratio, cap_ratio(name_prefix))
 
     # "Mode Select Switch: This switches between..." — ชื่อปนเนื้อหาบรรทัดเดียว
     if ":" in body and has_noun and body.index(":") < 45:

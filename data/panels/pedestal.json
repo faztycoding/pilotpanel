@@ -2452,27 +2452,46 @@
         {
           "kind": "p",
           "text": "(C) Rudder trim position: Normally shown in Blue but turns Amber if the rudder trim reset fails."
-        },
-        {
-          "kind": "p",
-          "text": "ALL push button"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p658",
+      "needsReview": false,
+      "sectionId": "f_ctl"
+    },
+    {
+      "id": "cp_all_push_button",
+      "name": "ALL push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "If pressed and held down, the system display screen successively displays each system at one-second intervals. Incase the ECAM control panel fails; the crew can use this button to page through the system pages until the required page is displayed. Releasing the button in this case then selects the page."
-        },
-        {
-          "kind": "p",
-          "text": "CLR push button"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p664",
+      "needsReview": false
+    },
+    {
+      "id": "cp_clr_push_button",
+      "name": "CLR push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "warning",
           "text": "It remains illuminated as long as the E/WD is displaying a warning/caution message, or a status message on the SD. In this case, pressing it changes the ECAM display."
-        },
-        {
-          "kind": "p",
-          "text": "STS push button"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p667",
+      "needsReview": false
+    },
+    {
+      "id": "cp_sts_push_button",
+      "name": "STS push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "Used to display the STATUS page on the lower SD. The button stays illuminates as long as the SD displays the STS page.If the system has no status messages, then the system displays 'NORMAL' for 5 seconds. You can also clear"
@@ -2480,11 +2499,17 @@
         {
           "kind": "p",
           "text": "the status page by manually pressing the CLR button or re-pressing the STS page again."
-        },
-        {
-          "kind": "p",
-          "text": "RCL push button"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p670",
+      "needsReview": false
+    },
+    {
+      "id": "cp_rcl_push_button",
+      "name": "RCL push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "When the RCL button is pressed, the E/WD displays:"
@@ -2502,9 +2527,8 @@
           "text": "In case there are no suppressed warnings/cautions, the E/WD shows 'NORMAL' for 5 seconds. Pressing and holding the RCL button more than 3 seconds enables the E/WD to display to any caution messages that were suppressed by the EMER CANC button."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p658",
-      "needsReview": false,
-      "sectionId": "f_ctl"
+      "sourceRef": "Center Pedestal (finish).docx#p676",
+      "needsReview": false
     },
     {
       "id": "cp_mcdu_multi_purpose_control_and_display_unit_2",
@@ -3297,11 +3321,17 @@
         {
           "kind": "p",
           "text": "Crew uses these push buttons to set the transponder code assigned by ATC or the relevant emergency codes such as 7700 (emergency), 7600 (radio/com failure) and 7500 (hijack)."
-        },
-        {
-          "kind": "p",
-          "text": "CLR push button"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p941",
+      "needsReview": false
+    },
+    {
+      "id": "cp_clr_push_button_2",
+      "name": "CLR push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "Clears the code display."
@@ -3315,7 +3345,7 @@
           "text": "Light comes on if the selected transponder 1 or 2 fails."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p941",
+      "sourceRef": "Center Pedestal (finish).docx#p951",
       "needsReview": false
     },
     {

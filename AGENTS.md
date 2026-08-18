@@ -5,7 +5,7 @@ Offline Android app (APK) สำหรับนักเรียนการบ
 โมเดลการใช้งาน: เปิดแอป -> เห็นภาพ cockpit -> แตะเลือก panel -> ซูม -> แตะปุ่ม -> อ่านคำอธิบาย
 
 **หัวใจของโปรเจกต์คือ data pipeline ไม่ใช่ UI**
-ตัวแอปเป็น image map ธรรมดา งานจริง 80% คือแปลง .docx 4 ไฟล์ -> JSON 311 controls
+ตัวแอปเป็น image map ธรรมดา งานจริง 80% คือแปลง .docx 4 ไฟล์ -> JSON 331 controls
 พร้อมพิกัด hotspot ที่กดถูกตัว
 
 ## Architecture
@@ -23,8 +23,8 @@ Offline Android app (APK) สำหรับนักเรียนการบ
 ## Data source of truth
 | ไฟล์ต้นทาง | Panel | controls โดยประมาณ |
 |---|---|---|
-| Overhead Panel (finish).docx | overhead | 93 |
-| Center Pedestal (finish).docx | pedestal | 164 |
+| Overhead Panel (finish).docx | overhead | 108 |
+| Center Pedestal (finish).docx | pedestal | 169 |
 | glareshield.docx | glareshield | 23 |
 | Instrument Panel.docx | instrument | 31 |
 

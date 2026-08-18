@@ -113,9 +113,12 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 
 ## Baseline counts
 ```
-overhead     93
-pedestal    164
+overhead    108
+pedestal    169
 glareshield  23
 instrument   31
-TOTAL       311
+TOTAL       331
 ```
+(อัปเดตจาก 93/164/311 เดิม — เจอบั๊ก extractor ที่ทำให้ปุ่มชื่อสั้น ๆ ตามด้วยคำนาม เช่น
+"ALL push button" / "TEST push button" ถูกดูดเข้า body ของปุ่มก่อนหน้าแทนที่จะแยกเป็น control
+ใหม่ เพราะ cap ratio รวมคำนามที่เป็นตัวเล็กเข้าไปเจือจางด้วย ดู docs/FAILURES.md)

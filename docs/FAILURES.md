@@ -107,6 +107,29 @@ heading ที่ไม่มีเลข **และไม่มี `(N)` ต�
 **กฎที่ต้องจำ: ห้ามรัน `scripts/extract.py` โดยไม่มี `--merge` เด็ดขาด หลังเริ่มวาง hotspot ตัวแรกไปแล้ว**
 รันแบบปลอดภัยเสมอ: `.venv/bin/python scripts/extract.py --merge`
 
+### extractor ดูดปุ่มชื่อสั้น (ALL/CLR/STS/RCL/TEST/...) เข้า body ของปุ่มก่อนหน้า — เจอตอนเทียบกับ docx จริง
+เปิด `Center Pedestal (finish).docx` เทียบกับ `pedestal.json` เจอว่า `ALL push button`,
+`CLR push button`, `STS push button`, `RCL push button` (มีคำอธิบายจากลูกค้าครบ) หายไปจาก
+control ทั้งหมด — ไม่ได้อยู่ใน `_unassigned.json` ด้วยซ้ำ ไปโผล่เป็น body พ่วงของ
+`cp_yaw_control_indications` (control ก่อนหน้าในเอกสาร) ทำให้ปุ่มนั้นมีคำอธิบายผิดปนกัน
+
+**root cause**: `is_control_heading()` คำนวณ `cap_ratio()` จากทั้งบรรทัด รวมคำนาม (push button/
+knob/switch...) ที่เขียนเป็นตัวเล็กเสมอในเอกสารด้วย — ชื่อสั้นแบบ "ALL push button" มีตัวใหญ่
+แค่ 1 จาก 3 คำ = ratio 0.33 ไม่ถึง threshold 0.5 ทั้งที่เป็นชื่อปุ่มจริง (ตัวอย่างที่ผ่านได้เดิม
+อย่าง "EMER CANC push button" รอด because 2/4 = 0.5 พอดี — เป็น false negative ที่ผ่านมาแบบเสี่ยง)
+
+**แก้**: ถ้าคำนามอยู่ **ท้ายบรรทัดพอดี** (`RE_CONTROL_NOUN_AT_END`) ให้คำนวณ ratio จากส่วนชื่อ
+ก่อนคำนามแทน (ไม่รวมคำนามเจือจาง) ต้องบังคับว่าอยู่ท้ายบรรทัดเท่านั้น — ลองแบบไม่บังคับตำแหน่ง
+ก่อนแล้วพัง: overhead จาก 93 พุ่งเป็น 116 (+23) เพราะประโยคที่บังเอิญมีคำนามกลางประโยคอย่าง
+"Two pink lights flash on all area call panels" หลุดผ่านไปด้วย (ลง "panels" ท้ายประโยคพอดี
+แต่ prefix ยาวจนกว่า ratio ยังต่ำอยู่ — คือรอดเพราะ ratio ไม่ใช่เพราะ anchor แต่บรรทัดอื่นไม่รอด)
+
+ผลหลังแก้ (ยืนยันด้วย `git diff` — เป็น pure addition ไม่มีบรรทัด `"name"` ถูกลบเลยทั้ง 2 ไฟล์):
+overhead 93->108 (+15 ปุ่มจริงที่กู้กลับมา), pedestal 164->169 (+5: ALL/CLR/STS/RCL + CLR ตัวที่ 2
+ของแผง transponder ซึ่งเป็นปุ่มคนละตัวกับ CLR ของ ECAM control panel จริง ๆ ไม่ใช่ duplicate)
+glareshield/instrument ไม่กระทบเลย (ตัวเลขเดิม 23/31 คงที่) — อัปเดต baseline ใน
+validate-data.mjs + docs/data-schema.md + AGENTS.md เป็น 108/169/23/31 = 331 แล้ว
+
 ## Open items
 
 - callout count ยืนยันด้วยตาแล้ว 5 หน้า (hyd 13, apu 10, wheel 10, cond 6, f_ctl 8 — ตรงทั้งหมด)

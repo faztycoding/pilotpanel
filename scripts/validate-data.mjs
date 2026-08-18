@@ -17,7 +17,7 @@ const STRICT = process.argv.includes("--strict");
 
 // baseline = จำนวนที่ extractor ดึงได้จริง ณ วันที่ตั้งค่า
 // หลัง QA ด้วยมือครบแล้วให้ล็อกตัวเลขนี้ใหม่และลด tolerance เหลือ 2
-const BASELINE = { overhead: 93, pedestal: 164, glareshield: 23, instrument: 31 };
+const BASELINE = { overhead: 108, pedestal: 169, glareshield: 23, instrument: 31 };
 const BASELINE_TOLERANCE = 8;
 
 // hit target ขั้นต่ำ: 44dp บนจอกว้าง 360dp ที่แสดงรูปเต็มความกว้าง

@@ -71,11 +71,17 @@
         {
           "kind": "p",
           "text": "Shows an action code"
-        },
-        {
-          "kind": "p",
-          "text": "SYS selector knob"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p5",
+      "needsReview": false
+    },
+    {
+      "id": "oh_sys_selector_knob",
+      "name": "SYS selector knob",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
         {
           "kind": "bullet",
           "text": ":OFF",
@@ -95,7 +101,7 @@
           "text": "System selected for data display"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p5",
+      "sourceRef": "Overhead Panel (finish).docx#p20",
       "needsReview": false
     },
     {
@@ -185,11 +191,17 @@
         {
           "kind": "p",
           "text": "IR mode supplies only attitude/heading information if the system loses its function/ability to navigate/ The heading has to be entered via the CDU keypad and requires updates at least every 10 minutes."
-        },
-        {
-          "kind": "bullet",
-          "text": "*ADR 1/2/3 push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p47",
+      "needsReview": true
+    },
+    {
+      "id": "oh_adr_1_2_3_push_button",
+      "name": "ADR 1/2/3 push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "bullet",
           "text": "-OFF",
@@ -209,7 +221,7 @@
           "text": "Amber light comes on with an ECAM caution if a fault is sensed in the air data reference part ."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p47",
+      "sourceRef": "Overhead Panel (finish).docx#p55",
       "needsReview": true
     },
     {
@@ -399,11 +411,17 @@
         {
           "kind": "p",
           "text": "CAPT = alert can only be activated from cockpit"
-        },
-        {
-          "kind": "p",
-          "text": "DISCH push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p113",
+      "needsReview": false
+    },
+    {
+      "id": "oh_disch_push_button",
+      "name": "DISCH push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "This button ignites the squib to discharge the fire extinguisher agent in the related cargo compartment"
@@ -413,7 +431,7 @@
           "text": "(FWD and AFT)."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p113",
+      "sourceRef": "Overhead Panel (finish).docx#p122",
       "needsReview": false
     },
     {
@@ -437,17 +455,23 @@
         {
           "kind": "p",
           "text": "Once the discharge push button has been pressed, within 60 seconds this amber light comes on indicating that the agent bottle has been fully discharged."
-        },
-        {
-          "kind": "p",
-          "text": "TEST push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p130",
+      "needsReview": false
+    },
+    {
+      "id": "oh_test_push_button",
+      "name": "TEST push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "warning",
           "text": "Pressing this button for at least 3 seconds and before it is released tests the smoke detectors, turns on the red smoke lights twice, displays ECAM warning and also turns on the amber discharge light."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p130",
+      "sourceRef": "Overhead Panel (finish).docx#p136",
       "needsReview": false
     },
     {
@@ -860,11 +884,17 @@
         {
           "kind": "p",
           "text": "When selected to on, it supplies low-pressure oxygen to the crew oxygen masks."
-        },
-        {
-          "kind": "p",
-          "text": "EMER call push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p253",
+      "needsReview": false
+    },
+    {
+      "id": "oh_emer_call_push_button",
+      "name": "EMER call push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "When pressed, it triggers the following aural/visual calls in the cabin:"
@@ -890,7 +920,7 @@
           "text": "If the emergency call is made from the cabin, the ON light flashes in white and CALL light flashes amber."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p253",
+      "sourceRef": "Overhead Panel (finish).docx#p256",
       "needsReview": false
     },
     {
@@ -902,19 +932,31 @@
         {
           "kind": "p",
           "text": "There are two of these switches for Captain/First Officer windscreen. When pressed, a timer sprays a certain amount of rain repellent liquid on the windscreens. The function is inhibited when aircraft is on the ground and engines are stopped."
-        },
-        {
-          "kind": "p",
-          "text": "WIPER rotary switch"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p264",
+      "needsReview": false
+    },
+    {
+      "id": "oh_wiper_rotary_switch",
+      "name": "WIPER rotary switch",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "The switch has a slow and high position for wiper speed operation and in the off position it stores away."
-        },
-        {
-          "kind": "p",
-          "text": "TERR push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p267",
+      "needsReview": false
+    },
+    {
+      "id": "oh_terr_push_button",
+      "name": "TERR push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "OFF"
@@ -924,7 +966,7 @@
           "text": "Inhibits the terrain awareness display and terrain clearance floor modes. It does not affect the basic GPWS modes 1-5 functions. If selected to OFF then ECAM caution NAV GPWS TERR DET FAULT displays."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p264",
+      "sourceRef": "Overhead Panel (finish).docx#p280",
       "needsReview": false
     },
     {
@@ -936,11 +978,17 @@
         {
           "kind": "p",
           "text": "If terrain awareness display + clearance floor modes fail, the light comes on in amber and ECAM caution is triggered. Terrain is not shown anymore on the Navigation display however the basic GPWS modes 1-5 are still operative if the SYS push button OFF or FAULT lights are not illuminated."
-        },
-        {
-          "kind": "p",
-          "text": "SYS push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p283",
+      "needsReview": false
+    },
+    {
+      "id": "oh_sys_push_button",
+      "name": "SYS push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "OFF"
@@ -950,7 +998,7 @@
           "text": "All the basic GPWS from modes 1 to 5 are inhibited"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p283",
+      "sourceRef": "Overhead Panel (finish).docx#p286",
       "needsReview": false
     },
     {
@@ -1358,11 +1406,17 @@
         {
           "kind": "bullet",
           "text": "*Pump overheats The light goes out once crew selects pump off unless it's overheat. In this case it stays on as long as the situation lasts."
-        },
-        {
-          "kind": "p",
-          "text": "PTU push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p400",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ptu_push_button",
+      "name": "PTU push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "AUTO"
@@ -1380,7 +1434,7 @@
           "text": "Both the green/yellow PTU electrohydraulic valves close and power transfer stops."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p400",
+      "sourceRef": "Overhead Panel (finish).docx#p408",
       "needsReview": false
     },
     {
@@ -1640,11 +1694,17 @@
         {
           "kind": "warning",
           "text": "Amber light and ECAM caution appear when center tank has more than 250 kg (550 lb) of fuel and the L/R wing tank has less than 5000 kg (11,000 lb)."
-        },
-        {
-          "kind": "p",
-          "text": "COMMERCIAL push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p487",
+      "needsReview": false
+    },
+    {
+      "id": "oh_commercial_push_button",
+      "name": "COMMERCIAL push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "ON"
@@ -1662,7 +1722,7 @@
           "text": "This switches off all commercial electrical loads."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p487",
+      "sourceRef": "Overhead Panel (finish).docx#p495",
       "needsReview": false
     },
     {
@@ -1700,17 +1760,23 @@
         {
           "kind": "warning",
           "text": "Amber light and ECAM caution appear when the load on any generator is more than 100% of rated output."
-        },
-        {
-          "kind": "p",
-          "text": "IDG 1/2 guarded push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p508",
+      "needsReview": false
+    },
+    {
+      "id": "oh_idg_1_2_guarded_push_button",
+      "name": "IDG 1/2 guarded push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "The IDG switches are normally spring-loaded out. If pressed, the IDG disconnects from its driveshaft and it can only be reset on the ground by maintenance"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p508",
+      "sourceRef": "Overhead Panel (finish).docx#p511",
       "needsReview": false
     },
     {
@@ -1778,11 +1844,17 @@
         {
           "kind": "p",
           "text": "Amber light comes on and ECAM caution appears if the associated generator control unit (GCU) trips it or if the line contactor opens. The APU GEN FAULT Light is inhibited if APU speed is too low or if the APU GEN line contactor opens after EXT PWR or ENG GEN takes over."
-        },
-        {
-          "kind": "p",
-          "text": "BAT 1/2 push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p529",
+      "needsReview": false
+    },
+    {
+      "id": "oh_bat_1_2_push_button",
+      "name": "BAT 1/2 push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "Controls the operation of the related battery charge limiter (BCL). Next to the battery switches is also an indication of each batteries voltage value."
@@ -1840,7 +1912,7 @@
           "text": "The BCL is not operating and the line contactor is open. OFF illuminates in white on the button if the DC BAT BUS is supplied and the Hot buses remain supplied and the Hot buses remain supplied"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p529",
+      "sourceRef": "Overhead Panel (finish).docx#p532",
       "needsReview": false
     },
     {
@@ -1992,11 +2064,17 @@
         {
           "kind": "bullet",
           "text": "*HOT position: 30°C (86°F)"
-        },
-        {
-          "kind": "p",
-          "text": "PACK push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p586",
+      "needsReview": false
+    },
+    {
+      "id": "oh_pack_push_button",
+      "name": "PACK push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "ON"
@@ -2038,7 +2116,7 @@
           "text": "*Ditching is selected"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p586",
+      "sourceRef": "Overhead Panel (finish).docx#p592",
       "needsReview": false
     },
     {
@@ -2120,11 +2198,17 @@
         {
           "kind": "p",
           "text": "The bleed valve and HP valve close and the white OFF light comes on."
-        },
-        {
-          "kind": "p",
-          "text": "RAM AIR guarded push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p613",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ram_air_guarded_push_button",
+      "name": "RAM AIR guarded push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "ON"
@@ -2158,7 +2242,7 @@
           "text": "The RAM air inlet closes."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p613",
+      "sourceRef": "Overhead Panel (finish).docx#p626",
       "needsReview": false
     },
     {
@@ -2436,11 +2520,17 @@
         {
           "kind": "p",
           "text": "This time the system does not take data from FMGS but instead uses selected landing elevation reference for its computation. You can therefore select elevations ranging from -2,000 feet (-2) to +14,000 (14) feet. The switches scale is only a rough indication therefore to fine tune you should refer to indication shown on ECAM."
-        },
-        {
-          "kind": "p",
-          "text": "DITCHING guarded push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p697",
+      "needsReview": false
+    },
+    {
+      "id": "oh_ditching_guarded_push_button",
+      "name": "DITCHING guarded push button",
+      "type": "pushbutton",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "Normal"
@@ -2466,7 +2556,7 @@
           "text": "CAUTION: If pressed on the ground with the low-pressure ground cart connected and all doors closed, a differential pressure will build up!"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p697",
+      "sourceRef": "Overhead Panel (finish).docx#p702",
       "needsReview": false
     },
     {
