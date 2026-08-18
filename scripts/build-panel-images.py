@@ -27,9 +27,10 @@ except ImportError:
     sys.exit("ต้องลง PyMuPDF ก่อน:  pip install pymupdf")
 
 try:
-    from PIL import Image
+    import numpy as np
+    from PIL import Image, ImageFilter
 except ImportError:
-    sys.exit("ต้องลง Pillow ก่อน:  pip install pillow")
+    sys.exit("ต้องลง Pillow กับ numpy ก่อน:  pip install pillow numpy")
 
 ROOT = Path(__file__).resolve().parent.parent
 PDF_DIR = ROOT / "assets" / "raw" / "canva-pdf"
@@ -55,6 +56,80 @@ PATCHES = {
         ("green triangle บนปุ่ม RAM AIR (ส่วนที่ล้นบนพื้นหลัง)", 1606, 2258, 1612, 2280, 30, 0),
     ],
 }
+
+
+# ---------------------------------------------------------------- recolor เส้นระบบ
+# ดีไซน์ใน Canva ใช้สีเขียว 2 เฉดปนกันโดยไม่ได้ตั้งใจ — เส้นเดียวกันเปลี่ยนสีกลางทาง
+# และหัวลูกศรคนละสีกับเส้น ลูกค้าสั่งให้เป็นสีเดียวกันทั้งหมด โดยยึดสีเส้นหลักเป็นหลัก
+TARGET_GREEN = (76, 157, 50)  # #4C9D32 สีเส้นหลักที่ใช้มากที่สุดในรูป
+
+# เกณฑ์แยก "เขียวผิดเฉด" ออกจากของที่ห้ามแตะ: ไฟ LED เขียวบนคีย์ ENT/CLR มีค่าแดง ~87
+# ส่วนหัวลูกศร/เส้นที่ผิดเฉดมีค่าแดง 0-46 จึงใช้ค่าแดงเป็นตัวแบ่ง
+RECOLOR_MAX_RED = 60
+# ค่าแดงอย่างเดียวไม่พอ — ขอบ LED ที่ไล่สีกับปุ่มน้ำเงินเข้มก็มีค่าแดงต่ำเข้าเกณฑ์ไปด้วย
+# เส้นระบบทั้งหมดอยู่บนแผ่นพื้นสีเทาอ่อน ส่วน LED อยู่บนปุ่มสีน้ำเงินเข้ม จึงคัดด้วยความสว่าง
+# ของพื้นหลังใต้พิกเซลนั้นอีกชั้น (กันไฟ LED ทุกดวงในรูปพร้อมกัน ไม่ต้องไล่ระบุตำแหน่ง)
+RECOLOR_MIN_BG_LUMA = 120
+# panelId ที่ต้อง recolor (pedestal ใช้สีเขียวคนละบริบท ไม่แตะ)
+RECOLOR_PANELS = {"overhead"}
+
+
+def estimate_background(arr: np.ndarray, green: np.ndarray, block: int = 16) -> np.ndarray:
+    """
+    ประมาณสีพื้นหลังใต้เส้น โดยหา median ของพิกเซลที่ไม่ใช่เขียวในบล็อก 16x16
+    ต้องทำเป็นบล็อกเพราะพื้นหลังในรูปมีทั้งแผ่นสีเทาอ่อนและปุ่มสีน้ำเงินเข้ม
+    ใช้ค่าเดียวทั้งรูปจะทำให้ขอบเส้นบนปุ่มเพี้ยน
+    """
+    h, w = green.shape
+    bg = np.zeros_like(arr)
+    global_bg = np.median(arr[~green], axis=0)
+    for by in range(0, h, block):
+        for bx in range(0, w, block):
+            sub = arr[by : by + block, bx : bx + block]
+            sub_green = green[by : by + block, bx : bx + block]
+            clean = sub[~sub_green]
+            bg[by : by + block, bx : bx + block] = (
+                np.median(clean, axis=0) if len(clean) else global_bg
+            )
+    return bg
+
+
+def recolor_green(img: Image.Image, panel_id: str) -> None:
+    if panel_id not in RECOLOR_PANELS:
+        return
+    arr = np.array(img).astype(float)
+    r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
+    green_any = (g > r + 12) & (g > b + 12) & (g > 60)
+    bg = estimate_background(arr, green_any)
+    on_light_plate = bg.mean(axis=2) > RECOLOR_MIN_BG_LUMA
+    core = green_any & (g > 120) & (r < RECOLOR_MAX_RED) & on_light_plate
+    if not core.any():
+        print("     recolor: ไม่พบเขียวผิดเฉด ข้าม")
+        return
+
+    ink_wrong = np.median(arr[core], axis=0)
+    # ขอบเส้นถูก antialias กับพื้นหลัง ค่าแดงจะสูงขึ้นจนหลุด core ต้องขยายออก 2 px
+    # ไม่งั้นจะเหลือขอบสีเดิมเป็นรัศมีบาง ๆ ซึ่งเห็นชัดตอนซูมลึก
+    grown = np.array(
+        Image.fromarray((core * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(5))
+    ) > 0
+    mask = grown & green_any & on_light_plate
+
+    # alpha = สัดส่วนหมึกที่ทับพื้นหลังอยู่ หาโดยฉายเวกเตอร์ (pixel - bg) ลงบน (ink - bg)
+    delta = ink_wrong - bg
+    denom = (delta * delta).sum(axis=2)
+    denom[denom == 0] = 1
+    alpha = np.clip(((arr - bg) * delta).sum(axis=2) / denom, 0, 1)
+    alpha = np.where(mask, alpha, 0)[:, :, None]
+
+    shift = np.array(TARGET_GREEN, dtype=float) - ink_wrong
+    out = np.clip(arr + alpha * shift, 0, 255)
+    img.paste(Image.fromarray(out.round().astype(np.uint8)))
+    print(
+        f"     recolor: เขียวผิดเฉด #{int(ink_wrong[0]):02X}{int(ink_wrong[1]):02X}"
+        f"{int(ink_wrong[2]):02X} -> #{TARGET_GREEN[0]:02X}{TARGET_GREEN[1]:02X}"
+        f"{TARGET_GREEN[2]:02X}  แก้ {int(mask.sum())} พิกเซล"
+    )
 
 
 def is_green(pixel: tuple[int, int, int]) -> bool:
@@ -96,6 +171,7 @@ def main() -> int:
         doc.close()
         print(f"  ↻ {panel_id}: render {img.width}x{img.height} จาก {pdf_name}")
         apply_patches(img, panel_id)
+        recolor_green(img, panel_id)
         out = OUT_DIR / f"{panel_id}.webp"
         if not args.check:
             img.save(out, "WEBP", quality=WEBP_QUALITY, method=6)
