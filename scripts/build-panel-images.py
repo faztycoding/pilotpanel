@@ -389,6 +389,33 @@ def inset_pieces(img: Image.Image, panel_id: str, pdf_path: Path, target_w: int)
     print(f"     inset: ฝังขอบชิ้นลงในโครง {done} ชิ้น (แถบ {INSET_BAND}px)")
 
 
+# ---------------------------------------------------------------- โทนรวมของแผง
+# โทนแผ่นพื้นที่ลูกค้าเลือก — ปรับทั้งรูปเป็นขั้นสุดท้าย หลังจากกลืนชิ้นเข้าด้วยกันแล้ว
+# ต้องทำหลังสุดเสมอ ไม่งั้นค่าที่ blend_pieces วัดไว้จะเพี้ยน
+# ใช้การคูณ (ไม่ใช่บวก) เพื่อให้ปุ่มดำยังดำและตัวหนังสือขาวยังขาว เปลี่ยนแค่โทนของแผ่นพื้น
+PLATE_TARGET = {
+    "pedestal": (147, 169, 192),  # #93A9C0
+}
+
+
+def retone_plate(img: Image.Image, panel_id: str) -> None:
+    target = PLATE_TARGET.get(panel_id)
+    if target is None:
+        return
+    arr = np.array(img).astype(float)
+    cur = plate_tone(arr)
+    if cur is None:
+        print("     retone: วัดโทนแผ่นพื้นไม่ได้ ข้าม")
+        return
+    gain = np.array(target, dtype=float) / np.maximum(cur, 1.0)
+    out = np.clip(arr * gain, 0, 255)
+    img.paste(Image.fromarray(out.round().astype(np.uint8)))
+    print(
+        f"     retone: โทนแผ่นพื้น RGB{tuple(cur.astype(int))} -> RGB{tuple(target)} "
+        f"(gain {np.round(gain, 3)})"
+    )
+
+
 def is_green(pixel: tuple[int, int, int]) -> bool:
     r, g, b = pixel[0], pixel[1], pixel[2]
     return g > 120 and g - r > 50 and g - b > 50
@@ -432,6 +459,7 @@ def main() -> int:
         blend_pieces(img, panel_id, pdf_path, target_w)
         inset_pieces(img, panel_id, pdf_path, target_w)
         fill_dark_bands(img, panel_id, pdf_path, target_w)
+        retone_plate(img, panel_id)
         out = OUT_DIR / f"{panel_id}.webp"
         if not args.check:
             img.save(out, "WEBP", quality=WEBP_QUALITY, method=6)
