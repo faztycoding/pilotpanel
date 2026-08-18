@@ -375,13 +375,40 @@ def inset_pieces(img: Image.Image, panel_id: str, pdf_path: Path, target_w: int)
             mask[y0:y1, x0 : x0 + bands["left"]] = 255
         if bands["right"]:
             mask[y0:y1, x1 - bands["right"] : x1] = 255
+        # เว้นมุมทั้งสี่ไว้ ห้ามแตะ
+        # ชั้นโครงเป็นรูป 898x1138 ที่ถูกยืด 3 เท่า มี noise แบบ dither หนาแน่นที่มุม
+        # ถ้าเอาไปทับหัวน็อตของชิ้นซึ่งคมชัด จะได้ก้อนฝ้าดำเลอะกว่าเดิม (เห็นชัดที่แผง ENG MASTER)
+        # แลกกับหัวน็อตที่ยังซ้อนกันตรงมุม ซึ่งดูเป็นธรรมชาติกว่าฝ้า
+        corner = INSET_BAND * 4
+        for cy in (y0, y1 - corner):
+            for cx in (x0, x1 - corner):
+                mask[max(0, cy) : cy + corner, max(0, cx) : cx + corner] = 0
         if not mask.any():
             continue
+        # ระยะไล่ระดับต้องเล็กลงตามความกว้างแถบ ไม่ใช่ค่าคงที่
+        # ถ้าแถบหุบเหลือ 2px (เพราะมีป้ายชิดขอบ) แต่ยังไล่ระดับ 5px ขอบเบลอจะล้ำเข้าไป
+        # ทับพื้นรอบตัวอักษรด้วยพิกเซลโครงที่ยืดมา 3 เท่า = ป้ายนั้นเบลอลง 33% (วัดที่ป้าย ENG)
+        narrowest = min(v for v in bands.values() if v) if any(bands.values()) else 0
+        feather = max(1, min(INSET_FEATHER, narrowest // 2))
         soft = np.array(
-            Image.fromarray(mask).filter(ImageFilter.GaussianBlur(INSET_FEATHER))
+            Image.fromarray(mask).filter(ImageFilter.GaussianBlur(feather))
         ).astype(float) / 255.0
         # ดันให้กลางแถบทึบเต็ม ไม่งั้นกรอบเดิมจะยังเห็นจาง ๆ ผ่านออกมา
-        soft = np.clip(soft * 1.8, 0, 1)[:, :, None]
+        soft = np.clip(soft * 1.8, 0, 1)
+
+        # ห้ามแตะตัวหนังสือเด็ดขาด แม้แต่บางส่วน
+        # ขอบเบลอของ mask ล้ำเข้าไปได้ไกลกว่าความกว้างแถบ ทำให้ป้ายที่อยู่ใกล้ขอบ (เช่น ENG
+        # บนแผง ENG MASTER) ถูกผสมกับพื้นโครงจนซีดลงครึ่งหนึ่ง เทียบกับป้ายอื่นที่ยังคม
+        lum_all = arr.mean(axis=2)
+        chroma_all = arr.max(axis=2) - arr.min(axis=2)
+        protect = (lum_all > 195) | (chroma_all > 60)
+        protect = np.array(
+            Image.fromarray((protect * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(7))
+        ) > 0
+        # กันได้เฉพาะในโซนไล่ระดับ ไม่กันในแกนกลางแถบที่ต้องแทนด้วยโครงเต็ม ๆ
+        # ไม่งั้นแสงสะท้อนบนหัวน็อต (สว่างเกิน 195 เหมือนตัวหนังสือ) จะถูกกันไว้เป็นจุด ๆ
+        # เหลือเป็นเศษฝ้ารอบน็อต — ตัวหนังสือไม่เคยอยู่ในแกนกลางแถบเพราะแถบหุบหลบให้แล้ว
+        soft = np.where(protect & (soft < 0.95), 0.0, soft)[:, :, None]
         arr = arr * (1 - soft) + frame * soft
         done += 1
 
