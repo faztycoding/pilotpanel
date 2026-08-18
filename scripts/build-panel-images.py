@@ -18,6 +18,7 @@ usage:
 from __future__ import annotations
 
 import argparse
+import io
 import sys
 from pathlib import Path
 
@@ -295,6 +296,99 @@ def fill_dark_bands(img: Image.Image, panel_id: str, pdf_path: Path, target_w: i
     print(f"     gap: แทนแถบดำ {filled} จุด")
 
 
+# ---------------------------------------------------------------- ฝังชิ้นลงในโครง
+# ชิ้นที่ generate มามีกรอบ+น็อตของตัวเองติดมา พอแปะลงบนโครงที่มีกรอบ+น็อตอยู่แล้ว
+# จะเห็นน็อตซ้อนกันสองแถว = อ่านเป็นภาพตัดต่อทันที
+#
+# กุญแจคือ "ชั้นโครง" เป็นรูปแยกชิ้นหนึ่งใน PDF (ภาพ 3D ของแผงทั้งอันแบบไม่มีตัวอักษร)
+# จึงเอาพิกเซลของโครงมาคืนทับขอบของชิ้นได้ ผลคือกรอบของชิ้นหายไปใต้ผิวโครงที่ต่อเนื่อง
+# เหมือนชิ้นถูกฝังลงในช่องของโครงจริง ๆ ไม่ใช่แปะทับ
+#
+# 10 px คือค่าที่ทดลองแล้วลงตัว: กว้างพอกลบกรอบกับน็อตของชิ้น แต่ไม่กินตัวหนังสือที่ชิดขอบ
+# (เคยลอง 26 px แล้วป้าย ACTIVE / STBY-CRS บนชิ้น RMP หายไป)
+INSET_BAND = 10
+INSET_FEATHER = 5
+
+
+def frame_layer(pdf_path: Path, size: tuple[int, int], target_w: int) -> np.ndarray | None:
+    """ภาพ 'ชั้นโครง' อย่างเดียว วางตามพิกัดจริงบนหน้า ใช้เป็นพื้นคืนที่ขอบชิ้น"""
+    doc = fitz.open(pdf_path)
+    page = doc[0]
+    scale = target_w / page.rect.width
+    layer = None
+    for img in page.get_images(full=True):
+        for r in page.get_image_rects(img[0]):
+            if r.width < page.rect.width * 0.9:
+                continue
+            raw = Image.open(io.BytesIO(doc.extract_image(img[0])["image"])).convert("RGB")
+            box = (round(r.x0 * scale), round(r.y0 * scale), round(r.x1 * scale), round(r.y1 * scale))
+            layer = Image.new("RGB", size, (255, 255, 255))
+            layer.paste(raw.resize((box[2] - box[0], box[3] - box[1]), Image.LANCZOS), (box[0], box[1]))
+    doc.close()
+    return np.array(layer).astype(float) if layer is not None else None
+
+
+def inset_pieces(img: Image.Image, panel_id: str, pdf_path: Path, target_w: int) -> None:
+    if panel_id not in BLEND_PANELS:
+        return
+    arr = np.array(img).astype(float)
+    h, w = arr.shape[:2]
+    frame = frame_layer(pdf_path, (w, h), target_w)
+    if frame is None:
+        print("     inset: ไม่พบชั้นโครง ข้าม")
+        return
+
+    done = 0
+    for x0, y0, x1, y1 in piece_rects(pdf_path, target_w):
+        x0, y0, x1, y1 = max(0, x0), max(0, y0), min(w, x1), min(h, y1)
+        if (x1 - x0) * (y1 - y0) > h * w * FRAME_AREA_RATIO:
+            continue
+        if x1 - x0 < INSET_BAND * 4 or y1 - y0 < INSET_BAND * 4:
+            continue
+        # แถบต้องหลบตัวหนังสือที่ชิดขอบชิ้น (เช่นป้าย ECAM / ACTIVE ที่อยู่ห่างขอบไม่ถึง 10px)
+        # ดูเฉพาะพิกเซลสว่างจัดหรือสีจัด = ตัวหนังสือกับป้ายสี ไม่นับน็อตซึ่งเป็นสีเทากลาง ๆ
+        # (ถ้านับน็อตด้วย แถบจะหุบเป็นศูนย์แล้วน็อตซ้อนกันก็ไม่หาย ซึ่งคือปัญหาที่ตั้งใจแก้)
+        reg = arr[y0:y1, x0:x1]
+        lum = reg.mean(axis=2)
+        chroma = reg.max(axis=2) - reg.min(axis=2)
+        text = (lum > 200) | (chroma > 60)
+        bands = {}
+        for edge, line_has_text in (
+            ("top", lambda k: text[k].mean() > 0.02),
+            ("bottom", lambda k: text[-1 - k].mean() > 0.02),
+            ("left", lambda k: text[:, k].mean() > 0.02),
+            ("right", lambda k: text[:, -1 - k].mean() > 0.02),
+        ):
+            band = INSET_BAND
+            for k in range(INSET_BAND):
+                if line_has_text(k):
+                    band = max(0, k - 1)
+                    break
+            bands[edge] = band
+
+        mask = np.zeros((h, w), np.uint8)
+        if bands["top"]:
+            mask[y0 : y0 + bands["top"], x0:x1] = 255
+        if bands["bottom"]:
+            mask[y1 - bands["bottom"] : y1, x0:x1] = 255
+        if bands["left"]:
+            mask[y0:y1, x0 : x0 + bands["left"]] = 255
+        if bands["right"]:
+            mask[y0:y1, x1 - bands["right"] : x1] = 255
+        if not mask.any():
+            continue
+        soft = np.array(
+            Image.fromarray(mask).filter(ImageFilter.GaussianBlur(INSET_FEATHER))
+        ).astype(float) / 255.0
+        # ดันให้กลางแถบทึบเต็ม ไม่งั้นกรอบเดิมจะยังเห็นจาง ๆ ผ่านออกมา
+        soft = np.clip(soft * 1.8, 0, 1)[:, :, None]
+        arr = arr * (1 - soft) + frame * soft
+        done += 1
+
+    img.paste(Image.fromarray(arr.round().clip(0, 255).astype(np.uint8)))
+    print(f"     inset: ฝังขอบชิ้นลงในโครง {done} ชิ้น (แถบ {INSET_BAND}px)")
+
+
 def is_green(pixel: tuple[int, int, int]) -> bool:
     r, g, b = pixel[0], pixel[1], pixel[2]
     return g > 120 and g - r > 50 and g - b > 50
@@ -336,6 +430,7 @@ def main() -> int:
         apply_patches(img, panel_id)
         recolor_green(img, panel_id)
         blend_pieces(img, panel_id, pdf_path, target_w)
+        inset_pieces(img, panel_id, pdf_path, target_w)
         fill_dark_bands(img, panel_id, pdf_path, target_w)
         out = OUT_DIR / f"{panel_id}.webp"
         if not args.check:
