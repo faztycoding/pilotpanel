@@ -29,6 +29,12 @@ const MIN_MAX_SCALE = 6;
 const MAX_MAX_SCALE = 20;
 
 /**
+ * เพดานซูมต้องสูงกว่าค่าซูมเริ่มต้นเป็นเท่าตัว ไม่ใช่เท่ากัน
+ * ถ้าเท่ากัน (เคสก่อนแก้) หน้า panel จะเปิดมาแล้วติดเพดานทันที บีบนิ้วเข้าต่อไม่ได้เลย
+ */
+const ZOOM_HEADROOM = 3;
+
+/**
  * ฟังก์ชันนี้ถูกเรียกจาก gesture callback ที่รันบน UI thread ต้องมี 'worklet'
  * ถ้าไม่มี react-native-worklets จะ crash ระดับ native (ไม่ใช่ red box) ดู docs/FAILURES.md
  * ตอนรันใน node ธรรมดา directive นี้เป็นแค่ string ไม่มีผล จึงยังทดสอบแยกได้
@@ -79,12 +85,25 @@ export function maxTranslate(container: Size, display: Size, scale: number): Siz
 }
 
 /**
+ * สเกลที่ทำให้รูปเต็มความสูงจอ (ล้นความกว้างออกไปแล้วให้ผู้ใช้เลื่อนเอง)
+ * ใช้เป็นค่าซูมเริ่มต้นของหน้า panel: เปิดมาเห็นปุ่มใหญ่พออ่านได้เลย ไม่ต้องบีบนิ้วก่อน
+ *
+ * คืน 1 เมื่อรูปติดความสูงอยู่แล้วหลัง fitContain (เคสรูปเกือบจัตุรัสอย่าง overhead)
+ * เพราะซูมเกินกว่านั้นไม่ได้ทำให้เห็นมากขึ้น แค่ทำให้ต้องเลื่อนสองแกน
+ */
+export function fillHeightScale(container: Size, display: Size): number {
+  if (display.height <= 0) return 1;
+  return Math.max(1, container.height / display.height);
+}
+
+/**
  * ซูมสูงสุด: ปกติ 6x แต่รูปที่แบนมาก (glareshield) ต้องซูมได้ลึกกว่านั้น
- * เพราะที่ 1x ความสูงบนจอน้อยจนกดปุ่มไม่โดน
+ * เพราะค่าเริ่มต้นของมันคือ fillHeightScale ซึ่งสูงอยู่แล้ว ถ้าเพดานไม่เผื่อ headroom
+ * ผู้ใช้จะซูมเข้าต่อไม่ได้เลยตั้งแต่เปิดหน้ามา
  */
 export function maxScaleFor(container: Size, display: Size): number {
   if (display.height <= 0) return MIN_MAX_SCALE;
-  return clamp(container.height / display.height, MIN_MAX_SCALE, MAX_MAX_SCALE);
+  return clamp(fillHeightScale(container, display) * ZOOM_HEADROOM, MIN_MAX_SCALE, MAX_MAX_SCALE);
 }
 
 /** hitSlop ต่อด้าน เพื่อดันกล่องที่เล็กกว่านิ้วให้ถึง MIN_HIT_TARGET_DP */

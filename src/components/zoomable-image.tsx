@@ -10,7 +10,14 @@ import Animated, {
     withTiming,
 } from 'react-native-reanimated';
 
-import { clamp, fitContain, maxScaleFor, maxTranslate, type Size } from '@/lib/layout';
+import {
+    clamp,
+    fillHeightScale,
+    fitContain,
+    maxScaleFor,
+    maxTranslate,
+    type Size
+} from '@/lib/layout';
 import type { ImageSize, PanelImage } from '@/lib/types';
 
 /**
@@ -26,6 +33,13 @@ const MIN_SCALE = 1;
 type Props = {
   source: PanelImage;
   imageSize: ImageSize;
+  /**
+   * ซูมตั้งต้นตอนเปิดหน้า
+   *   'contain'    = เห็นรูปทั้งใบพอดีจอ (letterbox) เหมาะกับหน้าภาพรวม
+   *   'fillHeight' = เต็มความสูงจอ ล้นความกว้างแล้วให้ผู้ใช้เลื่อนซ้ายขวาเอง
+   *                  เหมาะกับหน้า panel ที่ต้องอ่านตัวอักษรบนปุ่มให้ออกตั้งแต่เปิดมา
+   */
+  initialZoom?: 'contain' | 'fillHeight';
   /** render ทับบนรูป ได้รับขนาดรูปจริงบนจอเพื่อคูณกับ ratio */
   renderOverlay?: (display: Size) => ReactNode;
   /** แจ้งขนาดรูปบนจอหลัง layout ให้หน้าจอด้านนอกใช้ตัดสินใจเรื่อง UI ได้ */
@@ -41,6 +55,7 @@ type Props = {
 export function ZoomableImage({
   source,
   imageSize,
+  initialZoom = 'contain',
   renderOverlay,
   onDisplayChange,
   onScaleSettled,
@@ -142,11 +157,16 @@ export function ZoomableImage({
   function handleLayout(event: LayoutChangeEvent) {
     const { width, height } = event.nativeEvent.layout;
     if (width === container.width && height === container.height) return;
-    setContainer({ width, height });
+    const nextContainer = { width, height };
+    setContainer(nextContainer);
+    // ต้องคำนวณจาก container ใหม่ตรงนี้ ไม่ใช่จาก display ใน useMemo ซึ่งยังเป็นค่าของรอบก่อน
+    const nextDisplay = fitContain(nextContainer, imageSize);
+    const initialScale =
+      initialZoom === 'fillHeight' ? fillHeightScale(nextContainer, nextDisplay) : MIN_SCALE;
     // จอเปลี่ยนขนาดแล้ว ค่าซูม/เลื่อนเดิมอาจเกินขอบใหม่ กลับไปตั้งต้นเพื่อไม่ให้ค้างนอกกรอบ
-    scale.value = withTiming(MIN_SCALE);
-    savedScale.value = MIN_SCALE;
-    settledScale.value = MIN_SCALE;
+    scale.value = withTiming(initialScale);
+    savedScale.value = initialScale;
+    settledScale.value = initialScale;
     translateX.value = withTiming(0);
     translateY.value = withTiming(0);
     savedTranslateX.value = 0;

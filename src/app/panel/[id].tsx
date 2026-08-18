@@ -74,6 +74,7 @@ export default function PanelScreen() {
       <ZoomableImage
         source={image}
         imageSize={panel.imageSize}
+        initialZoom="fillHeight"
         onScaleSettled={handleScaleSettled}
         onDisplayChange={handleDisplayChange}
         renderOverlay={(size) => (
