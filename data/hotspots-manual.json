@@ -1,0 +1,48 @@
+{
+  "_comment": [
+    "พิกัดปุ่มที่อ่านจากรูปแผงด้วยตา หน่วยเป็น px ของไฟล์ใน assets/panels/<panel>.webp",
+    "ใช้กับปุ่มที่ป้ายบนรูปเป็น pixel (อยู่ในรูปย่อยที่แปะทับ) ไม่ใช่ตัวหนังสือ vector",
+    "จึงหาตำแหน่งอัตโนมัติจาก PDF ไม่ได้ — ดู .devin/skills/panel-hotspot-pipeline/SKILL.md",
+    "สคริปต์ที่อ่านไฟล์นี้: scripts/place-hotspots.py (ชั้นที่ 4 ชนะทุกชั้น)",
+    "ถ้าเปลี่ยนรูปแผงเป็นสัดส่วนใหม่ ต้องอ่านพิกัดในไฟล์นี้ใหม่ทั้งหมด"
+  ],
+
+  "overhead": {
+    "oh_data_selector_knob":             { "x0": 262, "y0": 488, "x1": 368, "y1": 592 },
+    "oh_ir_1_2_3_light":                 { "x0": 265, "y0": 678, "x1": 392, "y1": 792 },
+    "oh_ir_1_2_3_mode_rotary_selector":  { "x0": 252, "y0": 838, "x1": 402, "y1": 986 },
+    "oh_adr_1_2_3_push_button":          { "x0": 262, "y0": 1020, "x1": 398, "y1": 1130 },
+
+    "oh_eng_1_2_fire_push_button":       { "x0": 1182, "y0": 476, "x1": 1412, "y1": 620 },
+    "oh_apu_fire_push_button":           { "x0": 1622, "y0": 358, "x1": 1930, "y1": 562 },
+    "oh_test_push_button_eng_and_apu":   { "x0": 1050, "y0": 548, "x1": 1114, "y1": 616 },
+
+    "oh_wing_switch":                    { "x0": 1398, "y0": 2758, "x1": 1498, "y1": 2900 },
+    "oh_capt_and_purs_capt_switch":      { "x0": 748, "y0": 1490, "x1": 826, "y1": 1586 },
+    "oh_sec_1_2_3_push_button":          { "x0": 559, "y0": 1249, "x1": 678, "y1": 1368 },
+    "oh_yellow_elec_pump_push_button":   { "x0": 2357, "y0": 866, "x1": 2443, "y1": 946 },
+    "oh_left_right_tk_pumps_1_2_push_buttons": { "x0": 1182, "y0": 1252, "x1": 1292, "y1": 1372 },
+    "oh_ext_pwr_push_button":            { "x0": 1938, "y0": 1722, "x1": 2058, "y1": 1842 },
+    "oh_wing_anti_ice_push_button":      { "x0": 1044, "y0": 2526, "x1": 1160, "y1": 2652 },
+    "oh_blower_and_extract_push_buttons": { "x0": 2582, "y0": 2344, "x1": 2696, "y1": 2454 },
+
+    "oh_cargo_temperature_selector":     { "x0": 2968, "y0": 1888, "x1": 3145, "y1": 2042 },
+    "oh_test_push_button":               { "x0": 2862, "y0": 2148, "x1": 2954, "y1": 2248 },
+    "oh_zone_temperature_selectors":     { "x0": 1440, "y0": 1945, "x1": 1600, "y1": 2100 },
+    "oh_eng_1_and_2_anti_ice_push_button": { "x0": 1380, "y0": 2528, "x1": 1495, "y1": 2650 },
+    "oh_man_v_s_ctl_toggle_switch":      { "x0": 1925, "y0": 2525, "x1": 2005, "y1": 2622 },
+    "oh_ldg_elev_knob":                  { "x0": 2198, "y0": 2528, "x1": 2302, "y1": 2625 },
+    "oh_mode_sel_push_button_2":         { "x0": 2062, "y0": 2525, "x1": 2155, "y1": 2630 },
+    "oh_l_and_r_land_switch":            { "x0": 1222, "y0": 2965, "x1": 1298, "y1": 3085 },
+
+    "oh_ovhd_integ_light_knob":       { "x0": 1930, "y0": 2780, "x1": 2020, "y1": 2872 },
+    "oh_ice_ind_stby_compass_switch": { "x0": 2078, "y0": 2782, "x1": 2168, "y1": 2900 },
+    "oh_dome_selector":               { "x0": 2204, "y0": 2778, "x1": 2296, "y1": 2882 },
+    "oh_ann_light_switch":            { "x0": 2348, "y0": 2778, "x1": 2446, "y1": 2878 },
+
+    "oh_seat_belts_switch":           { "x0": 1924, "y0": 2954, "x1": 2022, "y1": 3070 },
+    "oh_no_smoking_selector":         { "x0": 2048, "y0": 2954, "x1": 2152, "y1": 3070 },
+    "oh_emer_exit_lt_off_light":      { "x0": 2184, "y0": 2962, "x1": 2306, "y1": 3072 },
+    "oh_emer_exit_lt_selector":       { "x0": 2314, "y0": 2962, "x1": 2408, "y1": 3070 }
+  }
+}

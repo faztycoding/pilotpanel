@@ -129,33 +129,44 @@ def main() -> int:
                 return other["id"]
         return ""
 
-    # ---- ชั้นที่ 2: ไฟบนปุ่ม -> ครึ่งบนของปุ่มแม่ที่อยู่ก่อนหน้าในเอกสาร
-    lights = 0
-    controls = panel["controls"]
-    for i, control in enumerate(controls):
-        if control.get("hotspot") or not re.search(LIGHT_NAME, control["name"], re.I):
-            continue
-        if re.search(NOT_A_LIGHT, control["name"], re.I):
-            continue
-        # ต้องเป็น control ที่อยู่ติดกันในเอกสารเท่านั้น
-        # ถ้าไล่ย้อนขึ้นไปหลายตัว จะไปเจอปุ่มคนละโซนแล้ววางผิดที่ (เจอจาก overlay รอบก่อน)
-        if i == 0:
-            continue
-        parent = controls[i - 1]
-        if not parent.get("hotspot") or re.search(LIGHT_NAME, parent["name"], re.I):
-            continue
-        box = parent["hotspot"]
-        top_h = round(box["h"] * LIGHT_TOP_RATIO, 4)
-        control["hotspot"] = {"x": box["x"], "y": box["y"], "w": box["w"], "h": top_h}
-        # ปุ่มแม่เหลือครึ่งล่าง เพื่อไม่ให้สองกรอบทับกันแล้วกดปนกัน
-        parent["hotspot"] = {
-            "x": box["x"],
-            "y": round(box["y"] + top_h, 4),
-            "w": box["w"],
-            "h": round(box["h"] - top_h, 4),
-        }
-        lights += 1
-    print(f"  ไฟบนปุ่ม (วางครึ่งบนของปุ่มแม่): {lights} ตัว")
+    # ---- ชั้นที่ 4: พิกัดที่คนอ่านจากภาพเอง (ปุ่มที่ป้ายเป็น pixel ไม่ใช่ vector)
+    # อยู่ใน data/hotspots-manual.json เพราะเป็น "ข้อมูลที่คนเขียน" ไม่ใช่ generated
+    # จึงต้อง commit ขึ้น repo ได้ (แบบเดียวกับ data/sections-manual.json ที่ extract.py ใช้)
+    #   { "overhead": { "oh_seat_belts_switch": { "x0": 1924, "y0": 2954, "x1": 2022, "y1": 3070 } } }
+    boxes_path = ROOT / "data" / "hotspots-manual.json"
+    manual_boxes = 0
+    if boxes_path.exists():
+        img_w, img_h = panel["imageSize"]["w"], panel["imageSize"]["h"]
+        all_boxes = json.loads(boxes_path.read_text("utf-8"))
+        # ล้างพิกัดเดิมของทุกตัวที่มีในไฟล์นี้ก่อน เพราะพิกัดที่ชั้นก่อนหน้าเดาไว้อาจยังค้างอยู่
+        # แล้วไปชนกับพิกัดที่ยืนยันของตัวอื่น ทำให้ตัวที่ถูกต้องถูกข้ามไปแทน
+        for control_id in all_boxes.get(args.panel, {}):
+            if control_id in by_id:
+                by_id[control_id]["hotspot"] = None
+        for control_id, px in all_boxes.get(args.panel, {}).items():
+            control = by_id.get(control_id)
+            if control is None:
+                print(f"  ! ไม่มี controlId '{control_id}' ใน {args.panel}.json")
+                continue
+            box = {
+                "x": round(px["x0"] / img_w, 4),
+                "y": round(px["y0"] / img_h, 4),
+                "w": round((px["x1"] - px["x0"]) / img_w, 4),
+                "h": round((px["y1"] - px["y0"]) / img_h, 4),
+            }
+            # พิกัดที่คนระบุชนะการเดาเสมอ ถ้าทับกับตัวที่เดาไว้ ให้ล้างตัวที่เดาออก
+            # เคสจริง: "TEST push button" (ของ CARGO SMOKE) ถูกเดาไปลงปุ่ม APU FIRE
+            # เพราะป้ายข้างปุ่มนั้นอ่านได้ว่า "APU TEST" — ต้องให้พิกัดที่ยืนยันแล้วทับได้
+            clash = overlaps_existing(box, control_id)
+            if clash and clash not in all_boxes.get(args.panel, {}):
+                by_id[clash]["hotspot"] = None
+                print(f"     ล้างที่เดาไว้ {clash} เพราะทับกับพิกัดที่ยืนยันของ {control_id}")
+            elif clash:
+                print(f"     ข้าม {control_id}: กรอบทับ {clash} (ทั้งคู่เป็นพิกัดที่ยืนยัน)")
+                continue
+            control["hotspot"] = box
+            manual_boxes += 1
+        print(f"  พิกัดที่ระบุเอง: {manual_boxes} ตัว")
 
     # ---- ชั้นที่ 3: วางจากตำแหน่งป้าย vector สำหรับลูกบิด/สวิตช์ที่ตรวจจับไม่เจอ
     anchored = 0
@@ -209,6 +220,42 @@ def main() -> int:
             control["hotspot"] = box
             anchored += 1
         print(f"  วางจากตำแหน่งป้าย: {anchored} ตัว")
+
+    # ---- ชั้นสุดท้าย: ไฟบนปุ่ม -> ครึ่งบนของปุ่มแม่ที่อยู่ก่อนหน้าในเอกสาร
+    # ต้องรันหลังทุกชั้น เพราะปุ่มแม่อาจถูกวางในชั้น manual/label ซึ่งมาทีหลัง
+    # ถ้ารันก่อน ไฟที่ปุ่มแม่ยังไม่มีพิกัดจะตกขบวนไปเลย (เจอจริง 6 ดวง)
+    lights = 0
+    controls = panel["controls"]
+    for i, control in enumerate(controls):
+        if control.get("hotspot") or not re.search(LIGHT_NAME, control["name"], re.I):
+            continue
+        if re.search(NOT_A_LIGHT, control["name"], re.I):
+            continue
+        # ต้องเป็น control ที่อยู่ติดกันในเอกสารเท่านั้น
+        # ถ้าไล่ย้อนขึ้นไปหลายตัว จะไปเจอปุ่มคนละโซนแล้ววางผิดที่ (เจอจาก overlay รอบก่อน)
+        if i == 0:
+            continue
+        parent = controls[i - 1]
+        if not parent.get("hotspot") or re.search(LIGHT_NAME, parent["name"], re.I):
+            continue
+        # ปุ่มแม่ต้องเป็นปุ่มกดเท่านั้น ไฟแจ้งเตือนไม่เคยอยู่บนลูกบิดหรือสวิตช์โยก
+        # เคสจริง: "IR 1/2/3 Light" อยู่ถัดจาก "SYS selector knob" ในเอกสาร
+        # ถ้าไม่เช็คชนิด ไฟจะไปเกาะครึ่งบนของลูกบิด SYS ซึ่งผิดตำแหน่งคนละที่
+        if parent["type"] != "pushbutton":
+            continue
+        box = parent["hotspot"]
+        top_h = round(box["h"] * LIGHT_TOP_RATIO, 4)
+        control["hotspot"] = {"x": box["x"], "y": box["y"], "w": box["w"], "h": top_h}
+        # ปุ่มแม่เหลือครึ่งล่าง เพื่อไม่ให้สองกรอบทับกันแล้วกดปนกัน
+        parent["hotspot"] = {
+            "x": box["x"],
+            "y": round(box["y"] + top_h, 4),
+            "w": box["w"],
+            "h": round(box["h"] - top_h, 4),
+        }
+        lights += 1
+    print(f"  ไฟบนปุ่ม (วางครึ่งบนของปุ่มแม่): {lights} ตัว")
+
 
     total = len(panel["controls"])
     placed = sum(1 for c in panel["controls"] if c.get("hotspot"))

@@ -12,7 +12,12 @@
       "id": "oh_data_selector_knob",
       "name": "Data Selector Knob",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0762,
+        "y": 0.1562,
+        "w": 0.0308,
+        "h": 0.0333
+      },
       "body": [
         {
           "kind": "bullet",
@@ -82,9 +87,9 @@
       "type": "selector",
       "hotspot": {
         "x": 0.1158,
-        "y": 0.6411,
+        "y": 0.6255,
         "w": 0.0355,
-        "h": 0.019
+        "h": 0.0346
       },
       "body": [
         {
@@ -114,10 +119,10 @@
       "name": "IR 1/2/3 Light",
       "type": "light",
       "hotspot": {
-        "x": 0.1158,
-        "y": 0.6255,
-        "w": 0.0355,
-        "h": 0.0156
+        "x": 0.0771,
+        "y": 0.217,
+        "w": 0.0369,
+        "h": 0.0365
       },
       "body": [
         {
@@ -173,7 +178,12 @@
       "id": "oh_ir_1_2_3_mode_rotary_selector",
       "name": "IR 1/2/3 Mode Rotary Selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0733,
+        "y": 0.2682,
+        "w": 0.0436,
+        "h": 0.0474
+      },
       "body": [
         {
           "kind": "bullet",
@@ -210,7 +220,12 @@
       "id": "oh_adr_1_2_3_push_button",
       "name": "ADR 1/2/3 push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0762,
+        "y": 0.3265,
+        "w": 0.0396,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "bullet",
@@ -238,7 +253,12 @@
       "id": "oh_blower_and_extract_push_buttons",
       "name": "Blower and Extract push buttons",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.751,
+        "y": 0.7661,
+        "w": 0.0332,
+        "h": 0.0194
+      },
       "body": [
         {
           "kind": "p",
@@ -268,7 +288,12 @@
       "id": "oh_fault_light",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.751,
+        "y": 0.7503,
+        "w": 0.0332,
+        "h": 0.0158
+      },
       "body": [
         {
           "kind": "p",
@@ -427,7 +452,12 @@
       "id": "oh_capt_and_purs_capt_switch",
       "name": "(CAPT AND PURS)/CAPT switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2176,
+        "y": 0.477,
+        "w": 0.0227,
+        "h": 0.0307
+      },
       "body": [
         {
           "kind": "p",
@@ -500,10 +530,10 @@
       "name": "TEST push button",
       "type": "pushbutton",
       "hotspot": {
-        "x": 0.4753,
-        "y": 0.1152,
-        "w": 0.0849,
-        "h": 0.0743
+        "x": 0.8325,
+        "y": 0.6876,
+        "w": 0.0268,
+        "h": 0.032
       },
       "body": [
         {
@@ -606,7 +636,12 @@
       "id": "oh_cargo_temperature_selector",
       "name": "CARGO TEMPERATURE selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8633,
+        "y": 0.6044,
+        "w": 0.0515,
+        "h": 0.0493
+      },
       "body": [
         {
           "kind": "p",
@@ -687,7 +722,12 @@
       "id": "oh_sec_1_2_3_push_button",
       "name": "SEC 1/2/3 push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1626,
+        "y": 0.3998,
+        "w": 0.0346,
+        "h": 0.0381
+      },
       "body": [
         {
           "kind": "p",
@@ -1119,9 +1159,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.1536,
-        "y": 0.1501,
+        "y": 0.1688,
         "w": 0.0436,
-        "h": 0.0416
+        "h": 0.0229
       },
       "body": [
         {
@@ -1140,7 +1180,12 @@
       "id": "oh_fault_light_6",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1536,
+        "y": 0.1501,
+        "w": 0.0436,
+        "h": 0.0187
+      },
       "body": [
         {
           "kind": "warning",
@@ -1308,7 +1353,12 @@
       "id": "oh_eng_1_2_fire_push_button",
       "name": "ENG 1/2 FIRE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3438,
+        "y": 0.1524,
+        "w": 0.0669,
+        "h": 0.0461
+      },
       "body": [
         {
           "kind": "p",
@@ -1362,7 +1412,12 @@
       "id": "oh_apu_fire_push_button",
       "name": "APU FIRE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4718,
+        "y": 0.1146,
+        "w": 0.0896,
+        "h": 0.0653
+      },
       "body": [
         {
           "kind": "p",
@@ -1408,7 +1463,12 @@
       "id": "oh_test_push_button_eng_and_apu",
       "name": "TEST Push-button (ENG and APU)",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3054,
+        "y": 0.1852,
+        "w": 0.0186,
+        "h": 0.012
+      },
       "body": [
         {
           "kind": "p",
@@ -1426,7 +1486,12 @@
       "id": "oh_associated_master_warning_lights_illuminate",
       "name": "Associated MASTER Warning lights illuminate",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3054,
+        "y": 0.1754,
+        "w": 0.0186,
+        "h": 0.0098
+      },
       "body": [
         {
           "kind": "p",
@@ -1666,7 +1731,12 @@
       "id": "oh_yellow_elec_pump_push_button",
       "name": "YELLOW ELEC PUMP push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6856,
+        "y": 0.2887,
+        "w": 0.025,
+        "h": 0.0141
+      },
       "body": [
         {
           "kind": "p",
@@ -1692,7 +1762,12 @@
       "id": "oh_fault_light_10",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6856,
+        "y": 0.2772,
+        "w": 0.025,
+        "h": 0.0115
+      },
       "body": [
         {
           "kind": "warning",
@@ -1730,7 +1805,12 @@
       "id": "oh_left_right_tk_pumps_1_2_push_buttons",
       "name": "Left/Right TK PUMPS 1/2 push buttons",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3438,
+        "y": 0.4181,
+        "w": 0.032,
+        "h": 0.0211
+      },
       "body": [
         {
           "kind": "p",
@@ -1756,7 +1836,12 @@
       "id": "oh_fault_light_11",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3438,
+        "y": 0.4008,
+        "w": 0.032,
+        "h": 0.0173
+      },
       "body": [
         {
           "kind": "warning",
@@ -2011,9 +2096,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.3159,
-        "y": 0.5538,
+        "y": 0.5708,
         "w": 0.0361,
-        "h": 0.0378
+        "h": 0.0208
       },
       "body": [
         {
@@ -2028,7 +2113,12 @@
       "id": "oh_fault_light_15",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3159,
+        "y": 0.5538,
+        "w": 0.0361,
+        "h": 0.017
+      },
       "body": [
         {
           "kind": "warning",
@@ -2256,7 +2346,12 @@
       "id": "oh_ext_pwr_push_button",
       "name": "EXT PWR push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5637,
+        "y": 0.5512,
+        "w": 0.0349,
+        "h": 0.0384
+      },
       "body": [
         {
           "kind": "p",
@@ -2327,7 +2422,12 @@
       "id": "oh_zone_temperature_selectors",
       "name": "Zone Temperature Selectors",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4188,
+        "y": 0.6226,
+        "w": 0.0465,
+        "h": 0.0496
+      },
       "body": [
         {
           "kind": "p",
@@ -2630,7 +2730,12 @@
       "id": "oh_wing_anti_ice_push_button",
       "name": "WING ANTI ICE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3037,
+        "y": 0.8086,
+        "w": 0.0337,
+        "h": 0.0403
+      },
       "body": [
         {
           "kind": "p",
@@ -2680,7 +2785,12 @@
       "id": "oh_eng_1_and_2_anti_ice_push_button",
       "name": "ENG 1 and 2 ANTI ICE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4014,
+        "y": 0.8092,
+        "w": 0.0334,
+        "h": 0.0391
+      },
       "body": [
         {
           "kind": "p",
@@ -2745,7 +2855,12 @@
       "id": "oh_man_v_s_ctl_toggle_switch",
       "name": "MAN V/S CTL toggle switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5599,
+        "y": 0.8083,
+        "w": 0.0233,
+        "h": 0.031
+      },
       "body": [
         {
           "kind": "p",
@@ -2775,7 +2890,12 @@
       "id": "oh_mode_sel_push_button_2",
       "name": "MODE SEL push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5998,
+        "y": 0.8234,
+        "w": 0.0271,
+        "h": 0.0185
+      },
       "body": [
         {
           "kind": "p",
@@ -2809,7 +2929,12 @@
       "id": "oh_fault_light_21",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5998,
+        "y": 0.8083,
+        "w": 0.0271,
+        "h": 0.0151
+      },
       "body": [
         {
           "kind": "warning",
@@ -2823,7 +2948,12 @@
       "id": "oh_ldg_elev_knob",
       "name": "LDG ELEV knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6393,
+        "y": 0.8092,
+        "w": 0.0303,
+        "h": 0.031
+      },
       "body": [
         {
           "kind": "p",
@@ -2947,10 +3077,10 @@
       "name": "WING switch",
       "type": "switch",
       "hotspot": {
-        "x": 0.3048,
-        "y": 0.8099,
-        "w": 0.0349,
-        "h": 0.0359
+        "x": 0.4066,
+        "y": 0.8828,
+        "w": 0.0291,
+        "h": 0.0455
       },
       "body": [
         {
@@ -3015,7 +3145,12 @@
       "id": "oh_l_and_r_land_switch",
       "name": "L and R LAND switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3554,
+        "y": 0.9491,
+        "w": 0.0221,
+        "h": 0.0384
+      },
       "body": [
         {
           "kind": "p",
@@ -3096,7 +3231,12 @@
       "id": "oh_ovhd_integ_light_knob",
       "name": "OVHD INTEG light knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5614,
+        "y": 0.8899,
+        "w": 0.0262,
+        "h": 0.0294
+      },
       "body": [
         {
           "kind": "p",
@@ -3110,7 +3250,12 @@
       "id": "oh_ice_ind_stby_compass_switch",
       "name": "ICE IND & STBY COMPASS switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6044,
+        "y": 0.8905,
+        "w": 0.0262,
+        "h": 0.0378
+      },
       "body": [
         {
           "kind": "p",
@@ -3124,7 +3269,12 @@
       "id": "oh_dome_selector",
       "name": "DOME selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6411,
+        "y": 0.8892,
+        "w": 0.0268,
+        "h": 0.0333
+      },
       "body": [
         {
           "kind": "p",
@@ -3150,7 +3300,12 @@
       "id": "oh_ann_light_switch",
       "name": "ANN Light switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.683,
+        "y": 0.8892,
+        "w": 0.0285,
+        "h": 0.032
+      },
       "body": [
         {
           "kind": "p",
@@ -3164,7 +3319,12 @@
       "id": "oh_seat_belts_switch",
       "name": "SEAT BELTS switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5596,
+        "y": 0.9456,
+        "w": 0.0285,
+        "h": 0.0371
+      },
       "body": [
         {
           "kind": "p",
@@ -3190,7 +3350,12 @@
       "id": "oh_no_smoking_selector",
       "name": "NO SMOKING selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5957,
+        "y": 0.9456,
+        "w": 0.0303,
+        "h": 0.0371
+      },
       "body": [
         {
           "kind": "p",
@@ -3224,7 +3389,12 @@
       "id": "oh_emer_exit_lt_off_light",
       "name": "EMER EXIT LT-OFF light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6353,
+        "y": 0.9481,
+        "w": 0.0355,
+        "h": 0.0352
+      },
       "body": [
         {
           "kind": "p",
@@ -3238,7 +3408,12 @@
       "id": "oh_emer_exit_lt_selector",
       "name": "EMER EXIT LT selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6731,
+        "y": 0.9481,
+        "w": 0.0273,
+        "h": 0.0346
+      },
       "body": [
         {
           "kind": "p",
