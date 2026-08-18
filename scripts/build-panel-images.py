@@ -120,10 +120,20 @@ def recolor_green(img: Image.Image, panel_id: str) -> None:
     denom = (delta * delta).sum(axis=2)
     denom[denom == 0] = 1
     alpha = np.clip(((arr - bg) * delta).sum(axis=2) / denom, 0, 1)
+    # พิกเซลที่อยู่ลึกในเส้น (ไม่ติดขอบ) ต้องทึบเต็ม 100% เสมอ ไม่ต้องเชื่อค่าที่ประมาณได้
+    # เพราะสีผิดมีหลายเฉด (หัวลูกศรเข้มกว่าเส้น) การประมาณจะได้ค่าต่ำกว่าจริงแล้วเหลือสีเดิมจาง ๆ
+    interior = np.array(
+        Image.fromarray((mask * 255).astype(np.uint8)).filter(ImageFilter.MinFilter(5))
+    ) > 0
+    alpha = np.where(interior, 1.0, alpha)
     alpha = np.where(mask, alpha, 0)[:, :, None]
 
-    shift = np.array(TARGET_GREEN, dtype=float) - ink_wrong
-    out = np.clip(arr + alpha * shift, 0, 255)
+    # ทับด้วยสีเป้าหมายจริง ไม่ใช่บวกส่วนต่าง — เพราะสีผิดมีหลายเฉด ถ้าบวกส่วนต่างเท่ากันหมด
+    # เฉดที่ต่างจากค่ากลางจะเพี้ยนไปอีกทาง (หัวลูกศรจะสว่างเกินเส้น)
+    # ขอบที่ alpha < 1 ต้องผสมกับ "พื้นหลังที่ประมาณไว้" ไม่ใช่สีเดิมของพิกเซล
+    # ถ้าผสมกับสีเดิม เฉดผิดจะยังค้างอยู่ในขอบเป็นรัศมีบาง ๆ ซึ่งเห็นตอนซูมลึก
+    out = alpha * np.array(TARGET_GREEN, dtype=float) + (1 - alpha) * bg
+    out = np.where(mask[:, :, None], out, arr)
     img.paste(Image.fromarray(out.round().astype(np.uint8)))
     print(
         f"     recolor: เขียวผิดเฉด #{int(ink_wrong[0]):02X}{int(ink_wrong[1]):02X}"
