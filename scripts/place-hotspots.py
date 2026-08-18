@@ -111,6 +111,24 @@ def main() -> int:
         control["hotspot"] = cand["hotspot"]
         written += 1
 
+    def overlaps_existing(box: dict, skip_id: str = "") -> str:
+        """
+        คืน id ของ control ที่กรอบนี้ทับเกินครึ่ง — ใช้กันการวางซ้อนกัน
+        เคสจริงที่เจอ: เอกสารมี "MODE SEL push button" สองรายการ (FUEL กับ CABIN PRESS)
+        แต่ป้าย vector บนรูปมีคำว่า MODE SEL จุดเดียว ทำให้ทั้งสองตัวไปลงปุ่มเดียวกัน
+        validate จับได้ว่าทับ 100% ซึ่งแปลว่าผู้ใช้จะกดโดนผิดตัว
+        """
+        for other in panel["controls"]:
+            if other["id"] == skip_id or not other.get("hotspot"):
+                continue
+            o = other["hotspot"]
+            ix = max(0.0, min(box["x"] + box["w"], o["x"] + o["w"]) - max(box["x"], o["x"]))
+            iy = max(0.0, min(box["y"] + box["h"], o["y"] + o["h"]) - max(box["y"], o["y"]))
+            inter = ix * iy
+            if inter > 0.5 * min(box["w"] * box["h"], o["w"] * o["h"]):
+                return other["id"]
+        return ""
+
     # ---- ชั้นที่ 2: ไฟบนปุ่ม -> ครึ่งบนของปุ่มแม่ที่อยู่ก่อนหน้าในเอกสาร
     lights = 0
     controls = panel["controls"]
@@ -161,24 +179,34 @@ def main() -> int:
                     if snap is None or p["y0"] < snap["y0"]:
                         snap = p
             if snap is not None:
-                control["hotspot"] = {
+                box = {
                     "x": round(snap["x0"] / img_w, 4),
                     "y": round(snap["y0"] / img_h, 4),
                     "w": round((snap["x1"] - snap["x0"]) / img_w, 4),
                     "h": round((snap["y1"] - snap["y0"]) / img_h, 4),
                 }
+                clash = overlaps_existing(box, control_id)
+                if clash:
+                    print(f"     ข้าม {control_id}: กรอบทับ {clash} (ป้ายเดียวกันแต่เป็นสองปุ่ม)")
+                    continue
+                control["hotspot"] = box
                 anchored += 1
                 continue
             bw, bh = BOX_BY_TYPE.get(control["type"], (150, 150))
             top = ref["y1"] + LABEL_GAP
             x0 = max(0, min(img_w - bw, cx - bw / 2))
             y0 = max(0, min(img_h - bh, top))
-            control["hotspot"] = {
+            box = {
                 "x": round(x0 / img_w, 4),
                 "y": round(y0 / img_h, 4),
                 "w": round(bw / img_w, 4),
                 "h": round(bh / img_h, 4),
             }
+            clash = overlaps_existing(box, control_id)
+            if clash:
+                print(f"     ข้าม {control_id}: กรอบทับ {clash}")
+                continue
+            control["hotspot"] = box
             anchored += 1
         print(f"  วางจากตำแหน่งป้าย: {anchored} ตัว")
 

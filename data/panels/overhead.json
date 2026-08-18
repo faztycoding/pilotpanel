@@ -2775,12 +2775,7 @@
       "id": "oh_mode_sel_push_button_2",
       "name": "MODE SEL push button",
       "type": "pushbutton",
-      "hotspot": {
-        "x": 0.498,
-        "y": 0.4078,
-        "w": 0.0436,
-        "h": 0.0416
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "p",
