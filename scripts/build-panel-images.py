@@ -142,6 +142,159 @@ def recolor_green(img: Image.Image, panel_id: str) -> None:
     )
 
 
+# ---------------------------------------------------------------- กลืนชิ้นที่แปะ
+# รูปแผงย่อยที่ generate มาถูกแปะลงบนโครง pedestal โดยโทนสีของแต่ละชิ้นไม่เท่ากัน
+# (วัดได้ความสว่าง 129-172 เทียบกับโครงที่ 163) ตาคนจับได้ทันทีว่าเป็นภาพตัดต่อ
+# ขั้นนี้ปรับโทนแต่ละชิ้นเข้าหาโทนของโครง แล้วไล่ระดับที่ขอบเพื่อไม่ให้เห็นรอยต่อ
+BLEND_PANELS = {"pedestal"}
+# ชิ้นที่กินพื้นที่เกินเท่านี้ถือเป็น "โครง" ไม่ใช่ชิ้นที่แปะ ห้ามปรับ (มันคือตัวอ้างอิงโทน)
+FRAME_AREA_RATIO = 0.5
+# ต่างจากโทนโครงน้อยกว่านี้ถือว่ากลืนอยู่แล้ว ไม่ต้องแตะ
+BLEND_MIN_DELTA = 3.0
+# ระยะไล่ระดับที่ขอบชิ้น (px) — ต้องกว้างพอให้ตาไม่เห็นขั้น แต่ไม่กว้างจนโทนเพี้ยนเข้าไปในชิ้น
+BLEND_FEATHER = 6
+
+
+def piece_rects(pdf_path: Path, target_w: int) -> list[tuple[int, int, int, int]]:
+    """พิกัดของรูปย่อยทุกชิ้นที่ถูกแปะลงในหน้า แปลงเป็น px ของรูปที่ render แล้ว"""
+    doc = fitz.open(pdf_path)
+    page = doc[0]
+    scale = target_w / page.rect.width
+    rects = []
+    for img in page.get_images(full=True):
+        for r in page.get_image_rects(img[0]):
+            rects.append(
+                (round(r.x0 * scale), round(r.y0 * scale), round(r.x1 * scale), round(r.y1 * scale))
+            )
+    doc.close()
+    return rects
+
+
+def plate_tone(region: np.ndarray) -> np.ndarray | None:
+    """
+    โทนของ 'แผ่นพื้นแผง' = median ของพิกเซลกลางโทน
+    ตัดปุ่มสีดำกับตัวอักษรขาวออก ไม่งั้นค่าจะวิ่งตามจำนวนปุ่มในชิ้นนั้นแทนที่จะเป็นสีแผง
+    """
+    flat = region.reshape(-1, 3)
+    lum = flat.mean(axis=1)
+    plate = flat[(lum > 110) & (lum < 210)]
+    return np.median(plate, axis=0) if len(plate) >= 100 else None
+
+
+def blend_pieces(img: Image.Image, panel_id: str, pdf_path: Path, target_w: int) -> None:
+    if panel_id not in BLEND_PANELS:
+        return
+    arr = np.array(img).astype(float)
+    h, w = arr.shape[:2]
+    page_area = h * w
+
+    rects = piece_rects(pdf_path, target_w)
+    frames = [r for r in rects if (r[2] - r[0]) * (r[3] - r[1]) > page_area * FRAME_AREA_RATIO]
+    if not frames:
+        print("     blend: หาโครงอ้างอิงไม่ได้ ข้าม")
+        return
+    fx0, fy0, fx1, fy1 = max(frames, key=lambda r: (r[2] - r[0]) * (r[3] - r[1]))
+    target = plate_tone(arr[max(0, fy0) : fy1, max(0, fx0) : fx1])
+    if target is None:
+        print("     blend: วัดโทนโครงไม่ได้ ข้าม")
+        return
+    print(f"     blend: โทนโครงอ้างอิง RGB{tuple(target.astype(int))}")
+
+    adjusted = 0
+    for x0, y0, x1, y1 in rects:
+        x0, y0 = max(0, x0), max(0, y0)
+        x1, y1 = min(w, x1), min(h, y1)
+        if (x1 - x0) * (y1 - y0) > page_area * FRAME_AREA_RATIO:
+            continue  # โครง ไม่ใช่ชิ้นแปะ
+        tone = plate_tone(arr[y0:y1, x0:x1])
+        if tone is None:
+            continue
+        if abs(tone.mean() - target.mean()) < BLEND_MIN_DELTA:
+            continue
+        gain = target / np.maximum(tone, 1.0)
+
+        # mask ไล่ระดับ: ข้างในชิ้นปรับเต็มที่ ขอบค่อย ๆ ลดลงเป็นศูนย์
+        # ใช้วิธีนี้แทนการเบลอพิกเซลตรงรอยต่อ เพราะการเบลอจะทำให้รายละเอียดจริงเสียไปด้วย
+        mask = np.zeros((h, w), np.uint8)
+        mask[y0:y1, x0:x1] = 255
+        soft = (
+            np.array(Image.fromarray(mask).filter(ImageFilter.GaussianBlur(BLEND_FEATHER))).astype(
+                float
+            )
+            / 255.0
+        )[:, :, None]
+        arr = np.clip(arr * (1 + soft * (gain - 1)), 0, 255)
+        adjusted += 1
+        print(
+            f"       ชิ้น x{x0}-{x1} y{y0}-{y1}: โทน {tone.mean():.0f} -> {target.mean():.0f} "
+            f"(gain {np.round(gain, 3)})"
+        )
+
+    img.paste(Image.fromarray(arr.round().astype(np.uint8)))
+    print(f"     blend: ปรับโทน {adjusted} ชิ้น")
+
+
+# แถบดำสนิทที่ติดมากับรูปที่ generate (ช่องว่างระหว่างกล่องสองกล่องในชิ้นเดียวกัน)
+# ร่องจริงทุกร่องในโครง pedestal เป็นสีฟ้าเทาอ่อน (ความสว่าง 147-174) ไม่มีดำสนิทที่ไหนเลย
+# แถบดำจึงอ่านเป็น "รอยตัดต่อ" ทันที ต้องแทนด้วยสีร่องที่หยิบจากโครงข้างเคียง
+DARK_BAND_LUMA = 12
+DARK_BAND_MIN_HEIGHT = 5
+DARK_BAND_MIN_WIDTH_RATIO = 0.8
+
+
+def fill_dark_bands(img: Image.Image, panel_id: str, pdf_path: Path, target_w: int) -> None:
+    if panel_id not in BLEND_PANELS:
+        return
+    arr = np.array(img).astype(float)
+    h, w = arr.shape[:2]
+    lum = arr.mean(axis=2)
+    filled = 0
+
+    for x0, y0, x1, y1 in piece_rects(pdf_path, target_w):
+        x0, y0, x1, y1 = max(0, x0), max(0, y0), min(w, x1), min(h, y1)
+        if (x1 - x0) * (y1 - y0) > h * w * FRAME_AREA_RATIO:
+            continue
+        dark_frac = (lum[y0:y1, x0:x1] < DARK_BAND_LUMA).mean(axis=1)
+        rows = np.where(dark_frac > DARK_BAND_MIN_WIDTH_RATIO)[0] + y0
+        if len(rows) == 0:
+            continue
+        runs = []
+        start = prev = rows[0]
+        for y in rows[1:]:
+            if y == prev + 1:
+                prev = y
+                continue
+            runs.append((start, prev))
+            start = prev = y
+        runs.append((start, prev))
+
+        for r0, r1 in runs:
+            if r1 - r0 + 1 < DARK_BAND_MIN_HEIGHT:
+                continue
+            # สีร่อง: หยิบจากโครงที่อยู่ถัดออกไปด้านข้างของชิ้น ระดับความสูงเดียวกัน
+            samples = []
+            for sx0, sx1 in ((max(0, x0 - 40), max(1, x0 - 6)), (min(w - 1, x1 + 6), min(w, x1 + 40))):
+                strip = arr[r0 : r1 + 1, sx0:sx1].reshape(-1, 3)
+                bright = strip[strip.mean(axis=1) > 90]
+                if len(bright):
+                    samples.append(np.median(bright, axis=0))
+            if not samples:
+                continue
+            gap = np.median(np.stack(samples), axis=0)
+            band = np.tile(gap, (r1 - r0 + 1, x1 - x0, 1))
+            # เส้นเงาบาง ๆ ที่ขอบบน/ล่าง ให้อ่านเป็นร่องจริง ไม่ใช่แถบสีทึบแปะทับ
+            edge = max(1, (r1 - r0 + 1) // 12)
+            band[:edge] *= 0.72
+            band[-edge:] *= 0.82
+            arr[r0 : r1 + 1, x0:x1] = band
+            filled += 1
+            print(f"       แถบดำ y{r0}-{r1} (สูง {r1 - r0 + 1}px) -> สีร่อง RGB{tuple(gap.astype(int))}")
+
+    if filled:
+        img.paste(Image.fromarray(arr.round().clip(0, 255).astype(np.uint8)))
+    print(f"     gap: แทนแถบดำ {filled} จุด")
+
+
 def is_green(pixel: tuple[int, int, int]) -> bool:
     r, g, b = pixel[0], pixel[1], pixel[2]
     return g > 120 and g - r > 50 and g - b > 50
@@ -182,6 +335,8 @@ def main() -> int:
         print(f"  ↻ {panel_id}: render {img.width}x{img.height} จาก {pdf_name}")
         apply_patches(img, panel_id)
         recolor_green(img, panel_id)
+        blend_pieces(img, panel_id, pdf_path, target_w)
+        fill_dark_bands(img, panel_id, pdf_path, target_w)
         out = OUT_DIR / f"{panel_id}.webp"
         if not args.check:
             img.save(out, "WEBP", quality=WEBP_QUALITY, method=6)
