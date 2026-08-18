@@ -55,7 +55,16 @@ export function HotspotLayer({ panelId, controls, display, scale, onPress, debug
               { left: box.left, top: box.top, width: box.width, height: box.height },
             ]}>
             {detailImage ? (
-              <Image source={detailImage} style={StyleSheet.absoluteFill} contentFit="cover" />
+              // allowDownscaling={false} จำเป็น: default เป็น true = expo-image decode รูปเท่าขนาด
+              // layout ของกล่องนี้ (เล็กระดับสิบ dp) การซูมเป็น transform ของ parent ไม่เปลี่ยนขนาด
+              // layout ให้ รูปจึงถูกขยายจากตัวที่ย่อแล้ว = เบลอตอนซูม ซึ่งคือตอนที่ต้องการความชัดสุด
+              // (contentFit="fill" ไม่โดนปัญหานี้ แต่ตรงนี้ต้องใช้ cover เพื่อไม่ให้รูปปุ่มยืดผิดสัดส่วน)
+              <Image
+                source={detailImage}
+                style={StyleSheet.absoluteFill}
+                contentFit="cover"
+                allowDownscaling={false}
+              />
             ) : null}
           </Pressable>
         );
