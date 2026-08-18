@@ -126,6 +126,10 @@ function parseSection(value: unknown, path: string): Section {
     const viewport = parseHotspot(raw.viewport, `${path}.viewport`);
     if (viewport) section.viewport = viewport;
   }
+  if (raw.entry !== undefined) {
+    const entry = parseHotspot(raw.entry, `${path}.entry`);
+    if (entry) section.entry = entry;
+  }
   return section;
 }
 

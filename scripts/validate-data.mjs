@@ -68,6 +68,23 @@ function validatePanel(file) {
   const sectionIds = new Set((panel.sections ?? []).map((s) => s.id));
   const controls = panel.controls ?? [];
 
+  // --- sections (entry point เข้าโซนที่มีรูปของตัวเอง เช่นหน้า ECAM ของ pedestal) ---
+  for (const s of panel.sections ?? []) {
+    if (s.entry === undefined) continue;
+    if (!s.image || !s.imageSize?.w || !s.imageSize?.h) {
+      err(p, `section "${s.id}": มี entry แต่ไม่มี image/imageSize คู่กัน`);
+    }
+    const e = s.entry;
+    for (const k of ["x", "y", "w", "h"]) {
+      if (typeof e[k] !== "number" || Number.isNaN(e[k]) || e[k] < 0 || e[k] > 1) {
+        err(p, `section "${s.id}": entry.${k} ต้องเป็น ratio 0..1`);
+      }
+    }
+    if (e.x + e.w > 1.0001 || e.y + e.h > 1.0001) {
+      err(p, `section "${s.id}": entry extends past image edge`);
+    }
+  }
+
   if (controls.length === 0) {
     err(p, "no controls at all");
     return panel;

@@ -360,8 +360,18 @@ def load_manual_sections() -> dict:
     {
       "overhead": [
         { "id": "elec", "name": "ELEC", "controlIds": ["oh_bat_1", "oh_bat_2"] }
+      ],
+      "pedestal": [
+        {
+          "id": "hyd", "name": "HYD", "controlIds": [...],
+          "image": "pedestal_ecam_hyd.webp", "imageSize": {"w": 1291, "h": 1267},
+          "entry": {"x": 0.42, "y": 0.05, "w": 0.03, "h": 0.02}
+        }
       ]
     }
+
+    `image`/`imageSize`/`viewport`/`entry` เป็น optional — ใส่ตอนที่รูป section
+    และพิกัดปุ่มเลือกหน้าจอจริงพร้อมแล้วเท่านั้น (ดู docs/data-schema.md)
     """
     if not MANUAL_SECTIONS.exists():
         return {}
@@ -374,23 +384,36 @@ def load_manual_sections() -> dict:
 
 def apply_manual_sections(panel: dict, manual: dict) -> list[str]:
     """merge โซนที่กำหนดเองเข้า panel คืน list ของ warning"""
-    entries = manual.get(panel["panelId"])
-    if not entries:
+    items = manual.get(panel["panelId"])
+    if not items:
         return []
 
     by_id = {c["id"]: c for c in panel["controls"]}
-    existing = {s["id"] for s in panel["sections"]}
+    sections_by_id = {s["id"]: s for s in panel["sections"]}
     warns: list[str] = []
 
-    for entry in entries:
-        sid = entry.get("id")
+    for item in items:
+        sid = item.get("id")
         if not sid:
             warns.append("section ไม่มี id — ข้าม")
             continue
-        if sid not in existing:
-            panel["sections"].append({"id": sid, "name": entry.get("name", sid)})
-            existing.add(sid)
-        for cid in entry.get("controlIds", []):
+        section = sections_by_id.get(sid)
+        if section is None:
+            section = {"id": sid, "name": item.get("name", sid)}
+            panel["sections"].append(section)
+            sections_by_id[sid] = section
+        elif "name" in item:
+            section["name"] = item["name"]
+
+        if "image" in item:
+            section["image"] = item["image"]
+            section["imageSize"] = item.get("imageSize", {"w": 0, "h": 0})
+        if "viewport" in item:
+            section["viewport"] = item["viewport"]
+        if "entry" in item:
+            section["entry"] = item["entry"]
+
+        for cid in item.get("controlIds", []):
             control = by_id.get(cid)
             if control is None:
                 warns.append(f"{panel['panelId']}: ไม่พบ control id '{cid}' ที่ระบุใน section '{sid}'")
@@ -400,23 +423,28 @@ def apply_manual_sections(panel: dict, manual: dict) -> list[str]:
 
 
 def merge_hotspots(new_panel: dict, out_path: Path) -> int:
-    """คงพิกัดที่วางไว้แล้วตอนรัน extractor ซ้ำ — กันงาน mapper หายทั้งหมด"""
+    """คงพิกัดที่วางไว้แล้วตอนรัน extractor ซ้ำ — กันงาน mapper หายทั้งหมด
+
+    คง hotspot + detailImage เดิม (ทั้งคู่มาจาก tools/hotspot-mapper ไม่ใช่จาก docx
+    extractor ไม่มีทางรู้ค่าพวกนี้เอง ถ้าไม่ merge กลับจะหายทุกครั้งที่รันซ้ำ)
+    """
     if not out_path.exists():
         return 0
     try:
         old = json.loads(out_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
         return 0
-    old_map = {
-        c["id"]: c["hotspot"]
-        for c in old.get("controls", [])
-        if c.get("hotspot")
-    }
+    old_by_id = {c["id"]: c for c in old.get("controls", [])}
     kept = 0
     for c in new_panel["controls"]:
-        if c["id"] in old_map:
-            c["hotspot"] = old_map[c["id"]]
+        prev = old_by_id.get(c["id"])
+        if not prev:
+            continue
+        if prev.get("hotspot"):
+            c["hotspot"] = prev["hotspot"]
             kept += 1
+        if prev.get("detailImage"):
+            c["detailImage"] = prev["detailImage"]
     # คง imageSize เดิมด้วย
     if old.get("imageSize", {}).get("w"):
         new_panel["imageSize"] = old["imageSize"]

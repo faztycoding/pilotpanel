@@ -66,6 +66,12 @@ export type Section = {
   imageSize?: ImageSize;
   /** ใช้เมื่อไม่มี image = zoom ไปที่กรอบนี้บนรูป panel เดิม */
   viewport?: Hotspot;
+  /**
+   * ตำแหน่งบนรูป panel หลัก (ratio เทียบ panel.imageSize) ที่แตะแล้วเข้าโซนนี้
+   * ไม่มี = โซนนี้ยังเข้าไม่ได้จากรูป (รอวางพิกัดปุ่มเลือกหน้าจริงบนแผง)
+   * ใช้คู่กับ `image` เท่านั้น (โหมด viewport ยังไม่มี entry point ใน UI)
+   */
+  entry?: Hotspot;
 };
 
 export type ImageSize = {

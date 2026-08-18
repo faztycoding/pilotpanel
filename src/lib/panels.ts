@@ -63,6 +63,17 @@ export function getDetailImage(panelId: string, controlId: string): PanelImage |
   return DETAIL_IMAGES[`${panelId}:${controlId}`];
 }
 
+/**
+ * รูปของ section ที่มีรูปตัวเอง (เช่นหน้า ECAM ของ pedestal) — key = "<panelId>:<sectionId>"
+ * Metro ต้อง require() แบบ static เท่านั้น เพิ่ม key ใหม่ทุกครั้งที่มีรูป section พร้อมใช้
+ * (ยังไม่มีรูปพร้อมตอนนี้ — เพิ่มพร้อมกับ data/sections-manual.json ตอนได้รูปจริง)
+ */
+const SECTION_IMAGES: Record<string, PanelImage> = {};
+
+export function getSectionImage(panelId: string, sectionId: string): PanelImage | undefined {
+  return SECTION_IMAGES[`${panelId}:${sectionId}`];
+}
+
 const cache = new Map<string, Panel>();
 
 export function getPanel(panelId: string | undefined): Panel | undefined {
@@ -87,5 +98,19 @@ export function getPanelImage(panelId: string): PanelImage | undefined {
 export function placedControls(panel: Panel): (Control & { hotspot: Hotspot })[] {
   return panel.controls.filter(
     (control): control is Control & { hotspot: Hotspot } => control.hotspot !== null
+  );
+}
+
+/**
+ * control ของ section ที่มีรูปตัวเอง (ชั้น 3 โหมด image) — hotspot ของ control เหล่านี้
+ * อ้างอิงกับ section.imageSize ไม่ใช่ panel.imageSize (ดู docs/data-schema.md)
+ */
+export function sectionControls(
+  panel: Panel,
+  sectionId: string
+): (Control & { hotspot: Hotspot })[] {
+  return panel.controls.filter(
+    (control): control is Control & { hotspot: Hotspot } =>
+      control.sectionId === sectionId && control.hotspot !== null
   );
 }

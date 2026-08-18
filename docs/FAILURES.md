@@ -94,6 +94,19 @@ heading ที่ไม่มีเลข **และไม่มี `(N)` ต�
 `1962x176` และคำนวณ hotspot ratio ของ 3 controls ที่วางไว้แล้วใหม่ตามสัดส่วนที่เปลี่ยน
 (`new_y = (old_y*259 - 83) / 176`, `new_h = old_h*259 / 176`) ตรวจซ้ำด้วย `verify_ai_image.py` แล้วตรง
 
+### รัน `python scripts/extract.py` โดยไม่ใส่ `--merge` ล้าง hotspot/detailImage ที่วางไว้แล้วทั้งหมด
+ทดลองรัน `extract.py` เฉย ๆ (ไม่มี flag) เพื่อเทส `apply_manual_sections` ที่เพิ่งแก้ ผลคือ hotspot
+ทั้ง 23 ตัวของ glareshield (วางด้วย hotspot-mapper ไปแล้ว) กลายเป็น `null` หมด, `imageSize` กลับเป็น
+`0x0`, `detailImage` หายหมด — เพราะ extractor ดึงจาก docx สดใหม่ทุกครั้ง ไม่รู้จักงานที่ mapper วางทับไว้
+
+**กู้ทันเพราะยังไม่ commit** (`git checkout -- data/panels/`) ถ้า commit ไปแล้วจะกู้ยากกว่ามาก
+
+`extract.py` มี `--merge` flag อยู่แล้ว (`merge_hotspots()`) แต่ตัว flag เดิมคง **แค่ hotspot** ไม่คง
+`detailImage` — แก้ให้คง `detailImage` ด้วยแล้ว (อ่าน object เดิมทั้งตัวจาก `old_by_id` ไม่ใช่แค่ hotspot map)
+
+**กฎที่ต้องจำ: ห้ามรัน `scripts/extract.py` โดยไม่มี `--merge` เด็ดขาด หลังเริ่มวาง hotspot ตัวแรกไปแล้ว**
+รันแบบปลอดภัยเสมอ: `.venv/bin/python scripts/extract.py --merge`
+
 ## Open items
 
 - callout count ยืนยันด้วยตาแล้ว 5 หน้า (hyd 13, apu 10, wheel 10, cond 6, f_ctl 8 — ตรงทั้งหมด)

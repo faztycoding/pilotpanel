@@ -62,13 +62,21 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
   "id": "hyd",
   "name": "HYD",
   "image": "pedestal_ecam_hyd.webp",
-  "imageSize": { "w": 1291, "h": 1267 }
+  "imageSize": { "w": 1291, "h": 1267 },
+  "entry": { "x": 0.42, "y": 0.05, "w": 0.03, "h": 0.02 }
 }
 ```
 
+`entry` คือตำแหน่งบนรูป panel หลัก (ratio เทียบ `panel.imageSize` เดิม ไม่ใช่ `section.imageSize`)
+ที่ผู้ใช้แตะแล้ว navigate เข้าไปดูรูปของ section นั้น (route `panel/[id]/section/[sectionId]`)
+ปกติคือตำแหน่งปุ่มเลือกหน้าจอ ECAM จริงบนแผง (เช่นปุ่ม `HYD` บนแผง ECAM control panel ของ pedestal)
+ถ้ายังไม่มี `entry` = โซนนั้นเข้าไม่ได้จาก UI ยัง (รอวางพิกัด) แต่ข้อมูลยังอยู่ครบใน `controls[].sectionId`
+
 กติกาการ render ชั้น 3:
 - ถ้า section มี `image` -> ใช้รูปนั้น และ `hotspot` ของ control ในโซนนี้อ้างอิงกับ `section.imageSize`
+  เข้าถึงผ่านการแตะตำแหน่ง `entry` บนรูป panel หลัก
 - ถ้าไม่มี `image` -> zoom ไปที่ `viewport` บนรูป panel เดิม `hotspot` อ้างอิงกับ `panel.imageSize` ตามปกติ
+  (โหมดนี้ยังไม่มี entry point ใน UI จริง — รอ implement)
 - ทั้ง `viewport` และ `image` เป็น optional ถ้าไม่มีทั้งคู่ = section เป็นแค่ป้ายจัดกลุ่ม ไม่มีชั้น 3
 
 ## Field rules
@@ -87,6 +95,7 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 | `sections[].image` | optional ชื่อไฟล์ใน `assets/panels/` ถ้ามี = โซนนี้ใช้รูปของตัวเอง |
 | `sections[].imageSize` | บังคับเมื่อมี `image` ขนาดจริงของไฟล์นั้น |
 | `sections[].viewport` | optional ratio 0..1 บนรูป panel เดิม ใช้เมื่อไม่มี `image` |
+| `sections[].entry` | optional ratio 0..1 บนรูป panel หลัก (`panel.imageSize`) ตำแหน่งแตะเพื่อเข้าโซนนี้ ใช้คู่กับ `image` |
 | `sourceRef` | ชี้กลับไปย่อหน้าต้นทางใน docx ใช้ตอน QA |
 | `needsReview` | `true` เมื่อ extractor ไม่มั่นใจ ต้องเป็น `false` ทั้งหมดก่อนส่งงาน |
 
@@ -100,6 +109,7 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 6. `sectionId` ทุกตัวต้องมีอยู่ใน `sections`
 7. จำนวน control ต่อ panel ต้องอยู่ในช่วง baseline ±5
 8. ไม่มี `needsReview: true` เหลืออยู่ (บังคับเฉพาะโหมด `--strict` ก่อนส่งงาน)
+9. ถ้า section มี `entry` ต้อง `0 <= x,y,w,h <= 1` เหมือน hotspot ปกติ และต้องมี `image`+`imageSize` คู่กันเสมอ
 
 ## Baseline counts
 ```
