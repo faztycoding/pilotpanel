@@ -9,47 +9,157 @@
   "sections": [
     {
       "id": "eng",
-      "name": "ENG"
+      "name": "ENG (ECAM)"
     },
     {
       "id": "bleed",
-      "name": "BLEED"
+      "name": "BLEED (ECAM)",
+      "image": "bleed.webp",
+      "imageSize": {
+        "w": 1509,
+        "h": 1085
+      },
+      "entry": {
+        "x": 0.4921,
+        "y": 0.1108,
+        "w": 0.0233,
+        "h": 0.0128
+      }
     },
     {
       "id": "press",
-      "name": "PRESS"
+      "name": "CAB PRESS (ECAM)",
+      "image": "press.webp",
+      "imageSize": {
+        "w": 1448,
+        "h": 1086
+      },
+      "entry": {
+        "x": 0.5199,
+        "y": 0.1108,
+        "w": 0.023,
+        "h": 0.0128
+      }
     },
     {
       "id": "hyd",
-      "name": "HYD"
+      "name": "HYD (ECAM)",
+      "image": "hyd.webp",
+      "imageSize": {
+        "w": 1254,
+        "h": 1254
+      },
+      "entry": {
+        "x": 0.5761,
+        "y": 0.1108,
+        "w": 0.023,
+        "h": 0.0128
+      }
     },
     {
       "id": "apu",
-      "name": "APU"
+      "name": "APU (ECAM)",
+      "image": "apu.webp",
+      "imageSize": {
+        "w": 1254,
+        "h": 1254
+      },
+      "entry": {
+        "x": 0.464,
+        "y": 0.1303,
+        "w": 0.023,
+        "h": 0.0131
+      }
     },
     {
       "id": "cond",
-      "name": "COND"
+      "name": "COND (ECAM)",
+      "image": "cond.webp",
+      "imageSize": {
+        "w": 1254,
+        "h": 1254
+      },
+      "entry": {
+        "x": 0.4921,
+        "y": 0.1303,
+        "w": 0.0233,
+        "h": 0.0131
+      }
     },
     {
       "id": "door",
-      "name": "DOOR"
+      "name": "DOOR / OXY (ECAM)",
+      "image": "door.webp",
+      "imageSize": {
+        "w": 1122,
+        "h": 1402
+      },
+      "entry": {
+        "x": 0.5199,
+        "y": 0.1303,
+        "w": 0.023,
+        "h": 0.0131
+      }
     },
     {
       "id": "wheel",
-      "name": "WHEEL"
+      "name": "WHEEL (ECAM)",
+      "image": "wheel.webp",
+      "imageSize": {
+        "w": 1254,
+        "h": 1254
+      },
+      "entry": {
+        "x": 0.548,
+        "y": 0.1303,
+        "w": 0.023,
+        "h": 0.0131
+      }
     },
     {
       "id": "elec",
-      "name": "ELEC"
+      "name": "ELEC (ECAM)",
+      "image": "elec.webp",
+      "imageSize": {
+        "w": 1254,
+        "h": 1254
+      },
+      "entry": {
+        "x": 0.548,
+        "y": 0.1108,
+        "w": 0.023,
+        "h": 0.0128
+      }
     },
     {
       "id": "fuel",
-      "name": "FUEL"
+      "name": "FUEL (ECAM)",
+      "image": "fuel.webp",
+      "imageSize": {
+        "w": 1254,
+        "h": 1254
+      },
+      "entry": {
+        "x": 0.6038,
+        "y": 0.1108,
+        "w": 0.0233,
+        "h": 0.0128
+      }
     },
     {
       "id": "f_ctl",
-      "name": "F/CTL"
+      "name": "F/CTL (ECAM)",
+      "image": "f_ctl.webp",
+      "imageSize": {
+        "w": 1323,
+        "h": 1189
+      },
+      "entry": {
+        "x": 0.5761,
+        "y": 0.1303,
+        "w": 0.023,
+        "h": 0.0131
+      }
     }
   ],
   "controls": [

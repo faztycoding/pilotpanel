@@ -9,7 +9,7 @@ import overheadJson from '@data/panels/overhead.json';
 import pedestalJson from '@data/panels/pedestal.json';
 
 import { parsePanel } from './parse-panel';
-import type { Control, Hotspot, Panel, PanelImage } from './types';
+import type { Control, Hotspot, Panel, PanelImage, Section } from './types';
 
 const RAW_PANELS: Record<string, unknown> = {
   glareshield: glareshieldJson,
@@ -68,7 +68,18 @@ export function getDetailImage(panelId: string, controlId: string): PanelImage |
  * Metro ต้อง require() แบบ static เท่านั้น เพิ่ม key ใหม่ทุกครั้งที่มีรูป section พร้อมใช้
  * (ยังไม่มีรูปพร้อมตอนนี้ — เพิ่มพร้อมกับ data/sections-manual.json ตอนได้รูปจริง)
  */
-const SECTION_IMAGES: Record<string, PanelImage> = {};
+const SECTION_IMAGES: Record<string, PanelImage> = {
+  'pedestal:bleed': require('@/assets/sections/pedestal/bleed.webp'),
+  'pedestal:press': require('@/assets/sections/pedestal/press.webp'),
+  'pedestal:elec': require('@/assets/sections/pedestal/elec.webp'),
+  'pedestal:hyd': require('@/assets/sections/pedestal/hyd.webp'),
+  'pedestal:fuel': require('@/assets/sections/pedestal/fuel.webp'),
+  'pedestal:apu': require('@/assets/sections/pedestal/apu.webp'),
+  'pedestal:cond': require('@/assets/sections/pedestal/cond.webp'),
+  'pedestal:door': require('@/assets/sections/pedestal/door.webp'),
+  'pedestal:wheel': require('@/assets/sections/pedestal/wheel.webp'),
+  'pedestal:f_ctl': require('@/assets/sections/pedestal/f_ctl.webp'),
+};
 
 export function getSectionImage(panelId: string, sectionId: string): PanelImage | undefined {
   return SECTION_IMAGES[`${panelId}:${sectionId}`];
@@ -99,6 +110,15 @@ export function placedControls(panel: Panel): (Control & { hotspot: Hotspot })[]
   return panel.controls.filter(
     (control): control is Control & { hotspot: Hotspot } => control.hotspot !== null
   );
+}
+
+/**
+ * โซนที่เปิดดูได้จริง = มีทั้งรูปและขนาดรูป — ใช้ทำแถบสลับหน้า ECAM
+ * โซนที่ยังไม่มีรูป (เช่นหน้า ENG ที่เอกสารลูกค้าไม่มีภาพ) ต้องไม่โผล่ในแถบ
+ * ไม่งั้นผู้ใช้กดแล้วเจอหน้าเปล่า
+ */
+export function selectableSections(panel: Panel): Section[] {
+  return panel.sections.filter((section) => section.image !== undefined && section.imageSize);
 }
 
 /**
