@@ -2,6 +2,7 @@ import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { ControlSheet } from '@/components/control-sheet';
 import { EcamPageStrip } from '@/components/ecam-page-strip';
 import { HotspotLayer } from '@/components/hotspot-layer';
@@ -9,7 +10,6 @@ import { ThemedText } from '@/components/themed-text';
 import { ZoomHint } from '@/components/zoom-hint';
 import { ZoomableImage } from '@/components/zoomable-image';
 import { Spacing } from '@/constants/theme';
-import { useTheme } from '@/hooks/use-theme';
 import { needsZoomHint, type Size } from '@/lib/layout';
 import { getPanel, getSectionImage, sectionControls, selectableSections } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
@@ -28,7 +28,6 @@ import type { Control, Hotspot, Section } from '@/lib/types';
 export default function SectionScreen() {
   const { id, sectionId } = useLocalSearchParams<{ id: string; sectionId: string }>();
   const router = useRouter();
-  const theme = useTheme();
   const panel = getPanel(id);
   const section = panel?.sections.find((s) => s.id === sectionId);
   const image = panel && section ? getSectionImage(panel.panelId, section.id) : undefined;
@@ -60,15 +59,15 @@ export default function SectionScreen() {
 
   if (!panel || !section || !section.imageSize || image === undefined) {
     return (
-      <View style={[styles.centered, { backgroundColor: theme.background }]}>
+      <CockpitBackdrop style={styles.centered}>
         <Stack.Screen options={{ title: 'ไม่พบโซน' }} />
         <ThemedText>ยังไม่มีรูปสำหรับโซน &quot;{sectionId}&quot;</ThemedText>
-      </View>
+      </CockpitBackdrop>
     );
   }
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+    <CockpitBackdrop style={styles.screen}>
       <Stack.Screen options={{ title: section.name }} />
 
       <View style={styles.bezel}>
@@ -102,7 +101,7 @@ export default function SectionScreen() {
       ) : null}
 
       <ControlSheet control={selected} onClose={handleClose} />
-    </View>
+    </CockpitBackdrop>
   );
 }
 

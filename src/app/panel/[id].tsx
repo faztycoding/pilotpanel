@@ -1,14 +1,14 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
+import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { ControlSheet } from '@/components/control-sheet';
 import { HotspotLayer } from '@/components/hotspot-layer';
 import { SectionEntryLayer } from '@/components/section-entry-layer';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomHint } from '@/components/zoom-hint';
 import { ZoomableImage } from '@/components/zoomable-image';
-import { useTheme } from '@/hooks/use-theme';
 import { needsZoomHint, type Size } from '@/lib/layout';
 import { getPanel, getPanelImage, placedControls } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
@@ -16,7 +16,6 @@ import type { Control, Hotspot, Section } from '@/lib/types';
 export default function PanelScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
-  const theme = useTheme();
   const panel = getPanel(id);
   const image = panel ? getPanelImage(panel.panelId) : undefined;
 
@@ -55,15 +54,15 @@ export default function PanelScreen() {
 
   if (!panel || image === undefined) {
     return (
-      <View style={[styles.centered, { backgroundColor: theme.background }]}>
+      <CockpitBackdrop style={styles.centered}>
         <Stack.Screen options={{ title: 'ไม่พบแผง' }} />
         <ThemedText>ไม่พบข้อมูลแผง &quot;{id}&quot;</ThemedText>
-      </View>
+      </CockpitBackdrop>
     );
   }
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+    <CockpitBackdrop style={styles.screen}>
       <Stack.Screen options={{ title: panel.title }} />
 
       <ZoomableImage
@@ -96,7 +95,7 @@ export default function PanelScreen() {
       <ZoomHint visible={showHint} />
 
       <ControlSheet control={selected} onClose={handleClose} />
-    </View>
+    </CockpitBackdrop>
   );
 }
 

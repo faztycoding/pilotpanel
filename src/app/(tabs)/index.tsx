@@ -1,11 +1,11 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
+import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { PanelZoneLayer } from '@/components/panel-zone-layer';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
-import { useTheme } from '@/hooks/use-theme';
 import { getPanel, getPanelImage, HOME_PANEL_ID, homeZones } from '@/lib/panels';
 import type { Control, Hotspot } from '@/lib/types';
 
@@ -21,7 +21,6 @@ import type { Control, Hotspot } from '@/lib/types';
 
 export default function HomeScreen() {
   const router = useRouter();
-  const theme = useTheme();
   const panel = getPanel(HOME_PANEL_ID);
   const image = getPanelImage(HOME_PANEL_ID);
 
@@ -38,14 +37,14 @@ export default function HomeScreen() {
 
   if (!panel || image === undefined) {
     return (
-      <View style={[styles.centered, { backgroundColor: theme.background }]}>
+      <CockpitBackdrop style={styles.centered}>
         <ThemedText>ยังไม่มีภาพห้องนักบินสำหรับหน้าแรก</ThemedText>
-      </View>
+      </CockpitBackdrop>
     );
   }
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+    <CockpitBackdrop style={styles.screen}>
       <ZoomableImage
         source={image}
         imageSize={panel.imageSize}
@@ -61,7 +60,7 @@ export default function HomeScreen() {
           />
         )}
       />
-    </View>
+    </CockpitBackdrop>
   );
 }
 
