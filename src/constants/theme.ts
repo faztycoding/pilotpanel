@@ -5,7 +5,7 @@
 
 import '@/global.css';
 
-import { Platform } from 'react-native';
+import { Platform, type ViewStyle } from 'react-native';
 
 export const Colors = {
   light: {
@@ -71,3 +71,16 @@ export const Spacing = {
 
 export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
 export const MaxContentWidth = 800;
+
+/**
+ * ปิด focus outline (เส้นประ) ที่เบราว์เซอร์ใส่ให้ Pressable โดย default บนเว็บ
+ * เจอตอนลากผ่าน hotspot บนพรีวิวเว็บ: เมาส์กด/ลากทำให้ element ได้ focus แล้วเบราว์เซอร์
+ * วาดกรอบ dashed ทับ ทั้งที่ debug={false} — ไม่เกี่ยวกับ react-native เพราะ Android ไม่มี
+ * concept นี้ ใช้ Platform.select กันไม่ให้ query prop แปลกไปโผล่ใน style ของ native
+ */
+// 'none' เป็นค่าที่ react-native-web รองรับจริง แต่ @types/react-native ไม่มีในยูเนียนของ
+// ViewStyle['outlineStyle'] (มีแค่ solid/dotted/dashed) จึงต้องผ่าน unknown ก่อน cast
+export const NoWebFocusOutline: ViewStyle = Platform.select({
+  web: { outlineStyle: 'none' } as unknown as ViewStyle,
+  default: {} as ViewStyle,
+})!;

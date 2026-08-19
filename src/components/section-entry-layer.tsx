@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 
+import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import type { Section } from '@/lib/types';
 
@@ -53,6 +54,7 @@ export function SectionEntryLayer({ sections, display, scale, onPress, debug = f
 const styles = StyleSheet.create({
   entry: {
     position: 'absolute',
+    ...NoWebFocusOutline,
   },
   debug: {
     borderWidth: StyleSheet.hairlineWidth,

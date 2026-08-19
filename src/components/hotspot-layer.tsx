@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { Pressable, StyleSheet } from 'react-native';
 
+import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import { getDetailImage } from '@/lib/panels';
 import type { Control, Hotspot } from '@/lib/types';
@@ -76,6 +77,7 @@ export function HotspotLayer({ panelId, controls, display, scale, onPress, debug
 const styles = StyleSheet.create({
   hotspot: {
     position: 'absolute',
+    ...NoWebFocusOutline,
   },
   debug: {
     borderWidth: StyleSheet.hairlineWidth,

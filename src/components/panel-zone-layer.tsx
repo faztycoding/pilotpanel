@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 
+import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import type { Control, Hotspot } from '@/lib/types';
 
@@ -59,6 +60,7 @@ export function PanelZoneLayer({ zones, display, scale, onPress, debug = false }
 const styles = StyleSheet.create({
   zone: {
     position: 'absolute',
+    ...NoWebFocusOutline,
   },
   pressed: {
     backgroundColor: 'rgba(120, 200, 255, 0.28)',
