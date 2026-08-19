@@ -4,8 +4,8 @@
   "titleTh": "ภาพรวมห้องนักบิน",
   "image": "cockpit_home.webp",
   "imageSize": {
-    "w": 2360,
-    "h": 1640
+    "w": 3438,
+    "h": 2389
   },
   "sections": [
     {
@@ -20,7 +20,12 @@
       "name": "Overhead Panel",
       "type": "area",
       "target": "overhead",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2967,
+        "y": 0.0,
+        "w": 0.37,
+        "h": 0.2428
+      },
       "body": [
         {
           "kind": "p",
@@ -36,7 +41,12 @@
       "name": "Glareshield",
       "type": "area",
       "target": "glareshield",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0436,
+        "y": 0.3884,
+        "w": 0.9139,
+        "h": 0.0737
+      },
       "body": [
         {
           "kind": "p",
@@ -52,7 +62,12 @@
       "name": "PFD / ND กัปตัน",
       "type": "area",
       "target": "instrument",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0268,
+        "y": 0.478,
+        "w": 0.2711,
+        "h": 0.1406
+      },
       "body": [
         {
           "kind": "p",
@@ -68,7 +83,12 @@
       "name": "จอกลางซ้าย",
       "type": "area",
       "target": "instrument",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3563,
+        "y": 0.5023,
+        "w": 0.0582,
+        "h": 0.0942
+      },
       "body": [
         {
           "kind": "p",
@@ -84,7 +104,12 @@
       "name": "ECAM / ENGINE",
       "type": "area",
       "target": "instrument",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4363,
+        "y": 0.473,
+        "w": 0.1344,
+        "h": 0.2855
+      },
       "body": [
         {
           "kind": "p",
@@ -100,7 +125,12 @@
       "name": "PFD / ND ผู้ช่วยนักบิน",
       "type": "area",
       "target": "instrument",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6958,
+        "y": 0.4805,
+        "w": 0.2676,
+        "h": 0.1381
+      },
       "body": [
         {
           "kind": "p",
@@ -116,7 +146,12 @@
       "name": "Center Pedestal",
       "type": "area",
       "target": "pedestal",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.256,
+        "y": 0.7618,
+        "w": 0.4887,
+        "h": 0.2365
+      },
       "body": [
         {
           "kind": "p",

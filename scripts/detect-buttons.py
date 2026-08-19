@@ -180,7 +180,12 @@ def main() -> int:
     ap.add_argument("panel", help="panelId เช่น overhead / pedestal / instrument")
     args = ap.parse_args()
 
-    img_path = PANEL_DIR / f"{args.panel}.webp"
+    # ชื่อไฟล์รูปมาจากข้อมูล ไม่ใช่เดาจาก panelId — _home ใช้ชื่อ cockpit_home.webp
+    panel_json = ROOT / "data" / "panels" / f"{args.panel}.json"
+    if not panel_json.exists():
+        sys.exit(f"ไม่พบ {panel_json.relative_to(ROOT)}")
+    img_name = json.loads(panel_json.read_text("utf-8")).get("image", f"{args.panel}.webp")
+    img_path = PANEL_DIR / img_name
     if not img_path.exists():
         sys.exit(f"ไม่พบ {img_path.relative_to(ROOT)}")
     OUT_DIR.mkdir(parents=True, exist_ok=True)

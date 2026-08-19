@@ -1,98 +1,76 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
+import { useCallback, useMemo, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
+import { PanelZoneLayer } from '@/components/panel-zone-layer';
 import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { ZoomableImage } from '@/components/zoomable-image';
+import { useTheme } from '@/hooks/use-theme';
+import { getPanel, getPanelImage, HOME_PANEL_ID, homeZones } from '@/lib/panels';
+import type { Control, Hotspot } from '@/lib/types';
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+/**
+ * หน้าแรก — ภาพ cockpit รวม แตะแผงไหนก็เข้าแผงนั้น
+ *
+ * ใช้ initialZoom="contain" ต่างจากหน้า panel ที่ใช้ "fillScreen" เพราะหน้านี้ต้องเห็น
+ * ทุกแผงพร้อมกันเพื่อเลือก ไม่ได้มีไว้อ่านตัวอักษรบนปุ่ม (ยังบีบนิ้วซูมดูใกล้ ๆ ได้)
+ *
+ * โซนกดเก็บเป็น control ใน data/panels/_home.json ที่มี target ชี้ panelId ปลายทาง
+ * ไม่ได้ hardcode ไว้ในหน้านี้ เพราะพิกัดต้องขยับตามรูปที่ลูกค้าอัปเดต
+ */
 
 export default function HomeScreen() {
+  const router = useRouter();
+  const theme = useTheme();
+  const panel = getPanel(HOME_PANEL_ID);
+  const image = getPanelImage(HOME_PANEL_ID);
+
+  const [scale, setScale] = useState(1);
+  const zones = useMemo(() => (panel ? homeZones(panel) : []), [panel]);
+
+  const handleScaleSettled = useCallback((next: number) => setScale(next), []);
+  const handlePress = useCallback(
+    (zone: Control & { hotspot: Hotspot; target: string }) => {
+      router.push(`/panel/${zone.target}`);
+    },
+    [router]
+  );
+
+  if (!panel || image === undefined) {
+    return (
+      <View style={[styles.centered, { backgroundColor: theme.background }]}>
+        <ThemedText>ยังไม่มีภาพห้องนักบินสำหรับหน้าแรก</ThemedText>
+      </View>
+    );
+  }
+
   return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
+    <View style={[styles.screen, { backgroundColor: theme.background }]}>
+      <ZoomableImage
+        source={image}
+        imageSize={panel.imageSize}
+        initialZoom="contain"
+        onScaleSettled={handleScaleSettled}
+        renderOverlay={(size) => (
+          <PanelZoneLayer
+            zones={zones}
+            display={size}
+            scale={scale}
+            onPress={handlePress}
           />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
+        )}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
   },
-  safeArea: {
+  centered: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
   },
 });

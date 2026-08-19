@@ -3,6 +3,7 @@
  * ตรรกะการตรวจอยู่ใน parse-panel.ts เพื่อให้ทดสอบแยกนอกแอปได้
  */
 
+import homeJson from '@data/panels/_home.json';
 import glareshieldJson from '@data/panels/glareshield.json';
 import instrumentJson from '@data/panels/instrument.json';
 import overheadJson from '@data/panels/overhead.json';
@@ -12,6 +13,9 @@ import { parsePanel } from './parse-panel';
 import type { Control, Hotspot, Panel, PanelImage, Section } from './types';
 
 const RAW_PANELS: Record<string, unknown> = {
+  // _home ไม่ใช่แผงจริง แต่เป็นภาพ cockpit รวมของหน้าแรก ใช้ schema เดียวกัน
+  // โซนกด 7 โซนเก็บเป็น control ที่มี target ชี้ไปยัง panelId ปลายทาง
+  _home: homeJson,
   glareshield: glareshieldJson,
   instrument: instrumentJson,
   overhead: overheadJson,
@@ -23,6 +27,7 @@ const RAW_PANELS: Record<string, unknown> = {
  * require ของ asset คืน number บน native แต่คืน object บน web จึงต้องรับทั้งสองแบบ
  */
 const PANEL_IMAGES: Record<string, PanelImage> = {
+  _home: require('@/assets/panels/cockpit_home.webp'),
   glareshield: require('@/assets/panels/glareshield.webp'),
   instrument: require('@/assets/panels/instrument.webp'),
   overhead: require('@/assets/panels/overhead.webp'),
@@ -108,10 +113,42 @@ export function getPanelImage(panelId: string): PanelImage | undefined {
   return PANEL_IMAGES[panelId];
 }
 
-/** hotspot ที่วางแล้วเท่านั้น — ตัวที่เป็น null ต้องไม่ถูก render */
-export function placedControls(panel: Panel): (Control & { hotspot: Hotspot })[] {
+/** ภาพ cockpit รวมของหน้าแรก — ไม่ใช่แผงที่มีปุ่มให้กดอ่านคำอธิบาย */
+export const HOME_PANEL_ID = '_home';
+
+/**
+ * โซนกดบนหน้าแรกที่พร้อมใช้ = มีทั้งพิกัดและปลายทาง
+ * ตัวที่ไม่มี target จะกดแล้วไปไหนไม่ได้ ต้องไม่ render (กันปุ่มตายบนหน้าแรก)
+ */
+export function homeZones(panel: Panel): (Control & { hotspot: Hotspot; target: string })[] {
   return panel.controls.filter(
-    (control): control is Control & { hotspot: Hotspot } => control.hotspot !== null
+    (control): control is Control & { hotspot: Hotspot; target: string } =>
+      control.hotspot !== null && typeof control.target === 'string' && control.target.length > 0
+  );
+}
+
+/**
+ * id ของโซนที่มีรูปของตัวเอง — control ในโซนพวกนี้มีพิกัดเทียบกับรูปของโซน ไม่ใช่รูปแผง
+ * โซนที่ไม่มีรูป (เช่น "panels" ของหน้า home) เป็นแค่การจัดกลุ่ม พิกัดยังเทียบกับรูปแผง
+ */
+function sectionsWithOwnImage(panel: Panel): Set<string> {
+  return new Set(
+    panel.sections.filter((s) => s.image !== undefined && s.imageSize).map((s) => s.id)
+  );
+}
+
+/**
+ * hotspot ที่ต้อง render บนรูปแผง — ตัวที่เป็น null ต้องไม่ถูก render
+ *
+ * ต้องคัด control ที่อยู่ในโซนที่มีรูปตัวเองออกด้วย ไม่ใช่คัดแค่ null
+ * พิกัดของมันเทียบกับรูปหน้า ECAM/จอ PFD ถ้าเอามาวางบนรูปแผงจะกลายเป็นจุดกดผี
+ * กระจายผิดที่ทั่วแผง (pedestal 100 จุด / instrument 27 จุด) โดยไม่มีอะไรฟ้อง
+ */
+export function placedControls(panel: Panel): (Control & { hotspot: Hotspot })[] {
+  const onOwnScreen = sectionsWithOwnImage(panel);
+  return panel.controls.filter(
+    (control): control is Control & { hotspot: Hotspot } =>
+      control.hotspot !== null && !(control.sectionId && onOwnScreen.has(control.sectionId))
   );
 }
 

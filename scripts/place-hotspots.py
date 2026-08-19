@@ -77,10 +77,12 @@ def main() -> int:
     )
     args = ap.parse_args()
 
+    # บางแผงไม่มีปุ่มให้ตรวจจับเลย (เช่น _home ที่เป็นภาพ cockpit รวม โซนกดคือ "แผง" ไม่ใช่ปุ่ม)
+    # กรณีนั้นให้ทำงานต่อด้วยพิกัดที่ระบุเองล้วน ๆ ไม่ต้องหยุด
     cand_path = CAND_DIR / f"{args.panel}-candidates.json"
-    if not cand_path.exists():
-        sys.exit(f"ยังไม่มี {cand_path.relative_to(ROOT)} — รัน scripts/detect-buttons.py {args.panel} ก่อน")
-    candidates = json.loads(cand_path.read_text("utf-8"))
+    candidates = json.loads(cand_path.read_text("utf-8")) if cand_path.exists() else []
+    if not candidates:
+        print(f"  ไม่มีผลตรวจจับปุ่มของ {args.panel} — ใช้พิกัดที่ระบุเองล้วน")
 
     manual_path = CAND_DIR / f"{args.panel}-manual.json"
     manual = json.loads(manual_path.read_text("utf-8")) if manual_path.exists() else {}
@@ -164,8 +166,12 @@ def main() -> int:
         all_boxes = json.loads(boxes_path.read_text("utf-8"))
         # control ที่อยู่ในโซน (หน้า ECAM) มีพิกัดเทียบกับ "รูปของโซนนั้น" ไม่ใช่รูปแผง
         # ตาม docs/data-schema.md — ถ้าใช้ขนาดรูปแผงหารจะเพี้ยนทั้งหน้า
+        # นับเฉพาะโซนที่มี "รูปของตัวเอง" — โซนที่เป็นแค่การจัดกลุ่ม (เช่น "panels"
+        # ของหน้า home) พิกัดยังเทียบกับรูปแผงตามปกติ
         section_size = {
-            s["id"]: s["imageSize"] for s in panel["sections"] if s.get("imageSize", {}).get("w")
+            s["id"]: s["imageSize"]
+            for s in panel["sections"]
+            if s.get("image") and s.get("imageSize", {}).get("w")
         }
         # ล้างพิกัดเดิมของทุกตัวที่มีในไฟล์นี้ก่อน เพราะพิกัดที่ชั้นก่อนหน้าเดาไว้อาจยังค้างอยู่
         # แล้วไปชนกับพิกัดที่ยืนยันของตัวอื่น ทำให้ตัวที่ถูกต้องถูกข้ามไปแทน
@@ -179,9 +185,12 @@ def main() -> int:
                 continue
             sid = control.get("sectionId")
             base = section_size.get(sid) if sid else None
-            if sid and base is None:
-                print(f"  ! {control_id}: อยู่ในโซน '{sid}' ที่ยังไม่มีรูป ข้าม")
+            declared_screens = {s["id"] for s in panel["sections"] if s.get("image")}
+            if sid in declared_screens and base is None:
+                print(f"  ! {control_id}: โซน '{sid}' ประกาศรูปไว้แต่ยังใช้ไม่ได้ ข้าม")
                 continue
+            if base is None:
+                sid = None  # โซนจัดกลุ่ม -> ใช้ระบบพิกัดของรูปแผง
             bw_ref = base["w"] if base else img_w
             bh_ref = base["h"] if base else img_h
             box = {

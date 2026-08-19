@@ -44,7 +44,14 @@ SOURCES = {
     "overhead": ("Overhead_Complete (3438 x 3124 px).pdf", 3438),
     "pedestal": ("Center Pedestral_Complete (2918 x 3438 px).pdf", 2918),
     "instrument": ("Instrument_Complete (3438 x 1050 px).pdf", 3438),
+    # หน้า home เป็นภาพ cockpit รวมสำหรับกดเลือกแผง ไม่ได้ใช้อ่านตัวอักษรบนปุ่ม
+    # จึงไม่ต้องดันความละเอียดสูงกว่านี้ (3438x2389 = bitmap 31MB ในแรมตอนแสดงผล)
+    "_home": ("Home_Cockpit (3438 x 2389 px).pdf", 3438),
 }
+
+# ปกติชื่อไฟล์ออกเป็น <panelId>.webp แต่ _home ใช้ชื่ออื่นตามที่ data/panels/_home.json ระบุ
+# (data/panels/*.json เป็น generated artifact ห้ามแก้มือ จึงให้สคริปต์ตั้งชื่อให้ตรงกับข้อมูล)
+OUT_NAMES = {"_home": "cockpit_home.webp"}
 
 # จุดที่ต้องลบออกจากรูปที่ render มา — วิธีลบคือก๊อปพื้นจากบริเวณข้างเคียงที่ลายเหมือนกัน
 # (dx, dy) = ระยะที่ไปหยิบพื้นมาปิด เลือกให้อยู่ในแถบที่สีสม่ำเสมอในแนวนั้น
@@ -488,7 +495,7 @@ def main() -> int:
         inset_pieces(img, panel_id, pdf_path, target_w)
         fill_dark_bands(img, panel_id, pdf_path, target_w)
         retone_plate(img, panel_id)
-        out = OUT_DIR / f"{panel_id}.webp"
+        out = OUT_DIR / OUT_NAMES.get(panel_id, f"{panel_id}.webp")
         if not args.check:
             img.save(out, "WEBP", quality=WEBP_QUALITY, method=6)
             print(f"     เขียน {out.relative_to(ROOT)} ({out.stat().st_size / 1024 / 1024:.2f} MB)")
