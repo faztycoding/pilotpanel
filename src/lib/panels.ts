@@ -74,6 +74,21 @@ export function getSectionImage(panelId: string, sectionId: string): PanelImage 
   return SECTION_IMAGES[`${panelId}:${sectionId}`];
 }
 
+/**
+ * รูปประกอบในกล่องคำอธิบาย (body kind: 'image') — key = "<panelId>:<controlId>"
+ * เอกสารลูกค้าบาง control อธิบายด้วยรูปแทนข้อความ (เช่น "See image below" ใน ECAM HYD/FUEL/F-CTL)
+ * ดึงจาก .docx ด้วย scripts/extract-body-images.py แล้วเก็บใน assets/body-images/<panelId>/
+ */
+const BODY_IMAGES: Record<string, PanelImage> = {
+  'pedestal:cp_rat': require('@/assets/body-images/pedestal/cp_rat.webp'),
+  'pedestal:cp_apu_indications': require('@/assets/body-images/pedestal/cp_apu_indications.webp'),
+  'pedestal:cp_spoilers_speed_brakes_indication_2': require('@/assets/body-images/pedestal/cp_spoilers_speed_brakes_indication_2.webp'),
+};
+
+export function getBodyImage(panelId: string, controlId: string): PanelImage | undefined {
+  return BODY_IMAGES[`${panelId}:${controlId}`];
+}
+
 const cache = new Map<string, Panel>();
 
 export function getPanel(panelId: string | undefined): Panel | undefined {

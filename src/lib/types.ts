@@ -20,7 +20,7 @@ export const CONTROL_TYPES = [
 ] as const;
 export type ControlType = (typeof CONTROL_TYPES)[number];
 
-export const BODY_KINDS = ['p', 'bullet', 'note', 'warning'] as const;
+export const BODY_KINDS = ['p', 'bullet', 'note', 'warning', 'image'] as const;
 export type BodyKind = (typeof BODY_KINDS)[number];
 
 /** พิกัดเป็น ratio 0..1 เทียบกับรูปเสมอ ห้ามเก็บเป็น px */
@@ -36,6 +36,12 @@ export type BodyBlock = {
   text: string;
   /** มีได้เฉพาะ bullet — label สั้นที่ extract.py แยกออกมา เช่น ON / FAULT */
   label?: string;
+  /**
+   * มีได้เฉพาะ kind: 'image' — ชื่อไฟล์รูปใน assets/body-images/<panelId>/
+   * ใช้ตอนเอกสารลูกค้าอธิบายด้วยรูปแทนข้อความ (เช่น "See image below" ใน ECAM HYD/FUEL/F-CTL)
+   * text ใช้เป็น alt description (ว่างได้ ถ้าเอกสารไม่มี caption)
+   */
+  image?: string;
 };
 
 export type Control = {

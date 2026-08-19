@@ -99,7 +99,7 @@ export default function SectionScreen() {
         <EcamPageStrip sections={pages} activeId={section.id} onSelect={handleSelectPage} />
       ) : null}
 
-      <ControlSheet control={selected} onClose={handleClose} />
+      <ControlSheet control={selected} panelId={panel.panelId} onClose={handleClose} />
     </CockpitBackdrop>
   );
 }

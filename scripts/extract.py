@@ -274,6 +274,16 @@ def classify_body(text: str) -> dict:
     return {"kind": "p", "text": text}
 
 
+# เอกสารลูกค้าบาง control อธิบายด้วยรูปแทนข้อความ เขียน "See image below:" เป็น text
+# แปลงเป็น body block kind: 'image' แทน แล้วดึงรูปจาก assets/body-images/<panelId>/<controlId>.webp
+# (ดู scripts/extract-body-images.py สำหรับการดึงรูปจาก .docx)
+RE_SEE_IMAGE = re.compile(r"^see\s+image\s+below:?$", re.IGNORECASE)
+
+
+def is_see_image_placeholder(text: str) -> bool:
+    return bool(RE_SEE_IMAGE.match(text.strip()))
+
+
 # ---------------------------------------------------------------- core
 
 def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
@@ -348,7 +358,12 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
             unassigned.append({"sourceRef": f"{filename}#p{idx}", "text": text})
             continue
 
-        current["body"].append(classify_body(text))
+        # "See image below" = เอกสารอธิบายด้วยรูปแทนข้อความ แปลงเป็น kind: 'image'
+        # ชื่อรูป = controlId.webp ใน assets/body-images/<panelId>/ (ดู extract-body-images.py)
+        if is_see_image_placeholder(text):
+            current["body"].append({"kind": "image", "text": "", "image": f"{current['id']}.webp"})
+        else:
+            current["body"].append(classify_body(text))
 
     # control ที่ไม่มีเนื้อหาเลย = heuristic น่าจะตัดผิด ต้องให้คนดู
     for c in controls:

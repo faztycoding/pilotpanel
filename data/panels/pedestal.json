@@ -1169,8 +1169,9 @@
       },
       "body": [
         {
-          "kind": "p",
-          "text": "See image below"
+          "kind": "image",
+          "text": "",
+          "image": "cp_rat.webp"
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p231",
@@ -2664,8 +2665,9 @@
       },
       "body": [
         {
-          "kind": "p",
-          "text": "See Image below:"
+          "kind": "image",
+          "text": "",
+          "image": "cp_apu_indications.webp"
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p563",
@@ -2952,8 +2954,9 @@
       },
       "body": [
         {
-          "kind": "p",
-          "text": "See image below:"
+          "kind": "image",
+          "text": "",
+          "image": "cp_spoilers_speed_brakes_indication_2.webp"
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p636",

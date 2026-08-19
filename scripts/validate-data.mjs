@@ -28,7 +28,7 @@ const MAX_OVERLAP_RATIO = 0.3;
 
 const VALID_TYPES = ["pushbutton","knob","selector","switch","lever","light","display","area"];
 // ไม่มี "heading" เพราะ extract.py ไม่เคยผลิตออกมาเลย — schema ต้องสะท้อนของจริง
-const VALID_KINDS = ["p","bullet","note","warning"];
+const VALID_KINDS = ["p","bullet","note","warning","image"];
 
 const errors = [];
 const warnings = [];
@@ -117,7 +117,7 @@ function validatePanel(file) {
     } else {
       for (const b of c.body) {
         if (!VALID_KINDS.includes(b.kind)) err(p, `${c.id}: invalid body kind "${b.kind}"`);
-        if (!b.text?.trim()) err(p, `${c.id}: body block with empty text`);
+        if (b.kind !== "image" && !b.text?.trim()) err(p, `${c.id}: body block with empty text`);
       }
     }
 

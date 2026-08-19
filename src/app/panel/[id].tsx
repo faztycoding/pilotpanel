@@ -95,7 +95,7 @@ export default function PanelScreen() {
 
       <ZoomHint visible={showHint} />
 
-      <ControlSheet control={selected} onClose={handleClose} />
+      <ControlSheet control={selected} panelId={panel.panelId} onClose={handleClose} />
     </CockpitBackdrop>
   );
 }
