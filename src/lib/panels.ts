@@ -39,29 +39,10 @@ const PANEL_IMAGES: Record<string, PanelImage> = {
  * เพิ่ม key ใหม่ทุกครั้งที่ทำ detailImage ให้ control เพิ่ม (คีย์ = "<panelId>:<controlId>")
  */
 const DETAIL_IMAGES: Record<string, PanelImage> = {
-  'glareshield:gs_barometer_reference_selector': require('@/assets/detail/glareshield/gs_barometer_reference_selector.webp'),
-  'glareshield:gs_flight_director_fd_push_button': require('@/assets/detail/glareshield/gs_flight_director_fd_push_button.webp'),
-  'glareshield:gs_ls_push_button': require('@/assets/detail/glareshield/gs_ls_push_button.webp'),
-  'glareshield:gs_operational_data_display_constraints': require('@/assets/detail/glareshield/gs_operational_data_display_constraints.webp'),
-  'glareshield:gs_operational_data_display_waypoints': require('@/assets/detail/glareshield/gs_operational_data_display_waypoints.webp'),
-  'glareshield:gs_operational_data_display_vor_dme': require('@/assets/detail/glareshield/gs_operational_data_display_vor_dme.webp'),
-  'glareshield:gs_operational_data_display_ndb': require('@/assets/detail/glareshield/gs_operational_data_display_ndb.webp'),
-  'glareshield:gs_operational_data_display_airports': require('@/assets/detail/glareshield/gs_operational_data_display_airports.webp'),
-  'glareshield:gs_range_select_switch': require('@/assets/detail/glareshield/gs_range_select_switch.webp'),
-  'glareshield:gs_adf_vor_select_switches': require('@/assets/detail/glareshield/gs_adf_vor_select_switches.webp'),
-  'glareshield:gs_fcu_window': require('@/assets/detail/glareshield/gs_fcu_window.webp'),
-  'glareshield:gs_spd_mach_push_button': require('@/assets/detail/glareshield/gs_spd_mach_push_button.webp'),
-  'glareshield:gs_spd_mach_knob': require('@/assets/detail/glareshield/gs_spd_mach_knob.webp'),
-  'glareshield:gs_hdg_trk_knob': require('@/assets/detail/glareshield/gs_hdg_trk_knob.webp'),
-  'glareshield:gs_loc_push_button': require('@/assets/detail/glareshield/gs_loc_push_button.webp'),
-  'glareshield:gs_hdg_v_s_or_trk_fpa_push_button': require('@/assets/detail/glareshield/gs_hdg_v_s_or_trk_fpa_push_button.webp'),
-  'glareshield:gs_autopilot_1_and_2_push_button_ap1_ap2': require('@/assets/detail/glareshield/gs_autopilot_1_and_2_push_button_ap1_ap2.webp'),
-  'glareshield:gs_auto_thrust_a_thr_push_button': require('@/assets/detail/glareshield/gs_auto_thrust_a_thr_push_button.webp'),
-  'glareshield:gs_altitude_selector_knob': require('@/assets/detail/glareshield/gs_altitude_selector_knob.webp'),
-  'glareshield:gs_exped_push_button': require('@/assets/detail/glareshield/gs_exped_push_button.webp'),
-  'glareshield:gs_metric_altitude_push_button': require('@/assets/detail/glareshield/gs_metric_altitude_push_button.webp'),
-  'glareshield:gs_v_s_or_fpa_knob': require('@/assets/detail/glareshield/gs_v_s_or_fpa_knob.webp'),
-  'glareshield:gs_appr_push_button': require('@/assets/detail/glareshield/gs_appr_push_button.webp'),
+  // ว่างไว้ตั้งใจ — glareshield เคยมีครบ 23 ตัวแต่ถอดออกแล้ว (ดู scripts/strip-detail-images.py)
+  // เหตุผล: รูปแผงเรนเดอร์จาก PDF เวกเตอร์ได้ 13575px กว้าง คมกว่าครอปจาก .docx หลายเท่า
+  // (วัดความคมแล้ว detail เบลอกว่า 21/23 ตัว บางตัวห่าง 8-10 เท่า) การปะทับกลายเป็นจุดเบลอบนปุ่ม
+  // ถ้าจะใช้ซ้ำในอนาคต ต้องเทียบความคมกับรูปแผงจุดนั้นก่อนทุกครั้ง
 };
 
 export function getDetailImage(panelId: string, controlId: string): PanelImage | undefined {

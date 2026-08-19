@@ -25,8 +25,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p4",
-      "needsReview": false,
-      "detailImage": "gs_barometer_reference_selector.webp"
+      "needsReview": false
     },
     {
       "id": "gs_flight_director_fd_push_button",
@@ -45,8 +44,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p8",
-      "needsReview": false,
-      "detailImage": "gs_flight_director_fd_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_ls_push_button",
@@ -65,8 +63,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p11",
-      "needsReview": false,
-      "detailImage": "gs_ls_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_operational_data_display_constraints",
@@ -85,8 +82,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p15",
-      "needsReview": false,
-      "detailImage": "gs_operational_data_display_constraints.webp"
+      "needsReview": false
     },
     {
       "id": "gs_operational_data_display_waypoints",
@@ -105,8 +101,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p22",
-      "needsReview": false,
-      "detailImage": "gs_operational_data_display_waypoints.webp"
+      "needsReview": false
     },
     {
       "id": "gs_operational_data_display_vor_dme",
@@ -125,8 +120,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p29",
-      "needsReview": false,
-      "detailImage": "gs_operational_data_display_vor_dme.webp"
+      "needsReview": false
     },
     {
       "id": "gs_operational_data_display_ndb",
@@ -145,8 +139,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p32",
-      "needsReview": false,
-      "detailImage": "gs_operational_data_display_ndb.webp"
+      "needsReview": false
     },
     {
       "id": "gs_operational_data_display_airports",
@@ -169,8 +162,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p35",
-      "needsReview": false,
-      "detailImage": "gs_operational_data_display_airports.webp"
+      "needsReview": false
     },
     {
       "id": "gs_range_select_switch",
@@ -189,8 +181,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p40",
-      "needsReview": false,
-      "detailImage": "gs_range_select_switch.webp"
+      "needsReview": false
     },
     {
       "id": "gs_adf_vor_select_switches",
@@ -209,8 +200,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p43",
-      "needsReview": false,
-      "detailImage": "gs_adf_vor_select_switches.webp"
+      "needsReview": false
     },
     {
       "id": "gs_fcu_window",
@@ -229,8 +219,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p49",
-      "needsReview": false,
-      "detailImage": "gs_fcu_window.webp"
+      "needsReview": false
     },
     {
       "id": "gs_spd_mach_push_button",
@@ -249,8 +238,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p52",
-      "needsReview": false,
-      "detailImage": "gs_spd_mach_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_spd_mach_knob",
@@ -269,8 +257,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p58",
-      "needsReview": false,
-      "detailImage": "gs_spd_mach_knob.webp"
+      "needsReview": false
     },
     {
       "id": "gs_hdg_trk_knob",
@@ -289,8 +276,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p61",
-      "needsReview": false,
-      "detailImage": "gs_hdg_trk_knob.webp"
+      "needsReview": false
     },
     {
       "id": "gs_loc_push_button",
@@ -309,8 +295,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p65",
-      "needsReview": false,
-      "detailImage": "gs_loc_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_hdg_v_s_or_trk_fpa_push_button",
@@ -329,8 +314,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p68",
-      "needsReview": false,
-      "detailImage": "gs_hdg_v_s_or_trk_fpa_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_autopilot_1_and_2_push_button_ap1_ap2",
@@ -349,8 +333,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p71",
-      "needsReview": false,
-      "detailImage": "gs_autopilot_1_and_2_push_button_ap1_ap2.webp"
+      "needsReview": false
     },
     {
       "id": "gs_auto_thrust_a_thr_push_button",
@@ -369,8 +352,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p76",
-      "needsReview": false,
-      "detailImage": "gs_auto_thrust_a_thr_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_altitude_selector_knob",
@@ -389,8 +371,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p79",
-      "needsReview": false,
-      "detailImage": "gs_altitude_selector_knob.webp"
+      "needsReview": false
     },
     {
       "id": "gs_exped_push_button",
@@ -409,8 +390,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p87",
-      "needsReview": false,
-      "detailImage": "gs_exped_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_metric_altitude_push_button",
@@ -429,8 +409,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p90",
-      "needsReview": false,
-      "detailImage": "gs_metric_altitude_push_button.webp"
+      "needsReview": false
     },
     {
       "id": "gs_v_s_or_fpa_knob",
@@ -449,8 +428,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p93",
-      "needsReview": false,
-      "detailImage": "gs_v_s_or_fpa_knob.webp"
+      "needsReview": false
     },
     {
       "id": "gs_appr_push_button",
@@ -469,8 +447,7 @@
         }
       ],
       "sourceRef": "glareshield.docx#p97",
-      "needsReview": false,
-      "detailImage": "gs_appr_push_button.webp"
+      "needsReview": false
     }
   ]
 }

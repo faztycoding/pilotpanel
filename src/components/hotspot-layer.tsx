@@ -14,12 +14,14 @@ import type { Control, Hotspot } from '@/lib/types';
  * RN จะใส่ transform เดียวกันให้ทั้ง hit area ด้วย ปุ่มจึงขยับ/ขยายตามรูปเอง
  * ไม่ต้องคำนวณ inverse transform ตอนแตะ = ไม่มีทางที่พิกัดกดจะเพี้ยนจากพิกัดที่เห็น
  *
- * ใช้ Pressable จาก react-native-gesture-handler (ไม่ใช่ของ react-native) เพราะต้อง
- * ประกาศ requireExternalGestureToFail={panGesture} — ถ้าใช้ Pressable ของ react-native
- * (คนละระบบ arbitration กับ react-native-gesture-handler) นิ้วที่กำลังลากซูม/เลื่อนรูปแล้ว
- * ผ่านตำแหน่งปุ่มพอดี จะโดน Pressable แย่ง responder ไปทันทีที่นิ้วแตะ ทำให้ลากค้างตรงปุ่ม
- * แทนที่จะไหลต่อเป็นการเลื่อนรูปเหมือนพื้นที่อื่น — requireExternalGestureToFail บอกให้ปุ่ม
- * รอก่อนว่า panGesture จะไม่ขยับ (คือเป็นการแตะเฉย ๆ ไม่ใช่ลาก) แล้วค่อยยอมให้ press ทำงาน
+ * ใช้ Pressable จาก react-native-gesture-handler (ไม่ใช่ของ react-native) เพราะอยู่ในระบบ
+ * arbitration เดียวกับ Gesture.Pan() ของ ZoomableImage แล้วประกาศความสัมพันธ์เป็น
+ * simultaneousWithExternalGesture={panGesture} = ปุ่มกับการเลื่อนรูปทำงานพร้อมกันได้
+ *   แตะนิ่ง ๆ   -> Pressable ยิง onPress ปกติ
+ *   ลากผ่านปุ่ม -> Pressable ยกเลิก press เองเมื่อนิ้วขยับเกิน threshold ส่วน pan เลื่อนต่อลื่น ๆ
+ *
+ * ห้ามใช้ requireExternalGestureToFail กับ pan ตรงนี้ (ลองแล้วพังทั้งแผง): pan เป็น gesture
+ * ต่อเนื่องที่แทบไม่เคย "แพ้" บนเว็บ ปุ่มจึงรอตลอดกาล = กดไม่ติดและเลื่อนไม่ได้
  *
  * ถ้า control มี detailImage จะวาดรูปโคลสอัพจริง (จาก docx) ทับพื้นที่ hotspot ก่อน
  * เพราะรูปแผงเต็มความละเอียดต่ำเกินกว่าจะอ่านรายละเอียดปุ่มออกตอนซูม — คนละที่กับรูปใน
@@ -60,7 +62,7 @@ export function HotspotLayer({
           <Pressable
             key={control.id}
             onPress={() => onPress(control)}
-            requireExternalGestureToFail={panGesture}
+            simultaneousWithExternalGesture={panGesture}
             // hitSlop หน่วย dp เป็นค่าของนิ้วมนุษย์ ไม่ใช่ค่าของรูป จึงไม่ขัดกฎห้าม px ในการคำนวณพิกัด
             // หารด้วย scale เพราะ hitSlop ถูกขยายด้วย transform ของ parent ไปแล้ว
             hitSlop={{

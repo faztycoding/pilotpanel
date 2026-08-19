@@ -49,7 +49,7 @@ export function PanelZoneLayer({
             accessibilityRole="button"
             accessibilityLabel={zone.name}
             onPress={() => onPress(zone)}
-            requireExternalGestureToFail={panGesture}
+            simultaneousWithExternalGesture={panGesture}
             hitSlop={{
               left: slop.horizontal / scale,
               right: slop.horizontal / scale,

@@ -45,7 +45,7 @@ export function SectionEntryLayer({
           <Pressable
             key={section.id}
             onPress={() => onPress(section)}
-            requireExternalGestureToFail={panGesture}
+            simultaneousWithExternalGesture={panGesture}
             hitSlop={{
               left: slop.horizontal / scale,
               right: slop.horizontal / scale,
