@@ -61,6 +61,11 @@ BOX_BY_TYPE = {
 LABEL_GAP = 12  # ระยะจากขอบล่างของป้ายถึงขอบบนของกรอบ
 
 
+def _is_backdrop(hotspot: dict) -> bool:
+    """กรอบที่กินพื้นที่ >=90% ของรูป = ชั้นพื้นหลังของโซน ไม่นับว่าทับกับใคร"""
+    return hotspot["w"] * hotspot["h"] >= 0.9
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("panel")
@@ -135,6 +140,10 @@ def main() -> int:
                 continue
             # ratio ของ control ในโซนอ้างรูปของโซนนั้น เทียบข้ามโซนไม่มีความหมาย
             if other.get("sectionId") != section_id:
+                continue
+            # ตัวที่กินเกือบทั้งรูปคือชั้นพื้นหลังของโซน (เช่น ip_primary_flight_display = จอ PFD
+            # ทั้งจอ) มีสัญลักษณ์ย่อยวางทับได้ตามปกติ — validate-data.mjs ยกเว้นแบบเดียวกัน
+            if _is_backdrop(other["hotspot"]) or _is_backdrop(box):
                 continue
             o = other["hotspot"]
             ix = max(0.0, min(box["x"] + box["w"], o["x"] + o["w"]) - max(box["x"], o["x"]))

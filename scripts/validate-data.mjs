@@ -163,9 +163,15 @@ function validatePanel(file) {
     if (!bySpace.has(key)) bySpace.set(key, []);
     bySpace.get(key).push(c);
   }
+  // control ที่กินพื้นที่เกือบทั้งรูปคือ "ชั้นพื้นหลัง" ของโซนนั้น เช่น ip_primary_flight_display
+  // ที่เป็นคำอธิบายจอ PFD ทั้งจอ แล้วมีสัญลักษณ์ย่อย 25 ตัววางทับอยู่ด้านบน
+  // HotspotLayer render ตามลำดับใน array และตัวพื้นหลังมาก่อนเสมอ (เอกสารเขียนหัวข้อจอไว้ก่อน)
+  // จึงกดสัญลักษณ์ย่อยได้ปกติ ส่วนที่ว่างจะได้คำอธิบายจอรวม — ไม่ใช่ความผิดพลาดของพิกัด
+  const isBackdrop = (c) => c.hotspot.w * c.hotspot.h >= 0.9;
   for (const [space, group] of bySpace) {
     for (let i = 0; i < group.length; i++) {
       for (let j = i + 1; j < group.length; j++) {
+        if (isBackdrop(group[i]) || isBackdrop(group[j])) continue;
         const r = overlapRatio(group[i].hotspot, group[j].hotspot);
         if (r > MAX_OVERLAP_RATIO) {
           const where = space === "__panel__" ? "" : ` (โซน ${space})`;

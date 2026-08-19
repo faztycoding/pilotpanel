@@ -6,22 +6,79 @@
     "w": 3438,
     "h": 1050
   },
-  "sections": [],
+  "sections": [
+    {
+      "id": "pfd",
+      "name": "PFD (จอหลัก)",
+      "image": "pfd.webp",
+      "imageSize": {
+        "w": 1274,
+        "h": 1216
+      },
+      "entry": {
+        "x": 0.0105,
+        "y": 0.059,
+        "w": 0.1274,
+        "h": 0.4457
+      }
+    },
+    {
+      "id": "nd",
+      "name": "ND (จอนำทาง)",
+      "image": "nd.webp",
+      "imageSize": {
+        "w": 996,
+        "h": 816
+      },
+      "entry": {
+        "x": 0.1594,
+        "y": 0.0571,
+        "w": 0.1251,
+        "h": 0.4438
+      }
+    },
+    {
+      "id": "ewd",
+      "name": "E/WD (จอเครื่องยนต์)",
+      "image": "ewd.webp",
+      "imageSize": {
+        "w": 951,
+        "h": 600
+      },
+      "entry": {
+        "x": 0.441,
+        "y": 0.061,
+        "w": 0.1257,
+        "h": 0.44
+      }
+    }
+  ],
   "controls": [
     {
       "id": "ip_primary_flight_display",
       "name": "Primary Flight Display",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      },
       "body": [],
       "sourceRef": "Instrument Panel.docx#p2",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_fma_flight_mode_annunciator",
       "name": "FMA Flight Mode Annunciator",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0094,
+        "y": 0.0164,
+        "w": 0.1868,
+        "h": 0.1349
+      },
       "body": [
         {
           "kind": "p",
@@ -61,13 +118,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p12",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_fourth_column",
       "name": "Fourth Column",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5981,
+        "y": 0.0164,
+        "w": 0.2151,
+        "h": 0.1349
+      },
       "body": [
         {
           "kind": "p",
@@ -75,13 +138,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p25",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_fifth_column",
       "name": "Fifth Column",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8163,
+        "y": 0.0164,
+        "w": 0.1711,
+        "h": 0.1349
+      },
       "body": [
         {
           "kind": "p",
@@ -364,13 +433,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p28",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_column_2_and_3_annuciations",
       "name": "COLUMN 2 and 3 ANNUCIATIONS",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1994,
+        "y": 0.0164,
+        "w": 0.3956,
+        "h": 0.1349
+      },
       "body": [
         {
           "kind": "bullet",
@@ -519,13 +594,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p114",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_roll_scale",
       "name": "Roll Scale",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3297,
+        "y": 0.1628,
+        "w": 0.2763,
+        "h": 0.102
+      },
       "body": [
         {
           "kind": "p",
@@ -533,13 +614,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p182",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_flight_control_protection_symbols",
       "name": "Flight Control Protection Symbols",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2041,
+        "y": 0.3207,
+        "w": 0.0408,
+        "h": 0.0329
+      },
       "body": [
         {
           "kind": "p",
@@ -547,13 +634,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p185",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_fixed_aircraft_symbol",
       "name": "Fixed Aircraft Symbol",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2386,
+        "y": 0.4342,
+        "w": 0.4537,
+        "h": 0.0477
+      },
       "body": [
         {
           "kind": "p",
@@ -589,13 +682,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p188",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_actual_airspeed_reference_line_and_scale",
       "name": "Actual Airspeed Reference Line and Scale",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0188,
+        "y": 0.2039,
+        "w": 0.0911,
+        "h": 0.5888
+      },
       "body": [
         {
           "kind": "p",
@@ -603,13 +702,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p220",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_speed_trend_arrow_yellow",
       "name": "Speed Trend Arrow (yellow)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1115,
+        "y": 0.4194,
+        "w": 0.0706,
+        "h": 0.0304
+      },
       "body": [
         {
           "kind": "p",
@@ -633,13 +738,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p223",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_vertical_deviation_vdev_magenta",
       "name": "Vertical Deviation VDEV (magenta)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7033,
+        "y": 0.477,
+        "w": 0.0534,
+        "h": 0.0526
+      },
       "body": [
         {
           "kind": "p",
@@ -647,13 +758,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p234",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_altitude_indication",
       "name": "Altitude Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7645,
+        "y": 0.2155,
+        "w": 0.0848,
+        "h": 0.5773
+      },
       "body": [
         {
           "kind": "p",
@@ -661,13 +778,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p237",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_target_altitude_or_selected_flight_level_sym",
       "name": "Target Altitude or Selected Flight Level Symbol (blue)",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7661,
+        "y": 0.1645,
+        "w": 0.1146,
+        "h": 0.0477
+      },
       "body": [
         {
           "kind": "p",
@@ -687,7 +810,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p240",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_target_altitude_or_selected_flight_level_sym_2",
@@ -701,13 +825,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p247",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_altitude_indication_scale",
       "name": "Altitude Indication Scale",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8509,
+        "y": 0.4507,
+        "w": 0.0502,
+        "h": 0.0938
+      },
       "body": [
         {
           "kind": "p",
@@ -715,13 +845,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p250",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_analog_pointer",
       "name": "Analog Pointer",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.9042,
+        "y": 0.5724,
+        "w": 0.0408,
+        "h": 0.0872
+      },
       "body": [
         {
           "kind": "p",
@@ -729,13 +865,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p253",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_digital_readout",
       "name": "Digital Readout",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.9466,
+        "y": 0.6217,
+        "w": 0.0424,
+        "h": 0.0378
+      },
       "body": [
         {
           "kind": "p",
@@ -743,7 +885,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p256",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_ground_reference",
@@ -757,13 +900,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p262",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_barometric_reference",
       "name": "Barometric Reference",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.763,
+        "y": 0.8372,
+        "w": 0.1915,
+        "h": 0.0609
+      },
       "body": [
         {
           "kind": "p",
@@ -771,13 +920,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p265",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_ils_information",
       "name": "ILS Information",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0251,
+        "y": 0.8372,
+        "w": 0.1648,
+        "h": 0.1398
+      },
       "body": [
         {
           "kind": "p",
@@ -785,13 +940,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p280",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_ils_course",
       "name": "ILS Course",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.179,
+        "y": 0.9194,
+        "w": 0.0973,
+        "h": 0.0526
+      },
       "body": [
         {
           "kind": "p",
@@ -799,13 +960,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p283",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_selected_heading_or_track_index_blue",
       "name": "Selected Heading or Track Index (blue)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4443,
+        "y": 0.8487,
+        "w": 0.0392,
+        "h": 0.0411
+      },
       "body": [
         {
           "kind": "p",
@@ -813,13 +980,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p286",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_heading_reference_line_yellow_and_scale",
       "name": "Heading reference Line (Yellow) and Scale",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2794,
+        "y": 0.9145,
+        "w": 0.27,
+        "h": 0.0444
+      },
       "body": [
         {
           "kind": "p",
@@ -827,13 +1000,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p289",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_ils_course_pointer_magenta",
       "name": "ILS Course Pointer (magenta)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4427,
+        "y": 0.9605,
+        "w": 0.0408,
+        "h": 0.0312
+      },
       "body": [
         {
           "kind": "p",
@@ -841,13 +1020,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p291",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_actual_track_symbol_green",
       "name": "Actual Track Symbol (green)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4521,
+        "y": 0.8964,
+        "w": 0.0267,
+        "h": 0.0181
+      },
       "body": [
         {
           "kind": "p",
@@ -855,13 +1040,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p294",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_heading_scale",
       "name": "Heading Scale",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5526,
+        "y": 0.9145,
+        "w": 0.1852,
+        "h": 0.0444
+      },
       "body": [
         {
           "kind": "p",
@@ -869,7 +1060,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p297",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_barometric_reference_2",
@@ -883,13 +1075,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p300",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "pfd"
     },
     {
       "id": "ip_navigational_display",
       "name": "Navigational Display",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      },
       "body": [
         {
           "kind": "p",
@@ -897,7 +1095,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p306",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "nd"
     },
     {
       "id": "ip_idle_indication",
@@ -911,13 +1110,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p329",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "ewd"
     },
     {
       "id": "ip_lp_rotor_speed_n1",
       "name": "LP Rotor Speed (N1)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0694,
+        "y": 0.0367,
+        "w": 0.2376,
+        "h": 0.22
+      },
       "body": [
         {
           "kind": "p",
@@ -953,13 +1158,19 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p332",
-      "needsReview": true
+      "needsReview": true,
+      "sectionId": "ewd"
     },
     {
       "id": "ip_egt_indicator",
       "name": "EGT Indicator",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0694,
+        "y": 0.27,
+        "w": 0.2376,
+        "h": 0.21
+      },
       "body": [
         {
           "kind": "p",
@@ -1007,7 +1218,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p349",
-      "needsReview": false
+      "needsReview": false,
+      "sectionId": "ewd"
     }
   ]
 }

@@ -229,5 +229,107 @@
         "h": 0.0131
       }
     }
+  ],
+  "instrument": [
+    {
+      "id": "pfd",
+      "name": "PFD (จอหลัก)",
+      "image": "pfd.webp",
+      "entryPx": {
+        "x0": 36,
+        "y0": 62,
+        "x1": 474,
+        "y1": 530
+      },
+      "controlIds": [
+        "ip_primary_flight_display",
+        "ip_fma_flight_mode_annunciator",
+        "ip_fourth_column",
+        "ip_fifth_column",
+        "ip_column_2_and_3_annuciations",
+        "ip_roll_scale",
+        "ip_flight_control_protection_symbols",
+        "ip_fixed_aircraft_symbol",
+        "ip_actual_airspeed_reference_line_and_scale",
+        "ip_speed_trend_arrow_yellow",
+        "ip_vertical_deviation_vdev_magenta",
+        "ip_altitude_indication",
+        "ip_target_altitude_or_selected_flight_level_sym",
+        "ip_target_altitude_or_selected_flight_level_sym_2",
+        "ip_altitude_indication_scale",
+        "ip_analog_pointer",
+        "ip_digital_readout",
+        "ip_ground_reference",
+        "ip_barometric_reference",
+        "ip_ils_information",
+        "ip_ils_course",
+        "ip_selected_heading_or_track_index_blue",
+        "ip_heading_reference_line_yellow_and_scale",
+        "ip_ils_course_pointer_magenta",
+        "ip_actual_track_symbol_green",
+        "ip_heading_scale",
+        "ip_barometric_reference_2"
+      ],
+      "imageSize": {
+        "w": 1274,
+        "h": 1216
+      },
+      "entry": {
+        "x": 0.0105,
+        "y": 0.059,
+        "w": 0.1274,
+        "h": 0.4457
+      }
+    },
+    {
+      "id": "nd",
+      "name": "ND (จอนำทาง)",
+      "image": "nd.webp",
+      "entryPx": {
+        "x0": 548,
+        "y0": 60,
+        "x1": 978,
+        "y1": 526
+      },
+      "controlIds": [
+        "ip_navigational_display"
+      ],
+      "imageSize": {
+        "w": 996,
+        "h": 816
+      },
+      "entry": {
+        "x": 0.1594,
+        "y": 0.0571,
+        "w": 0.1251,
+        "h": 0.4438
+      }
+    },
+    {
+      "id": "ewd",
+      "name": "E/WD (จอเครื่องยนต์)",
+      "image": "ewd.webp",
+      "entryPx": {
+        "x0": 1516,
+        "y0": 64,
+        "x1": 1948,
+        "y1": 526
+      },
+      "controlIds": [
+        "ip_idle_indication",
+        "ip_lp_rotor_speed_n1",
+        "ip_egt_indicator"
+      ],
+      "imageSize": {
+        "w": 951,
+        "h": 600
+      },
+      "entry": {
+        "x": 0.441,
+        "y": 0.061,
+        "w": 0.1257,
+        "h": 0.44
+      }
+    }
   ]
 }

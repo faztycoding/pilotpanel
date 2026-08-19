@@ -1054,5 +1054,169 @@
       "x1": 716,
       "y1": 566
     }
+  },
+  "instrument": {
+    "ip_primary_flight_display": {
+      "x0": 0,
+      "y0": 0,
+      "x1": 1274,
+      "y1": 1216
+    },
+    "ip_fma_flight_mode_annunciator": {
+      "x0": 12,
+      "y0": 20,
+      "x1": 250,
+      "y1": 184
+    },
+    "ip_column_2_and_3_annuciations": {
+      "x0": 254,
+      "y0": 20,
+      "x1": 758,
+      "y1": 184
+    },
+    "ip_fourth_column": {
+      "x0": 762,
+      "y0": 20,
+      "x1": 1036,
+      "y1": 184
+    },
+    "ip_fifth_column": {
+      "x0": 1040,
+      "y0": 20,
+      "x1": 1258,
+      "y1": 184
+    },
+    "ip_roll_scale": {
+      "x0": 420,
+      "y0": 198,
+      "x1": 772,
+      "y1": 322
+    },
+    "ip_flight_control_protection_symbols": {
+      "x0": 260,
+      "y0": 390,
+      "x1": 312,
+      "y1": 430
+    },
+    "ip_fixed_aircraft_symbol": {
+      "x0": 304,
+      "y0": 528,
+      "x1": 882,
+      "y1": 586
+    },
+    "ip_actual_airspeed_reference_line_and_scale": {
+      "x0": 24,
+      "y0": 248,
+      "x1": 140,
+      "y1": 964
+    },
+    "ip_speed_trend_arrow_yellow": {
+      "x0": 142,
+      "y0": 510,
+      "x1": 232,
+      "y1": 547
+    },
+    "ip_vertical_deviation_vdev_magenta": {
+      "x0": 896,
+      "y0": 580,
+      "x1": 964,
+      "y1": 644
+    },
+    "ip_altitude_indication": {
+      "x0": 974,
+      "y0": 262,
+      "x1": 1082,
+      "y1": 964
+    },
+    "ip_target_altitude_or_selected_flight_level_sym": {
+      "x0": 976,
+      "y0": 200,
+      "x1": 1122,
+      "y1": 258
+    },
+    "ip_altitude_indication_scale": {
+      "x0": 1084,
+      "y0": 548,
+      "x1": 1148,
+      "y1": 662
+    },
+    "ip_analog_pointer": {
+      "x0": 1152,
+      "y0": 696,
+      "x1": 1204,
+      "y1": 802
+    },
+    "ip_digital_readout": {
+      "x0": 1206,
+      "y0": 756,
+      "x1": 1260,
+      "y1": 802
+    },
+    "ip_barometric_reference": {
+      "x0": 972,
+      "y0": 1018,
+      "x1": 1216,
+      "y1": 1092
+    },
+    "ip_ils_information": {
+      "x0": 32,
+      "y0": 1018,
+      "x1": 242,
+      "y1": 1188
+    },
+    "ip_ils_course": {
+      "x0": 228,
+      "y0": 1118,
+      "x1": 352,
+      "y1": 1182
+    },
+    "ip_selected_heading_or_track_index_blue": {
+      "x0": 566,
+      "y0": 1032,
+      "x1": 616,
+      "y1": 1082
+    },
+    "ip_actual_track_symbol_green": {
+      "x0": 576,
+      "y0": 1090,
+      "x1": 610,
+      "y1": 1112
+    },
+    "ip_heading_reference_line_yellow_and_scale": {
+      "x0": 356,
+      "y0": 1112,
+      "x1": 700,
+      "y1": 1166
+    },
+    "ip_ils_course_pointer_magenta": {
+      "x0": 564,
+      "y0": 1168,
+      "x1": 616,
+      "y1": 1206
+    },
+    "ip_navigational_display": {
+      "x0": 0,
+      "y0": 0,
+      "x1": 996,
+      "y1": 816
+    },
+    "ip_lp_rotor_speed_n1": {
+      "x0": 66,
+      "y0": 22,
+      "x1": 292,
+      "y1": 154
+    },
+    "ip_egt_indicator": {
+      "x0": 66,
+      "y0": 162,
+      "x1": 292,
+      "y1": 288
+    },
+    "ip_heading_scale": {
+      "x0": 704,
+      "y0": 1112,
+      "x1": 940,
+      "y1": 1166
+    }
   }
 }

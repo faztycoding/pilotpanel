@@ -79,6 +79,9 @@ const SECTION_IMAGES: Record<string, PanelImage> = {
   'pedestal:door': require('@/assets/sections/pedestal/door.webp'),
   'pedestal:wheel': require('@/assets/sections/pedestal/wheel.webp'),
   'pedestal:f_ctl': require('@/assets/sections/pedestal/f_ctl.webp'),
+  'instrument:pfd': require('@/assets/sections/instrument/pfd.webp'),
+  'instrument:nd': require('@/assets/sections/instrument/nd.webp'),
+  'instrument:ewd': require('@/assets/sections/instrument/ewd.webp'),
 };
 
 export function getSectionImage(panelId: string, sectionId: string): PanelImage | undefined {

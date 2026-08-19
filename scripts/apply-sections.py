@@ -70,6 +70,15 @@ def main() -> int:
             if "name" in item:
                 section["name"] = item["name"]
 
+            # ผูก control เข้าโซน — instrument ยังไม่มี sectionId ในข้อมูลที่ extractor สร้าง
+            # (pedestal มีเพราะเอกสารมีหัวข้อหน้า ECAM ชัด แต่เอกสาร instrument ไม่ได้แบ่งหัวข้อจอ)
+            for cid in item.get("controlIds", []):
+                control = next((c for c in panel["controls"] if c["id"] == cid), None)
+                if control is None:
+                    print(f"  ! {panel_id}/{sid}: ไม่พบ control '{cid}'")
+                    continue
+                control["sectionId"] = sid
+
             image_name = item.get("image")
             if not image_name:
                 print(f"  – {panel_id}/{sid}: ยังไม่มีรูป ({item.get('note', 'ไม่ได้ระบุเหตุผล')})")
