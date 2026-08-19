@@ -6,8 +6,8 @@ import { ControlSheet } from '@/components/control-sheet';
 import { EcamPageStrip } from '@/components/ecam-page-strip';
 import { HotspotLayer } from '@/components/hotspot-layer';
 import { ThemedText } from '@/components/themed-text';
-import { ZoomableImage } from '@/components/zoomable-image';
 import { ZoomHint } from '@/components/zoom-hint';
+import { ZoomableImage } from '@/components/zoomable-image';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { needsZoomHint, type Size } from '@/lib/layout';
@@ -77,12 +77,13 @@ export default function SectionScreen() {
           imageSize={section.imageSize}
           onScaleSettled={handleScaleSettled}
           onDisplayChange={handleDisplayChange}
-          renderOverlay={(size) => (
+          renderOverlay={(size, panGesture) => (
             <HotspotLayer
               panelId={panel.panelId}
               controls={controls}
               display={size}
               scale={scale}
+              panGesture={panGesture}
               onPress={handlePress}
             />
           )}

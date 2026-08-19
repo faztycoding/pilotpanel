@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
-import { Pressable, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Pressable, type GestureType } from 'react-native-gesture-handler';
 
 import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
@@ -12,6 +13,13 @@ import type { Control, Hotspot } from '@/lib/types';
  * component นี้ต้องเป็นลูกของ Animated.View ที่ถือ transform ของรูป
  * RN จะใส่ transform เดียวกันให้ทั้ง hit area ด้วย ปุ่มจึงขยับ/ขยายตามรูปเอง
  * ไม่ต้องคำนวณ inverse transform ตอนแตะ = ไม่มีทางที่พิกัดกดจะเพี้ยนจากพิกัดที่เห็น
+ *
+ * ใช้ Pressable จาก react-native-gesture-handler (ไม่ใช่ของ react-native) เพราะต้อง
+ * ประกาศ requireExternalGestureToFail={panGesture} — ถ้าใช้ Pressable ของ react-native
+ * (คนละระบบ arbitration กับ react-native-gesture-handler) นิ้วที่กำลังลากซูม/เลื่อนรูปแล้ว
+ * ผ่านตำแหน่งปุ่มพอดี จะโดน Pressable แย่ง responder ไปทันทีที่นิ้วแตะ ทำให้ลากค้างตรงปุ่ม
+ * แทนที่จะไหลต่อเป็นการเลื่อนรูปเหมือนพื้นที่อื่น — requireExternalGestureToFail บอกให้ปุ่ม
+ * รอก่อนว่า panGesture จะไม่ขยับ (คือเป็นการแตะเฉย ๆ ไม่ใช่ลาก) แล้วค่อยยอมให้ press ทำงาน
  *
  * ถ้า control มี detailImage จะวาดรูปโคลสอัพจริง (จาก docx) ทับพื้นที่ hotspot ก่อน
  * เพราะรูปแผงเต็มความละเอียดต่ำเกินกว่าจะอ่านรายละเอียดปุ่มออกตอนซูม — คนละที่กับรูปใน
@@ -26,12 +34,22 @@ type Props = {
   display: Size;
   /** scale ปัจจุบัน ใช้ขยาย hitSlop ตอนกล่องเล็กกว่านิ้ว */
   scale: number;
+  /** gesture การเลื่อน/ซูมของรูปแม่ — ให้ปุ่มยอมแพ้ก่อนถ้านิ้วกำลังลากอยู่จริง */
+  panGesture: GestureType;
   onPress: (control: PlacedControl) => void;
   /** แสดงกรอบให้เห็นตอนพัฒนา */
   debug?: boolean;
 };
 
-export function HotspotLayer({ panelId, controls, display, scale, onPress, debug = false }: Props) {
+export function HotspotLayer({
+  panelId,
+  controls,
+  display,
+  scale,
+  panGesture,
+  onPress,
+  debug = false,
+}: Props) {
   return (
     <>
       {controls.map((control) => {
@@ -42,6 +60,7 @@ export function HotspotLayer({ panelId, controls, display, scale, onPress, debug
           <Pressable
             key={control.id}
             onPress={() => onPress(control)}
+            requireExternalGestureToFail={panGesture}
             // hitSlop หน่วย dp เป็นค่าของนิ้วมนุษย์ ไม่ใช่ค่าของรูป จึงไม่ขัดกฎห้าม px ในการคำนวณพิกัด
             // หารด้วย scale เพราะ hitSlop ถูกขยายด้วย transform ของ parent ไปแล้ว
             hitSlop={{

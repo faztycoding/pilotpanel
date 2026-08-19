@@ -6,9 +6,8 @@ import { ControlSheet } from '@/components/control-sheet';
 import { HotspotLayer } from '@/components/hotspot-layer';
 import { SectionEntryLayer } from '@/components/section-entry-layer';
 import { ThemedText } from '@/components/themed-text';
-import { ZoomableImage } from '@/components/zoomable-image';
 import { ZoomHint } from '@/components/zoom-hint';
-import { Spacing } from '@/constants/theme';
+import { ZoomableImage } from '@/components/zoomable-image';
 import { useTheme } from '@/hooks/use-theme';
 import { needsZoomHint, type Size } from '@/lib/layout';
 import { getPanel, getPanelImage, placedControls } from '@/lib/panels';
@@ -73,19 +72,21 @@ export default function PanelScreen() {
         initialZoom="fillScreen"
         onScaleSettled={handleScaleSettled}
         onDisplayChange={handleDisplayChange}
-        renderOverlay={(size) => (
+        renderOverlay={(size, panGesture) => (
           <>
             <HotspotLayer
               panelId={panel.panelId}
               controls={controls}
               display={size}
               scale={scale}
+              panGesture={panGesture}
               onPress={handlePress}
             />
             <SectionEntryLayer
               sections={sectionEntries}
               display={size}
               scale={scale}
+              panGesture={panGesture}
               onPress={handleSectionPress}
             />
           </>

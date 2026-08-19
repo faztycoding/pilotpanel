@@ -51,11 +51,12 @@ export default function HomeScreen() {
         imageSize={panel.imageSize}
         initialZoom="contain"
         onScaleSettled={handleScaleSettled}
-        renderOverlay={(size) => (
+        renderOverlay={(size, panGesture) => (
           <PanelZoneLayer
             zones={zones}
             display={size}
             scale={scale}
+            panGesture={panGesture}
             onPress={handlePress}
           />
         )}
