@@ -10,7 +10,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ZoomHint } from '@/components/zoom-hint';
 import { ZoomableImage } from '@/components/zoomable-image';
 import { needsZoomHint, type Size } from '@/lib/layout';
-import { getPanel, getPanelImage, placedControls } from '@/lib/panels';
+import { getPanel, getPanelImage, hotspotFocus, placedControls } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
 
 export default function PanelScreen() {
@@ -24,6 +24,8 @@ export default function PanelScreen() {
   const [selected, setSelected] = useState<Control | null>(null);
 
   const controls = useMemo(() => (panel ? placedControls(panel) : []), [panel]);
+  // เปิดหน้ามาให้กลุ่มปุ่มจริงอยู่กลางจอ ไม่ใช่กลางรูป (สำคัญกับ glareshield ที่รูปกว้าง 11:1)
+  const focus = useMemo(() => (panel ? hotspotFocus(panel) : undefined), [panel]);
   const hotspots = useMemo(() => controls.map((control) => control.hotspot), [controls]);
   // section ที่มีทั้งรูปตัวเองและตำแหน่งเข้าบนรูปหลักแล้ว — ที่เหลือรอวางพิกัด ยังไม่ render
   const sectionEntries = useMemo(
@@ -69,6 +71,7 @@ export default function PanelScreen() {
         source={image}
         imageSize={panel.imageSize}
         initialZoom="fillScreen"
+        initialFocus={focus}
         onScaleSettled={handleScaleSettled}
         onDisplayChange={handleDisplayChange}
         renderOverlay={(size, panGesture) => (

@@ -94,6 +94,26 @@ export function getPanelImage(panelId: string): PanelImage | undefined {
   return PANEL_IMAGES[panelId];
 }
 
+/**
+ * จุดกลางของกลุ่ม hotspot ที่วางแล้วบนรูปแผง (ratio 0..1) — ใช้เป็นจุดเปิดหน้า
+ *
+ * ทำเป็น data-driven ไม่ใช่ hardcode ต่อแผง เพราะรูปแผงของลูกค้าเปลี่ยนได้ตลอด
+ * แผงที่ปุ่มกระจายทั่วรูป (overhead/pedestal) ค่าที่ได้จะใกล้ 0.5 อยู่แล้ว = ไม่เปลี่ยนพฤติกรรมเดิม
+ * ส่วน glareshield ที่รูปกว้าง 13575px แต่ปุ่มอยู่แค่ x 3775-7928 จะดึงจอไปที่ FCU ให้เลย
+ * ไม่ต้องลากหาเอง 5 หน้าจอ
+ *
+ * ไม่นับ control ในโซนที่มีรูปของตัวเอง เพราะพิกัดพวกนั้นอ้างรูปคนละใบ (ดู placedControls)
+ */
+export function hotspotFocus(panel: Panel): { x: number; y: number } | undefined {
+  const boxes = placedControls(panel).map((control) => control.hotspot);
+  if (boxes.length === 0) return undefined;
+  const x0 = Math.min(...boxes.map((b) => b.x));
+  const x1 = Math.max(...boxes.map((b) => b.x + b.w));
+  const y0 = Math.min(...boxes.map((b) => b.y));
+  const y1 = Math.max(...boxes.map((b) => b.y + b.h));
+  return { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
+}
+
 /** ภาพ cockpit รวมของหน้าแรก — ไม่ใช่แผงที่มีปุ่มให้กดอ่านคำอธิบาย */
 export const HOME_PANEL_ID = '_home';
 

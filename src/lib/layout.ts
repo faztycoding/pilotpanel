@@ -98,6 +98,29 @@ export function fillScreenScale(container: Size, display: Size): number {
 }
 
 /**
+ * translate ที่ทำให้จุด focus (ratio 0..1 บนรูป) มาอยู่กลางจอ — clamp ไม่ให้รูปหลุดขอบ
+ *
+ * มีเพื่อ glareshield: รูปกว้าง 13575px แต่ปุ่มที่เอกสารอธิบายกระจุกอยู่แค่ x 3775-7928
+ * (31% ของรูป) ที่เหลือเป็นแผงฝั่งผู้ช่วยนักบินกับขอบแผงที่ไม่มี hotspot เลย
+ * ถ้าเปิดมาที่กลางรูปเฉย ๆ (translate 0) จะโผล่ครึ่งขวาของ FCU แล้วต้องลากหา
+ */
+export function focusTranslate(
+  container: Size,
+  display: Size,
+  scale: number,
+  focus: { x: number; y: number }
+): Size {
+  const limit = maxTranslate(container, display, scale);
+  // ระยะที่ต้องเลื่อนเพื่อดึงจุด focus จากตำแหน่งเดิมมากลางจอ — ทิศตรงข้ามกับ offset ของจุดนั้น
+  const offsetX = (0.5 - focus.x) * display.width * scale;
+  const offsetY = (0.5 - focus.y) * display.height * scale;
+  return {
+    width: clamp(offsetX, -limit.width, limit.width),
+    height: clamp(offsetY, -limit.height, limit.height),
+  };
+}
+
+/**
  * ซูมสูงสุด: ปกติ 6x แต่รูปที่แบนมาก (glareshield) ต้องซูมได้ลึกกว่านั้น
  * เพราะค่าเริ่มต้นของมันคือ fillScreenScale ซึ่งสูงอยู่แล้ว ถ้าเพดานไม่เผื่อ headroom
  * ผู้ใช้จะซูมเข้าต่อไม่ได้เลยตั้งแต่เปิดหน้ามา

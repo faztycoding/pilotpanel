@@ -14,6 +14,7 @@ import {
   clamp,
   fillScreenScale,
   fitContain,
+  focusTranslate,
   maxScaleFor,
   maxTranslate,
   type Size
@@ -41,6 +42,11 @@ type Props = {
    */
   initialZoom?: 'contain' | 'fillScreen';
   /**
+   * จุดที่ต้องการให้อยู่กลางจอตอนเปิดหน้า (ratio 0..1 บนรูป) — ไม่ใส่ = กลางรูป
+   * ใช้กับ glareshield ที่ปุ่มจริงกระจุกอยู่แค่ 31% ของรูป (ดู focusTranslate ใน lib/layout.ts)
+   */
+  initialFocus?: { x: number; y: number };
+  /**
    * render ทับบนรูป ได้รับขนาดรูปจริงบนจอเพื่อคูณกับ ratio
    *
    * panGesture ส่งออกมาด้วยเพื่อให้ปุ่มที่วางทับ (HotspotLayer / SectionEntryLayer /
@@ -63,6 +69,7 @@ export function ZoomableImage({
   source,
   imageSize,
   initialZoom = 'contain',
+  initialFocus,
   renderOverlay,
   onDisplayChange,
   onScaleSettled,
@@ -173,14 +180,17 @@ export function ZoomableImage({
     const nextDisplay = fitContain(nextContainer, imageSize);
     const initialScale =
       initialZoom === 'fillScreen' ? fillScreenScale(nextContainer, nextDisplay) : MIN_SCALE;
+    const start = initialFocus
+      ? focusTranslate(nextContainer, nextDisplay, initialScale, initialFocus)
+      : { width: 0, height: 0 };
     // จอเปลี่ยนขนาดแล้ว ค่าซูม/เลื่อนเดิมอาจเกินขอบใหม่ กลับไปตั้งต้นเพื่อไม่ให้ค้างนอกกรอบ
     scale.value = withTiming(initialScale);
     savedScale.value = initialScale;
     settledScale.value = initialScale;
-    translateX.value = withTiming(0);
-    translateY.value = withTiming(0);
-    savedTranslateX.value = 0;
-    savedTranslateY.value = 0;
+    translateX.value = withTiming(start.width);
+    translateY.value = withTiming(start.height);
+    savedTranslateX.value = start.width;
+    savedTranslateY.value = start.height;
   }
 
   return (
