@@ -84,3 +84,20 @@ export const NoWebFocusOutline: ViewStyle = Platform.select({
   web: { outlineStyle: 'none' } as unknown as ViewStyle,
   default: {} as ViewStyle,
 })!;
+
+/**
+ * กรอบเส้นประที่ต้องเห็นตลอดเวลา (ไม่ใช่แค่โหมด debug) บนทุกจุดที่กดได้ — ปุ่มบนรูปแผง,
+ * ปุ่มเข้าโซน ECAM, โซนเลือกแผงบนหน้าแรก ลูกค้าขอเพราะรูปแผง/หน้า ECAM ไม่มีอะไรบอกเลยว่า
+ * ตรงไหนกดได้ (ปุ่มบนรูปเป็นภาพนิ่ง ไม่ใช่ปุ่ม UI ที่มี affordance ของตัวเอง)
+ *
+ * ใช้สีขาวโปร่งแสงเพราะพื้นหลังมีทั้งจอ ECAM สีน้ำเงินเข้มและรูปแผงหลากสี ขาวคือสีเดียว
+ * ที่ตัดกับพื้นได้ทั้งสองแบบ ส่วน backgroundColor จางมาก ๆ ช่วยให้เห็นพื้นที่จริงของกรอบ
+ * เวลาอยู่บนพื้นที่มีลวดลายซับซ้อน ไม่ใช่แค่เห็นเส้นขอบ
+ */
+export const HotspotIndicator: ViewStyle = {
+  borderWidth: 1.5,
+  borderStyle: 'dashed',
+  borderColor: 'rgba(255, 255, 255, 0.75)',
+  backgroundColor: 'rgba(255, 255, 255, 0.06)',
+  borderRadius: 3,
+};

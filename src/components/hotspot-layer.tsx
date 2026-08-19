@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { Pressable, StyleSheet } from 'react-native';
 
-import { NoWebFocusOutline } from '@/constants/theme';
+import { HotspotIndicator, NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import { getDetailImage } from '@/lib/panels';
 import type { Control, Hotspot } from '@/lib/types';
@@ -22,6 +22,9 @@ import type { Control, Hotspot } from '@/lib/types';
  * ใช้จริง ปุ่มจึงรอ relation ที่ไม่มีวันสำเร็จ กดไม่ติดถาวร — ย้อนกลับมาใช้ Pressable เดิม
  * ที่พิสูจน์แล้วว่ากดติดแน่นอน ยอมรับข้อเสียเดิม (ลากผ่านปุ่มอาจสะดุดเล็กน้อย) ไว้ก่อน
  *
+ * แสดงกรอบเส้นประ (HotspotIndicator) ตลอดเวลา ไม่ใช่แค่โหมด debug — ลูกค้าขอเพราะปุ่มบนรูป
+ * แผงเป็นภาพนิ่ง ไม่มี affordance ของตัวเองบอกผู้ใช้ว่ากดตรงไหนได้ (ดู constants/theme.ts)
+ *
  * ถ้า control มี detailImage จะวาดรูปโคลสอัพจริง (จาก docx) ทับพื้นที่ hotspot ก่อน
  * เพราะรูปแผงเต็มความละเอียดต่ำเกินกว่าจะอ่านรายละเอียดปุ่มออกตอนซูม — คนละที่กับรูปใน
  * bottom sheet ซึ่งลูกค้าห้ามใส่รูปประกอบ อันนี้คือตัวปุ่มบนรูปแผงเอง ไม่ใช่กล่องคำอธิบาย
@@ -36,7 +39,7 @@ type Props = {
   /** scale ปัจจุบัน ใช้ขยาย hitSlop ตอนกล่องเล็กกว่านิ้ว */
   scale: number;
   onPress: (control: PlacedControl) => void;
-  /** แสดงกรอบให้เห็นตอนพัฒนา */
+  /** เพิ่มไฮไลต์สีสดตอนพัฒนา (เข้มกว่า HotspotIndicator ที่โชว์ผู้ใช้จริงตลอดเวลา) */
   debug?: boolean;
 };
 
@@ -87,6 +90,7 @@ const styles = StyleSheet.create({
   hotspot: {
     position: 'absolute',
     ...NoWebFocusOutline,
+    ...HotspotIndicator,
   },
   debug: {
     borderWidth: StyleSheet.hairlineWidth,

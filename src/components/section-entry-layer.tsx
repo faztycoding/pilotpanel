@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 
-import { NoWebFocusOutline } from '@/constants/theme';
+import { HotspotIndicator, NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import type { Section } from '@/lib/types';
 
@@ -12,6 +12,9 @@ import type { Section } from '@/lib/types';
  * พิกัด/hitSlop คำนวณแบบเดียวกับ HotspotLayer เป๊ะ ใช้ Pressable ของ react-native ตามเหตุผล
  * เดียวกัน (ดู comment ยาวใน hotspot-layer.tsx): เคยลองสลับไปใช้ Pressable ของ
  * react-native-gesture-handler เพื่อกันปุ่มแย่งตอนลากผ่าน แต่ทำให้กดปุ่มไม่ติดเลยทั้งแผง
+ *
+ * แสดงกรอบเส้นประ (HotspotIndicator) ตลอดเวลาเหมือน HotspotLayer — ปุ่มเข้าโซน ECAM ก็เป็น
+ * ภาพนิ่งบนรูปแผงเหมือนกัน ไม่มี affordance ของตัวเอง
  */
 
 type SectionWithEntry = Section & { entry: NonNullable<Section['entry']> };
@@ -21,7 +24,7 @@ type Props = {
   display: Size;
   scale: number;
   onPress: (section: SectionWithEntry) => void;
-  /** แสดงกรอบให้เห็นตอนพัฒนา */
+  /** เพิ่มไฮไลต์สีสดตอนพัฒนา (เข้มกว่า HotspotIndicator ที่โชว์ผู้ใช้จริงตลอดเวลา) */
   debug?: boolean;
 };
 
@@ -57,6 +60,7 @@ const styles = StyleSheet.create({
   entry: {
     position: 'absolute',
     ...NoWebFocusOutline,
+    ...HotspotIndicator,
   },
   debug: {
     borderWidth: StyleSheet.hairlineWidth,

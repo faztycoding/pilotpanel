@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet } from 'react-native';
 
-import { NoWebFocusOutline } from '@/constants/theme';
+import { HotspotIndicator, NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import type { Control, Hotspot } from '@/lib/types';
 
@@ -14,6 +14,9 @@ import type { Control, Hotspot } from '@/lib/types';
  * ใช้ Pressable ของ react-native ตามเหตุผลเดียวกับ HotspotLayer (ดู comment ที่นั่น):
  * เคยลองสลับไปใช้ Pressable ของ react-native-gesture-handler เพื่อกันปุ่มแย่งตอนลากผ่าน
  * แต่ทำให้กดปุ่มไม่ติดเลยทั้งแผง
+ *
+ * แสดงกรอบเส้นประ (HotspotIndicator) ตลอดเวลาเหมือนอีกสองชั้น — ภาพ cockpit รวมไม่มี
+ * อะไรบอกว่าโซนไหนกดได้เลย ไม่งั้นผู้ใช้ต้องเดาสุ่มกด
  */
 
 /** โซนต้องมีทั้งพิกัดและปลายทาง — homeZones() ใน lib/panels.ts การันตีให้แล้ว */
@@ -24,7 +27,7 @@ type Props = {
   display: Size;
   scale: number;
   onPress: (zone: ZoneControl) => void;
-  /** วาดกรอบให้เห็นตอนพัฒนา */
+  /** เพิ่มไฮไลต์สีสดตอนพัฒนา (เข้มกว่า HotspotIndicator ที่โชว์ผู้ใช้จริงตลอดเวลา) */
   debug?: boolean;
 };
 
@@ -64,6 +67,7 @@ const styles = StyleSheet.create({
   zone: {
     position: 'absolute',
     ...NoWebFocusOutline,
+    ...HotspotIndicator,
   },
   pressed: {
     backgroundColor: 'rgba(120, 200, 255, 0.28)',
