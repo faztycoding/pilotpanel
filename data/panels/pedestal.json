@@ -57,7 +57,12 @@
       "id": "cp_att_hdg_selector",
       "name": "ATT HDG selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3948,
+        "y": 0.0396,
+        "w": 0.035,
+        "h": 0.0372
+      },
       "body": [
         {
           "kind": "p",
@@ -79,7 +84,12 @@
       "id": "cp_air_data_selector",
       "name": "AIR DATA selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4531,
+        "y": 0.0396,
+        "w": 0.0315,
+        "h": 0.0372
+      },
       "body": [
         {
           "kind": "p",
@@ -101,7 +111,12 @@
       "id": "cp_eis_dmc_rotary_selector",
       "name": "EIS DMC rotary selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5141,
+        "y": 0.0396,
+        "w": 0.0308,
+        "h": 0.0372
+      },
       "body": [
         {
           "kind": "p",
@@ -127,7 +142,12 @@
       "id": "cp_ecam_nd_xfr_rotary_selector",
       "name": "ECAM/ND XFR rotary selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5723,
+        "y": 0.0396,
+        "w": 0.0308,
+        "h": 0.0372
+      },
       "body": [
         {
           "kind": "p",
@@ -149,7 +169,12 @@
       "id": "cp_off_brt_knobs",
       "name": "OFF/BRT Knobs",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.379,
+        "y": 0.1035,
+        "w": 0.0281,
+        "h": 0.0215
+      },
       "body": [
         {
           "kind": "p",
@@ -167,7 +192,12 @@
       "id": "cp_t_o_config_push_button",
       "name": "T.O CONFIG push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4928,
+        "y": 0.0908,
+        "w": 0.0233,
+        "h": 0.0134
+      },
       "body": [
         {
           "kind": "p",
@@ -181,7 +211,12 @@
       "id": "cp_emer_canc_push_button",
       "name": "EMER CANC push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5757,
+        "y": 0.0913,
+        "w": 0.024,
+        "h": 0.0134
+      },
       "body": [
         {
           "kind": "p",
@@ -399,7 +434,12 @@
       "id": "cp_mcdu_multi_purpose_control_and_display_unit",
       "name": "MCDU (Multi-Purpose Control and Display Unit)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.111,
+        "y": 0.0221,
+        "w": 0.1522,
+        "h": 0.1152
+      },
       "body": [
         {
           "kind": "p",
@@ -2462,7 +2502,12 @@
       "id": "cp_all_push_button",
       "name": "ALL push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6038,
+        "y": 0.1303,
+        "w": 0.0233,
+        "h": 0.0131
+      },
       "body": [
         {
           "kind": "p",
@@ -2476,7 +2521,12 @@
       "id": "cp_clr_push_button",
       "name": "CLR push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4637,
+        "y": 0.1521,
+        "w": 0.0233,
+        "h": 0.0131
+      },
       "body": [
         {
           "kind": "warning",
@@ -2490,7 +2540,12 @@
       "id": "cp_sts_push_button",
       "name": "STS push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5195,
+        "y": 0.1524,
+        "w": 0.0233,
+        "h": 0.0128
+      },
       "body": [
         {
           "kind": "p",
@@ -2508,7 +2563,12 @@
       "id": "cp_rcl_push_button",
       "name": "RCL push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.548,
+        "y": 0.1524,
+        "w": 0.023,
+        "h": 0.0128
+      },
       "body": [
         {
           "kind": "p",
@@ -2534,7 +2594,12 @@
       "id": "cp_mcdu_multi_purpose_control_and_display_unit_2",
       "name": "MCDU (Multi-Purpose Control and Display Unit)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7389,
+        "y": 0.0244,
+        "w": 0.1398,
+        "h": 0.1094
+      },
       "body": [
         {
           "kind": "p",
@@ -2552,7 +2617,12 @@
       "id": "cp_frequency_display_active_stby_crs",
       "name": "Frequency Display (ACTIVE + STBY/CRS)",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.719,
+        "y": 0.2676,
+        "w": 0.0713,
+        "h": 0.018
+      },
       "body": [
         {
           "kind": "p",
@@ -2566,7 +2636,12 @@
       "id": "cp_transfer_key",
       "name": "Transfer Key",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7971,
+        "y": 0.2699,
+        "w": 0.0281,
+        "h": 0.014
+      },
       "body": [
         {
           "kind": "p",
@@ -2580,7 +2655,12 @@
       "id": "cp_radio_com_selection_keys",
       "name": "Radio Com Selection Keys",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7224,
+        "y": 0.2926,
+        "w": 0.1001,
+        "h": 0.0186
+      },
       "body": [
         {
           "kind": "p",
@@ -2606,7 +2686,12 @@
       "id": "cp_sel_indicator",
       "name": "SEL Indicator",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7505,
+        "y": 0.3136,
+        "w": 0.0178,
+        "h": 0.0145
+      },
       "body": [
         {
           "kind": "p",
@@ -2620,7 +2705,12 @@
       "id": "cp_am_push_button",
       "name": "AM Push-button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7999,
+        "y": 0.3136,
+        "w": 0.0226,
+        "h": 0.0145
+      },
       "body": [
         {
           "kind": "p",
@@ -2634,7 +2724,12 @@
       "id": "cp_frequency_selector_knobs",
       "name": "Frequency Selector Knobs",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8355,
+        "y": 0.299,
+        "w": 0.0363,
+        "h": 0.0291
+      },
       "body": [
         {
           "kind": "p",
@@ -2648,7 +2743,12 @@
       "id": "cp_nav_push_button_includes_transparent_guard",
       "name": "NAV Push-button(Includes transparent Guard)",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7231,
+        "y": 0.3426,
+        "w": 0.0219,
+        "h": 0.0169
+      },
       "body": [
         {
           "kind": "p",
@@ -2662,7 +2762,12 @@
       "id": "cp_radio_navigation_selection_keys",
       "name": "Radio Navigation Selection Keys",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7498,
+        "y": 0.3444,
+        "w": 0.1254,
+        "h": 0.0151
+      },
       "body": [
         {
           "kind": "p",
@@ -2676,7 +2781,12 @@
       "id": "cp_on_off_switch",
       "name": "ON/OFF Switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8849,
+        "y": 0.3397,
+        "w": 0.0151,
+        "h": 0.0209
+      },
       "body": [
         {
           "kind": "p",
@@ -2690,7 +2800,12 @@
       "id": "cp_transmission_keys",
       "name": "Transmission Keys",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7224,
+        "y": 0.3735,
+        "w": 0.1789,
+        "h": 0.014
+      },
       "body": [
         {
           "kind": "p",
@@ -2716,7 +2831,12 @@
       "id": "cp_reception_knobs",
       "name": "Reception Knobs",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7224,
+        "y": 0.4334,
+        "w": 0.1796,
+        "h": 0.0262
+      },
       "body": [
         {
           "kind": "p",
@@ -2730,7 +2850,12 @@
       "id": "cp_int_rad_switch",
       "name": "INT/RAD switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7368,
+        "y": 0.4107,
+        "w": 0.0192,
+        "h": 0.0221
+      },
       "body": [
         {
           "kind": "p",
@@ -2776,7 +2901,12 @@
       "id": "cp_passenger_address_pa_function",
       "name": "Passenger Address (PA) function",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8417,
+        "y": 0.413,
+        "w": 0.0206,
+        "h": 0.0169
+      },
       "body": [
         {
           "kind": "p",
@@ -2802,7 +2932,12 @@
       "id": "cp_thrust_levers_trim_wheel",
       "name": "Thrust Levers + Trim Wheel",
       "type": "lever",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4181,
+        "y": 0.3519,
+        "w": 0.1666,
+        "h": 0.089
+      },
       "body": [
         {
           "kind": "p",
@@ -2873,7 +3008,12 @@
       "id": "cp_pitch_trim_wheel",
       "name": "Pitch Trim Wheel",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3256,
+        "y": 0.3534,
+        "w": 0.0384,
+        "h": 0.1166
+      },
       "body": [
         {
           "kind": "p",
@@ -3023,7 +3163,12 @@
       "id": "cp_capt_fo_display_mode_selector",
       "name": "CAPT/FO DISPLAY Mode Selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1097,
+        "y": 0.5253,
+        "w": 0.0274,
+        "h": 0.0198
+      },
       "body": [
         {
           "kind": "p",
@@ -3057,7 +3202,12 @@
       "id": "cp_elevn_knob",
       "name": "ELEVN Knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1131,
+        "y": 0.5585,
+        "w": 0.0226,
+        "h": 0.0215
+      },
       "body": [
         {
           "kind": "p",
@@ -3071,7 +3221,12 @@
       "id": "cp_wxr_pws_switch",
       "name": "WXR/PWS switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1857,
+        "y": 0.5119,
+        "w": 0.0171,
+        "h": 0.0186
+      },
       "body": [
         {
           "kind": "p",
@@ -3117,7 +3272,12 @@
       "id": "cp_gain_knob_2",
       "name": "GAIN knob",
       "type": "knob",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1761,
+        "y": 0.5654,
+        "w": 0.0254,
+        "h": 0.0227
+      },
       "body": [
         {
           "kind": "p",
@@ -3131,7 +3291,12 @@
       "id": "cp_eng_1_2_master_switch",
       "name": "ENG 1(2) MASTER Switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4462,
+        "y": 0.5329,
+        "w": 0.0295,
+        "h": 0.0169
+      },
       "body": [
         {
           "kind": "p",
@@ -3181,7 +3346,12 @@
       "id": "cp_eng_1_2_fault_light",
       "name": "ENG 1(2) FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5422,
+        "y": 0.5608,
+        "w": 0.0295,
+        "h": 0.0204
+      },
       "body": [],
       "sourceRef": "Center Pedestal (finish).docx#p907",
       "needsReview": true
@@ -3190,7 +3360,12 @@
       "id": "cp_fault_light",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4332,
+        "y": 0.5713,
+        "w": 0.0288,
+        "h": 0.0099
+      },
       "body": [
         {
           "kind": "warning",
@@ -3212,7 +3387,12 @@
       "id": "cp_fire_light",
       "name": "FIRE light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4332,
+        "y": 0.5614,
+        "w": 0.0288,
+        "h": 0.0096
+      },
       "body": [
         {
           "kind": "warning",
@@ -3226,7 +3406,12 @@
       "id": "cp_eng_mode_selector",
       "name": "ENG MODE selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4832,
+        "y": 0.5579,
+        "w": 0.0404,
+        "h": 0.0256
+      },
       "body": [
         {
           "kind": "p",
@@ -3272,7 +3457,12 @@
       "id": "cp_auto_on_selector",
       "name": "AUTO/ON selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7224,
+        "y": 0.5183,
+        "w": 0.0212,
+        "h": 0.0169
+      },
       "body": [
         {
           "kind": "p",
@@ -3286,7 +3476,12 @@
       "id": "cp_xpndr_selector",
       "name": "XPNDR Selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7231,
+        "y": 0.5398,
+        "w": 0.0199,
+        "h": 0.0169
+      },
       "body": [
         {
           "kind": "p",
@@ -3300,7 +3495,12 @@
       "id": "cp_traffic_selector",
       "name": "TRAFFIC selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7156,
+        "y": 0.5602,
+        "w": 0.0206,
+        "h": 0.0169
+      },
       "body": [
         {
           "kind": "p",
@@ -3330,7 +3530,12 @@
       "id": "cp_clr_push_button_2",
       "name": "CLR push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8026,
+        "y": 0.5602,
+        "w": 0.0164,
+        "h": 0.014
+      },
       "body": [
         {
           "kind": "p",
@@ -3352,7 +3557,12 @@
       "id": "cp_code_display",
       "name": "Code display",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8242,
+        "y": 0.5137,
+        "w": 0.0819,
+        "h": 0.0233
+      },
       "body": [
         {
           "kind": "p",
@@ -3366,7 +3576,12 @@
       "id": "cp_ident_switch",
       "name": "IDENT switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.904,
+        "y": 0.5416,
+        "w": 0.0137,
+        "h": 0.0111
+      },
       "body": [
         {
           "kind": "p",
@@ -3380,7 +3595,12 @@
       "id": "cp_mode_selector",
       "name": "Mode selector",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.8314,
+        "y": 0.5445,
+        "w": 0.0329,
+        "h": 0.032
+      },
       "body": [
         {
           "kind": "p",
@@ -3434,7 +3654,12 @@
       "id": "cp_lever",
       "name": "Lever",
       "type": "lever",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3468,
+        "y": 0.6841,
+        "w": 0.0171,
+        "h": 0.0547
+      },
       "body": [
         {
           "kind": "p",
@@ -3448,7 +3673,12 @@
       "id": "cp_rud_trim_rotary_switch_reset_button_position",
       "name": "RUD TRIM Rotary switch/Reset button/Position Indicator",
       "type": "selector",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5134,
+        "y": 0.7208,
+        "w": 0.0651,
+        "h": 0.0361
+      },
       "body": [
         {
           "kind": "p",
@@ -3470,7 +3700,12 @@
       "id": "cp_flap_lever",
       "name": "FLAP lever",
       "type": "lever",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6361,
+        "y": 0.6841,
+        "w": 0.0226,
+        "h": 0.0547
+      },
       "body": [
         {
           "kind": "p",
@@ -3501,7 +3736,12 @@
       "id": "cp_toggle_switch",
       "name": "Toggle switch",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.231,
+        "y": 0.7813,
+        "w": 0.0281,
+        "h": 0.0163
+      },
       "body": [
         {
           "kind": "p",
@@ -3535,7 +3775,12 @@
       "id": "cp_fault_light_2",
       "name": "Fault Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1761,
+        "y": 0.7795,
+        "w": 0.035,
+        "h": 0.0221
+      },
       "body": [
         {
           "kind": "p",
@@ -3565,7 +3810,12 @@
       "id": "cp_parking_brk_handle",
       "name": "PARKING BRK handle",
       "type": "lever",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5154,
+        "y": 0.808,
+        "w": 0.0679,
+        "h": 0.0739
+      },
       "body": [
         {
           "kind": "p",
@@ -3579,7 +3829,12 @@
       "id": "cp_gravity_gear_extn",
       "name": "Gravity GEAR EXTN",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4894,
+        "y": 0.8988,
+        "w": 0.0308,
+        "h": 0.0535
+      },
       "body": [
         {
           "kind": "p",
