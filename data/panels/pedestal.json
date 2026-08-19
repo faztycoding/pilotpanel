@@ -706,7 +706,12 @@
       "id": "cp_arrow",
       "name": "Arrow",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3035,
+        "y": 0.424,
+        "w": 0.0278,
+        "h": 0.0433
+      },
       "body": [
         {
           "kind": "p",
@@ -725,7 +730,12 @@
       "id": "cp_anti_ice_indication",
       "name": "ANTI ICE Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2478,
+        "y": 0.4184,
+        "w": 0.0557,
+        "h": 0.0756
+      },
       "body": [
         {
           "kind": "p",
@@ -740,7 +750,12 @@
       "id": "cp_engine_bleed_indication",
       "name": "Engine Bleed Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3128,
+        "y": 0.4848,
+        "w": 0.0888,
+        "h": 0.0829
+      },
       "body": [
         {
           "kind": "p",
@@ -783,7 +798,12 @@
       "id": "cp_engine_identification_1_2",
       "name": "Engine Identification 1(2)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.285,
+        "y": 0.6018,
+        "w": 0.0292,
+        "h": 0.0452
+      },
       "body": [
         {
           "kind": "p",
@@ -798,7 +818,12 @@
       "id": "cp_engine_bleed_valves",
       "name": "Engine Bleed Valves",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3154,
+        "y": 0.6138,
+        "w": 0.0292,
+        "h": 0.0442
+      },
       "body": [
         {
           "kind": "p",
@@ -825,7 +850,12 @@
       "id": "cp_hp_valves",
       "name": "HP Valves",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3512,
+        "y": 0.7373,
+        "w": 0.0331,
+        "h": 0.0461
+      },
       "body": [
         {
           "kind": "p",
@@ -844,7 +874,12 @@
       "id": "cp_apu_bleed_valve",
       "name": "APU Bleed Valve",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4851,
+        "y": 0.4848,
+        "w": 0.0305,
+        "h": 0.0498
+      },
       "body": [
         {
           "kind": "p",
@@ -890,7 +925,12 @@
       "id": "cp_gnd_hp_ground_connection_indication",
       "name": "GND HP Ground Connection Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4168,
+        "y": 0.459,
+        "w": 0.0577,
+        "h": 0.0627
+      },
       "body": [
         {
           "kind": "p",
@@ -905,7 +945,12 @@
       "id": "cp_ldg_elev_auto_man",
       "name": "LDG ELEV AUTO/MAN",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6174,
+        "y": 0.0902,
+        "w": 0.078,
+        "h": 0.0543
+      },
       "body": [
         {
           "kind": "p",
@@ -932,7 +977,12 @@
       "id": "cp_p_psi_cabin_differential_pressure",
       "name": "ΔP PSI (Cabin Differential Pressure)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2652,
+        "y": 0.2707,
+        "w": 0.1064,
+        "h": 0.1786
+      },
       "body": [
         {
           "kind": "p",
@@ -951,7 +1001,12 @@
       "id": "cp_landing_elevation",
       "name": "Landing Elevation",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7072,
+        "y": 0.0902,
+        "w": 0.0988,
+        "h": 0.0543
+      },
       "body": [
         {
           "kind": "p",
@@ -970,7 +1025,12 @@
       "id": "cp_v_s_ft_min_cabin_vertical_speed",
       "name": "V/S FT/MIN (Cabin Vertical Speed)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4448,
+        "y": 0.2707,
+        "w": 0.1409,
+        "h": 0.1878
+      },
       "body": [
         {
           "kind": "p",
@@ -985,7 +1045,12 @@
       "id": "cp_cab_alt_ft_cabin_altitude",
       "name": "CAB ALT FT (Cabin Altitude)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6381,
+        "y": 0.2707,
+        "w": 0.1202,
+        "h": 0.1878
+      },
       "body": [
         {
           "kind": "p",
@@ -1004,7 +1069,12 @@
       "id": "cp_active_system_indication_sys_1_or_sys_2_or_m",
       "name": "Active System Indication (SYS 1 or SYS 2 or MAN)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3757,
+        "y": 0.5046,
+        "w": 0.2776,
+        "h": 0.0552
+      },
       "body": [
         {
           "kind": "p",
@@ -1031,7 +1101,12 @@
       "id": "cp_outflow_valve_position",
       "name": "Outflow Valve Position",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5967,
+        "y": 0.593,
+        "w": 0.0856,
+        "h": 0.1326
+      },
       "body": [
         {
           "kind": "p",
@@ -1321,7 +1396,12 @@
       "id": "cp_apu_gen_line_contactor_indication",
       "name": "APU GEN Line Contactor Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3078,
+        "y": 0.1419,
+        "w": 0.0351,
+        "h": 0.051
+      },
       "body": [
         {
           "kind": "p",
@@ -1336,7 +1416,12 @@
       "id": "cp_apu_gen_parameters",
       "name": "APU GEN Parameters",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2552,
+        "y": 0.1882,
+        "w": 0.1388,
+        "h": 0.1898
+      },
       "body": [
         {
           "kind": "p",
@@ -1351,7 +1436,12 @@
       "id": "cp_apu_n",
       "name": "APU N",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2759,
+        "y": 0.4386,
+        "w": 0.2073,
+        "h": 0.1627
+      },
       "body": [
         {
           "kind": "p",
@@ -1374,7 +1464,12 @@
       "id": "cp_apu_egt",
       "name": "APU EGT",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2759,
+        "y": 0.6507,
+        "w": 0.2392,
+        "h": 0.1579
+      },
       "body": [
         {
           "kind": "p",
@@ -1405,7 +1500,12 @@
       "id": "cp_avail",
       "name": "AVAIL",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.445,
+        "y": 0.1786,
+        "w": 0.1116,
+        "h": 0.0383
+      },
       "body": [
         {
           "kind": "p",
@@ -1420,7 +1520,12 @@
       "id": "cp_apu_bleed_air_valve_position",
       "name": "APU Bleed Air Valve Position",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6651,
+        "y": 0.1946,
+        "w": 0.0494,
+        "h": 0.0606
+      },
       "body": [
         {
           "kind": "p",
@@ -1447,7 +1552,12 @@
       "id": "cp_apu_bleed_air_pressure",
       "name": "APU Bleed Air Pressure",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.63,
+        "y": 0.2823,
+        "w": 0.1324,
+        "h": 0.0925
+      },
       "body": [
         {
           "kind": "p",
@@ -1462,7 +1572,12 @@
       "id": "cp_fuel_lo_pr",
       "name": "FUEL LO PR",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5694,
+        "y": 0.4864,
+        "w": 0.2137,
+        "h": 0.0399
+      },
       "body": [
         {
           "kind": "p",
@@ -1477,7 +1592,12 @@
       "id": "cp_flap_open",
       "name": "FLAP OPEN",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5694,
+        "y": 0.6093,
+        "w": 0.201,
+        "h": 0.0415
+      },
       "body": [
         {
           "kind": "p",
@@ -1492,7 +1612,12 @@
       "id": "cp_low_oil_level",
       "name": "LOW OIL LEVEL",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5662,
+        "y": 0.7161,
+        "w": 0.1579,
+        "h": 0.0861
+      },
       "body": [
         {
           "kind": "p",
@@ -1507,7 +1632,12 @@
       "id": "cp_cabin_fan_fault_indication",
       "name": "Cabin FAN Fault Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3062,
+        "y": 0.1707,
+        "w": 0.0702,
+        "h": 0.0367
+      },
       "body": [
         {
           "kind": "p",
@@ -1522,7 +1652,12 @@
       "id": "cp_zone_temperature",
       "name": "Zone Temperature",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2919,
+        "y": 0.2663,
+        "w": 0.0478,
+        "h": 0.051
+      },
       "body": [
         {
           "kind": "p",
@@ -1537,7 +1672,12 @@
       "id": "cp_zone_duct_temperature",
       "name": "Zone Duct Temperature",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2919,
+        "y": 0.3285,
+        "w": 0.0478,
+        "h": 0.0478
+      },
       "body": [
         {
           "kind": "p",
@@ -1552,7 +1692,12 @@
       "id": "cp_zone_trim_air_valve_position",
       "name": "Zone Trim Air Valve Position",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2695,
+        "y": 0.37,
+        "w": 0.067,
+        "h": 0.0662
+      },
       "body": [
         {
           "kind": "p",
@@ -1567,7 +1712,12 @@
       "id": "cp_temp",
       "name": "TEMP",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6459,
+        "y": 0.1037,
+        "w": 0.1451,
+        "h": 0.0399
+      },
       "body": [
         {
           "kind": "p",
@@ -1582,7 +1732,12 @@
       "id": "cp_hot_air_pressure_regulating_valve",
       "name": "Hot Air Pressure Regulating Valve",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6874,
+        "y": 0.4577,
+        "w": 0.0558,
+        "h": 0.0574
+      },
       "body": [
         {
           "kind": "p",
@@ -1609,7 +1764,12 @@
       "id": "cp_oxy_pressure_indication",
       "name": "OXY Pressure Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.672,
+        "y": 0.1113,
+        "w": 0.0963,
+        "h": 0.0342
+      },
       "body": [
         {
           "kind": "bullet",
@@ -1636,7 +1796,12 @@
       "id": "cp_ckpt_oxy_indication",
       "name": "CKPT OXY Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6524,
+        "y": 0.0742,
+        "w": 0.1693,
+        "h": 0.0357
+      },
       "body": [
         {
           "kind": "p",
@@ -1663,7 +1828,12 @@
       "id": "cp_regul_lo_pr_indication",
       "name": "REGUL LO PR Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6025,
+        "y": 0.1583,
+        "w": 0.2032,
+        "h": 0.0328
+      },
       "body": [
         {
           "kind": "p",
@@ -1678,7 +1848,12 @@
       "id": "cp_door_indication",
       "name": "Door Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3119,
+        "y": 0.5735,
+        "w": 0.2175,
+        "h": 0.0314
+      },
       "body": [
         {
           "kind": "p",
@@ -1693,7 +1868,12 @@
       "id": "cp_stair_symbol",
       "name": "Stair Symbol",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4207,
+        "y": 0.6334,
+        "w": 0.0374,
+        "h": 0.0243
+      },
       "body": [
         {
           "kind": "p",
@@ -1708,7 +1888,12 @@
       "id": "cp_slide_indication",
       "name": "Slide Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3636,
+        "y": 0.9158,
+        "w": 0.0927,
+        "h": 0.03
+      },
       "body": [
         {
           "kind": "p",
@@ -1723,7 +1908,12 @@
       "id": "cp_door_symbol",
       "name": "Door Symbol",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5294,
+        "y": 0.5692,
+        "w": 0.0357,
+        "h": 0.03
+      },
       "body": [
         {
           "kind": "bullet",
@@ -1742,7 +1932,12 @@
       "id": "cp_n_w_steering_label",
       "name": "N/W STEERING Label",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4035,
+        "y": 0.2663,
+        "w": 0.2488,
+        "h": 0.0415
+      },
       "body": [
         {
           "kind": "p",
@@ -1773,7 +1968,12 @@
       "id": "cp_n_w_steering_hydraulic_supply_indication",
       "name": "N/W STEERING Hydraulic Supply Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3668,
+        "y": 0.2663,
+        "w": 0.0367,
+        "h": 0.0415
+      },
       "body": [
         {
           "kind": "p",
@@ -1796,7 +1996,12 @@
       "id": "cp_anti_skid_indication",
       "name": "ANTI SKID Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4051,
+        "y": 0.5056,
+        "w": 0.1738,
+        "h": 0.0415
+      },
       "body": [
         {
           "kind": "p",
@@ -1847,7 +2052,12 @@
       "id": "cp_brake_temperature",
       "name": "Brake Temperature",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2265,
+        "y": 0.5726,
+        "w": 0.1531,
+        "h": 0.0463
+      },
       "body": [
         {
           "kind": "p",
@@ -1866,7 +2076,12 @@
       "id": "cp_wheel_number",
       "name": "Wheel Number",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2344,
+        "y": 0.6188,
+        "w": 0.1419,
+        "h": 0.0319
+      },
       "body": [
         {
           "kind": "p",
@@ -1881,7 +2096,12 @@
       "id": "cp_auto_brk",
       "name": "AUTO BRK",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4848,
+        "y": 0.748,
+        "w": 0.0797,
+        "h": 0.0431
+      },
       "body": [
         {
           "kind": "p",
@@ -1900,7 +2120,12 @@
       "id": "cp_norm_brk_indication",
       "name": "NORM BRK Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4099,
+        "y": 0.5566,
+        "w": 0.2257,
+        "h": 0.0447
+      },
       "body": [
         {
           "kind": "p",
@@ -1939,7 +2164,12 @@
       "id": "cp_altn_brk_label",
       "name": "ALTN BRK Label",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4099,
+        "y": 0.6124,
+        "w": 0.1938,
+        "h": 0.0391
+      },
       "body": [
         {
           "kind": "p",
@@ -1974,7 +2204,12 @@
       "id": "cp_release_indicators",
       "name": "Release Indicators",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6491,
+        "y": 0.6172,
+        "w": 0.1611,
+        "h": 0.0343
+      },
       "body": [
         {
           "kind": "p",
@@ -1989,7 +2224,12 @@
       "id": "cp_spoilers_speed_brakes_indication",
       "name": "Spoilers/Speed-brakes Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2855,
+        "y": 0.0542,
+        "w": 0.4657,
+        "h": 0.063
+      },
       "body": [
         {
           "kind": "p",
@@ -2004,7 +2244,12 @@
       "id": "cp_battery_indication",
       "name": "Battery Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3381,
+        "y": 0.126,
+        "w": 0.0941,
+        "h": 0.1069
+      },
       "body": [
         {
           "kind": "p",
@@ -2035,7 +2280,12 @@
       "id": "cp_bus_indication",
       "name": "Bus Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2313,
+        "y": 0.2376,
+        "w": 0.0973,
+        "h": 0.0367
+      },
       "body": [
         {
           "kind": "p",
@@ -2050,7 +2300,12 @@
       "id": "cp_ess_tr_indication",
       "name": "ESS TR Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3939,
+        "y": 0.3461,
+        "w": 0.1069,
+        "h": 0.0941
+      },
       "body": [
         {
           "kind": "p",
@@ -2065,7 +2320,12 @@
       "id": "cp_gen_1_2_indications",
       "name": "GEN 1(2) Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2344,
+        "y": 0.5486,
+        "w": 0.0941,
+        "h": 0.1228
+      },
       "body": [
         {
           "kind": "p",
@@ -2096,7 +2356,12 @@
       "id": "cp_rise_indication",
       "name": "RISE Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3365,
+        "y": 0.7321,
+        "w": 0.0845,
+        "h": 0.0351
+      },
       "body": [
         {
           "kind": "p",
@@ -2111,7 +2376,12 @@
       "id": "cp_apu_gen_indication",
       "name": "APU GEN Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.37,
+        "y": 0.5534,
+        "w": 0.1148,
+        "h": 0.118
+      },
       "body": [
         {
           "kind": "p",
@@ -2134,7 +2404,12 @@
       "id": "cp_dc_bat_indication",
       "name": "DC BAT Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.445,
+        "y": 0.1579,
+        "w": 0.1148,
+        "h": 0.0391
+      },
       "body": [
         {
           "kind": "p",
@@ -2149,7 +2424,12 @@
       "id": "cp_tr_1_2_indication",
       "name": "TR 1(2) Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.673,
+        "y": 0.3094,
+        "w": 0.0909,
+        "h": 0.1029
+      },
       "body": [
         {
           "kind": "p",
@@ -2172,7 +2452,12 @@
       "id": "cp_emer_gen_indication",
       "name": "EMER GEN Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5215,
+        "y": 0.3461,
+        "w": 0.1228,
+        "h": 0.0941
+      },
       "body": [
         {
           "kind": "p",
@@ -2195,7 +2480,12 @@
       "id": "cp_idg_indications",
       "name": "IDG Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6491,
+        "y": 0.6762,
+        "w": 0.134,
+        "h": 0.051
+      },
       "body": [
         {
           "kind": "p",
@@ -2238,7 +2528,12 @@
       "id": "cp_ext_pwr_indication",
       "name": "EXT PWR Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5215,
+        "y": 0.5534,
+        "w": 0.1069,
+        "h": 0.118
+      },
       "body": [
         {
           "kind": "p",
@@ -2269,7 +2564,12 @@
       "id": "cp_galley_shed_indication",
       "name": "GALLEY SHED Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4577,
+        "y": 0.7081,
+        "w": 0.0909,
+        "h": 0.055
+      },
       "body": [
         {
           "kind": "p",
@@ -2292,7 +2592,12 @@
       "id": "cp_fuel_used_indication",
       "name": "Fuel Used Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.453,
+        "y": 0.1356,
+        "w": 0.1276,
+        "h": 0.1451
+      },
       "body": [
         {
           "kind": "p",
@@ -2311,7 +2616,12 @@
       "id": "cp_apu_indications",
       "name": "APU Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2472,
+        "y": 0.2903,
+        "w": 0.0957,
+        "h": 0.0383
+      },
       "body": [
         {
           "kind": "p",
@@ -2326,7 +2636,12 @@
       "id": "cp_wing_pump_indications",
       "name": "Wing Pump Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3222,
+        "y": 0.3971,
+        "w": 0.0813,
+        "h": 0.0542
+      },
       "body": [
         {
           "kind": "p",
@@ -2349,7 +2664,12 @@
       "id": "cp_fuel_quantity_indication",
       "name": "Fuel Quantity Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1946,
+        "y": 0.4753,
+        "w": 0.0606,
+        "h": 0.0447
+      },
       "body": [
         {
           "kind": "bullet",
@@ -2384,7 +2704,12 @@
       "id": "cp_fuel_flow_indications",
       "name": "Fuel Flow Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1834,
+        "y": 0.6571,
+        "w": 0.2616,
+        "h": 0.0654
+      },
       "body": [
         {
           "kind": "p",
@@ -2399,7 +2724,12 @@
       "id": "cp_fuel_on_board_indication_fob",
       "name": "Fuel On Board Indication (FOB)",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1802,
+        "y": 0.7321,
+        "w": 0.2871,
+        "h": 0.051
+      },
       "body": [
         {
           "kind": "p",
@@ -2418,7 +2748,12 @@
       "id": "cp_lp_valve_eng_indications",
       "name": "LP Valve (ENG) Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6364,
+        "y": 0.2281,
+        "w": 0.051,
+        "h": 0.0478
+      },
       "body": [
         {
           "kind": "p",
@@ -2445,7 +2780,12 @@
       "id": "cp_x_feed_indications",
       "name": "X feed Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4801,
+        "y": 0.2871,
+        "w": 0.051,
+        "h": 0.0494
+      },
       "body": [
         {
           "kind": "p",
@@ -2476,7 +2816,12 @@
       "id": "cp_ctr_tank_pump_indications",
       "name": "CTR Tank Pump Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5136,
+        "y": 0.3907,
+        "w": 0.0463,
+        "h": 0.0455
+      },
       "body": [
         {
           "kind": "p",
@@ -2503,7 +2848,12 @@
       "id": "cp_transfer_valve_indications",
       "name": "Transfer Valve Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.7305,
+        "y": 0.5183,
+        "w": 0.0383,
+        "h": 0.0351
+      },
       "body": [
         {
           "kind": "p",
@@ -2518,7 +2868,12 @@
       "id": "cp_fuel_temperature_indication",
       "name": "Fuel Temperature Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6284,
+        "y": 0.5598,
+        "w": 0.1754,
+        "h": 0.0399
+      },
       "body": [
         {
           "kind": "p",
@@ -2549,7 +2904,12 @@
       "id": "cp_spoilers_speed_brakes_indication_2",
       "name": "Spoilers/Speed-Brakes Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2857,
+        "y": 0.1833,
+        "w": 0.4187,
+        "h": 0.0917
+      },
       "body": [
         {
           "kind": "p",
@@ -2564,7 +2924,12 @@
       "id": "cp_aileron_position_indication",
       "name": "Aileron Position Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2041,
+        "y": 0.2389,
+        "w": 0.0695,
+        "h": 0.1026
+      },
       "body": [
         {
           "kind": "p",
@@ -2579,7 +2944,12 @@
       "id": "cp_elac_sec_indication",
       "name": "ELAC/SEC Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3477,
+        "y": 0.3196,
+        "w": 0.1179,
+        "h": 0.0606
+      },
       "body": [
         {
           "kind": "p",
@@ -2594,7 +2964,12 @@
       "id": "cp_pitch_trim_position_indicator",
       "name": "Pitch Trim Position Indicator",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.381,
+        "y": 0.4626,
+        "w": 0.2283,
+        "h": 0.0774
+      },
       "body": [
         {
           "kind": "p",
@@ -2609,7 +2984,12 @@
       "id": "cp_aileron_and_elevator_actuator_indications",
       "name": "Aileron and Elevator Actuator Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2812,
+        "y": 0.6089,
+        "w": 0.0574,
+        "h": 0.0404
+      },
       "body": [
         {
           "kind": "p",
@@ -2624,7 +3004,12 @@
       "id": "cp_elevator_position_indicator",
       "name": "Elevator Position Indicator",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3296,
+        "y": 0.5114,
+        "w": 0.0242,
+        "h": 0.1758
+      },
       "body": [
         {
           "kind": "p",
@@ -2639,7 +3024,12 @@
       "id": "cp_hydraulic_system_pressure_indication",
       "name": "Hydraulic System Pressure Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4777,
+        "y": 0.1295,
+        "w": 0.0574,
+        "h": 0.0404
+      },
       "body": [
         {
           "kind": "p",
@@ -2654,7 +3044,12 @@
       "id": "cp_yaw_control_indications",
       "name": "Yaw Control Indications",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.4142,
+        "y": 0.651,
+        "w": 0.1663,
+        "h": 0.1043
+      },
       "body": [
         {
           "kind": "p",

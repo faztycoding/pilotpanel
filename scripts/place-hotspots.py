@@ -65,6 +65,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("panel")
     ap.add_argument("--check", action="store_true", help="ไม่เขียนไฟล์ รายงานอย่างเดียว")
+    ap.add_argument(
+        "--reset",
+        action="store_true",
+        help="ล้าง hotspot ทั้งแผงก่อนวางใหม่ — ใช้เมื่อลบพิกัดออกจากไฟล์มือแล้วไม่อยากให้ค้าง",
+    )
     args = ap.parse_args()
 
     cand_path = CAND_DIR / f"{args.panel}-candidates.json"
@@ -79,6 +84,13 @@ def main() -> int:
     panel_path = PANEL_DIR / f"{args.panel}.json"
     panel = json.loads(panel_path.read_text("utf-8"))
     by_id = {c["id"]: c for c in panel["controls"]}
+    if args.reset:
+        # ทุกชั้นการวางเป็น deterministic จากไฟล์มือ + ผลตรวจจับ จึงสร้างใหม่จากศูนย์ได้
+        # จำเป็นเมื่อลบพิกัดออกจากไฟล์มือ (เช่นอ่านผิดสเกลแล้วต้องทิ้ง) ไม่งั้นค่าเก่าค้างในไฟล์
+        cleared = sum(1 for c in panel["controls"] if c.get("hotspot"))
+        for c in panel["controls"]:
+            c["hotspot"] = None
+        print(f"  --reset: ล้างพิกัดเดิม {cleared} จุด")
 
     # รวมคู่ที่จะใช้: manual ชนะการเดาอัตโนมัติเสมอ
     chosen: dict[str, dict] = {}

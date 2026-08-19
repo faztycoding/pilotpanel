@@ -579,6 +579,480 @@
       "y0": 913,
       "x1": 958,
       "y1": 962
+    },
+    "cp_apu_gen_line_contactor_indication": {
+      "x0": 386,
+      "y0": 178,
+      "x1": 430,
+      "y1": 242
+    },
+    "cp_apu_gen_parameters": {
+      "x0": 320,
+      "y0": 236,
+      "x1": 494,
+      "y1": 474
+    },
+    "cp_apu_n": {
+      "x0": 346,
+      "y0": 550,
+      "x1": 606,
+      "y1": 754
+    },
+    "cp_apu_egt": {
+      "x0": 346,
+      "y0": 816,
+      "x1": 646,
+      "y1": 1014
+    },
+    "cp_avail": {
+      "x0": 558,
+      "y0": 224,
+      "x1": 698,
+      "y1": 272
+    },
+    "cp_apu_bleed_air_valve_position": {
+      "x0": 834,
+      "y0": 244,
+      "x1": 896,
+      "y1": 320
+    },
+    "cp_apu_bleed_air_pressure": {
+      "x0": 790,
+      "y0": 354,
+      "x1": 956,
+      "y1": 470
+    },
+    "cp_fuel_lo_pr": {
+      "x0": 714,
+      "y0": 610,
+      "x1": 982,
+      "y1": 660
+    },
+    "cp_flap_open": {
+      "x0": 714,
+      "y0": 764,
+      "x1": 966,
+      "y1": 816
+    },
+    "cp_low_oil_level": {
+      "x0": 710,
+      "y0": 898,
+      "x1": 908,
+      "y1": 1006
+    },
+    "cp_cabin_fan_fault_indication": {
+      "x0": 384,
+      "y0": 214,
+      "x1": 472,
+      "y1": 260
+    },
+    "cp_zone_temperature": {
+      "x0": 366,
+      "y0": 334,
+      "x1": 426,
+      "y1": 398
+    },
+    "cp_zone_duct_temperature": {
+      "x0": 366,
+      "y0": 412,
+      "x1": 426,
+      "y1": 472
+    },
+    "cp_zone_trim_air_valve_position": {
+      "x0": 338,
+      "y0": 464,
+      "x1": 422,
+      "y1": 547
+    },
+    "cp_temp": {
+      "x0": 810,
+      "y0": 130,
+      "x1": 992,
+      "y1": 180
+    },
+    "cp_hot_air_pressure_regulating_valve": {
+      "x0": 862,
+      "y0": 574,
+      "x1": 932,
+      "y1": 646
+    },
+    "cp_n_w_steering_label": {
+      "x0": 506,
+      "y0": 334,
+      "x1": 818,
+      "y1": 386
+    },
+    "cp_n_w_steering_hydraulic_supply_indication": {
+      "x0": 460,
+      "y0": 334,
+      "x1": 506,
+      "y1": 386
+    },
+    "cp_anti_skid_indication": {
+      "x0": 508,
+      "y0": 634,
+      "x1": 726,
+      "y1": 686
+    },
+    "cp_brake_temperature": {
+      "x0": 284,
+      "y0": 718,
+      "x1": 476,
+      "y1": 776
+    },
+    "cp_wheel_number": {
+      "x0": 294,
+      "y0": 776,
+      "x1": 472,
+      "y1": 816
+    },
+    "cp_auto_brk": {
+      "x0": 608,
+      "y0": 938,
+      "x1": 708,
+      "y1": 992
+    },
+    "cp_norm_brk_indication": {
+      "x0": 514,
+      "y0": 698,
+      "x1": 797,
+      "y1": 754
+    },
+    "cp_altn_brk_label": {
+      "x0": 514,
+      "y0": 768,
+      "x1": 757,
+      "y1": 817
+    },
+    "cp_release_indicators": {
+      "x0": 814,
+      "y0": 774,
+      "x1": 1016,
+      "y1": 817
+    },
+    "cp_spoilers_speed_brakes_indication": {
+      "x0": 358,
+      "y0": 68,
+      "x1": 942,
+      "y1": 147
+    },
+    "cp_oxy_pressure_indication": {
+      "x0": 754,
+      "y0": 156,
+      "x1": 862,
+      "y1": 204
+    },
+    "cp_ckpt_oxy_indication": {
+      "x0": 732,
+      "y0": 104,
+      "x1": 922,
+      "y1": 154
+    },
+    "cp_regul_lo_pr_indication": {
+      "x0": 676,
+      "y0": 222,
+      "x1": 904,
+      "y1": 268
+    },
+    "cp_door_indication": {
+      "x0": 350,
+      "y0": 804,
+      "x1": 594,
+      "y1": 848
+    },
+    "cp_stair_symbol": {
+      "x0": 472,
+      "y0": 888,
+      "x1": 514,
+      "y1": 922
+    },
+    "cp_slide_indication": {
+      "x0": 408,
+      "y0": 1284,
+      "x1": 512,
+      "y1": 1326
+    },
+    "cp_door_symbol": {
+      "x0": 594,
+      "y0": 798,
+      "x1": 634,
+      "y1": 840
+    },
+    "cp_battery_indication": {
+      "x0": 424,
+      "y0": 158,
+      "x1": 542,
+      "y1": 292
+    },
+    "cp_bus_indication": {
+      "x0": 290,
+      "y0": 298,
+      "x1": 412,
+      "y1": 344
+    },
+    "cp_ess_tr_indication": {
+      "x0": 494,
+      "y0": 434,
+      "x1": 628,
+      "y1": 552
+    },
+    "cp_gen_1_2_indications": {
+      "x0": 294,
+      "y0": 688,
+      "x1": 412,
+      "y1": 842
+    },
+    "cp_rise_indication": {
+      "x0": 422,
+      "y0": 918,
+      "x1": 528,
+      "y1": 962
+    },
+    "cp_apu_gen_indication": {
+      "x0": 464,
+      "y0": 694,
+      "x1": 608,
+      "y1": 842
+    },
+    "cp_dc_bat_indication": {
+      "x0": 558,
+      "y0": 198,
+      "x1": 702,
+      "y1": 247
+    },
+    "cp_tr_1_2_indication": {
+      "x0": 844,
+      "y0": 388,
+      "x1": 958,
+      "y1": 517
+    },
+    "cp_emer_gen_indication": {
+      "x0": 654,
+      "y0": 434,
+      "x1": 808,
+      "y1": 552
+    },
+    "cp_idg_indications": {
+      "x0": 814,
+      "y0": 848,
+      "x1": 982,
+      "y1": 912
+    },
+    "cp_ext_pwr_indication": {
+      "x0": 654,
+      "y0": 694,
+      "x1": 788,
+      "y1": 842
+    },
+    "cp_galley_shed_indication": {
+      "x0": 574,
+      "y0": 888,
+      "x1": 688,
+      "y1": 957
+    },
+    "cp_fuel_used_indication": {
+      "x0": 568,
+      "y0": 170,
+      "x1": 728,
+      "y1": 352
+    },
+    "cp_apu_indications": {
+      "x0": 310,
+      "y0": 364,
+      "x1": 430,
+      "y1": 412
+    },
+    "cp_wing_pump_indications": {
+      "x0": 404,
+      "y0": 498,
+      "x1": 506,
+      "y1": 566
+    },
+    "cp_fuel_quantity_indication": {
+      "x0": 244,
+      "y0": 596,
+      "x1": 320,
+      "y1": 652
+    },
+    "cp_fuel_flow_indications": {
+      "x0": 230,
+      "y0": 824,
+      "x1": 558,
+      "y1": 906
+    },
+    "cp_fuel_on_board_indication_fob": {
+      "x0": 226,
+      "y0": 918,
+      "x1": 586,
+      "y1": 982
+    },
+    "cp_lp_valve_eng_indications": {
+      "x0": 798,
+      "y0": 286,
+      "x1": 862,
+      "y1": 346
+    },
+    "cp_x_feed_indications": {
+      "x0": 602,
+      "y0": 360,
+      "x1": 666,
+      "y1": 422
+    },
+    "cp_ctr_tank_pump_indications": {
+      "x0": 644,
+      "y0": 490,
+      "x1": 702,
+      "y1": 547
+    },
+    "cp_transfer_valve_indications": {
+      "x0": 916,
+      "y0": 650,
+      "x1": 964,
+      "y1": 694
+    },
+    "cp_fuel_temperature_indication": {
+      "x0": 788,
+      "y0": 702,
+      "x1": 1008,
+      "y1": 752
+    },
+    "cp_spoilers_speed_brakes_indication_2": {
+      "x0": 378,
+      "y0": 218,
+      "x1": 932,
+      "y1": 327
+    },
+    "cp_aileron_position_indication": {
+      "x0": 270,
+      "y0": 284,
+      "x1": 362,
+      "y1": 406
+    },
+    "cp_elac_sec_indication": {
+      "x0": 460,
+      "y0": 380,
+      "x1": 616,
+      "y1": 452
+    },
+    "cp_pitch_trim_position_indicator": {
+      "x0": 504,
+      "y0": 550,
+      "x1": 806,
+      "y1": 642
+    },
+    "cp_aileron_and_elevator_actuator_indications": {
+      "x0": 372,
+      "y0": 724,
+      "x1": 448,
+      "y1": 772
+    },
+    "cp_elevator_position_indicator": {
+      "x0": 436,
+      "y0": 608,
+      "x1": 468,
+      "y1": 817
+    },
+    "cp_hydraulic_system_pressure_indication": {
+      "x0": 632,
+      "y0": 154,
+      "x1": 708,
+      "y1": 202
+    },
+    "cp_yaw_control_indications": {
+      "x0": 548,
+      "y0": 774,
+      "x1": 768,
+      "y1": 898
+    },
+    "cp_ldg_elev_auto_man": {
+      "x0": 894,
+      "y0": 98,
+      "x1": 1007,
+      "y1": 157
+    },
+    "cp_p_psi_cabin_differential_pressure": {
+      "x0": 384,
+      "y0": 294,
+      "x1": 538,
+      "y1": 488
+    },
+    "cp_landing_elevation": {
+      "x0": 1024,
+      "y0": 98,
+      "x1": 1167,
+      "y1": 157
+    },
+    "cp_v_s_ft_min_cabin_vertical_speed": {
+      "x0": 644,
+      "y0": 294,
+      "x1": 848,
+      "y1": 498
+    },
+    "cp_cab_alt_ft_cabin_altitude": {
+      "x0": 924,
+      "y0": 294,
+      "x1": 1098,
+      "y1": 498
+    },
+    "cp_outflow_valve_position": {
+      "x0": 864,
+      "y0": 644,
+      "x1": 988,
+      "y1": 788
+    },
+    "cp_active_system_indication_sys_1_or_sys_2_or_m": {
+      "x0": 544,
+      "y0": 548,
+      "x1": 946,
+      "y1": 608
+    },
+    "cp_arrow": {
+      "x0": 458,
+      "y0": 460,
+      "x1": 500,
+      "y1": 507
+    },
+    "cp_anti_ice_indication": {
+      "x0": 374,
+      "y0": 454,
+      "x1": 458,
+      "y1": 536
+    },
+    "cp_engine_bleed_indication": {
+      "x0": 472,
+      "y0": 526,
+      "x1": 606,
+      "y1": 616
+    },
+    "cp_engine_identification_1_2": {
+      "x0": 430,
+      "y0": 653,
+      "x1": 474,
+      "y1": 702
+    },
+    "cp_engine_bleed_valves": {
+      "x0": 476,
+      "y0": 666,
+      "x1": 520,
+      "y1": 714
+    },
+    "cp_hp_valves": {
+      "x0": 530,
+      "y0": 800,
+      "x1": 580,
+      "y1": 850
+    },
+    "cp_apu_bleed_valve": {
+      "x0": 732,
+      "y0": 526,
+      "x1": 778,
+      "y1": 580
+    },
+    "cp_gnd_hp_ground_connection_indication": {
+      "x0": 629,
+      "y0": 498,
+      "x1": 716,
+      "y1": 566
     }
   }
 }

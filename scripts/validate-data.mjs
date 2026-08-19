@@ -152,12 +152,25 @@ function validatePanel(file) {
   }
 
   // --- overlap ---
-  const withHotspot = controls.filter((c) => c.hotspot && c.id);
-  for (let i = 0; i < withHotspot.length; i++) {
-    for (let j = i + 1; j < withHotspot.length; j++) {
-      const r = overlapRatio(withHotspot[i].hotspot, withHotspot[j].hotspot);
-      if (r > MAX_OVERLAP_RATIO) {
-        err(p, `${withHotspot[i].id} ทับ ${withHotspot[j].id} ${(r * 100).toFixed(0)}% — จะกดผิดตัว`);
+  // ต้องเทียบกันเฉพาะ control ที่อยู่ใน "ระบบพิกัดเดียวกัน" เท่านั้น
+  // control ที่มี sectionId ใช้ ratio เทียบกับ section.imageSize (รูปหน้า ECAM ของโซนนั้น)
+  // ส่วนที่ไม่มี sectionId เทียบกับ panel.imageSize — เอามาทับกันไม่ได้ คนละรูปคนละขนาด
+  // (ถ้าไม่แยก จะได้ error ปลอมเป็นร้อยรายการทันทีที่โซนเริ่มมี hotspot)
+  const bySpace = new Map();
+  for (const c of controls) {
+    if (!c.hotspot || !c.id) continue;
+    const key = c.sectionId ?? "__panel__";
+    if (!bySpace.has(key)) bySpace.set(key, []);
+    bySpace.get(key).push(c);
+  }
+  for (const [space, group] of bySpace) {
+    for (let i = 0; i < group.length; i++) {
+      for (let j = i + 1; j < group.length; j++) {
+        const r = overlapRatio(group[i].hotspot, group[j].hotspot);
+        if (r > MAX_OVERLAP_RATIO) {
+          const where = space === "__panel__" ? "" : ` (โซน ${space})`;
+          err(p, `${group[i].id} ทับ ${group[j].id} ${(r * 100).toFixed(0)}%${where} — จะกดผิดตัว`);
+        }
       }
     }
   }
