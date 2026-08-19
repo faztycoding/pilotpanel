@@ -925,12 +925,7 @@
       "id": "oh_rat_and_emer_gen_light",
       "name": "RAT AND EMER GEN light",
       "type": "light",
-      "hotspot": {
-        "x": 0.1728,
-        "y": 0.5519,
-        "w": 0.0355,
-        "h": 0.0352
-      },
+      "hotspot": null,
       "body": [],
       "sourceRef": "Overhead Panel (finish).docx#p227",
       "needsReview": true
@@ -939,7 +934,12 @@
       "id": "oh_fault_light_4",
       "name": "FAULT Light",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1731,
+        "y": 0.5499,
+        "w": 0.0364,
+        "h": 0.0365
+      },
       "body": [
         {
           "kind": "p",
@@ -2369,7 +2369,12 @@
       "id": "oh_bus_tie_push_button",
       "name": "BUS TIE push button",
       "type": "pushbutton",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.502,
+        "y": 0.5291,
+        "w": 0.0361,
+        "h": 0.0432
+      },
       "body": [
         {
           "kind": "p",

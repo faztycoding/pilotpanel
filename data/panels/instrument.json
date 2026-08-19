@@ -58,12 +58,7 @@
       "id": "ip_primary_flight_display",
       "name": "Primary Flight Display",
       "type": "light",
-      "hotspot": {
-        "x": 0.0,
-        "y": 0.0,
-        "w": 1.0,
-        "h": 1.0
-      },
+      "hotspot": null,
       "body": [],
       "sourceRef": "Instrument Panel.docx#p2",
       "needsReview": true,
@@ -1102,7 +1097,12 @@
       "id": "ip_idle_indication",
       "name": "IDLE Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3028,
+        "y": 0.11,
+        "w": 0.0652,
+        "h": 0.0733
+      },
       "body": [
         {
           "kind": "p",

@@ -47,7 +47,16 @@ export function ControlSheet({ control, onClose }: Props) {
             <ThemedText type="subtitle" style={styles.title}>
               {control.name}
             </ThemedText>
-            <BodyBlocks body={control.body} />
+            {control.body.length > 0 ? (
+              <BodyBlocks body={control.body} />
+            ) : (
+              // เอกสารลูกค้ามีบางรายการที่เป็นหัวข้อกลุ่ม หรืออธิบายด้วยรูปแทนข้อความ
+              // (เช่น "(10) YELLOW ELEC PUMP Control" ที่ในไฟล์ต้นฉบับมีแต่รูป)
+              // บอกตรง ๆ ดีกว่าเด้งกล่องเปล่าให้ผู้ใช้เดาว่าแอปพัง — และทำให้เห็นว่าต้องขออะไรเพิ่ม
+              <ThemedText style={{ color: theme.textSecondary }}>
+                เอกสารต้นฉบับไม่มีคำอธิบายข้อความสำหรับรายการนี้
+              </ThemedText>
+            )}
           </>
         ) : null}
       </BottomSheetScrollView>
