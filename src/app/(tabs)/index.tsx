@@ -47,7 +47,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.screen} edges={['left', 'right']}>
+    <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
       <CockpitBackdrop style={styles.screen}>
         <ZoomableImage
           source={image}

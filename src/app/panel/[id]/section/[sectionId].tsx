@@ -70,7 +70,7 @@ export default function SectionScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
+    <SafeAreaView style={styles.screen} edges={['top', 'left', 'right', 'bottom']}>
       <CockpitBackdrop style={styles.screen}>
         <Stack.Screen options={{ title: section.name }} />
 
