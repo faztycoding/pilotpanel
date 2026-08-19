@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { StyleSheet, View, type LayoutChangeEvent, type StyleProp, type ViewStyle } from 'react-native';
-import { Gesture, GestureDetector, type GestureType } from 'react-native-gesture-handler';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   runOnJS,
   useAnimatedReaction,
@@ -46,15 +46,8 @@ type Props = {
    * ใช้กับ glareshield ที่ปุ่มจริงกระจุกอยู่แค่ 31% ของรูป (ดู focusTranslate ใน lib/layout.ts)
    */
   initialFocus?: { x: number; y: number };
-  /**
-   * render ทับบนรูป ได้รับขนาดรูปจริงบนจอเพื่อคูณกับ ratio
-   *
-   * panGesture ส่งออกมาด้วยเพื่อให้ปุ่มที่วางทับ (HotspotLayer / SectionEntryLayer /
-   * PanelZoneLayer) ประกาศ requireExternalGestureToFail={panGesture} ได้ — ถ้าไม่ประกาศ
-   * นิ้วที่กำลังลากผ่านปุ่มจะโดน Pressable ของ react-native เองแย่ง responder ไปก่อน
-   * (คนละระบบกับ react-native-gesture-handler) ทำให้ลากค้างตรงปุ่มแทนที่จะไหลต่อ
-   */
-  renderOverlay?: (display: Size, panGesture: GestureType) => ReactNode;
+  /** render ทับบนรูป ได้รับขนาดรูปจริงบนจอเพื่อคูณกับ ratio */
+  renderOverlay?: (display: Size) => ReactNode;
   /** แจ้งขนาดรูปบนจอหลัง layout ให้หน้าจอด้านนอกใช้ตัดสินใจเรื่อง UI ได้ */
   onDisplayChange?: (display: Size) => void;
   /**
@@ -95,10 +88,7 @@ export function ZoomableImage({
     if (ready) onDisplayChange?.(display);
   }, [display, onDisplayChange, ready]);
 
-  // pan แยกออกมาจาก gesture ที่ประกอบแล้ว เพราะ Pressable ที่วางทับ (ดู HotspotLayer)
-  // ต้องอ้าง requireExternalGestureToFail กับ "ตัว Pan เดี่ยว ๆ" เท่านั้น — Simultaneous(pinch, pan)
-  // เป็นชนิด ComposedGesture ซึ่งไม่อยู่ใน union ของ GestureType จึงส่งเข้า relation prop ไม่ได้
-  const { gesture, pan } = useMemo(() => {
+  const gesture = useMemo(() => {
     // ห้ามสร้าง closure ธรรมดามาเรียกใน worklet — เรียก maxTranslate ตรง ๆ เท่านั้น
     // (ตัวมันมี 'worklet' แล้ว) ไม่งั้น crash ระดับ native ตอนแตะครั้งแรก
     const pinch = Gesture.Pinch()
@@ -138,7 +128,7 @@ export function ZoomableImage({
         savedTranslateY.value = translateY.value;
       });
 
-    return { gesture: Gesture.Simultaneous(pinch, pan), pan };
+    return Gesture.Simultaneous(pinch, pan);
   }, [
     container,
     display,
@@ -208,7 +198,7 @@ export function ZoomableImage({
               // (ทดสอบแล้ว: ปิดเฉพาะจุดนี้พอ ไม่กระทบ native ที่ไม่มีพฤติกรรมนี้อยู่แล้ว)
               draggable={false}
             />
-            {renderOverlay?.(display, pan)}
+            {renderOverlay?.(display)}
           </Animated.View>
         </GestureDetector>
       ) : null}

@@ -1,6 +1,5 @@
 import { Image } from 'expo-image';
-import { StyleSheet } from 'react-native';
-import { Pressable, type GestureType } from 'react-native-gesture-handler';
+import { Pressable, StyleSheet } from 'react-native';
 
 import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
@@ -14,14 +13,14 @@ import type { Control, Hotspot } from '@/lib/types';
  * RN จะใส่ transform เดียวกันให้ทั้ง hit area ด้วย ปุ่มจึงขยับ/ขยายตามรูปเอง
  * ไม่ต้องคำนวณ inverse transform ตอนแตะ = ไม่มีทางที่พิกัดกดจะเพี้ยนจากพิกัดที่เห็น
  *
- * ใช้ Pressable จาก react-native-gesture-handler (ไม่ใช่ของ react-native) เพราะอยู่ในระบบ
- * arbitration เดียวกับ Gesture.Pan() ของ ZoomableImage แล้วประกาศความสัมพันธ์เป็น
- * simultaneousWithExternalGesture={panGesture} = ปุ่มกับการเลื่อนรูปทำงานพร้อมกันได้
- *   แตะนิ่ง ๆ   -> Pressable ยิง onPress ปกติ
- *   ลากผ่านปุ่ม -> Pressable ยกเลิก press เองเมื่อนิ้วขยับเกิน threshold ส่วน pan เลื่อนต่อลื่น ๆ
- *
- * ห้ามใช้ requireExternalGestureToFail กับ pan ตรงนี้ (ลองแล้วพังทั้งแผง): pan เป็น gesture
- * ต่อเนื่องที่แทบไม่เคย "แพ้" บนเว็บ ปุ่มจึงรอตลอดกาล = กดไม่ติดและเลื่อนไม่ได้
+ * ใช้ Pressable ของ react-native (ไม่ใช่ react-native-gesture-handler)
+ * เคยลองสลับไปใช้ Pressable ของ react-native-gesture-handler + simultaneousWithExternalGesture
+ * เพื่อแก้ปัญหาลากผ่านปุ่มแล้วเลื่อนสะดุด (ดู commit b5dc5eb) แต่ผลจริงคือกดปุ่มไม่ติดเลย
+ * ทั้งแผง — Pressable ตัวนั้นห่อด้วย Gesture.Native()/LongPress()/Hover() ของตัวเองอีกชั้น
+ * แล้วผูก relation กับ panGesture ที่ recreate ใหม่ทุกครั้งที่ container/display เปลี่ยน
+ * (useMemo ใน ZoomableImage) ทำให้ relation อ้างอิง gesture คนละตัวกับที่ GestureDetector
+ * ใช้จริง ปุ่มจึงรอ relation ที่ไม่มีวันสำเร็จ กดไม่ติดถาวร — ย้อนกลับมาใช้ Pressable เดิม
+ * ที่พิสูจน์แล้วว่ากดติดแน่นอน ยอมรับข้อเสียเดิม (ลากผ่านปุ่มอาจสะดุดเล็กน้อย) ไว้ก่อน
  *
  * ถ้า control มี detailImage จะวาดรูปโคลสอัพจริง (จาก docx) ทับพื้นที่ hotspot ก่อน
  * เพราะรูปแผงเต็มความละเอียดต่ำเกินกว่าจะอ่านรายละเอียดปุ่มออกตอนซูม — คนละที่กับรูปใน
@@ -36,22 +35,12 @@ type Props = {
   display: Size;
   /** scale ปัจจุบัน ใช้ขยาย hitSlop ตอนกล่องเล็กกว่านิ้ว */
   scale: number;
-  /** gesture การเลื่อน/ซูมของรูปแม่ — ให้ปุ่มยอมแพ้ก่อนถ้านิ้วกำลังลากอยู่จริง */
-  panGesture: GestureType;
   onPress: (control: PlacedControl) => void;
   /** แสดงกรอบให้เห็นตอนพัฒนา */
   debug?: boolean;
 };
 
-export function HotspotLayer({
-  panelId,
-  controls,
-  display,
-  scale,
-  panGesture,
-  onPress,
-  debug = false,
-}: Props) {
+export function HotspotLayer({ panelId, controls, display, scale, onPress, debug = false }: Props) {
   return (
     <>
       {controls.map((control) => {
@@ -62,7 +51,6 @@ export function HotspotLayer({
           <Pressable
             key={control.id}
             onPress={() => onPress(control)}
-            simultaneousWithExternalGesture={panGesture}
             // hitSlop หน่วย dp เป็นค่าของนิ้วมนุษย์ ไม่ใช่ค่าของรูป จึงไม่ขัดกฎห้าม px ในการคำนวณพิกัด
             // หารด้วย scale เพราะ hitSlop ถูกขยายด้วย transform ของ parent ไปแล้ว
             hitSlop={{

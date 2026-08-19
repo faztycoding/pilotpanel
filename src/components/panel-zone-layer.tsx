@@ -1,5 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { Pressable, type GestureType } from 'react-native-gesture-handler';
+import { Pressable, StyleSheet } from 'react-native';
 
 import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
@@ -12,8 +11,9 @@ import type { Control, Hotspot } from '@/lib/types';
  * และคนละชั้นกับ SectionEntryLayer เพราะต้นทางเป็น Control (มี target) ไม่ใช่ Section
  *
  * พิกัด/hitSlop คำนวณด้วยฟังก์ชันชุดเดียวกับสองชั้นนั้น เพื่อให้พฤติกรรมการกดเหมือนกันหมด
- * ใช้ Pressable จาก react-native-gesture-handler + requireExternalGestureToFail
- * ด้วยเหตุผลเดียวกัน: กันปุ่มแย่ง responder ตอนนิ้วกำลังลากผ่าน (ดู comment ใน hotspot-layer.tsx)
+ * ใช้ Pressable ของ react-native ตามเหตุผลเดียวกับ HotspotLayer (ดู comment ที่นั่น):
+ * เคยลองสลับไปใช้ Pressable ของ react-native-gesture-handler เพื่อกันปุ่มแย่งตอนลากผ่าน
+ * แต่ทำให้กดปุ่มไม่ติดเลยทั้งแผง
  */
 
 /** โซนต้องมีทั้งพิกัดและปลายทาง — homeZones() ใน lib/panels.ts การันตีให้แล้ว */
@@ -23,21 +23,12 @@ type Props = {
   zones: ZoneControl[];
   display: Size;
   scale: number;
-  /** gesture การเลื่อน/ซูมของรูปแม่ — ให้ปุ่มยอมแพ้ก่อนถ้านิ้วกำลังลากอยู่จริง */
-  panGesture: GestureType;
   onPress: (zone: ZoneControl) => void;
   /** วาดกรอบให้เห็นตอนพัฒนา */
   debug?: boolean;
 };
 
-export function PanelZoneLayer({
-  zones,
-  display,
-  scale,
-  panGesture,
-  onPress,
-  debug = false,
-}: Props) {
+export function PanelZoneLayer({ zones, display, scale, onPress, debug = false }: Props) {
   return (
     <>
       {zones.map((zone) => {
@@ -49,7 +40,6 @@ export function PanelZoneLayer({
             accessibilityRole="button"
             accessibilityLabel={zone.name}
             onPress={() => onPress(zone)}
-            simultaneousWithExternalGesture={panGesture}
             hitSlop={{
               left: slop.horizontal / scale,
               right: slop.horizontal / scale,

@@ -76,13 +76,12 @@ export default function SectionScreen() {
           imageSize={section.imageSize}
           onScaleSettled={handleScaleSettled}
           onDisplayChange={handleDisplayChange}
-          renderOverlay={(size, panGesture) => (
+          renderOverlay={(size) => (
             <HotspotLayer
               panelId={panel.panelId}
               controls={controls}
               display={size}
               scale={scale}
-              panGesture={panGesture}
               onPress={handlePress}
             />
           )}

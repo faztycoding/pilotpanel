@@ -1,5 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { Pressable, type GestureType } from 'react-native-gesture-handler';
+import { Pressable, StyleSheet } from 'react-native';
 
 import { NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
@@ -10,9 +9,9 @@ import type { Section } from '@/lib/types';
  * คนละชั้นกับ HotspotLayer เพราะ target คือ Section ไม่ใช่ Control — กด onPress navigate
  * ไปหน้า section แทนการเปิด bottom sheet คำอธิบาย
  *
- * พิกัด/hitSlop คำนวณแบบเดียวกับ HotspotLayer เป๊ะ (ดู comment ที่นั่น)
- * ใช้ Pressable จาก react-native-gesture-handler + requireExternalGestureToFail
- * ด้วยเหตุผลเดียวกัน: กันปุ่มแย่ง responder ตอนนิ้วกำลังลากผ่าน (ดู comment ใน hotspot-layer.tsx)
+ * พิกัด/hitSlop คำนวณแบบเดียวกับ HotspotLayer เป๊ะ ใช้ Pressable ของ react-native ตามเหตุผล
+ * เดียวกัน (ดู comment ยาวใน hotspot-layer.tsx): เคยลองสลับไปใช้ Pressable ของ
+ * react-native-gesture-handler เพื่อกันปุ่มแย่งตอนลากผ่าน แต่ทำให้กดปุ่มไม่ติดเลยทั้งแผง
  */
 
 type SectionWithEntry = Section & { entry: NonNullable<Section['entry']> };
@@ -21,21 +20,12 @@ type Props = {
   sections: SectionWithEntry[];
   display: Size;
   scale: number;
-  /** gesture การเลื่อน/ซูมของรูปแม่ — ให้ปุ่มยอมแพ้ก่อนถ้านิ้วกำลังลากอยู่จริง */
-  panGesture: GestureType;
   onPress: (section: SectionWithEntry) => void;
   /** แสดงกรอบให้เห็นตอนพัฒนา */
   debug?: boolean;
 };
 
-export function SectionEntryLayer({
-  sections,
-  display,
-  scale,
-  panGesture,
-  onPress,
-  debug = false,
-}: Props) {
+export function SectionEntryLayer({ sections, display, scale, onPress, debug = false }: Props) {
   return (
     <>
       {sections.map((section) => {
@@ -45,7 +35,6 @@ export function SectionEntryLayer({
           <Pressable
             key={section.id}
             onPress={() => onPress(section)}
-            simultaneousWithExternalGesture={panGesture}
             hitSlop={{
               left: slop.horizontal / scale,
               right: slop.horizontal / scale,

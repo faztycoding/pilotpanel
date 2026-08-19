@@ -74,21 +74,19 @@ export default function PanelScreen() {
         initialFocus={focus}
         onScaleSettled={handleScaleSettled}
         onDisplayChange={handleDisplayChange}
-        renderOverlay={(size, panGesture) => (
+        renderOverlay={(size) => (
           <>
             <HotspotLayer
               panelId={panel.panelId}
               controls={controls}
               display={size}
               scale={scale}
-              panGesture={panGesture}
               onPress={handlePress}
             />
             <SectionEntryLayer
               sections={sectionEntries}
               display={size}
               scale={scale}
-              panGesture={panGesture}
               onPress={handleSectionPress}
             />
           </>
