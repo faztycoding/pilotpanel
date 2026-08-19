@@ -179,7 +179,15 @@ export function ZoomableImage({
         <GestureDetector gesture={gesture}>
           <Animated.View
             style={[{ width: display.width, height: display.height }, animatedStyle]}>
-            <Image source={source} style={StyleSheet.absoluteFill} contentFit="fill" />
+            <Image
+              source={source}
+              style={StyleSheet.absoluteFill}
+              contentFit="fill"
+              // เว็บ: <img> มี native drag-to-select เปิดโดย default ถ้าไม่ปิดไว้
+              // มันจะแย่ง pointer capture จาก Pan gesture ทำให้เลื่อนซ้ายขวาไม่ได้เลย
+              // (ทดสอบแล้ว: ปิดเฉพาะจุดนี้พอ ไม่กระทบ native ที่ไม่มีพฤติกรรมนี้อยู่แล้ว)
+              draggable={false}
+            />
             {renderOverlay?.(display)}
           </Animated.View>
         </GestureDetector>
