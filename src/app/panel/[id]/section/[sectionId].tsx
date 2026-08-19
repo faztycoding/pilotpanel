@@ -113,14 +113,18 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  /** ขอบจอ DU — สีเข้มคงที่ทั้งสองธีม เพราะจอ ECAM จริงมีขอบดำเสมอ ไม่ตามธีมของแอป */
+  /** ขอบจอ DU — สีเข้มคงที่ทั้งสองธีม เพราะจอ ECAM จริงมีขอบดำเสมอ ไม่ตามธีมของแอป
+   *
+   * margin ใช้ Spacing.one (4dp) แทน two (8dp) เพื่อใช้พื้นที่จอให้คุ้ม
+   * สำคัญบน Poco X7 (จอสูง 444dp) ที่ 8dp×2 + border 2px = 18dp เปลืองไป 4% ของจอ
+   * บน Tab S9 FE+ (จอสูง 1067dp) ผลกระทบน้อย แต่ลดได้ก็ดี */
   bezel: {
     flex: 1,
     backgroundColor: '#0B0D12',
     borderWidth: 2,
     borderColor: '#2A2F3A',
-    borderRadius: Spacing.two,
-    margin: Spacing.two,
+    borderRadius: Spacing.one,
+    margin: Spacing.one,
     overflow: 'hidden',
   },
   centered: {
