@@ -1053,6 +1053,66 @@
       "y0": 498,
       "x1": 716,
       "y1": 566
+    },
+    "cp_ram_air_inlet": {
+      "x0": 709,
+      "y0": 1345,
+      "x1": 832,
+      "y1": 1542
+    },
+    "cp_pack_outlet_temperature": {
+      "x0": 423,
+      "y0": 1350,
+      "x1": 551,
+      "y1": 1418
+    },
+    "cp_pack_bypass_valve_position": {
+      "x0": 423,
+      "y0": 1418,
+      "x1": 546,
+      "y1": 1486
+    },
+    "cp_c_cold_valve_closed": {
+      "x0": 382,
+      "y0": 1429,
+      "x1": 423,
+      "y1": 1484
+    },
+    "cp_h_hot_valve_open": {
+      "x0": 546,
+      "y0": 1429,
+      "x1": 591,
+      "y1": 1484
+    },
+    "cp_pack_flow": {
+      "x0": 382,
+      "y0": 1527,
+      "x1": 600,
+      "y1": 1572
+    },
+    "cp_pack_flow_control_valve": {
+      "x0": 459,
+      "y0": 1576,
+      "x1": 523,
+      "y1": 1629
+    },
+    "cp_user_indication": {
+      "x0": 894,
+      "y0": 1249,
+      "x1": 950,
+      "y1": 1305
+    },
+    "cp_wx_turb_weather_turbulence_modes": {
+      "x0": 470,
+      "y0": 1824,
+      "x1": 546,
+      "y1": 1910
+    },
+    "cp_map_map_mode": {
+      "x0": 284,
+      "y0": 1872,
+      "x1": 340,
+      "y1": 1906
     }
   },
   "instrument": {
