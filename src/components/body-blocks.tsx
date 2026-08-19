@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
-import { getBodyImage } from '@/lib/panels';
+import { getBodyImage, getBodyImageAspect } from '@/lib/panels';
 import type { BodyBlock } from '@/lib/types';
 
 /**
@@ -34,11 +34,15 @@ export function BodyBlocks({ body, panelId, controlId }: Props) {
         if (block.kind === 'image') {
           const source = getBodyImage(panelId, controlId);
           if (source === undefined) return null;
+          // ใช้ aspectRatio ของรูปจริง (จาก BODY_IMAGE_ASPECTS) แทนความสูงตายตัว
+          // ทำให้รูปบนจอใหญ่ (Tab S9 FE+) ขยายตามความกว้าง ไม่ติดที่ 200dp
+          // และบนจอเล็ก (Poco X7) ไม่ท่วม ControlSheet เพราะ maxHeight ใน container
+          const aspect = getBodyImageAspect(panelId, controlId);
           return (
             <View key={key} style={styles.imageContainer}>
               <Image
                 source={source}
-                style={styles.image}
+                style={[styles.image, aspect ? { aspectRatio: aspect, height: undefined } : null]}
                 contentFit="contain"
                 allowDownscaling={false}
                 accessibilityLabel={block.text || undefined}
@@ -111,9 +115,15 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     gap: Spacing.one,
+    // จำกัดความสูงเผื่อรูปที่สูงมาก ไม่ให้ท่วม ControlSheet
+    // ใช้ maxHeight เป็น % ของ sheet เพื่อ responsive ทุกจอ (Poco X7 จอเล็ก / Tab S9 FE+ จอใหญ่)
+    // รูปใช้ aspectRatio ของตัวมันเอง (ส่งผ่าน style จาก block) จึงไม่ตายตัวตามความสูง
+    maxHeight: '70%',
   },
   image: {
     width: '100%',
+    // ความสูงคำนวณจาก aspectRatio ที่ส่งเข้ามา (ดู block ด้านบน) ไม่ใช่ตายตัว
+    // ถ้าไม่มี aspectRatio ตกไปใช้ค่า default 200dp เพื่อกันรูปยุบ
     height: 200,
     borderRadius: Spacing.one,
   },

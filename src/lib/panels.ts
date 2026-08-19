@@ -78,6 +78,9 @@ export function getSectionImage(panelId: string, sectionId: string): PanelImage 
  * รูปประกอบในกล่องคำอธิบาย (body kind: 'image') — key = "<panelId>:<controlId>"
  * เอกสารลูกค้าบาง control อธิบายด้วยรูปแทนข้อความ (เช่น "See image below" ใน ECAM HYD/FUEL/F-CTL)
  * ดึงจาก .docx ด้วย scripts/extract-body-images.py แล้วเก็บใน assets/body-images/<panelId>/
+ *
+ * BODY_IMAGE_ASPECTS เก็บ aspect ratio (w/h) ของรูปจริง เพื่อให้ BodyBlocks ใช้กับ
+ * style.aspectRatio แทนความสูงตายตัว — รูปขยายตามความกว้างของกล่องทุกขนาดจอ
  */
 const BODY_IMAGES: Record<string, PanelImage> = {
   'pedestal:cp_rat': require('@/assets/body-images/pedestal/cp_rat.webp'),
@@ -85,8 +88,18 @@ const BODY_IMAGES: Record<string, PanelImage> = {
   'pedestal:cp_spoilers_speed_brakes_indication_2': require('@/assets/body-images/pedestal/cp_spoilers_speed_brakes_indication_2.webp'),
 };
 
+const BODY_IMAGE_ASPECTS: Record<string, number> = {
+  'pedestal:cp_rat': 673 / 396,
+  'pedestal:cp_apu_indications': 879 / 549,
+  'pedestal:cp_spoilers_speed_brakes_indication_2': 819 / 530,
+};
+
 export function getBodyImage(panelId: string, controlId: string): PanelImage | undefined {
   return BODY_IMAGES[`${panelId}:${controlId}`];
+}
+
+export function getBodyImageAspect(panelId: string, controlId: string): number | undefined {
+  return BODY_IMAGE_ASPECTS[`${panelId}:${controlId}`];
 }
 
 const cache = new Map<string, Panel>();
