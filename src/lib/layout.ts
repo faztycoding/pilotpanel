@@ -116,6 +116,22 @@ export function hitSlopFor(box: Box, scale: number): { horizontal: number; verti
 }
 
 /**
+ * เกินระดับนี้ถือว่าผู้ใช้ซูมเองแล้ว ไม่ต้องเตือนอีก
+ * ต่ำกว่านี้แม้ hitSlop จะดันกล่องให้ถึง 44dp ได้ แต่พื้นที่กดของปุ่มที่อยู่ชิดกันจะทับกัน
+ * (วัดแล้ว: overhead 34 คู่ / pedestal 16 คู่ ตอนเปิดหน้ามา) ซึ่งทำให้กดโดนตัวข้าง ๆ
+ */
+export const ZOOM_HINT_MAX_SCALE = 2;
+
+/**
+ * ควรขึ้นคำเตือนให้ซูมไหม — รวมเงื่อนไขทั้งหมดไว้ที่เดียวเพื่อให้หน้า panel กับหน้าโซน
+ * ตัดสินเหมือนกันเป๊ะ (ก่อนหน้านี้หน้าโซนไม่เตือนเลย ทั้งที่ pfd/bleed/hyd/f_ctl ก็มีจุดชิดกัน)
+ */
+export function needsZoomHint(hotspots: Hotspot[], display: Size, scale: number): boolean {
+  if (scale >= ZOOM_HINT_MAX_SCALE || display.height <= 0) return false;
+  return shouldHintZoom(hotspots, display, scale);
+}
+
+/**
  * ควรบอกผู้ใช้ให้ซูมก่อนไหม — จริงเมื่อเกินครึ่งของ hotspot เล็กกว่านิ้ว
  * ใช้ตัดสินใจแสดง hint ไม่ได้ใช้คำนวณพิกัด
  */

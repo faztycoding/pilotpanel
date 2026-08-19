@@ -7,13 +7,12 @@ import { HotspotLayer } from '@/components/hotspot-layer';
 import { SectionEntryLayer } from '@/components/section-entry-layer';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
+import { ZoomHint } from '@/components/zoom-hint';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
-import { shouldHintZoom, type Size } from '@/lib/layout';
+import { needsZoomHint, type Size } from '@/lib/layout';
 import { getPanel, getPanelImage, placedControls } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
-
-const ZOOM_HINT_THRESHOLD = 2;
 
 export default function PanelScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -53,10 +52,7 @@ export default function PanelScreen() {
   );
 
   // เตือนให้ซูมเมื่อยังซูมไม่พอ และ hotspot ส่วนใหญ่เล็กกว่านิ้ว (เคส glareshield 7.6:1)
-  const showHint =
-    scale < ZOOM_HINT_THRESHOLD &&
-    display.height > 0 &&
-    shouldHintZoom(hotspots, display, scale);
+  const showHint = needsZoomHint(hotspots, display, scale);
 
   if (!panel || image === undefined) {
     return (
@@ -96,11 +92,7 @@ export default function PanelScreen() {
         )}
       />
 
-      {showHint ? (
-        <View style={[styles.hint, { backgroundColor: theme.backgroundElement }]}>
-          <ThemedText type="small">บีบนิ้วเพื่อซูมดูปุ่ม</ThemedText>
-        </View>
-      ) : null}
+      <ZoomHint visible={showHint} />
 
       <ControlSheet control={selected} onClose={handleClose} />
     </View>
@@ -115,14 +107,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  hint: {
-    position: 'absolute',
-    pointerEvents: 'none',
-    alignSelf: 'center',
-    bottom: Spacing.five,
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.two,
-    borderRadius: Spacing.four,
   },
 });

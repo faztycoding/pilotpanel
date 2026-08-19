@@ -7,8 +7,10 @@ import { EcamPageStrip } from '@/components/ecam-page-strip';
 import { HotspotLayer } from '@/components/hotspot-layer';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
+import { ZoomHint } from '@/components/zoom-hint';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
+import { needsZoomHint, type Size } from '@/lib/layout';
 import { getPanel, getSectionImage, sectionControls, selectableSections } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
 
@@ -32,6 +34,7 @@ export default function SectionScreen() {
   const image = panel && section ? getSectionImage(panel.panelId, section.id) : undefined;
 
   const [scale, setScale] = useState(1);
+  const [display, setDisplay] = useState<Size>({ width: 0, height: 0 });
   const [selected, setSelected] = useState<Control | null>(null);
 
   const controls = useMemo(
@@ -41,6 +44,7 @@ export default function SectionScreen() {
   const pages = useMemo(() => (panel ? selectableSections(panel) : []), [panel]);
 
   const handleScaleSettled = useCallback((next: number) => setScale(next), []);
+  const handleDisplayChange = useCallback((next: Size) => setDisplay(next), []);
   const handlePress = useCallback((control: Control & { hotspot: Hotspot }) => {
     setSelected(control);
   }, []);
@@ -72,6 +76,7 @@ export default function SectionScreen() {
           source={image}
           imageSize={section.imageSize}
           onScaleSettled={handleScaleSettled}
+          onDisplayChange={handleDisplayChange}
           renderOverlay={(size) => (
             <HotspotLayer
               panelId={panel.panelId}
@@ -80,6 +85,13 @@ export default function SectionScreen() {
               scale={scale}
               onPress={handlePress}
             />
+          )}
+        />
+        <ZoomHint
+          visible={needsZoomHint(
+            controls.map((control) => control.hotspot),
+            display,
+            scale
           )}
         />
       </View>
