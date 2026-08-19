@@ -123,6 +123,20 @@ export function getPanelImage(panelId: string): PanelImage | undefined {
 }
 
 /**
+ * DEMO BUILD — จำกัดให้เข้าได้แค่แผงใน allowlist อย่างเดียว
+ * ใช้ทั้งในหน้าแรก (กรองโซนกด) และหน้า panel (กัน deeplink เข้าตรง)
+ * ปิด demo ให้เปลี่ยนเป็น undefined — คืนพฤติกรรมปกติทุกแผง
+ */
+export const DEMO_ALLOWED_PANEL: string | undefined = 'glareshield';
+
+/** true ถ้า demo เปิดและแผงนี้ไม่อยู่ใน allowlist — ใช้ guard ในหน้า panel */
+export function isPanelBlockedByDemo(panelId: string | undefined): boolean {
+  if (DEMO_ALLOWED_PANEL === undefined) return false;
+  if (!panelId) return false;
+  return panelId !== DEMO_ALLOWED_PANEL;
+}
+
+/**
  * จุดกลางของกลุ่ม hotspot ที่วางแล้วบนรูปแผง (ratio 0..1) — ใช้เป็นจุดเปิดหน้า
  *
  * ทำเป็น data-driven ไม่ใช่ hardcode ต่อแผง เพราะรูปแผงของลูกค้าเปลี่ยนได้ตลอด

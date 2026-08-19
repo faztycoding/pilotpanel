@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -12,7 +12,7 @@ import { ZoomHint } from '@/components/zoom-hint';
 import { ZoomableImage } from '@/components/zoomable-image';
 import { Spacing } from '@/constants/theme';
 import { needsZoomHint, type Size } from '@/lib/layout';
-import { getPanel, getSectionImage, sectionControls, selectableSections } from '@/lib/panels';
+import { getPanel, getSectionImage, isPanelBlockedByDemo, sectionControls, selectableSections } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
 
 /**
@@ -32,6 +32,13 @@ export default function SectionScreen() {
   const panel = getPanel(id);
   const section = panel?.sections.find((s) => s.id === sectionId);
   const image = panel && section ? getSectionImage(panel.panelId, section.id) : undefined;
+
+  // DEMO BUILD — กัน deeplink เข้า section ของแผงที่ไม่อยู่ใน allowlist ตรงๆ
+  useEffect(() => {
+    if (panel && isPanelBlockedByDemo(panel.panelId)) {
+      router.replace('/');
+    }
+  }, [panel, router]);
 
   const [scale, setScale] = useState(1);
   const [display, setDisplay] = useState<Size>({ width: 0, height: 0 });

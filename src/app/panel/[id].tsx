@@ -1,5 +1,5 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -11,7 +11,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ZoomHint } from '@/components/zoom-hint';
 import { ZoomableImage } from '@/components/zoomable-image';
 import { needsZoomHint, type Size } from '@/lib/layout';
-import { getPanel, getPanelImage, hotspotFocus, placedControls } from '@/lib/panels';
+import { getPanel, getPanelImage, hotspotFocus, isPanelBlockedByDemo, placedControls } from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
 
 export default function PanelScreen() {
@@ -19,6 +19,14 @@ export default function PanelScreen() {
   const router = useRouter();
   const panel = getPanel(id);
   const image = panel ? getPanelImage(panel.panelId) : undefined;
+
+  // DEMO BUILD — กัน deeplink เข้าแผงที่ไม่อยู่ใน allowlist ตรงๆ โดยข้ามหน้าแรก
+  // เจอแผงจริงแต่โดน block ให้กลับหน้าแรก (ไม่โชว์ข้อความ "ไม่พบ" เพราะข้อมูลมีจริง)
+  useEffect(() => {
+    if (panel && isPanelBlockedByDemo(panel.panelId)) {
+      router.replace('/');
+    }
+  }, [panel, router]);
 
   const [scale, setScale] = useState(1);
   const [display, setDisplay] = useState<Size>({ width: 0, height: 0 });
