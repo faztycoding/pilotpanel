@@ -1,6 +1,7 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { ControlSheet } from '@/components/control-sheet';
@@ -59,16 +60,19 @@ export default function SectionScreen() {
 
   if (!panel || !section || !section.imageSize || image === undefined) {
     return (
-      <CockpitBackdrop style={styles.centered}>
-        <Stack.Screen options={{ title: 'ไม่พบโซน' }} />
-        <ThemedText>ยังไม่มีรูปสำหรับโซน &quot;{sectionId}&quot;</ThemedText>
-      </CockpitBackdrop>
+      <SafeAreaView style={styles.screen}>
+        <CockpitBackdrop style={styles.centered}>
+          <Stack.Screen options={{ title: 'ไม่พบโซน' }} />
+          <ThemedText>ยังไม่มีรูปสำหรับโซน &quot;{sectionId}&quot;</ThemedText>
+        </CockpitBackdrop>
+      </SafeAreaView>
     );
   }
 
   return (
-    <CockpitBackdrop style={styles.screen}>
-      <Stack.Screen options={{ title: section.name }} />
+    <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
+      <CockpitBackdrop style={styles.screen}>
+        <Stack.Screen options={{ title: section.name }} />
 
       <View style={styles.bezel}>
         <ZoomableImage
@@ -100,7 +104,8 @@ export default function SectionScreen() {
       ) : null}
 
       <ControlSheet control={selected} panelId={panel.panelId} onClose={handleClose} />
-    </CockpitBackdrop>
+      </CockpitBackdrop>
+    </SafeAreaView>
   );
 }
 

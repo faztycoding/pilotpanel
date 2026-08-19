@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { PanelZoneLayer } from '@/components/panel-zone-layer';
@@ -37,24 +38,28 @@ export default function HomeScreen() {
 
   if (!panel || image === undefined) {
     return (
-      <CockpitBackdrop style={styles.centered}>
-        <ThemedText>ยังไม่มีภาพห้องนักบินสำหรับหน้าแรก</ThemedText>
-      </CockpitBackdrop>
+      <SafeAreaView style={styles.screen}>
+        <CockpitBackdrop style={styles.centered}>
+          <ThemedText>ยังไม่มีภาพห้องนักบินสำหรับหน้าแรก</ThemedText>
+        </CockpitBackdrop>
+      </SafeAreaView>
     );
   }
 
   return (
-    <CockpitBackdrop style={styles.screen}>
-      <ZoomableImage
-        source={image}
-        imageSize={panel.imageSize}
-        initialZoom="contain"
-        onScaleSettled={handleScaleSettled}
-        renderOverlay={(size) => (
-          <PanelZoneLayer zones={zones} display={size} scale={scale} onPress={handlePress} />
-        )}
-      />
-    </CockpitBackdrop>
+    <SafeAreaView style={styles.screen} edges={['left', 'right']}>
+      <CockpitBackdrop style={styles.screen}>
+        <ZoomableImage
+          source={image}
+          imageSize={panel.imageSize}
+          initialZoom="contain"
+          onScaleSettled={handleScaleSettled}
+          renderOverlay={(size) => (
+            <PanelZoneLayer zones={zones} display={size} scale={scale} onPress={handlePress} />
+          )}
+        />
+      </CockpitBackdrop>
+    </SafeAreaView>
   );
 }
 

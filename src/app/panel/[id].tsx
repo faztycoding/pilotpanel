@@ -1,6 +1,7 @@
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { ControlSheet } from '@/components/control-sheet';
@@ -56,16 +57,19 @@ export default function PanelScreen() {
 
   if (!panel || image === undefined) {
     return (
-      <CockpitBackdrop style={styles.centered}>
-        <Stack.Screen options={{ title: 'ไม่พบแผง' }} />
-        <ThemedText>ไม่พบข้อมูลแผง &quot;{id}&quot;</ThemedText>
-      </CockpitBackdrop>
+      <SafeAreaView style={styles.screen}>
+        <CockpitBackdrop style={styles.centered}>
+          <Stack.Screen options={{ title: 'ไม่พบแผง' }} />
+          <ThemedText>ไม่พบข้อมูลแผง &quot;{id}&quot;</ThemedText>
+        </CockpitBackdrop>
+      </SafeAreaView>
     );
   }
 
   return (
-    <CockpitBackdrop style={styles.screen}>
-      <Stack.Screen options={{ title: panel.title }} />
+    <SafeAreaView style={styles.screen} edges={['left', 'right']}>
+      <CockpitBackdrop style={styles.screen}>
+        <Stack.Screen options={{ title: panel.title }} />
 
       <ZoomableImage
         source={image}
@@ -96,7 +100,8 @@ export default function PanelScreen() {
       <ZoomHint visible={showHint} />
 
       <ControlSheet control={selected} panelId={panel.panelId} onClose={handleClose} />
-    </CockpitBackdrop>
+      </CockpitBackdrop>
+    </SafeAreaView>
   );
 }
 
