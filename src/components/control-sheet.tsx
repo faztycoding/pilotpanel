@@ -15,6 +15,25 @@ import type { Control } from '@/lib/types';
 
 const SNAP_POINTS = ['65%'];
 
+/**
+ * เช็คว่า body มีแค่ข้อความ "See image below" (หรือรูปแบบใกล้เคียง) โดยไม่มีเนื้อหาจริง
+ *
+ * ในเอกสารลูกค้า บาง control อธิบายด้วยรูปแทนข้อความ แล้วเขียน "See image below:" เป็น text
+ * แต่ลูกค้าห้ามใส่รูปในกล่องคำอธิบาย (text only) จึงเหลือแค่ประโยคนี้ที่ไร้ความหมาย
+ * ถ้าเจอให้ถือว่า body ว่าง แสดงข้อความ "ไม่มีคำอธิบาย" แทน
+ */
+function isSeeImagePlaceholder(body: Control['body']): boolean {
+  if (body.length === 0) return false;
+  const text = body
+    .map((block) => block.text ?? '')
+    .join(' ')
+    .trim()
+    .toLowerCase();
+  // ประโยคที่เอกสารลูกค้าใช้จริง (เจอใน pedestal.json 3 ตัว: cp_rat, cp_apu_indications,
+  // cp_spoilers_speed_brakes_indication_2) — เช็ค case-insensitive เผื่อสะกดต่างกัน
+  return /^(see\s+image\s+below:?)$/.test(text);
+}
+
 type Props = {
   control: Control | null;
   onClose: () => void;
@@ -47,11 +66,12 @@ export function ControlSheet({ control, onClose }: Props) {
             <ThemedText type="subtitle" style={styles.title}>
               {control.name}
             </ThemedText>
-            {control.body.length > 0 ? (
+            {control.body.length > 0 && !isSeeImagePlaceholder(control.body) ? (
               <BodyBlocks body={control.body} />
             ) : (
               // เอกสารลูกค้ามีบางรายการที่เป็นหัวข้อกลุ่ม หรืออธิบายด้วยรูปแทนข้อความ
               // (เช่น "(10) YELLOW ELEC PUMP Control" ที่ในไฟล์ต้นฉบับมีแต่รูป)
+              // หรือมีแค่ "See image below" ซึ่งไร้ความหมายเพราะไม่โชว์รูป (ลูกค้าห้ามใส่รูปในกล่อง)
               // บอกตรง ๆ ดีกว่าเด้งกล่องเปล่าให้ผู้ใช้เดาว่าแอปพัง — และทำให้เห็นว่าต้องขออะไรเพิ่ม
               <ThemedText style={{ color: theme.textSecondary }}>
                 เอกสารต้นฉบับไม่มีคำอธิบายข้อความสำหรับรายการนี้
