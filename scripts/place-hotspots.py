@@ -111,7 +111,7 @@ def main() -> int:
         control["hotspot"] = cand["hotspot"]
         written += 1
 
-    def overlaps_existing(box: dict, skip_id: str = "") -> str:
+    def overlaps_existing(box: dict, skip_id: str = "", section_id: str | None = None) -> str:
         """
         คืน id ของ control ที่กรอบนี้ทับเกินครึ่ง — ใช้กันการวางซ้อนกัน
         เคสจริงที่เจอ: เอกสารมี "MODE SEL push button" สองรายการ (FUEL กับ CABIN PRESS)
@@ -120,6 +120,9 @@ def main() -> int:
         """
         for other in panel["controls"]:
             if other["id"] == skip_id or not other.get("hotspot"):
+                continue
+            # ratio ของ control ในโซนอ้างรูปของโซนนั้น เทียบข้ามโซนไม่มีความหมาย
+            if other.get("sectionId") != section_id:
                 continue
             o = other["hotspot"]
             ix = max(0.0, min(box["x"] + box["w"], o["x"] + o["w"]) - max(box["x"], o["x"]))
@@ -138,6 +141,11 @@ def main() -> int:
     if boxes_path.exists():
         img_w, img_h = panel["imageSize"]["w"], panel["imageSize"]["h"]
         all_boxes = json.loads(boxes_path.read_text("utf-8"))
+        # control ที่อยู่ในโซน (หน้า ECAM) มีพิกัดเทียบกับ "รูปของโซนนั้น" ไม่ใช่รูปแผง
+        # ตาม docs/data-schema.md — ถ้าใช้ขนาดรูปแผงหารจะเพี้ยนทั้งหน้า
+        section_size = {
+            s["id"]: s["imageSize"] for s in panel["sections"] if s.get("imageSize", {}).get("w")
+        }
         # ล้างพิกัดเดิมของทุกตัวที่มีในไฟล์นี้ก่อน เพราะพิกัดที่ชั้นก่อนหน้าเดาไว้อาจยังค้างอยู่
         # แล้วไปชนกับพิกัดที่ยืนยันของตัวอื่น ทำให้ตัวที่ถูกต้องถูกข้ามไปแทน
         for control_id in all_boxes.get(args.panel, {}):
@@ -148,16 +156,23 @@ def main() -> int:
             if control is None:
                 print(f"  ! ไม่มี controlId '{control_id}' ใน {args.panel}.json")
                 continue
+            sid = control.get("sectionId")
+            base = section_size.get(sid) if sid else None
+            if sid and base is None:
+                print(f"  ! {control_id}: อยู่ในโซน '{sid}' ที่ยังไม่มีรูป ข้าม")
+                continue
+            bw_ref = base["w"] if base else img_w
+            bh_ref = base["h"] if base else img_h
             box = {
-                "x": round(px["x0"] / img_w, 4),
-                "y": round(px["y0"] / img_h, 4),
-                "w": round((px["x1"] - px["x0"]) / img_w, 4),
-                "h": round((px["y1"] - px["y0"]) / img_h, 4),
+                "x": round(px["x0"] / bw_ref, 4),
+                "y": round(px["y0"] / bh_ref, 4),
+                "w": round((px["x1"] - px["x0"]) / bw_ref, 4),
+                "h": round((px["y1"] - px["y0"]) / bh_ref, 4),
             }
             # พิกัดที่คนระบุชนะการเดาเสมอ ถ้าทับกับตัวที่เดาไว้ ให้ล้างตัวที่เดาออก
             # เคสจริง: "TEST push button" (ของ CARGO SMOKE) ถูกเดาไปลงปุ่ม APU FIRE
             # เพราะป้ายข้างปุ่มนั้นอ่านได้ว่า "APU TEST" — ต้องให้พิกัดที่ยืนยันแล้วทับได้
-            clash = overlaps_existing(box, control_id)
+            clash = overlaps_existing(box, control_id, sid)
             if clash and clash not in all_boxes.get(args.panel, {}):
                 by_id[clash]["hotspot"] = None
                 print(f"     ล้างที่เดาไว้ {clash} เพราะทับกับพิกัดที่ยืนยันของ {control_id}")

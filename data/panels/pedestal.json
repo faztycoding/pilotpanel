@@ -1046,7 +1046,12 @@
       "id": "cp_rat",
       "name": "RAT",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.3892,
+        "y": 0.4211,
+        "w": 0.059,
+        "h": 0.0351
+      },
       "body": [
         {
           "kind": "p",
@@ -1061,7 +1066,12 @@
       "id": "cp_eng_pump_control_and_low_pressure_indication",
       "name": "ENG PUMP Control and Low Pressure Indication",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2887,
+        "y": 0.4785,
+        "w": 0.0542,
+        "h": 0.051
+      },
       "body": [
         {
           "kind": "p",
@@ -1084,7 +1094,12 @@
       "id": "cp_pump",
       "name": "PUMP",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2951,
+        "y": 0.555,
+        "w": 0.0319,
+        "h": 0.0383
+      },
       "body": [
         {
           "kind": "p",
@@ -1099,7 +1114,12 @@
       "id": "cp_reservoir_quantity",
       "name": "Reservoir Quantity",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2967,
+        "y": 0.6324,
+        "w": 0.0271,
+        "h": 0.138
+      },
       "body": [
         {
           "kind": "warning",
@@ -1114,7 +1134,12 @@
       "id": "cp_system_label",
       "name": "System Label",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6045,
+        "y": 0.1459,
+        "w": 0.1228,
+        "h": 0.0391
+      },
       "body": [
         {
           "kind": "p",
@@ -1129,7 +1154,12 @@
       "id": "cp_system_pressure",
       "name": "System Pressure",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6244,
+        "y": 0.2376,
+        "w": 0.071,
+        "h": 0.055
+      },
       "body": [
         {
           "kind": "p",
@@ -1144,7 +1174,12 @@
       "id": "cp_ptu_control",
       "name": "PTU Control",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.5518,
+        "y": 0.3493,
+        "w": 0.0606,
+        "h": 0.0351
+      },
       "body": [
         {
           "kind": "p",
@@ -1171,7 +1206,12 @@
       "id": "cp_elec",
       "name": "ELEC",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6922,
+        "y": 0.4011,
+        "w": 0.075,
+        "h": 0.0319
+      },
       "body": [
         {
           "kind": "p",
@@ -1186,7 +1226,12 @@
       "id": "cp_ovht",
       "name": "OVHT",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6922,
+        "y": 0.4338,
+        "w": 0.0718,
+        "h": 0.0303
+      },
       "body": [
         {
           "kind": "p",
@@ -1201,7 +1246,12 @@
       "id": "cp_yellow_elec_pump_control",
       "name": "YELLOW ELEC PUMP Control",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6411,
+        "y": 0.5534,
+        "w": 0.0383,
+        "h": 0.0463
+      },
       "body": [],
       "sourceRef": "Center Pedestal (finish).docx#p271",
       "needsReview": true,
@@ -1211,7 +1261,12 @@
       "id": "cp_fire_valve",
       "name": "FIRE VALVE",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6491,
+        "y": 0.6364,
+        "w": 0.0287,
+        "h": 0.0391
+      },
       "body": [
         {
           "kind": "p",
@@ -1226,7 +1281,12 @@
       "id": "cp_reservoir_lo_air_press",
       "name": "Reservoir LO AIR PRESS",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6762,
+        "y": 0.6443,
+        "w": 0.0909,
+        "h": 0.059
+      },
       "body": [
         {
           "kind": "warning",
@@ -1241,7 +1301,12 @@
       "id": "cp_reservoir_ovht",
       "name": "Reservoir OVHT",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6762,
+        "y": 0.7281,
+        "w": 0.0877,
+        "h": 0.0391
+      },
       "body": [
         {
           "kind": "warning",

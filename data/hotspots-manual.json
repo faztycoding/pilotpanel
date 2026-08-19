@@ -4,109 +4,581 @@
     "ใช้กับปุ่มที่ป้ายบนรูปเป็น pixel (อยู่ในรูปย่อยที่แปะทับ) ไม่ใช่ตัวหนังสือ vector",
     "จึงหาตำแหน่งอัตโนมัติจาก PDF ไม่ได้ — ดู .devin/skills/panel-hotspot-pipeline/SKILL.md",
     "สคริปต์ที่อ่านไฟล์นี้: scripts/place-hotspots.py (ชั้นที่ 4 ชนะทุกชั้น)",
-    "ถ้าเปลี่ยนรูปแผงเป็นสัดส่วนใหม่ ต้องอ่านพิกัดในไฟล์นี้ใหม่ทั้งหมด"
+    "ถ้าเปลี่ยนรูปแผงเป็นสัดส่วนใหม่ ต้องอ่านพิกัดในไฟล์นี้ใหม่ทั้งหมด",
+    "control ที่อยู่ในโซน ECAM ใช้พิกัด px ของรูปโซนนั้น (assets/sections/<panel>/<sid>.webp) ไม่ใช่รูปแผง"
   ],
-
   "overhead": {
-    "oh_data_selector_knob":             { "x0": 262, "y0": 488, "x1": 368, "y1": 592 },
-    "oh_ir_1_2_3_light":                 { "x0": 265, "y0": 678, "x1": 392, "y1": 792 },
-    "oh_ir_1_2_3_mode_rotary_selector":  { "x0": 252, "y0": 838, "x1": 402, "y1": 986 },
-    "oh_adr_1_2_3_push_button":          { "x0": 262, "y0": 1020, "x1": 398, "y1": 1130 },
-
-    "oh_eng_1_2_fire_push_button":       { "x0": 1182, "y0": 476, "x1": 1412, "y1": 620 },
-    "oh_apu_fire_push_button":           { "x0": 1622, "y0": 358, "x1": 1930, "y1": 562 },
-    "oh_test_push_button_eng_and_apu":   { "x0": 1050, "y0": 548, "x1": 1114, "y1": 616 },
-
-    "oh_wing_switch":                    { "x0": 1398, "y0": 2758, "x1": 1498, "y1": 2900 },
-    "oh_capt_and_purs_capt_switch":      { "x0": 748, "y0": 1490, "x1": 826, "y1": 1586 },
-    "oh_sec_1_2_3_push_button":          { "x0": 559, "y0": 1249, "x1": 678, "y1": 1368 },
-    "oh_yellow_elec_pump_push_button":   { "x0": 2357, "y0": 866, "x1": 2443, "y1": 946 },
-    "oh_left_right_tk_pumps_1_2_push_buttons": { "x0": 1182, "y0": 1252, "x1": 1292, "y1": 1372 },
-    "oh_ext_pwr_push_button":            { "x0": 1938, "y0": 1722, "x1": 2058, "y1": 1842 },
-    "oh_wing_anti_ice_push_button":      { "x0": 1044, "y0": 2526, "x1": 1160, "y1": 2652 },
-    "oh_blower_and_extract_push_buttons": { "x0": 2582, "y0": 2344, "x1": 2696, "y1": 2454 },
-
-    "oh_cargo_temperature_selector":     { "x0": 2968, "y0": 1888, "x1": 3145, "y1": 2042 },
-    "oh_test_push_button":               { "x0": 2862, "y0": 2148, "x1": 2954, "y1": 2248 },
-    "oh_zone_temperature_selectors":     { "x0": 1440, "y0": 1945, "x1": 1600, "y1": 2100 },
-    "oh_eng_1_and_2_anti_ice_push_button": { "x0": 1380, "y0": 2528, "x1": 1495, "y1": 2650 },
-    "oh_man_v_s_ctl_toggle_switch":      { "x0": 1925, "y0": 2525, "x1": 2005, "y1": 2622 },
-    "oh_ldg_elev_knob":                  { "x0": 2198, "y0": 2528, "x1": 2302, "y1": 2625 },
-    "oh_mode_sel_push_button_2":         { "x0": 2062, "y0": 2525, "x1": 2155, "y1": 2630 },
-    "oh_l_and_r_land_switch":            { "x0": 1222, "y0": 2965, "x1": 1298, "y1": 3085 },
-
-    "oh_ovhd_integ_light_knob":       { "x0": 1930, "y0": 2780, "x1": 2020, "y1": 2872 },
-    "oh_ice_ind_stby_compass_switch": { "x0": 2078, "y0": 2782, "x1": 2168, "y1": 2900 },
-    "oh_dome_selector":               { "x0": 2204, "y0": 2778, "x1": 2296, "y1": 2882 },
-    "oh_ann_light_switch":            { "x0": 2348, "y0": 2778, "x1": 2446, "y1": 2878 },
-
-    "oh_seat_belts_switch":           { "x0": 1924, "y0": 2954, "x1": 2022, "y1": 3070 },
-    "oh_no_smoking_selector":         { "x0": 2048, "y0": 2954, "x1": 2152, "y1": 3070 },
-    "oh_emer_exit_lt_off_light":      { "x0": 2184, "y0": 2962, "x1": 2306, "y1": 3072 },
-    "oh_emer_exit_lt_selector":       { "x0": 2314, "y0": 2962, "x1": 2408, "y1": 3070 }
+    "oh_data_selector_knob": {
+      "x0": 262,
+      "y0": 488,
+      "x1": 368,
+      "y1": 592
+    },
+    "oh_ir_1_2_3_light": {
+      "x0": 265,
+      "y0": 678,
+      "x1": 392,
+      "y1": 792
+    },
+    "oh_ir_1_2_3_mode_rotary_selector": {
+      "x0": 252,
+      "y0": 838,
+      "x1": 402,
+      "y1": 986
+    },
+    "oh_adr_1_2_3_push_button": {
+      "x0": 262,
+      "y0": 1020,
+      "x1": 398,
+      "y1": 1130
+    },
+    "oh_eng_1_2_fire_push_button": {
+      "x0": 1182,
+      "y0": 476,
+      "x1": 1412,
+      "y1": 620
+    },
+    "oh_apu_fire_push_button": {
+      "x0": 1622,
+      "y0": 358,
+      "x1": 1930,
+      "y1": 562
+    },
+    "oh_test_push_button_eng_and_apu": {
+      "x0": 1050,
+      "y0": 548,
+      "x1": 1114,
+      "y1": 616
+    },
+    "oh_wing_switch": {
+      "x0": 1398,
+      "y0": 2758,
+      "x1": 1498,
+      "y1": 2900
+    },
+    "oh_capt_and_purs_capt_switch": {
+      "x0": 748,
+      "y0": 1490,
+      "x1": 826,
+      "y1": 1586
+    },
+    "oh_sec_1_2_3_push_button": {
+      "x0": 559,
+      "y0": 1249,
+      "x1": 678,
+      "y1": 1368
+    },
+    "oh_yellow_elec_pump_push_button": {
+      "x0": 2357,
+      "y0": 866,
+      "x1": 2443,
+      "y1": 946
+    },
+    "oh_left_right_tk_pumps_1_2_push_buttons": {
+      "x0": 1182,
+      "y0": 1252,
+      "x1": 1292,
+      "y1": 1372
+    },
+    "oh_ext_pwr_push_button": {
+      "x0": 1938,
+      "y0": 1722,
+      "x1": 2058,
+      "y1": 1842
+    },
+    "oh_wing_anti_ice_push_button": {
+      "x0": 1044,
+      "y0": 2526,
+      "x1": 1160,
+      "y1": 2652
+    },
+    "oh_blower_and_extract_push_buttons": {
+      "x0": 2582,
+      "y0": 2344,
+      "x1": 2696,
+      "y1": 2454
+    },
+    "oh_cargo_temperature_selector": {
+      "x0": 2968,
+      "y0": 1888,
+      "x1": 3145,
+      "y1": 2042
+    },
+    "oh_test_push_button": {
+      "x0": 2862,
+      "y0": 2148,
+      "x1": 2954,
+      "y1": 2248
+    },
+    "oh_zone_temperature_selectors": {
+      "x0": 1440,
+      "y0": 1945,
+      "x1": 1600,
+      "y1": 2100
+    },
+    "oh_eng_1_and_2_anti_ice_push_button": {
+      "x0": 1380,
+      "y0": 2528,
+      "x1": 1495,
+      "y1": 2650
+    },
+    "oh_man_v_s_ctl_toggle_switch": {
+      "x0": 1925,
+      "y0": 2525,
+      "x1": 2005,
+      "y1": 2622
+    },
+    "oh_ldg_elev_knob": {
+      "x0": 2198,
+      "y0": 2528,
+      "x1": 2302,
+      "y1": 2625
+    },
+    "oh_mode_sel_push_button_2": {
+      "x0": 2062,
+      "y0": 2525,
+      "x1": 2155,
+      "y1": 2630
+    },
+    "oh_l_and_r_land_switch": {
+      "x0": 1222,
+      "y0": 2965,
+      "x1": 1298,
+      "y1": 3085
+    },
+    "oh_ovhd_integ_light_knob": {
+      "x0": 1930,
+      "y0": 2780,
+      "x1": 2020,
+      "y1": 2872
+    },
+    "oh_ice_ind_stby_compass_switch": {
+      "x0": 2078,
+      "y0": 2782,
+      "x1": 2168,
+      "y1": 2900
+    },
+    "oh_dome_selector": {
+      "x0": 2204,
+      "y0": 2778,
+      "x1": 2296,
+      "y1": 2882
+    },
+    "oh_ann_light_switch": {
+      "x0": 2348,
+      "y0": 2778,
+      "x1": 2446,
+      "y1": 2878
+    },
+    "oh_seat_belts_switch": {
+      "x0": 1924,
+      "y0": 2954,
+      "x1": 2022,
+      "y1": 3070
+    },
+    "oh_no_smoking_selector": {
+      "x0": 2048,
+      "y0": 2954,
+      "x1": 2152,
+      "y1": 3070
+    },
+    "oh_emer_exit_lt_off_light": {
+      "x0": 2184,
+      "y0": 2962,
+      "x1": 2306,
+      "y1": 3072
+    },
+    "oh_emer_exit_lt_selector": {
+      "x0": 2314,
+      "y0": 2962,
+      "x1": 2408,
+      "y1": 3070
+    }
   },
-
   "pedestal": {
-    "cp_att_hdg_selector":            { "x0": 1152, "y0": 136, "x1": 1254, "y1": 264 },
-    "cp_air_data_selector":           { "x0": 1322, "y0": 136, "x1": 1414, "y1": 264 },
-    "cp_eis_dmc_rotary_selector":     { "x0": 1500, "y0": 136, "x1": 1590, "y1": 264 },
-    "cp_ecam_nd_xfr_rotary_selector": { "x0": 1670, "y0": 136, "x1": 1760, "y1": 264 },
-    "cp_off_brt_knobs":               { "x0": 1106, "y0": 356, "x1": 1188, "y1": 430 },
-    "cp_t_o_config_push_button":      { "x0": 1438, "y0": 312, "x1": 1506, "y1": 358 },
-    "cp_emer_canc_push_button":       { "x0": 1680, "y0": 314, "x1": 1750, "y1": 360 },
-
-    "cp_all_push_button":             { "x0": 1762, "y0": 448, "x1": 1830, "y1": 493 },
-    "cp_clr_push_button":             { "x0": 1353, "y0": 523, "x1": 1421, "y1": 568 },
-    "cp_sts_push_button":             { "x0": 1516, "y0": 524, "x1": 1584, "y1": 568 },
-    "cp_rcl_push_button":             { "x0": 1599, "y0": 524, "x1": 1666, "y1": 568 },
-
-    "cp_mcdu_multi_purpose_control_and_display_unit":   { "x0": 324, "y0": 76, "x1": 768, "y1": 472 },
-    "cp_mcdu_multi_purpose_control_and_display_unit_2": { "x0": 2156, "y0": 84, "x1": 2564, "y1": 460 },
-
-    "cp_frequency_display_active_stby_crs":  { "x0": 2098, "y0": 920, "x1": 2306, "y1": 982 },
-    "cp_transfer_key":                       { "x0": 2326, "y0": 928, "x1": 2408, "y1": 976 },
-    "cp_radio_com_selection_keys":           { "x0": 2108, "y0": 1006, "x1": 2400, "y1": 1070 },
-    "cp_sel_indicator":                      { "x0": 2190, "y0": 1078, "x1": 2242, "y1": 1128 },
-    "cp_am_push_button":                     { "x0": 2334, "y0": 1078, "x1": 2400, "y1": 1128 },
-    "cp_frequency_selector_knobs":           { "x0": 2438, "y0": 1028, "x1": 2544, "y1": 1128 },
-    "cp_nav_push_button_includes_transparent_guard": { "x0": 2110, "y0": 1178, "x1": 2174, "y1": 1236 },
-    "cp_radio_navigation_selection_keys":    { "x0": 2188, "y0": 1184, "x1": 2554, "y1": 1236 },
-    "cp_on_off_switch":                      { "x0": 2582, "y0": 1168, "x1": 2626, "y1": 1240 },
-
-    "cp_transmission_keys":                  { "x0": 2108, "y0": 1284, "x1": 2630, "y1": 1332 },
-    "cp_reception_knobs":                    { "x0": 2108, "y0": 1490, "x1": 2632, "y1": 1580 },
-    "cp_int_rad_switch":                     { "x0": 2150, "y0": 1412, "x1": 2206, "y1": 1488 },
-    "cp_passenger_address_pa_function":      { "x0": 2456, "y0": 1420, "x1": 2516, "y1": 1478 },
-
-    "cp_thrust_levers_trim_wheel":    { "x0": 1220, "y0": 1210, "x1": 1706, "y1": 1516 },
-    "cp_pitch_trim_wheel":            { "x0": 950, "y0": 1215, "x1": 1062, "y1": 1616 },
-
-    "cp_capt_fo_display_mode_selector": { "x0": 320, "y0": 1806, "x1": 400, "y1": 1874 },
-    "cp_elevn_knob":                    { "x0": 330, "y0": 1920, "x1": 396, "y1": 1994 },
-    "cp_wxr_pws_switch":                { "x0": 542, "y0": 1760, "x1": 592, "y1": 1824 },
-    "cp_gain_knob_2":                   { "x0": 514, "y0": 1944, "x1": 588, "y1": 2022 },
-
-    "cp_eng_1_2_master_switch":       { "x0": 1302, "y0": 1832, "x1": 1388, "y1": 1890 },
-    "cp_eng_mode_selector":           { "x0": 1410, "y0": 1918, "x1": 1528, "y1": 2006 },
-    "cp_fire_light":                   { "x0": 1264, "y0": 1930, "x1": 1348, "y1": 1963 },
-    "cp_eng_1_2_fault_light":          { "x0": 1582, "y0": 1928, "x1": 1668, "y1": 1998 },
-    "cp_fault_light":                  { "x0": 1264, "y0": 1964, "x1": 1348, "y1": 1998 },
-
-    "cp_auto_on_selector":            { "x0": 2108, "y0": 1782, "x1": 2170, "y1": 1840 },
-    "cp_xpndr_selector":              { "x0": 2110, "y0": 1856, "x1": 2168, "y1": 1914 },
-    "cp_traffic_selector":            { "x0": 2088, "y0": 1926, "x1": 2148, "y1": 1984 },
-    "cp_code_display":                { "x0": 2405, "y0": 1766, "x1": 2644, "y1": 1846 },
-    "cp_clr_push_button_2":           { "x0": 2342, "y0": 1926, "x1": 2390, "y1": 1974 },
-    "cp_mode_selector":               { "x0": 2426, "y0": 1872, "x1": 2522, "y1": 1982 },
-    "cp_ident_switch":                { "x0": 2638, "y0": 1862, "x1": 2678, "y1": 1900 },
-
-    "cp_lever":                       { "x0": 1012, "y0": 2352, "x1": 1062, "y1": 2540 },
-    "cp_rud_trim_rotary_switch_reset_button_position": { "x0": 1498, "y0": 2478, "x1": 1688, "y1": 2602 },
-    "cp_flap_lever":                  { "x0": 1856, "y0": 2352, "x1": 1922, "y1": 2540 },
-
-    "cp_toggle_switch":               { "x0": 674, "y0": 2686, "x1": 756, "y1": 2742 },
-    "cp_fault_light_2":               { "x0": 514, "y0": 2680, "x1": 616, "y1": 2756 },
-    "cp_parking_brk_handle":          { "x0": 1504, "y0": 2778, "x1": 1702, "y1": 3032 },
-    "cp_gravity_gear_extn":           { "x0": 1428, "y0": 3090, "x1": 1518, "y1": 3274 }
+    "cp_att_hdg_selector": {
+      "x0": 1152,
+      "y0": 136,
+      "x1": 1254,
+      "y1": 264
+    },
+    "cp_air_data_selector": {
+      "x0": 1322,
+      "y0": 136,
+      "x1": 1414,
+      "y1": 264
+    },
+    "cp_eis_dmc_rotary_selector": {
+      "x0": 1500,
+      "y0": 136,
+      "x1": 1590,
+      "y1": 264
+    },
+    "cp_ecam_nd_xfr_rotary_selector": {
+      "x0": 1670,
+      "y0": 136,
+      "x1": 1760,
+      "y1": 264
+    },
+    "cp_off_brt_knobs": {
+      "x0": 1106,
+      "y0": 356,
+      "x1": 1188,
+      "y1": 430
+    },
+    "cp_t_o_config_push_button": {
+      "x0": 1438,
+      "y0": 312,
+      "x1": 1506,
+      "y1": 358
+    },
+    "cp_emer_canc_push_button": {
+      "x0": 1680,
+      "y0": 314,
+      "x1": 1750,
+      "y1": 360
+    },
+    "cp_all_push_button": {
+      "x0": 1762,
+      "y0": 448,
+      "x1": 1830,
+      "y1": 493
+    },
+    "cp_clr_push_button": {
+      "x0": 1353,
+      "y0": 523,
+      "x1": 1421,
+      "y1": 568
+    },
+    "cp_sts_push_button": {
+      "x0": 1516,
+      "y0": 524,
+      "x1": 1584,
+      "y1": 568
+    },
+    "cp_rcl_push_button": {
+      "x0": 1599,
+      "y0": 524,
+      "x1": 1666,
+      "y1": 568
+    },
+    "cp_mcdu_multi_purpose_control_and_display_unit": {
+      "x0": 324,
+      "y0": 76,
+      "x1": 768,
+      "y1": 472
+    },
+    "cp_mcdu_multi_purpose_control_and_display_unit_2": {
+      "x0": 2156,
+      "y0": 84,
+      "x1": 2564,
+      "y1": 460
+    },
+    "cp_frequency_display_active_stby_crs": {
+      "x0": 2098,
+      "y0": 920,
+      "x1": 2306,
+      "y1": 982
+    },
+    "cp_transfer_key": {
+      "x0": 2326,
+      "y0": 928,
+      "x1": 2408,
+      "y1": 976
+    },
+    "cp_radio_com_selection_keys": {
+      "x0": 2108,
+      "y0": 1006,
+      "x1": 2400,
+      "y1": 1070
+    },
+    "cp_sel_indicator": {
+      "x0": 2190,
+      "y0": 1078,
+      "x1": 2242,
+      "y1": 1128
+    },
+    "cp_am_push_button": {
+      "x0": 2334,
+      "y0": 1078,
+      "x1": 2400,
+      "y1": 1128
+    },
+    "cp_frequency_selector_knobs": {
+      "x0": 2438,
+      "y0": 1028,
+      "x1": 2544,
+      "y1": 1128
+    },
+    "cp_nav_push_button_includes_transparent_guard": {
+      "x0": 2110,
+      "y0": 1178,
+      "x1": 2174,
+      "y1": 1236
+    },
+    "cp_radio_navigation_selection_keys": {
+      "x0": 2188,
+      "y0": 1184,
+      "x1": 2554,
+      "y1": 1236
+    },
+    "cp_on_off_switch": {
+      "x0": 2582,
+      "y0": 1168,
+      "x1": 2626,
+      "y1": 1240
+    },
+    "cp_transmission_keys": {
+      "x0": 2108,
+      "y0": 1284,
+      "x1": 2630,
+      "y1": 1332
+    },
+    "cp_reception_knobs": {
+      "x0": 2108,
+      "y0": 1490,
+      "x1": 2632,
+      "y1": 1580
+    },
+    "cp_int_rad_switch": {
+      "x0": 2150,
+      "y0": 1412,
+      "x1": 2206,
+      "y1": 1488
+    },
+    "cp_passenger_address_pa_function": {
+      "x0": 2456,
+      "y0": 1420,
+      "x1": 2516,
+      "y1": 1478
+    },
+    "cp_thrust_levers_trim_wheel": {
+      "x0": 1220,
+      "y0": 1210,
+      "x1": 1706,
+      "y1": 1516
+    },
+    "cp_pitch_trim_wheel": {
+      "x0": 950,
+      "y0": 1215,
+      "x1": 1062,
+      "y1": 1616
+    },
+    "cp_capt_fo_display_mode_selector": {
+      "x0": 320,
+      "y0": 1806,
+      "x1": 400,
+      "y1": 1874
+    },
+    "cp_elevn_knob": {
+      "x0": 330,
+      "y0": 1920,
+      "x1": 396,
+      "y1": 1994
+    },
+    "cp_wxr_pws_switch": {
+      "x0": 542,
+      "y0": 1760,
+      "x1": 592,
+      "y1": 1824
+    },
+    "cp_gain_knob_2": {
+      "x0": 514,
+      "y0": 1944,
+      "x1": 588,
+      "y1": 2022
+    },
+    "cp_eng_1_2_master_switch": {
+      "x0": 1302,
+      "y0": 1832,
+      "x1": 1388,
+      "y1": 1890
+    },
+    "cp_eng_mode_selector": {
+      "x0": 1410,
+      "y0": 1918,
+      "x1": 1528,
+      "y1": 2006
+    },
+    "cp_fire_light": {
+      "x0": 1264,
+      "y0": 1930,
+      "x1": 1348,
+      "y1": 1963
+    },
+    "cp_eng_1_2_fault_light": {
+      "x0": 1582,
+      "y0": 1928,
+      "x1": 1668,
+      "y1": 1998
+    },
+    "cp_fault_light": {
+      "x0": 1264,
+      "y0": 1964,
+      "x1": 1348,
+      "y1": 1998
+    },
+    "cp_auto_on_selector": {
+      "x0": 2108,
+      "y0": 1782,
+      "x1": 2170,
+      "y1": 1840
+    },
+    "cp_xpndr_selector": {
+      "x0": 2110,
+      "y0": 1856,
+      "x1": 2168,
+      "y1": 1914
+    },
+    "cp_traffic_selector": {
+      "x0": 2088,
+      "y0": 1926,
+      "x1": 2148,
+      "y1": 1984
+    },
+    "cp_code_display": {
+      "x0": 2405,
+      "y0": 1766,
+      "x1": 2644,
+      "y1": 1846
+    },
+    "cp_clr_push_button_2": {
+      "x0": 2342,
+      "y0": 1926,
+      "x1": 2390,
+      "y1": 1974
+    },
+    "cp_mode_selector": {
+      "x0": 2426,
+      "y0": 1872,
+      "x1": 2522,
+      "y1": 1982
+    },
+    "cp_ident_switch": {
+      "x0": 2638,
+      "y0": 1862,
+      "x1": 2678,
+      "y1": 1900
+    },
+    "cp_lever": {
+      "x0": 1012,
+      "y0": 2352,
+      "x1": 1062,
+      "y1": 2540
+    },
+    "cp_rud_trim_rotary_switch_reset_button_position": {
+      "x0": 1498,
+      "y0": 2478,
+      "x1": 1688,
+      "y1": 2602
+    },
+    "cp_flap_lever": {
+      "x0": 1856,
+      "y0": 2352,
+      "x1": 1922,
+      "y1": 2540
+    },
+    "cp_toggle_switch": {
+      "x0": 674,
+      "y0": 2686,
+      "x1": 756,
+      "y1": 2742
+    },
+    "cp_fault_light_2": {
+      "x0": 514,
+      "y0": 2680,
+      "x1": 616,
+      "y1": 2756
+    },
+    "cp_parking_brk_handle": {
+      "x0": 1504,
+      "y0": 2778,
+      "x1": 1702,
+      "y1": 3032
+    },
+    "cp_gravity_gear_extn": {
+      "x0": 1428,
+      "y0": 3090,
+      "x1": 1518,
+      "y1": 3274
+    },
+    "cp_rat": {
+      "x0": 488,
+      "y0": 528,
+      "x1": 562,
+      "y1": 572
+    },
+    "cp_eng_pump_control_and_low_pressure_indication": {
+      "x0": 362,
+      "y0": 600,
+      "x1": 430,
+      "y1": 664
+    },
+    "cp_pump": {
+      "x0": 370,
+      "y0": 696,
+      "x1": 410,
+      "y1": 744
+    },
+    "cp_reservoir_quantity": {
+      "x0": 372,
+      "y0": 793,
+      "x1": 406,
+      "y1": 966
+    },
+    "cp_system_label": {
+      "x0": 758,
+      "y0": 183,
+      "x1": 912,
+      "y1": 232
+    },
+    "cp_system_pressure": {
+      "x0": 783,
+      "y0": 298,
+      "x1": 872,
+      "y1": 367
+    },
+    "cp_ptu_control": {
+      "x0": 692,
+      "y0": 438,
+      "x1": 768,
+      "y1": 482
+    },
+    "cp_elec": {
+      "x0": 868,
+      "y0": 503,
+      "x1": 962,
+      "y1": 543
+    },
+    "cp_ovht": {
+      "x0": 868,
+      "y0": 544,
+      "x1": 958,
+      "y1": 582
+    },
+    "cp_yellow_elec_pump_control": {
+      "x0": 804,
+      "y0": 694,
+      "x1": 852,
+      "y1": 752
+    },
+    "cp_fire_valve": {
+      "x0": 814,
+      "y0": 798,
+      "x1": 850,
+      "y1": 847
+    },
+    "cp_reservoir_lo_air_press": {
+      "x0": 848,
+      "y0": 808,
+      "x1": 962,
+      "y1": 882
+    },
+    "cp_reservoir_ovht": {
+      "x0": 848,
+      "y0": 913,
+      "x1": 958,
+      "y1": 962
+    }
   }
 }
