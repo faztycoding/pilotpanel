@@ -1,6 +1,6 @@
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
-import { useEffect, useRef } from 'react';
-import { StyleSheet } from 'react-native';
+import { useEffect, useMemo, useRef } from 'react';
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
 import { BodyBlocks } from '@/components/body-blocks';
 import { ThemedText } from '@/components/themed-text';
@@ -11,9 +11,14 @@ import type { Control } from '@/lib/types';
 /**
  * แผ่นคำอธิบายที่เด้งจากด้านล่าง — ใช้ตัวเดียวตลอด เปลี่ยนแค่ control ที่ส่งเข้ามา
  * แตะ control ใหม่ทับของเดิมได้โดยไม่ต้องปิดก่อน เพราะเป็น instance เดิม
+ *
+ * snap point คำนวณแบบ dynamic: 65% ของจอ แต่ไม่เกิน 480dp
+ * บนมือถือ (Poco X7 จอสูง 444dp) 65% = 288dp พอดี
+ * บนแท็บเล็ต (Tab S9 FE+ จอสูง 1067dp) 65% = 693dp สูงเกินจนเหลือที่ว่างเยอะ
+ * จึง cap ที่ 480dp — กล่องยังอ่านสบาย ไม่บังรูปแผงจนมืดทั้งจอ
  */
 
-const SNAP_POINTS = ['65%'];
+const SHEET_MAX_DP = 480;
 
 type Props = {
   control: Control | null;
@@ -25,6 +30,13 @@ type Props = {
 export function ControlSheet({ control, panelId, onClose }: Props) {
   const sheet = useRef<BottomSheet>(null);
   const theme = useTheme();
+  const { height: windowHeight } = useWindowDimensions();
+
+  const snapPoints = useMemo(() => {
+    const target = Math.min(windowHeight * 0.65, SHEET_MAX_DP);
+    // @gorhom/bottom-sheet รับค่าเป็น string เช่น '65%' หรือ number เป็น dp
+    return [target];
+  }, [windowHeight]);
 
   useEffect(() => {
     if (control) {
@@ -38,7 +50,7 @@ export function ControlSheet({ control, panelId, onClose }: Props) {
     <BottomSheet
       ref={sheet}
       index={-1}
-      snapPoints={SNAP_POINTS}
+      snapPoints={snapPoints}
       enablePanDownToClose
       onClose={onClose}
       backgroundStyle={{ backgroundColor: theme.background }}
