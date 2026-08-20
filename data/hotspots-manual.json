@@ -236,7 +236,7 @@
       "x0": 1106,
       "y0": 356,
       "x1": 1188,
-      "y1": 430
+      "y1": 570
     },
     "cp_t_o_config_push_button": {
       "x0": 1438,
@@ -252,27 +252,27 @@
     },
     "cp_all_push_button": {
       "x0": 1762,
-      "y0": 448,
+      "y0": 524,
       "x1": 1830,
-      "y1": 493
+      "y1": 570
     },
     "cp_clr_push_button": {
-      "x0": 1353,
-      "y0": 523,
-      "x1": 1421,
-      "y1": 568
+      "x0": 1354,
+      "y0": 448,
+      "x1": 1422,
+      "y1": 494
     },
     "cp_sts_push_button": {
-      "x0": 1516,
-      "y0": 524,
-      "x1": 1584,
-      "y1": 568
+      "x0": 1518,
+      "y0": 448,
+      "x1": 1586,
+      "y1": 494
     },
     "cp_rcl_push_button": {
-      "x0": 1599,
-      "y0": 524,
-      "x1": 1666,
-      "y1": 568
+      "x0": 1600,
+      "y0": 448,
+      "x1": 1668,
+      "y1": 494
     },
     "cp_mcdu_multi_purpose_control_and_display_unit": {
       "x0": 324,
@@ -371,10 +371,10 @@
       "y1": 1516
     },
     "cp_pitch_trim_wheel": {
-      "x0": 950,
-      "y0": 1215,
-      "x1": 1062,
-      "y1": 1616
+      "x0": 908,
+      "y0": 875,
+      "x1": 1075,
+      "y1": 1715
     },
     "cp_capt_fo_display_mode_selector": {
       "x0": 320,
@@ -473,10 +473,10 @@
       "y1": 1900
     },
     "cp_lever": {
-      "x0": 1012,
-      "y0": 2352,
-      "x1": 1062,
-      "y1": 2540
+      "x0": 938,
+      "y0": 1940,
+      "x1": 1182,
+      "y1": 2542
     },
     "cp_rud_trim_rotary_switch_reset_button_position": {
       "x0": 1498,
@@ -485,10 +485,10 @@
       "y1": 2602
     },
     "cp_flap_lever": {
-      "x0": 1856,
-      "y0": 2352,
-      "x1": 1922,
-      "y1": 2540
+      "x0": 1790,
+      "y0": 2055,
+      "x1": 2038,
+      "y1": 2542
     },
     "cp_toggle_switch": {
       "x0": 674,
@@ -1291,24 +1291,164 @@
       "y1": 110
     }
   },
+  "glareshield": {
+    "gs_barometer_reference_selector": {
+      "x0": 3914,
+      "y0": 750,
+      "x1": 4080,
+      "y1": 922
+    },
+    "gs_flight_director_fd_push_button": {
+      "x0": 3808,
+      "y0": 980,
+      "x1": 3978,
+      "y1": 1114
+    },
+    "gs_ls_push_button": {
+      "x0": 4028,
+      "y0": 980,
+      "x1": 4200,
+      "y1": 1114
+    },
+    "gs_operational_data_display_constraints": {
+      "x0": 4307,
+      "y0": 328,
+      "x1": 4472,
+      "y1": 452
+    },
+    "gs_operational_data_display_waypoints": {
+      "x0": 4496,
+      "y0": 328,
+      "x1": 4656,
+      "y1": 448
+    },
+    "gs_operational_data_display_vor_dme": {
+      "x0": 4681,
+      "y0": 324,
+      "x1": 4849,
+      "y1": 452
+    },
+    "gs_operational_data_display_ndb": {
+      "x0": 4872,
+      "y0": 328,
+      "x1": 5032,
+      "y1": 452
+    },
+    "gs_operational_data_display_airports": {
+      "x0": 5055,
+      "y0": 324,
+      "x1": 5220,
+      "y1": 448
+    },
+    "gs_range_select_switch": {
+      "x0": 4890,
+      "y0": 568,
+      "x1": 5210,
+      "y1": 870
+    },
+    "gs_adf_vor_select_switches": {
+      "x0": 4475,
+      "y0": 948,
+      "x1": 5115,
+      "y1": 1092
+    },
+    "gs_fcu_window": {
+      "x0": 5476,
+      "y0": 236,
+      "x1": 7928,
+      "y1": 464
+    },
+    "gs_spd_mach_push_button": {
+      "x0": 5418,
+      "y0": 582,
+      "x1": 5504,
+      "y1": 664
+    },
+    "gs_spd_mach_knob": {
+      "x0": 5572,
+      "y0": 604,
+      "x1": 5816,
+      "y1": 848
+    },
+    "gs_hdg_trk_knob": {
+      "x0": 5992,
+      "y0": 600,
+      "x1": 6238,
+      "y1": 844
+    },
+    "gs_loc_push_button": {
+      "x0": 6052,
+      "y0": 980,
+      "x1": 6204,
+      "y1": 1100
+    },
+    "gs_hdg_v_s_or_trk_fpa_push_button": {
+      "x0": 6600,
+      "y0": 572,
+      "x1": 6684,
+      "y1": 656
+    },
+    "gs_autopilot_1_and_2_push_button_ap1_ap2": {
+      "x0": 6479,
+      "y0": 744,
+      "x1": 6812,
+      "y1": 888
+    },
+    "gs_auto_thrust_a_thr_push_button": {
+      "x0": 6564,
+      "y0": 924,
+      "x1": 6720,
+      "y1": 1076
+    },
+    "gs_altitude_selector_knob": {
+      "x0": 7012,
+      "y0": 616,
+      "x1": 7232,
+      "y1": 832
+    },
+    "gs_exped_push_button": {
+      "x0": 7056,
+      "y0": 972,
+      "x1": 7204,
+      "y1": 1092
+    },
+    "gs_metric_altitude_push_button": {
+      "x0": 7325,
+      "y0": 555,
+      "x1": 7459,
+      "y1": 660
+    },
+    "gs_v_s_or_fpa_knob": {
+      "x0": 7600,
+      "y0": 622,
+      "x1": 7818,
+      "y1": 838
+    },
+    "gs_appr_push_button": {
+      "x0": 7648,
+      "y0": 968,
+      "x1": 7796,
+      "y1": 1088
+    }
+  },
   "_home": {
     "home_overhead": {
-      "x0": 1020,
+      "x0": 1040,
       "y0": 0,
-      "x1": 2292,
-      "y1": 580
+      "x1": 2320,
+      "y1": 640
     },
     "home_glareshield": {
-      "x0": 150,
-      "y0": 928,
-      "x1": 3292,
-      "y1": 1104
+      "x0": 315,
+      "y0": 870,
+      "x1": 3220,
+      "y1": 1110
     },
     "home_instrument_capt": {
-      "x0": 92,
-      "y0": 1142,
-      "x1": 1024,
-      "y1": 1478
+      "x0": 0,
+      "y0": 1115,
+      "x1": 3438,
+      "y1": 1830
     },
     "home_instrument_center": {
       "x0": 1225,
@@ -1329,10 +1469,10 @@
       "y1": 1478
     },
     "home_pedestal": {
-      "x0": 880,
+      "x0": 875,
       "y0": 1820,
-      "x1": 2560,
-      "y1": 2385
+      "x1": 2565,
+      "y1": 2389
     }
   }
 }

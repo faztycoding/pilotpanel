@@ -1083,14 +1083,9 @@
         "w": 1.0,
         "h": 1.0
       },
-      "body": [
-        {
-          "kind": "p",
-          "text": "ECAM"
-        }
-      ],
+      "body": [],
       "sourceRef": "Instrument Panel.docx#p306",
-      "needsReview": false,
+      "needsReview": true,
       "sectionId": "nd"
     },
     {

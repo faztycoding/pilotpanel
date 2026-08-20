@@ -8,5 +8,10 @@
     "sourceRef": "glareshield.docx#p2",
     "text": "From left to right",
     "panelId": "glareshield"
+  },
+  {
+    "sourceRef": "Instrument Panel.docx#p320",
+    "text": "ECAM",
+    "panelId": "instrument"
   }
 ]
