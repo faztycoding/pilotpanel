@@ -51,7 +51,7 @@ PANELS = [
 CONTROL_NOUNS = (
     r"push[\s\-]?buttons?|pushbuttons?|"
     r"selectors?|knobs?|switch(?:es)?|levers?|handles?|"
-    r"lights?|indicators?|displays?|gauges?|windows?|"
+    r"lights?|indicators?|indications?|displays?|gauges?|windows?|"
     r"guards?|panels?|buttons?|controls?|pointers?"
 )
 RE_CONTROL_NOUN = re.compile(CONTROL_NOUNS, re.IGNORECASE)
@@ -93,6 +93,7 @@ SENTENCE_STARTERS = {
     "comes", "turns", "turn", "gives", "give", "means", "note", "normally",
     "green", "amber", "red", "white", "blue", "magenta", "each", "both",
     "with", "for", "and", "but", "also", "always", "only", "pressed",
+    "associated", "below", "above", "such", "two", "three", "one",
 }
 
 STOPWORDS = {"a", "an", "the", "of", "and", "or", "to", "in", "on", "for", "with"}
@@ -198,6 +199,14 @@ def is_control_heading(text: str) -> tuple[bool, bool, str]:
         name = m.group(2).strip().rstrip(":").strip()
         if 1 < len(name) <= MAX_HEADING_CHARS and not name.endswith((".", ",")):
             return True, True, name
+        # heading กับ description อยู่บรรทัดเดียวกัน เช่น
+        # "(1) Battery Charge/Discharge Indication Indications are as shown..."
+        # ชื่อยาวเกิน MAX_HEADING_CHARS ลอง split ที่ control noun แรก
+        noun_match = RE_CONTROL_NOUN.search(name)
+        if noun_match and len(name) > MAX_HEADING_CHARS:
+            heading = name[: noun_match.end()].strip()
+            if 1 < len(heading) <= MAX_HEADING_CHARS and not heading.endswith((".", ",")):
+                return True, True, heading
         return False, False, ""
 
     marker, body = strip_marker(text)
@@ -305,6 +314,7 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
     used_sections: set[str] = set()
     current: dict | None = None
     current_section: str | None = None
+    last_heading_idx: int | None = None
 
     # ย่อหน้าแรกคือชื่อเอกสาร ข้ามไป
     start = 1 if paragraphs and len(paragraphs[0][1]) < 40 else 0
@@ -333,6 +343,30 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
         heading, confident, name = is_control_heading(text)
 
         if heading:
+            # sub-heading ตรวจจับ: heading ที่ตามหลัง heading ก่อนหน้าภายใน 2 paragraphs
+            # และ parent ยังไม่มี body = เป็นส่วนประกอบของ parent ไม่ใช่ control ใหม่
+            # เช่น "RAT AND EMER GEN light" -> "FAULT Light" / "ENG 1(2) FAULT Light" -> "FAULT Light"
+            # ห้ามจับ numbered heading "(N)" เป็น sub-heading เพราะเป็น control แยกของหน้า ECAM
+            numbered = bool(RE_NUMBERED.match(text))
+            is_sub = (
+                not numbered
+                and current is not None
+                and not current.get("body")
+                and last_heading_idx is not None
+                and idx - last_heading_idx <= 2
+                and (
+                    name.lower() in current["name"].lower()
+                    or (
+                        len(name.split()) <= 3
+                        and RE_CONTROL_NOUN.search(name)
+                        and RE_CONTROL_NOUN.search(current["name"])
+                    )
+                )
+            )
+            if is_sub:
+                current["body"].append({"kind": "p", "text": name})
+                continue
+
             # รายการบนหน้า ECAM ขึ้นต้นด้วย "(N)" เสมอ ส่วนปุ่มกายภาพเป็น heading ธรรมดา
             # เจอ heading ที่ไม่มีเลขและไม่มี "(N)" ตามมาอีก = ออกจากหน้า ECAM แล้ว ต้องปิด section
             # ไม่งั้นปุ่มกายภาพท้ายเอกสารจะถูกดูดเข้า section สุดท้ายทั้งหมด
@@ -344,6 +378,16 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
             _, raw = strip_marker(text)
             if ":" in raw and raw.split(":", 1)[0].strip() == name:
                 inline = raw.split(":", 1)[1].strip()
+            elif RE_NUMBERED.match(text):
+                # "(N) Heading Description..." — heading กับ description บรรทัดเดียว
+                # is_control_heading split ที่ control noun แล้ว เก็บส่วนท้ายเป็น body
+                m_num = RE_NUMBERED.match(text)
+                after_num = m_num.group(2).strip()
+                idx_name = after_num.find(name)
+                if idx_name >= 0:
+                    rest = after_num[idx_name + len(name):].strip().rstrip(":").strip()
+                    if rest:
+                        inline = rest
 
             current = {
                 "id": make_id(prefix, name, used_ids),
@@ -359,6 +403,7 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
             if inline:
                 current["body"].append({"kind": "p", "text": inline})
             controls.append(current)
+            last_heading_idx = idx
             continue
 
         if current is None:

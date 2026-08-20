@@ -113,7 +113,13 @@ function validatePanel(file) {
 
     // --- body ---
     if (!Array.isArray(c.body) || c.body.length === 0) {
-      err(p, `${c.id}: empty body — ปุ่มนี้กดแล้วจะไม่มีอะไรขึ้น`);
+      // empty body + needsReview = เอกสารต้นฉบับไม่มีคำอธิบาย (เช่น backdrop/label บน ECAM)
+      // ถือเป็นงานค้างตามแผน ไม่ใช่ regression
+      if (c.needsReview) {
+        warn(p, `${c.id}: empty body (needsReview — เอกสารไม่มีคำอธิบาย)`);
+      } else {
+        err(p, `${c.id}: empty body — ปุ่มนี้กดแล้วจะไม่มีอะไรขึ้น`);
+      }
     } else {
       for (const b of c.body) {
         if (!VALID_KINDS.includes(b.kind)) err(p, `${c.id}: invalid body kind "${b.kind}"`);
