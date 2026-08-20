@@ -9,7 +9,18 @@
   "sections": [
     {
       "id": "eng",
-      "name": "ENG (ECAM)"
+      "name": "ENG (ECAM)",
+      "image": "eng.webp",
+      "imageSize": {
+        "w": 777,
+        "h": 499
+      },
+      "entry": {
+        "x": 0.464,
+        "y": 0.1108,
+        "w": 0.023,
+        "h": 0.0128
+      }
     },
     {
       "id": "bleed",
@@ -386,7 +397,12 @@
       "id": "cp_fuel_used",
       "name": "Fuel Used",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.2906,
+        "w": 1.0,
+        "h": 0.1002
+      },
       "body": [
         {
           "kind": "p",
@@ -405,7 +421,12 @@
       "id": "cp_oil_quantity",
       "name": "Oil Quantity",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.3908,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -420,7 +441,12 @@
       "id": "cp_oil_pressure",
       "name": "Oil Pressure",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.4709,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -435,7 +461,12 @@
       "id": "cp_oil_temperature",
       "name": "Oil Temperature",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.5511,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -450,7 +481,12 @@
       "id": "cp_vib",
       "name": "VIB",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.6313,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -465,7 +501,12 @@
       "id": "cp_oil_filter_clog",
       "name": "Oil Filter Clog",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.7114,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -480,7 +521,12 @@
       "id": "cp_fuel_filter_clog",
       "name": "Fuel Filter Clog",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.7916,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -495,7 +541,12 @@
       "id": "cp_ignition",
       "name": "Ignition",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.8717,
+        "w": 1.0,
+        "h": 0.0802
+      },
       "body": [
         {
           "kind": "p",
@@ -510,7 +561,12 @@
       "id": "cp_start_valve_position",
       "name": "Start Valve Position",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.9519,
+        "w": 1.0,
+        "h": 0.0481
+      },
       "body": [
         {
           "kind": "p",
@@ -529,7 +585,12 @@
       "id": "cp_engine_bleed_pressure",
       "name": "Engine Bleed Pressure",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.1002,
+        "w": 1.0,
+        "h": 0.1904
+      },
       "body": [
         {
           "kind": "p",
@@ -938,7 +999,12 @@
       "id": "cp_cross_bleed_valve",
       "name": "Cross-Bleed Valve",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.391,
+        "y": 0.6862,
+        "w": 0.2121,
+        "h": 0.0734
+      },
       "body": [
         {
           "kind": "p",
