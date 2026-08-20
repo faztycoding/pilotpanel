@@ -18,9 +18,10 @@
         "y1": 425
       },
       "image": "eng.webp",
+      "note": "ภาพ training schematic สร้างจาก 10 หัวข้อ ENG ใน Center Pedestal (finish).docx เพราะเอกสารไม่มีรูปหน้า ENG ต้นฉบับ",
       "imageSize": {
-        "w": 777,
-        "h": 499
+        "w": 1554,
+        "h": 998
       },
       "entry": {
         "x": 0.464,
