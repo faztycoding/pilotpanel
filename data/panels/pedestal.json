@@ -2282,6 +2282,26 @@
       "sectionId": "wheel"
     },
     {
+      "id": "cp_battery_charge_discharge_indication",
+      "name": "Battery Charge/Discharge Indication",
+      "type": "area",
+      "hotspot": {
+        "x": 0.2233,
+        "y": 0.0518,
+        "w": 0.2544,
+        "h": 0.0742
+      },
+      "body": [
+        {
+          "kind": "p",
+          "text": "Indications are as shown in the image below"
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p465",
+      "needsReview": false,
+      "sectionId": "elec"
+    },
+    {
       "id": "cp_battery_indication",
       "name": "Battery Indication",
       "type": "area",
@@ -3975,21 +3995,11 @@
         "w": 0.0295,
         "h": 0.0204
       },
-      "body": [],
-      "sourceRef": "Center Pedestal (finish).docx#p907",
-      "needsReview": true
-    },
-    {
-      "id": "cp_fault_light",
-      "name": "FAULT Light",
-      "type": "light",
-      "hotspot": {
-        "x": 0.4332,
-        "y": 0.5713,
-        "w": 0.0288,
-        "h": 0.0099
-      },
       "body": [
+        {
+          "kind": "p",
+          "text": "FAULT Light"
+        },
         {
           "kind": "warning",
           "text": "Amber light illuminates and an ECAM Caution appears if:"
@@ -4003,7 +4013,7 @@
           "text": "*There is disagreement between the HP fuel valve position and its commanded position."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p909",
+      "sourceRef": "Center Pedestal (finish).docx#p907",
       "needsReview": false
     },
     {
@@ -4351,21 +4361,11 @@
       "name": "Cockpit Door Toggle switch + Fault light",
       "type": "switch",
       "hotspot": null,
-      "body": [],
-      "sourceRef": "Center Pedestal (finish).docx#p1017",
-      "needsReview": true
-    },
-    {
-      "id": "cp_toggle_switch",
-      "name": "Toggle switch",
-      "type": "switch",
-      "hotspot": {
-        "x": 0.231,
-        "y": 0.7813,
-        "w": 0.0281,
-        "h": 0.0163
-      },
       "body": [
+        {
+          "kind": "p",
+          "text": "Toggle switch"
+        },
         {
           "kind": "p",
           "text": "UNLOCK: Enables cabin crew to open the door when the switch is pushed and maintained in this position."
@@ -4391,18 +4391,18 @@
           "text": "- If there is an electrical supply failure, the cockpit door is automatically unlocked, but remains closed."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p1018",
+      "sourceRef": "Center Pedestal (finish).docx#p1017",
       "needsReview": false
     },
     {
-      "id": "cp_fault_light_2",
+      "id": "cp_fault_light",
       "name": "Fault Light",
       "type": "light",
       "hotspot": {
-        "x": 0.1761,
-        "y": 0.7795,
-        "w": 0.035,
-        "h": 0.0221
+        "x": 0.4332,
+        "y": 0.5713,
+        "w": 0.0288,
+        "h": 0.0099
       },
       "body": [
         {

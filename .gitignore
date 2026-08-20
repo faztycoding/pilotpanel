@@ -52,3 +52,9 @@ assets/raw/
 # รูป panel ที่ลอง AI-gen ไว้ระหว่างทดลองสไตล์ใหม่ (ดู docs/FAILURES.md)
 # ยังไม่ผ่านการตรวจ hotspot/mapping เป็นทางการ ไม่ใช่ asset จริงที่ใช้ในแอป
 assets/ai-candidates/
+
+# PDF/PNG ต้นฉบับที่ลูกค้าส่งมา (ใช้สำหรับ build-panel-images.py)
+# source/*.docx เป็น source of truth ส่วน PDF เป็นสำเนาที่ไม่จำเป็นต้องเก็บใน repo
+*.pdf
+galaxy_screen.png
+galaxy screen.png

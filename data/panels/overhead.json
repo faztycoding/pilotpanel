@@ -178,12 +178,7 @@
       "id": "oh_ir_1_2_3_mode_rotary_selector",
       "name": "IR 1/2/3 Mode Rotary Selector",
       "type": "selector",
-      "hotspot": {
-        "x": 0.0733,
-        "y": 0.2682,
-        "w": 0.0436,
-        "h": 0.0474
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "bullet",
@@ -220,12 +215,7 @@
       "id": "oh_adr_1_2_3_push_button",
       "name": "ADR 1/2/3 push button",
       "type": "pushbutton",
-      "hotspot": {
-        "x": 0.0762,
-        "y": 0.3265,
-        "w": 0.0396,
-        "h": 0.0352
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "bullet",
@@ -926,21 +916,11 @@
       "name": "RAT AND EMER GEN light",
       "type": "light",
       "hotspot": null,
-      "body": [],
-      "sourceRef": "Overhead Panel (finish).docx#p227",
-      "needsReview": true
-    },
-    {
-      "id": "oh_fault_light_4",
-      "name": "FAULT Light",
-      "type": "light",
-      "hotspot": {
-        "x": 0.1731,
-        "y": 0.5499,
-        "w": 0.0364,
-        "h": 0.0365
-      },
       "body": [
+        {
+          "kind": "p",
+          "text": "FAULT Light"
+        },
         {
           "kind": "p",
           "text": "Comes on in red if the emergency generator fails to supply power in the event AC BUS 1 and 2 are not powered."
@@ -962,7 +942,7 @@
           "text": "Pressed Manually: Selects manual RAT extension and generator coupling occurs 3 seconds after the RAT starts supplying emergency generator."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p228",
+      "sourceRef": "Overhead Panel (finish).docx#p227",
       "needsReview": false
     },
     {
@@ -1135,14 +1115,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_5",
+      "id": "oh_fault_light_4",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.0727,
-        "y": 0.6255,
-        "w": 0.0355,
-        "h": 0.0156
+        "x": 0.1731,
+        "y": 0.5499,
+        "w": 0.0364,
+        "h": 0.0365
       },
       "body": [
         {
@@ -1177,14 +1157,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_6",
+      "id": "oh_fault_light_5",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.1536,
-        "y": 0.1501,
-        "w": 0.0436,
-        "h": 0.0187
+        "x": 0.0727,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0156
       },
       "body": [
         {
@@ -1477,22 +1457,11 @@
         {
           "kind": "bullet",
           "text": "*A continuous repetitive chime sounds."
-        }
-      ],
-      "sourceRef": "Overhead Panel (finish).docx#p361",
-      "needsReview": false
-    },
-    {
-      "id": "oh_associated_master_warning_lights_illuminate",
-      "name": "Associated MASTER Warning lights illuminate",
-      "type": "light",
-      "hotspot": {
-        "x": 0.3054,
-        "y": 0.1754,
-        "w": 0.0186,
-        "h": 0.0098
-      },
-      "body": [
+        },
+        {
+          "kind": "warning",
+          "text": "*Associated MASTER Warning lights illuminate"
+        },
         {
           "kind": "p",
           "text": "flashing in red."
@@ -1510,8 +1479,8 @@
           "text": "For the Engines, the FIRE lights also illuminate in red on the pedestal panel just below thrust master switches."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p364",
-      "needsReview": true
+      "sourceRef": "Overhead Panel (finish).docx#p361",
+      "needsReview": false
     },
     {
       "id": "oh_eng_1_2_pump_push_button",
@@ -1545,14 +1514,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_7",
+      "id": "oh_fault_light_6",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.3642,
-        "y": 0.29,
-        "w": 0.0349,
-        "h": 0.0158
+        "x": 0.1536,
+        "y": 0.1501,
+        "w": 0.0436,
+        "h": 0.0187
       },
       "body": [
         {
@@ -1623,14 +1592,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_8",
+      "id": "oh_fault_light_7",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.4386,
-        "y": 0.2702,
-        "w": 0.0326,
-        "h": 0.0274
+        "x": 0.3642,
+        "y": 0.29,
+        "w": 0.0349,
+        "h": 0.0158
       },
       "body": [
         {
@@ -1693,14 +1662,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_9",
+      "id": "oh_fault_light_8",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.5887,
-        "y": 0.2631,
-        "w": 0.0332,
-        "h": 0.0153
+        "x": 0.4386,
+        "y": 0.2702,
+        "w": 0.0326,
+        "h": 0.0274
       },
       "body": [
         {
@@ -1759,14 +1728,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_10",
+      "id": "oh_fault_light_9",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.6856,
-        "y": 0.2772,
-        "w": 0.025,
-        "h": 0.0115
+        "x": 0.5887,
+        "y": 0.2631,
+        "w": 0.0332,
+        "h": 0.0153
       },
       "body": [
         {
@@ -1833,14 +1802,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_11",
+      "id": "oh_fault_light_10",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.3438,
-        "y": 0.4008,
-        "w": 0.032,
-        "h": 0.0173
+        "x": 0.6856,
+        "y": 0.2772,
+        "w": 0.025,
+        "h": 0.0115
       },
       "body": [
         {
@@ -1933,14 +1902,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_12",
+      "id": "oh_fault_light_11",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.4619,
-        "y": 0.4033,
-        "w": 0.0355,
-        "h": 0.0158
+        "x": 0.3438,
+        "y": 0.4008,
+        "w": 0.032,
+        "h": 0.0173
       },
       "body": [
         {
@@ -1991,13 +1960,13 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_13",
+      "id": "oh_fault_light_12",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.5026,
+        "x": 0.4619,
         "y": 0.4033,
-        "w": 0.0349,
+        "w": 0.0355,
         "h": 0.0158
       },
       "body": [
@@ -2072,13 +2041,13 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_14",
+      "id": "oh_fault_light_13",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.3147,
-        "y": 0.5019,
-        "w": 0.0343,
+        "x": 0.5026,
+        "y": 0.4033,
+        "w": 0.0349,
         "h": 0.0158
       },
       "body": [
@@ -2110,14 +2079,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_15",
+      "id": "oh_fault_light_14",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.3159,
-        "y": 0.5538,
-        "w": 0.0361,
-        "h": 0.017
+        "x": 0.3147,
+        "y": 0.5019,
+        "w": 0.0343,
+        "h": 0.0158
       },
       "body": [
         {
@@ -2176,14 +2145,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_16",
+      "id": "oh_fault_light_15",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.441,
-        "y": 0.5551,
-        "w": 0.0355,
-        "h": 0.0158
+        "x": 0.3159,
+        "y": 0.5538,
+        "w": 0.0361,
+        "h": 0.017
       },
       "body": [
         {
@@ -2266,13 +2235,13 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_17",
+      "id": "oh_fault_light_16",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.4648,
-        "y": 0.4622,
-        "w": 0.0727,
+        "x": 0.441,
+        "y": 0.5551,
+        "w": 0.0355,
         "h": 0.0158
       },
       "body": [
@@ -2320,13 +2289,13 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_18",
+      "id": "oh_fault_light_17",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.5963,
-        "y": 0.4846,
-        "w": 0.0343,
+        "x": 0.4648,
+        "y": 0.4622,
+        "w": 0.0727,
         "h": 0.0158
       },
       "body": [
@@ -2553,12 +2522,12 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_19",
+      "id": "oh_fault_light_18",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.3618,
-        "y": 0.7286,
+        "x": 0.5963,
+        "y": 0.4846,
         "w": 0.0343,
         "h": 0.0158
       },
@@ -2682,11 +2651,11 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_20",
+      "id": "oh_fault_light_19",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.5055,
+        "x": 0.3618,
         "y": 0.7286,
         "w": 0.0343,
         "h": 0.0158
@@ -2931,14 +2900,14 @@
       "needsReview": false
     },
     {
-      "id": "oh_fault_light_21",
+      "id": "oh_fault_light_20",
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.5998,
-        "y": 0.8083,
-        "w": 0.0271,
-        "h": 0.0151
+        "x": 0.5055,
+        "y": 0.7286,
+        "w": 0.0343,
+        "h": 0.0158
       },
       "body": [
         {

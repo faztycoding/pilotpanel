@@ -790,6 +790,12 @@
       "x1": 634,
       "y1": 840
     },
+    "cp_battery_charge_discharge_indication": {
+      "x0": 280,
+      "y0": 65,
+      "x1": 599,
+      "y1": 158
+    },
     "cp_battery_indication": {
       "x0": 424,
       "y0": 158,
