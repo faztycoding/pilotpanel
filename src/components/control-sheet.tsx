@@ -1,6 +1,6 @@
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useEffect, useMemo, useRef } from 'react';
-import { StyleSheet, useWindowDimensions } from 'react-native';
+import { StyleSheet, useWindowDimensions, View } from 'react-native';
 
 import { BodyBlocks } from '@/components/body-blocks';
 import { ThemedText } from '@/components/themed-text';
@@ -67,9 +67,12 @@ export function ControlSheet({ control, panelId, onClose }: Props) {
               // เอกสารลูกค้ามีบางรายการที่เป็นหัวข้อกลุ่ม หรืออธิบายด้วยรูปแทนข้อความ
               // (เช่น "(10) YELLOW ELEC PUMP Control" ที่ในไฟล์ต้นฉบับมีแต่รูป)
               // บอกตรง ๆ ดีกว่าเด้งกล่องเปล่าให้ผู้ใช้เดาว่าแอปพัง — และทำให้เห็นว่าต้องขออะไรเพิ่ม
-              <ThemedText style={{ color: theme.textSecondary }}>
-                เอกสารต้นฉบับไม่มีคำอธิบายข้อความสำหรับรายการนี้
-              </ThemedText>
+              <View style={[styles.emptyBody, { backgroundColor: theme.backgroundElement }]}>
+                <ThemedText type="smallBold">ยังไม่มีคำอธิบาย</ThemedText>
+                <ThemedText type="small" style={{ color: theme.textSecondary }}>
+                  เอกสารต้นฉบับไม่มีคำอธิบายข้อความสำหรับรายการนี้
+                </ThemedText>
+              </View>
             )}
           </>
         ) : null}
@@ -87,5 +90,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     lineHeight: 32,
+  },
+  emptyBody: {
+    gap: Spacing.one,
+    padding: Spacing.three,
+    borderRadius: Spacing.two,
   },
 });
