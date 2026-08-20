@@ -323,6 +323,13 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
             current = None
             continue
 
+        previous_idx = items[pos - 1][0] if pos > 0 else idx
+        if RE_ALLCAPS.match(text) and idx - previous_idx >= 8:
+            current_section = None
+            current = None
+            unassigned.append({"sourceRef": f"{filename}#p{idx}", "text": text})
+            continue
+
         heading, confident, name = is_control_heading(text)
 
         if heading:
