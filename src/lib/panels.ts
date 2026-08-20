@@ -57,6 +57,7 @@ export function getDetailImage(panelId: string, controlId: string): PanelImage |
  * (ยังไม่มีรูปพร้อมตอนนี้ — เพิ่มพร้อมกับ data/sections-manual.json ตอนได้รูปจริง)
  */
 const SECTION_IMAGES: Record<string, PanelImage> = {
+  'pedestal:eng': require('@/assets/sections/pedestal/eng.webp'),
   'pedestal:bleed': require('@/assets/sections/pedestal/bleed.webp'),
   'pedestal:press': require('@/assets/sections/pedestal/press.webp'),
   'pedestal:elec': require('@/assets/sections/pedestal/elec.webp'),
@@ -206,7 +207,7 @@ export function placedControls(panel: Panel): (Control & { hotspot: Hotspot })[]
 
 /**
  * โซนที่เปิดดูได้จริง = มีทั้งรูปและขนาดรูป — ใช้ทำแถบสลับหน้า ECAM
- * โซนที่ยังไม่มีรูป (เช่นหน้า ENG ที่เอกสารลูกค้าไม่มีภาพ) ต้องไม่โผล่ในแถบ
+ * โซนที่ยังไม่มีรูป (เช่นหน้าที่เอกสารลูกค้ายังไม่มีภาพ) ต้องไม่โผล่ในแถบ
  * ไม่งั้นผู้ใช้กดแล้วเจอหน้าเปล่า
  */
 export function selectableSections(panel: Panel): Section[] {
