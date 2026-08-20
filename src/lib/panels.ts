@@ -3,6 +3,8 @@
  * ตรรกะการตรวจอยู่ใน parse-panel.ts เพื่อให้ทดสอบแยกนอกแอปได้
  */
 
+import { Platform } from 'react-native';
+
 import homeJson from '@data/panels/_home.json';
 import glareshieldJson from '@data/panels/glareshield.json';
 import instrumentJson from '@data/panels/instrument.json';
@@ -127,7 +129,7 @@ export function getPanelImage(panelId: string): PanelImage | undefined {
  * ใช้ทั้งในหน้าแรก (กรองโซนกด) และหน้า panel (กัน deeplink เข้าตรง)
  * ปิด demo ให้เปลี่ยนเป็น undefined — คืนพฤติกรรมปกติทุกแผง
  */
-export const DEMO_ALLOWED_PANEL: string | undefined = 'glareshield';
+export const DEMO_ALLOWED_PANEL: string | undefined = Platform.OS === 'web' ? undefined : 'glareshield';
 
 /** true ถ้า demo เปิดและแผงนี้ไม่อยู่ใน allowlist — ใช้ guard ในหน้า panel */
 export function isPanelBlockedByDemo(panelId: string | undefined): boolean {
@@ -164,10 +166,17 @@ export const HOME_PANEL_ID = '_home';
  * ตัวที่ไม่มี target จะกดแล้วไปไหนไม่ได้ ต้องไม่ render (กันปุ่มตายบนหน้าแรก)
  */
 export function homeZones(panel: Panel): (Control & { hotspot: Hotspot; target: string })[] {
-  return panel.controls.filter(
-    (control): control is Control & { hotspot: Hotspot; target: string } =>
-      control.hotspot !== null && typeof control.target === 'string' && control.target.length > 0
-  );
+  const seen = new Set<string>();
+  return panel.controls
+    .filter(
+      (control): control is Control & { hotspot: Hotspot; target: string } =>
+        control.hotspot !== null && typeof control.target === 'string' && control.target.length > 0
+    )
+    .filter((control) => {
+      if (seen.has(control.target)) return false;
+      seen.add(control.target);
+      return true;
+    });
 }
 
 /**

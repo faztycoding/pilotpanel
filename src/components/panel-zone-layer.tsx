@@ -27,21 +27,25 @@ type Props = {
   display: Size;
   scale: number;
   onPress: (zone: ZoneControl) => void;
+  isEnabled?: (zone: ZoneControl) => boolean;
   /** เพิ่มไฮไลต์สีสดตอนพัฒนา (เข้มกว่า HotspotIndicator ที่โชว์ผู้ใช้จริงตลอดเวลา) */
   debug?: boolean;
 };
 
-export function PanelZoneLayer({ zones, display, scale, onPress, debug = false }: Props) {
+export function PanelZoneLayer({ zones, display, scale, onPress, isEnabled, debug = false }: Props) {
   return (
     <>
       {zones.map((zone) => {
         const box = hotspotToBox(zone.hotspot, display);
         const slop = hitSlopFor(box, scale);
+        const enabled = isEnabled?.(zone) ?? true;
         return (
           <Pressable
             key={zone.id}
             accessibilityRole="button"
             accessibilityLabel={zone.name}
+            accessibilityState={{ disabled: !enabled }}
+            disabled={!enabled}
             onPress={() => onPress(zone)}
             hitSlop={{
               left: slop.horizontal / scale,

@@ -7,7 +7,13 @@ import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { PanelZoneLayer } from '@/components/panel-zone-layer';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
-import { DEMO_ALLOWED_PANEL, getPanel, getPanelImage, HOME_PANEL_ID, homeZones } from '@/lib/panels';
+import {
+  getPanel,
+  getPanelImage,
+  HOME_PANEL_ID,
+  homeZones,
+  isPanelBlockedByDemo,
+} from '@/lib/panels';
 import type { Control, Hotspot } from '@/lib/types';
 
 /**
@@ -26,17 +32,19 @@ export default function HomeScreen() {
   const image = getPanelImage(HOME_PANEL_ID);
 
   const [scale, setScale] = useState(1);
-  const zones = useMemo(() => {
-    const all = panel ? homeZones(panel) : [];
-    return DEMO_ALLOWED_PANEL ? all.filter((z) => z.target === DEMO_ALLOWED_PANEL) : all;
-  }, [panel]);
+  const zones = useMemo(() => (panel ? homeZones(panel) : []), [panel]);
 
   const handleScaleSettled = useCallback((next: number) => setScale(next), []);
   const handlePress = useCallback(
     (zone: Control & { hotspot: Hotspot; target: string }) => {
+      if (isPanelBlockedByDemo(zone.target)) return;
       router.push(`/panel/${zone.target}`);
     },
     [router]
+  );
+  const isZoneEnabled = useCallback(
+    (zone: Control & { hotspot: Hotspot; target: string }) => !isPanelBlockedByDemo(zone.target),
+    []
   );
 
   if (!panel || image === undefined) {
@@ -58,7 +66,13 @@ export default function HomeScreen() {
           initialZoom="contain"
           onScaleSettled={handleScaleSettled}
           renderOverlay={(size) => (
-            <PanelZoneLayer zones={zones} display={size} scale={scale} onPress={handlePress} />
+            <PanelZoneLayer
+              zones={zones}
+              display={size}
+              scale={scale}
+              onPress={handlePress}
+              isEnabled={isZoneEnabled}
+            />
           )}
         />
       </CockpitBackdrop>
