@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import { Pressable, StyleSheet } from 'react-native';
 
-import { HotspotIndicator, NoWebFocusOutline } from '@/constants/theme';
+import { HOTSPOT_BORDER_RADIUS, HOTSPOT_BORDER_WIDTH, HotspotIndicator, NoWebFocusOutline } from '@/constants/theme';
 import { hitSlopFor, hotspotToBox, type Size } from '@/lib/layout';
 import { getDetailImage } from '@/lib/panels';
 import type { Control, Hotspot } from '@/lib/types';
@@ -65,7 +65,14 @@ export function HotspotLayer({ panelId, controls, display, scale, onPress, debug
             style={[
               styles.hotspot,
               debug && styles.debug,
-              { left: box.left, top: box.top, width: box.width, height: box.height },
+              {
+                left: box.left,
+                top: box.top,
+                width: box.width,
+                height: box.height,
+                borderWidth: HOTSPOT_BORDER_WIDTH / Math.max(scale, 1),
+                borderRadius: HOTSPOT_BORDER_RADIUS / Math.max(scale, 1),
+              },
             ]}>
             {detailImage ? (
               // allowDownscaling={false} จำเป็น: default เป็น true = expo-image decode รูปเท่าขนาด

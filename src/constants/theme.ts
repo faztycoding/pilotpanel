@@ -94,10 +94,13 @@ export const NoWebFocusOutline: ViewStyle = Platform.select({
  * ที่ตัดกับพื้นได้ทั้งสองแบบ ส่วน backgroundColor จางมาก ๆ ช่วยให้เห็นพื้นที่จริงของกรอบ
  * เวลาอยู่บนพื้นที่มีลวดลายซับซ้อน ไม่ใช่แค่เห็นเส้นขอบ
  */
+export const HOTSPOT_BORDER_WIDTH = 1.5;
+export const HOTSPOT_BORDER_RADIUS = 3;
+
 export const HotspotIndicator: ViewStyle = {
-  borderWidth: 1.5,
+  borderWidth: HOTSPOT_BORDER_WIDTH,
   borderStyle: 'dashed',
   borderColor: 'rgba(255, 255, 255, 0.75)',
   backgroundColor: 'rgba(255, 255, 255, 0.06)',
-  borderRadius: 3,
+  borderRadius: HOTSPOT_BORDER_RADIUS,
 };
