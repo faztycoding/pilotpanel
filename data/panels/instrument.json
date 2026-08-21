@@ -58,7 +58,12 @@
       "id": "ip_primary_flight_display",
       "name": "Primary Flight Display",
       "type": "light",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      },
       "body": [],
       "sourceRef": "Instrument Panel.docx#p2",
       "needsReview": true,
@@ -809,6 +814,21 @@
       "sectionId": "pfd"
     },
     {
+      "id": "ip_target_altitude_or_selected_flight_level_sym_2",
+      "name": "Target Altitude or Selected Flight Level Symbol (blue)",
+      "type": "light",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "This symbol indicates the selected altitude or flight level depending on whether a QNH or STD barometric setting is used.If the target altitude is gained from the FMGS like with ALT CSTR then the symbol appears magenta.When the target altitude/level is on the scale, the symbol is displayed and the numerical value appears inside it. If the target altitude/level is off the scale, then only the numerical value is shown above/below the scale."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p247",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
       "id": "ip_altitude_indication_scale",
       "name": "Altitude Indication Scale",
       "type": "area",
@@ -1049,10 +1069,30 @@
       "sectionId": "pfd"
     },
     {
+      "id": "ip_barometric_reference_2",
+      "name": "Barometric Reference",
+      "type": "area",
+      "hotspot": null,
+      "body": [
+        {
+          "kind": "p",
+          "text": "The display either shows STD or QNH setting. With QNH it also displays the numerical value in blue. The display pulses if the selection made by the crew is incorrect e.g. when STD is not selected above transition altitude in climb or STD is still selected in approach below transition level."
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p300",
+      "needsReview": true,
+      "sectionId": "pfd"
+    },
+    {
       "id": "ip_navigational_display",
       "name": "Navigational Display",
       "type": "display",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 1.0,
+        "h": 1.0
+      },
       "body": [],
       "sourceRef": "Instrument Panel.docx#p306",
       "needsReview": true,

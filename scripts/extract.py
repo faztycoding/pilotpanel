@@ -76,6 +76,9 @@ BULLET_PREFIXES = (":", "-", "*", "•", "–", "—", "(")
 
 RE_WARNING = re.compile(r"\b(warning|caution|danger|do not|never)\b", re.IGNORECASE)
 RE_NOTE = re.compile(r"^\s*(note|ps|nb)\s*[:.]", re.IGNORECASE)
+# Legend ในหน้า ECAM เช่น "C = Cold (Valve closed)" / "H = Hot (Valve open)"
+# ไม่ใช่ control — เป็นคำอธิบายสัญลักษณ์ในรูป แต่ผ่าน heading detection เพราะเป็น Title Case สั้น ๆ
+RE_LEGEND = re.compile(r"^[A-Z]\s*=\s+\S", re.IGNORECASE)
 
 # "(9) Release Indicators" — รูปแบบรายการบนหน้า ECAM SD ของ Center Pedestal
 RE_NUMBERED = re.compile(r"^\(\s*(\d{1,2})\s*\)\s*(.+)$")
@@ -193,6 +196,10 @@ def is_control_heading(text: str) -> tuple[bool, bool, str]:
     if not text:
         return False, False, ""
 
+    # legend ของหน้า ECAM เช่น "C = Cold (Valve closed)" — ไม่ใช่ control
+    if RE_LEGEND.match(text):
+        return False, False, ""
+
     # --- รูปแบบที่ชัดเจนที่สุด: "(9) Release Indicators" ---
     m = RE_NUMBERED.match(text)
     if m:
@@ -207,6 +214,18 @@ def is_control_heading(text: str) -> tuple[bool, bool, str]:
             heading = name[: noun_match.end()].strip()
             if 1 < len(heading) <= MAX_HEADING_CHARS and not heading.endswith((".", ",")):
                 return True, True, heading
+        # fallback: split ที่ SENTENCE_STARTER ตัวแรกที่ไม่ใช่คำแรก — เช่น
+        # "(4) Pack Compressor Outlet Temperature Appears in Green..."
+        # "Temperature" ไม่อยู่ใน CONTROL_NOUNS จึงต้องใช้ "Appears" เป็นจุดตัด
+        # (หัวข้อ ECAM เป็น noun phrase เสมอ ไม่มีวันขึ้นต้นด้วย sentence starter)
+        if len(name) > MAX_HEADING_CHARS:
+            words = name.split()
+            for wi in range(1, len(words)):
+                if words[wi].lower().strip(".,;:") in SENTENCE_STARTERS:
+                    heading = " ".join(words[:wi]).strip()
+                    if 1 < len(heading) <= MAX_HEADING_CHARS and not heading.endswith((".", ",")):
+                        return True, True, heading
+                    break
         return False, False, ""
 
     marker, body = strip_marker(text)

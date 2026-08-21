@@ -690,6 +690,14 @@
         {
           "kind": "p",
           "text": "Indicated in Green."
+        },
+        {
+          "kind": "p",
+          "text": "C = Cold (Valve closed)"
+        },
+        {
+          "kind": "p",
+          "text": "H = Hot (Valve open)"
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p112",
@@ -697,38 +705,18 @@
       "sectionId": "bleed"
     },
     {
-      "id": "cp_c_cold_valve_closed",
-      "name": "C = Cold (Valve closed)",
+      "id": "cp_pack_compressor_outlet_temperature",
+      "name": "Pack Compressor Outlet Temperature",
       "type": "area",
-      "hotspot": {
-        "x": 0.2531,
-        "y": 0.6167,
-        "w": 0.0272,
-        "h": 0.0237
-      },
-      "body": [],
-      "sourceRef": "Center Pedestal (finish).docx#p114",
-      "needsReview": true,
-      "sectionId": "bleed"
-    },
-    {
-      "id": "cp_h_hot_valve_open",
-      "name": "H = Hot (Valve open)",
-      "type": "area",
-      "hotspot": {
-        "x": 0.3618,
-        "y": 0.6167,
-        "w": 0.0298,
-        "h": 0.0237
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "p",
-          "text": "(4) Pack Compressor Outlet Temperature Appears in Green and turns Amber if the temp exceeds 260°C."
+          "text": "Appears in Green and turns Amber if the temp exceeds 260°C."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p115",
-      "needsReview": true,
+      "sourceRef": "Center Pedestal (finish).docx#p117",
+      "needsReview": false,
       "sectionId": "bleed"
     },
     {
@@ -1189,17 +1177,28 @@
         {
           "kind": "p",
           "text": "Green when the MODE SEL switch is in MAN."
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p205",
+      "needsReview": false,
+      "sectionId": "press"
+    },
+    {
+      "id": "cp_safety_valve_position_safety",
+      "name": "Safety Valve Position 'SAFETY'",
+      "type": "area",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
-          "text": "(7) Safety Valve Position 'SAFETY' appears in white and the diagram in Green when both safety valves are fully closed. Both appear in Amber when either valve is not closed."
+          "text": "appears in white and the diagram in Green when both safety valves are fully closed. Both appear in Amber when either valve is not closed."
         },
         {
           "kind": "note",
           "text": "note: that the safety valve opens when the cabin differential pressure is in the range of between 8.2 and 8.9 psi."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p205",
+      "sourceRef": "Center Pedestal (finish).docx#p209",
       "needsReview": false,
       "sectionId": "press"
     },
