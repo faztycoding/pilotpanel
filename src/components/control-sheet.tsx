@@ -61,16 +61,42 @@ export function ControlSheet({ control, panelId, onClose }: Props) {
             <ThemedText type="subtitle" style={styles.title}>
               {control.name}
             </ThemedText>
+            {control.hotspotUnavailableReason ? (
+              <View style={[styles.emptyBody, { backgroundColor: theme.noteBackground }]}>
+                <ThemedText type="small" themeColor="note">
+                  รายการนี้ไม่มีตำแหน่งบนภาพ: {control.hotspotUnavailableReason}
+                </ThemedText>
+              </View>
+            ) : null}
             {control.body.length > 0 ? (
               <BodyBlocks body={control.body} panelId={panelId ?? ''} controlId={control.id} />
             ) : (
               // เอกสารลูกค้ามีบางรายการที่เป็นหัวข้อกลุ่ม หรืออธิบายด้วยรูปแทนข้อความ
               // (เช่น "(10) YELLOW ELEC PUMP Control" ที่ในไฟล์ต้นฉบับมีแต่รูป)
               // บอกตรง ๆ ดีกว่าเด้งกล่องเปล่าให้ผู้ใช้เดาว่าแอปพัง — และทำให้เห็นว่าต้องขออะไรเพิ่ม
-              <View style={[styles.emptyBody, { backgroundColor: theme.backgroundElement }]}>
-                <ThemedText type="smallBold">ยังไม่มีคำอธิบาย</ThemedText>
-                <ThemedText type="small" style={{ color: theme.textSecondary }}>
-                  เอกสารต้นฉบับไม่มีคำอธิบายข้อความสำหรับรายการนี้
+              <View
+                style={[
+                  styles.emptyBody,
+                  {
+                    backgroundColor: control.bodyUnavailableReason
+                      ? theme.noteBackground
+                      : theme.backgroundElement,
+                  },
+                ]}>
+                <ThemedText
+                  type="smallBold"
+                  themeColor={control.bodyUnavailableReason ? 'note' : undefined}>
+                  {control.bodyUnavailableReason
+                    ? 'ไม่มีคำอธิบายในเอกสารต้นฉบับ'
+                    : 'ยังไม่มีคำอธิบาย'}
+                </ThemedText>
+                <ThemedText
+                  type="small"
+                  style={{
+                    color: control.bodyUnavailableReason ? theme.note : theme.textSecondary,
+                  }}>
+                  {control.bodyUnavailableReason ??
+                    'เอกสารต้นฉบับไม่มีคำอธิบายข้อความสำหรับรายการนี้'}
                 </ThemedText>
               </View>
             )}

@@ -81,10 +81,16 @@ function parseControl(value: unknown, path: string): Control {
   const body = asArray(raw.body, `${path}.body`).map((block, i) =>
     parseBodyBlock(block, `${path}.body[${i}]`)
   );
+  const bodyUnavailableReason = raw.bodyUnavailableReason === undefined
+    ? undefined
+    : asString(raw.bodyUnavailableReason, `${path}.bodyUnavailableReason`);
   // body ว่างเป็นปัญหา "คุณภาพข้อมูล" ไม่ใช่ "รูปร่างผิด" — validate:data gate ไว้ตอน build แล้ว
   // ที่นี่จึงเตือนแทนการ throw ไม่งั้นแอปจะพังใน dev เพราะงานข้อมูลที่ยังค้างอยู่
-  if (body.length === 0) {
+  if (body.length === 0 && bodyUnavailableReason === undefined) {
     console.warn(`[panel] ${path}: body ว่าง — กดแล้วจะไม่มีอะไรขึ้น (ดู npm run validate:data)`);
+  }
+  if (body.length > 0 && bodyUnavailableReason !== undefined) {
+    fail(`${path}.bodyUnavailableReason`, 'มีเหตุผลว่า body ไม่มี แต่ body มีข้อมูลอยู่แล้ว');
   }
 
   const control: Control = {
@@ -96,6 +102,18 @@ function parseControl(value: unknown, path: string): Control {
     sourceRef: asString(raw.sourceRef, `${path}.sourceRef`),
     needsReview: raw.needsReview === true,
   };
+  if (bodyUnavailableReason !== undefined) {
+    control.bodyUnavailableReason = bodyUnavailableReason;
+  }
+  if (raw.hotspotUnavailableReason !== undefined) {
+    control.hotspotUnavailableReason = asString(
+      raw.hotspotUnavailableReason,
+      `${path}.hotspotUnavailableReason`
+    );
+  }
+  if (control.hotspot !== null && control.hotspotUnavailableReason !== undefined) {
+    fail(`${path}.hotspotUnavailableReason`, 'มีเหตุผลว่า hotspot ไม่มี แต่ hotspot มีข้อมูลอยู่แล้ว');
+  }
   if (raw.sectionId !== undefined) {
     control.sectionId = asString(raw.sectionId, `${path}.sectionId`);
   }

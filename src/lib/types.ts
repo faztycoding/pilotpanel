@@ -53,6 +53,8 @@ export type Control = {
   body: BodyBlock[];
   sourceRef: string;
   needsReview: boolean;
+  bodyUnavailableReason?: string;
+  hotspotUnavailableReason?: string;
   sectionId?: string;
   /** panelId ปลายทาง — ถ้ามี แตะแล้ว navigate ไปหน้านั้นแทนการเปิดคำอธิบาย (ใช้ใน _home.json) */
   target?: string;

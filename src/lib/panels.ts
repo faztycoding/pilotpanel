@@ -227,3 +227,12 @@ export function sectionControls(
       control.sectionId === sectionId && control.hotspot !== null
   );
 }
+
+export function unavailableControls(panel: Panel, sectionId?: string): Control[] {
+  return panel.controls.filter(
+    (control) =>
+      control.hotspot === null &&
+      control.hotspotUnavailableReason !== undefined &&
+      control.sectionId === sectionId
+  );
+}

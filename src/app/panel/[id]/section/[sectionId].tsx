@@ -7,10 +7,18 @@ import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { ControlSheet } from '@/components/control-sheet';
 import { EcamPageStrip } from '@/components/ecam-page-strip';
 import { HotspotLayer } from '@/components/hotspot-layer';
+import { SupplementalControlStrip } from '@/components/supplemental-control-strip';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
 import { Spacing } from '@/constants/theme';
-import { getPanel, getSectionImage, isPanelBlockedByDemo, sectionControls, selectableSections } from '@/lib/panels';
+import {
+    getPanel,
+    getSectionImage,
+    isPanelBlockedByDemo,
+    sectionControls,
+    selectableSections,
+    unavailableControls,
+} from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
 
 /**
@@ -43,6 +51,10 @@ export default function SectionScreen() {
 
   const controls = useMemo(
     () => (panel && sectionId ? sectionControls(panel, sectionId) : []),
+    [panel, sectionId]
+  );
+  const supplementalControls = useMemo(
+    () => (panel && sectionId ? unavailableControls(panel, sectionId) : []),
     [panel, sectionId]
   );
   const pages = useMemo(() => (panel ? selectableSections(panel) : []), [panel]);
@@ -97,6 +109,7 @@ export default function SectionScreen() {
       {pages.length > 1 ? (
         <EcamPageStrip sections={pages} activeId={section.id} onSelect={handleSelectPage} />
       ) : null}
+      <SupplementalControlStrip controls={supplementalControls} onSelect={setSelected} />
 
       <ControlSheet control={selected} panelId={panel.panelId} onClose={handleClose} />
       </CockpitBackdrop>

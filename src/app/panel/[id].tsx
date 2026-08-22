@@ -7,9 +7,17 @@ import { CockpitBackdrop } from '@/components/cockpit-backdrop';
 import { ControlSheet } from '@/components/control-sheet';
 import { HotspotLayer } from '@/components/hotspot-layer';
 import { SectionEntryLayer } from '@/components/section-entry-layer';
+import { SupplementalControlStrip } from '@/components/supplemental-control-strip';
 import { ThemedText } from '@/components/themed-text';
 import { ZoomableImage } from '@/components/zoomable-image';
-import { getPanel, getPanelImage, hotspotFocus, isPanelBlockedByDemo, placedControls } from '@/lib/panels';
+import {
+    getPanel,
+    getPanelImage,
+    hotspotFocus,
+    isPanelBlockedByDemo,
+    placedControls,
+    unavailableControls,
+} from '@/lib/panels';
 import type { Control, Hotspot, Section } from '@/lib/types';
 
 export default function PanelScreen() {
@@ -30,6 +38,7 @@ export default function PanelScreen() {
   const [selected, setSelected] = useState<Control | null>(null);
 
   const controls = useMemo(() => (panel ? placedControls(panel) : []), [panel]);
+  const supplementalControls = useMemo(() => (panel ? unavailableControls(panel) : []), [panel]);
   // เปิดหน้ามาให้กลุ่มปุ่มจริงอยู่กลางจอ ไม่ใช่กลางรูป (สำคัญกับ glareshield ที่รูปกว้าง 11:1)
   const focus = useMemo(() => (panel ? hotspotFocus(panel) : undefined), [panel]);
   // section ที่มีทั้งรูปตัวเองและตำแหน่งเข้าบนรูปหลักแล้ว — ที่เหลือรอวางพิกัด ยังไม่ render
@@ -96,6 +105,7 @@ export default function PanelScreen() {
         )}
       />
 
+      <SupplementalControlStrip controls={supplementalControls} onSelect={setSelected} />
       <ControlSheet control={selected} panelId={panel.panelId} onClose={handleClose} />
       </CockpitBackdrop>
     </SafeAreaView>
