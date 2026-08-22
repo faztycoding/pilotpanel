@@ -66,7 +66,8 @@
       },
       "body": [],
       "sourceRef": "Instrument Panel.docx#p2",
-      "needsReview": true,
+      "needsReview": false,
+      "bodyUnavailableReason": "เอกสารต้นฉบับมีเฉพาะชื่อหัวข้อ Primary Flight Display",
       "sectionId": "pfd"
     },
     {
@@ -138,7 +139,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p25",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -433,7 +434,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p28",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -575,26 +576,50 @@
         {
           "kind": "bullet",
           "text": "*A/THR - In blue means A/THR is armed."
-        },
-        {
-          "kind": "p",
-          "text": "Roll Index (yellow)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p114",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_roll_index_yellow",
+      "name": "Roll Index (yellow)",
+      "type": "area",
+      "hotspot": {
+        "x": 0.4239,
+        "y": 0.1562,
+        "w": 0.1099,
+        "h": 0.0576
+      },
+      "body": [
         {
           "kind": "p",
           "text": "This indicates the bank angle. When the angle exceeds 45°, all the PFD symbols, except those for attitude, speed, heading, altitude and vertical speed disappear. Display returns to normal once the angle is less than 40°."
-        },
-        {
-          "kind": "p",
-          "text": "Sideslip Index (yellow)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p176",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_sideslip_index_yellow",
+      "name": "Sideslip Index (yellow)",
+      "type": "area",
+      "hotspot": {
+        "x": 0.4199,
+        "y": 0.2179,
+        "w": 0.1295,
+        "h": 0.0699
+      },
+      "body": [
         {
           "kind": "p",
           "text": "It's in the shape of a trapezium and it moves beneath the roll index. On the ground it represents the lateral acceleration of the aircraft. In flight it shows sideslip as computer by the FAC's. One centimeter of displacement equates to 0.2g. The index reaches against its stop at 0.3g. In the event of operating in single engine mode during takeoff/go-around, the sideslip index turns blue into a beta target. This occurs if CONF 1,2 or 3 is selected and any engine N1>80% and the difference between the engine N1's exceeds 35%."
         }
       ],
-      "sourceRef": "Instrument Panel.docx#p114",
-      "needsReview": true,
+      "sourceRef": "Instrument Panel.docx#p179",
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -602,10 +627,10 @@
       "name": "Roll Scale",
       "type": "area",
       "hotspot": {
-        "x": 0.3297,
-        "y": 0.1628,
-        "w": 0.2763,
-        "h": 0.102
+        "x": 0.2826,
+        "y": 0.1562,
+        "w": 0.1334,
+        "h": 0.1151
       },
       "body": [
         {
@@ -614,7 +639,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p182",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -651,19 +676,38 @@
         {
           "kind": "p",
           "text": "Symbol is in black with yellow outline. The outline gets dimmed if crew selects TRK-FPA, unless the FMA is in TOGA or FLX mode."
-        },
-        {
-          "kind": "p",
-          "text": "Pitch Scale (white)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p188",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_pitch_scale_white",
+      "name": "Pitch Scale (white)",
+      "type": "area",
+      "hotspot": {
+        "x": 0.3532,
+        "y": 0.2919,
+        "w": 0.2983,
+        "h": 0.1316
+      },
+      "body": [
         {
           "kind": "p",
           "text": "The scale has markers every 10° between 80° nose up and 80° nose down. It also indicates every 2.5° between 10° nose down and 30° nose up. When the pitch angle exceeds 25° nose up or 13° nose down, all PFD displays except attitude, speed, speed trend, heading, altitude and vertical speed disappear. Above 30°, large red arrowheads indicate that the attitude is excessive and shows direction to reduce this. The display returns to normal when pitch angle becomes less than 22° nose up or 10° nose down. Within the pitch scale the numbers in green as shown in image are the radio altitude indication which show below 2500 feet."
-        },
-        {
-          "kind": "p",
-          "text": "ECON Speed range (magenta)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p197",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_econ_speed_range_magenta",
+      "name": "ECON Speed range (magenta)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "When in descent mode with ECON/AUTO SPD mode active, these two magenta lines replace the selected speed symbol showing the upper and lower limits calculated by the FMGC."
@@ -671,18 +715,27 @@
         {
           "kind": "p",
           "text": "The upper speed limit is target speed +20 knots, limited to VMAX or VMO -3 knots or MMO -0.006, whichever is lowest.The lower speed limit is the target speed -20 knots, limited to green dot, F,or VLS speed, whichever is higher."
-        },
-        {
-          "kind": "p",
-          "text": "Speed Protection (green)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p213",
+      "needsReview": false,
+      "hotspotUnavailableReason": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_speed_protection_green",
+      "name": "Speed Protection (green)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "This symbol indicates the speed (VMO +6 knots or MMO +0.01) at which the over-speed protection system becomes active."
         }
       ],
-      "sourceRef": "Instrument Panel.docx#p188",
-      "needsReview": true,
+      "sourceRef": "Instrument Panel.docx#p217",
+      "needsReview": false,
+      "hotspotUnavailableReason": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
       "sectionId": "pfd"
     },
     {
@@ -702,7 +755,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p220",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -719,26 +772,46 @@
         {
           "kind": "p",
           "text": "This pointer begins at the speed symbol and the tip of the arrow indicates what speed the aircraft will be at in 10 seconds time if the acceleration/deceleration remained constant. The pointer appears when it is greater than 2 knots and disappears when less than 1 knot. It also disappears if the FAC's fail."
-        },
-        {
-          "kind": "p",
-          "text": "Target Airspeed (magenta or blue)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p223",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_target_airspeed_magenta_or_blue",
+      "name": "Target Airspeed (magenta or blue)",
+      "type": "area",
+      "hotspot": {
+        "x": 0.1138,
+        "y": 0.4605,
+        "w": 0.0667,
+        "h": 0.1069
+      },
+      "body": [
         {
           "kind": "p",
           "text": "Symbol indicates target airspeed or that corresponding to the target Mach number. Target airspeed is that which is computed by the FMGC in managed speed mode (magenta), or also speed that is entered manually into the FCU in selected mode (blue). This is indicated then by either a magenta or blue triangle.When the target speed is off the speed scale, then its value is displayed as numbers either above/below the scale."
-        },
-        {
-          "kind": "p",
-          "text": "Mach Number (green)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p226",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_mach_number_green",
+      "name": "Mach Number (green)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "Displays the Mach number when its value is greater than 0.5 Mach."
         }
       ],
-      "sourceRef": "Instrument Panel.docx#p223",
-      "needsReview": true,
+      "sourceRef": "Instrument Panel.docx#p229",
+      "needsReview": false,
+      "hotspotUnavailableReason": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
       "sectionId": "pfd"
     },
     {
@@ -758,7 +831,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p234",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -799,18 +872,26 @@
         {
           "kind": "p",
           "text": "barometric setting is used.If the target altitude is gained from the FMGS like with ALT CSTR then the symbol appears magenta.When the target altitude/level is on the scale, the symbol is displayed and the numerical value appears inside it. If the target altitude/level is off the scale, then only the numerical value is shown above/below the scale."
-        },
-        {
-          "kind": "p",
-          "text": "Landing Elevation (brown)"
-        },
+        }
+      ],
+      "sourceRef": "Instrument Panel.docx#p240",
+      "needsReview": false,
+      "sectionId": "pfd"
+    },
+    {
+      "id": "ip_landing_elevation_brown",
+      "name": "Landing Elevation (brown)",
+      "type": "area",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "This is the top of the brown area on the altitude scale and it represents the landing elevation at the flight-planned destination.It is only displayed during flight phases 7 and 8 provided the STD barometric setting is not selected."
         }
       ],
-      "sourceRef": "Instrument Panel.docx#p240",
+      "sourceRef": "Instrument Panel.docx#p244",
       "needsReview": false,
+      "hotspotUnavailableReason": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
       "sectionId": "pfd"
     },
     {
@@ -826,6 +907,7 @@
       ],
       "sourceRef": "Instrument Panel.docx#p247",
       "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบายสัญลักษณ์เดิมซ้ำ และรูป PFD มีตำแหน่งเดียว",
       "sectionId": "pfd"
     },
     {
@@ -885,19 +967,14 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p256",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
       "id": "ip_ground_reference",
       "name": "Ground Reference",
       "type": "area",
-      "hotspot": {
-        "x": 0.9694,
-        "y": 0.2138,
-        "w": 0.0306,
-        "h": 0.403
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "p",
@@ -905,7 +982,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p262",
-      "needsReview": true,
+      "needsReview": false,
+      "hotspotUnavailableReason": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
       "sectionId": "pfd"
     },
     {
@@ -925,7 +1003,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p265",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -945,7 +1023,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p280",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -965,7 +1043,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p283",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -985,7 +1063,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p286",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -1005,7 +1083,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p289",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -1045,7 +1123,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p294",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -1065,7 +1143,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p297",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "pfd"
     },
     {
@@ -1080,7 +1158,8 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p300",
-      "needsReview": true,
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย Barometric Reference เดิมซ้ำ และรูป PFD มีตำแหน่งเดียว",
       "sectionId": "pfd"
     },
     {
@@ -1095,19 +1174,15 @@
       },
       "body": [],
       "sourceRef": "Instrument Panel.docx#p306",
-      "needsReview": true,
+      "needsReview": false,
+      "bodyUnavailableReason": "เอกสารต้นฉบับมีเฉพาะชื่อหัวข้อ Navigational Display",
       "sectionId": "nd"
     },
     {
       "id": "ip_idle_indication",
       "name": "IDLE Indication",
       "type": "area",
-      "hotspot": {
-        "x": 0.3028,
-        "y": 0.11,
-        "w": 0.0652,
-        "h": 0.0733
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "p",
@@ -1116,6 +1191,7 @@
       ],
       "sourceRef": "Instrument Panel.docx#p329",
       "needsReview": false,
+      "hotspotUnavailableReason": "เป็น conditional indication ที่ไม่ปรากฏในรูป E/WD ที่ลูกค้าให้",
       "sectionId": "ewd"
     },
     {
@@ -1163,7 +1239,7 @@
         }
       ],
       "sourceRef": "Instrument Panel.docx#p332",
-      "needsReview": true,
+      "needsReview": false,
       "sectionId": "ewd"
     },
     {

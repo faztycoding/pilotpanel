@@ -29,7 +29,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "Overhead Panel (แผงเหนือศีรษะ) — 93 controls"
+          "text": "Overhead Panel (แผงเหนือศีรษะ) — 110 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -50,7 +50,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "Glareshield (แผงบังแดด) — 23 controls"
+          "text": "Glareshield (แผงบังแดด) — 24 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -71,7 +71,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "PFD / ND กัปตัน (จอหลักฝั่งกัปตัน) — 31 controls"
+          "text": "PFD / ND กัปตัน (จอหลักฝั่งกัปตัน) — 39 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -92,7 +92,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "จอกลางซ้าย (จอเล็กกลางซ้าย) — 31 controls"
+          "text": "จอกลางซ้าย (จอเล็กกลางซ้าย) — 39 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -113,7 +113,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "ECAM / ENGINE (จอระบบและเครื่องยนต์) — 31 controls"
+          "text": "ECAM / ENGINE (จอระบบและเครื่องยนต์) — 39 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -134,7 +134,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "PFD / ND ผู้ช่วยนักบิน (จอหลักฝั่งผู้ช่วย) — 31 controls"
+          "text": "PFD / ND ผู้ช่วยนักบิน (จอหลักฝั่งผู้ช่วย) — 39 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",
@@ -155,7 +155,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "Center Pedestal (แผงกลาง) — 164 controls"
+          "text": "Center Pedestal (แผงกลาง) — 173 controls"
         }
       ],
       "sourceRef": "รูปตอนเข้า.png",

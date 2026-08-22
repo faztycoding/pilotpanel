@@ -38,6 +38,7 @@ OUT_DIR = ROOT / "data" / "panels"
 # โซนที่เรากำหนดเอง (เช่น ELEC / HYD บน overhead) — ไม่ได้อยู่ในเอกสาร จึงดึงจาก docx ไม่ได้
 # แต่ต้องผ่าน pipeline เหมือนกัน ห้ามไปแก้ generated JSON ด้วยมือ
 MANUAL_SECTIONS = ROOT / "data" / "sections-manual.json"
+EXTRACTION_MANUAL = ROOT / "data" / "extraction-manual.json"
 
 PANELS = [
     # (panelId, ชื่อไฟล์ docx, title, prefix ของ id)
@@ -49,7 +50,7 @@ PANELS = [
 
 # คำที่บ่งบอกว่าย่อหน้านี้เป็น "ชื่อ control" ไม่ใช่เนื้อหา
 CONTROL_NOUNS = (
-    r"push[\s\-]?buttons?|pushbuttons?|"
+    r"push[\s\-]*buttons?|pushbuttons?|"
     r"selectors?|knobs?|switch(?:es)?|levers?|handles?|"
     r"lights?|indicators?|indications?|displays?|gauges?|windows?|"
     r"guards?|panels?|buttons?|controls?|pointers?"
@@ -61,7 +62,7 @@ RE_CONTROL_NOUN_AT_END = re.compile(r"(?:" + CONTROL_NOUNS + r")s?\s*[.)]?\s*$",
 
 # map คำใน heading -> type ตาม schema (เรียงตามลำดับความจำเพาะ)
 TYPE_RULES = [
-    (r"push[\s\-]?button|pushbutton", "pushbutton"),
+    (r"push[\s\-]*button|pushbutton", "pushbutton"),
     (r"rotary|selector",              "selector"),
     (r"knob",                         "knob"),
     (r"switch",                       "switch"),
@@ -111,7 +112,7 @@ MIN_CAP_RATIO_NO_NOUN = 0.7
 
 def clean(text: str) -> str:
     """normalize whitespace อย่างเดียว ห้ามแตะเนื้อหา"""
-    text = unicodedata.normalize("NFKC", text)
+    text = unicodedata.normalize("NFC", text)
     text = text.replace("\u00a0", " ")
     return re.sub(r"[ \t]+", " ", text).strip()
 
@@ -314,12 +315,26 @@ def is_see_image_placeholder(text: str) -> bool:
 
 # ---------------------------------------------------------------- core
 
+def load_extraction_manual() -> dict:
+    if not EXTRACTION_MANUAL.exists():
+        return {}
+    try:
+        return json.loads(EXTRACTION_MANUAL.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        print(f"  ✗ {EXTRACTION_MANUAL.name} อ่านไม่ได้: {e}")
+        return {}
+
+
 def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
     path = SOURCE_DIR / filename
     if not path.exists():
         return None, [f"ไม่พบไฟล์ {path}"]
 
     document = docx.Document(str(path))
+    audit = load_extraction_manual()
+    forced_headings = set(audit.get("forcedHeadings", {}).get(filename, []))
+    forced_heading_names = audit.get("forcedHeadingNames", {}).get(filename, {})
+    ignored_text = set(audit.get("ignoredStructuralText", {}).get(filename, []))
     paragraphs = [
         (i, clean(p.text))
         for i, p in enumerate(document.paragraphs)
@@ -342,6 +357,10 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
     for pos, (idx, text) in enumerate(items):
         next_text = items[pos + 1][1] if pos + 1 < len(items) else None
 
+        if text in ignored_text:
+            current = None
+            continue
+
         # --- section heading บนหน้า ECAM ---
         if is_section_heading(text, next_text):
             sid = re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
@@ -359,7 +378,10 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
             unassigned.append({"sourceRef": f"{filename}#p{idx}", "text": text})
             continue
 
-        heading, confident, name = is_control_heading(text)
+        if text in forced_headings or text in forced_heading_names:
+            heading, confident, name = True, True, forced_heading_names.get(text, text)
+        else:
+            heading, confident, name = is_control_heading(text)
 
         if heading:
             # sub-heading ตรวจจับ: heading ที่ตามหลัง heading ก่อนหน้าภายใน 2 paragraphs
@@ -437,9 +459,18 @@ def extract_panel(panel_id: str, filename: str, title: str, prefix: str):
             current["body"].append(classify_body(text))
 
     # control ที่ไม่มีเนื้อหาเลย = heuristic น่าจะตัดผิด ต้องให้คนดู
+    reviewed = set(audit.get("reviewedControls", {}).get(panel_id, []))
+    body_unavailable = audit.get("bodyUnavailable", {}).get(panel_id, {})
+    hotspot_unavailable = audit.get("hotspotUnavailable", {}).get(panel_id, {})
     for c in controls:
         if not c["body"]:
             c["needsReview"] = True
+        if c["id"] in reviewed:
+            c["needsReview"] = False
+        if c["id"] in body_unavailable:
+            c["bodyUnavailableReason"] = body_unavailable[c["id"]]
+        if c["id"] in hotspot_unavailable:
+            c["hotspotUnavailableReason"] = hotspot_unavailable[c["id"]]
 
     panel = {
         "panelId": panel_id,
@@ -539,7 +570,7 @@ def merge_hotspots(new_panel: dict, out_path: Path) -> int:
         prev = old_by_id.get(c["id"])
         if not prev:
             continue
-        if prev.get("hotspot"):
+        if prev.get("hotspot") and not c.get("hotspotUnavailableReason"):
             c["hotspot"] = prev["hotspot"]
             kept += 1
         if prev.get("detailImage"):

@@ -130,14 +130,25 @@ overhead 93->108 (+15 ปุ่มจริงที่กู้กลับม�
 glareshield/instrument ไม่กระทบเลย (ตัวเลขเดิม 23/31 คงที่) — อัปเดต baseline ใน
 validate-data.mjs + docs/data-schema.md + AGENTS.md เป็น 108/169/23/31 = 331 แล้ว
 
+### Audit รอบส่งมอบพบ heading ถูกกลืนและ hotspot ที่ไม่มีหลักฐาน
+
+ตรวจ DOCX ครบทั้ง 4 panel แล้วพบ heading จริงที่ heuristic เดิมกลืนเข้า body: overhead 4, pedestal 5,
+glareshield 1 และ instrument 8 รายการ จึงเก็บรายการบังคับไว้ใน `data/extraction-manual.json`
+และเพิ่ม baseline เป็น 110/173/24/39 = 346 controls โดยไม่เปลี่ยน id เดิม
+
+หน้า ECAM นับ callout ครบ: ENG 10, BLEED 16, PRESS 8, HYD 13, APU 10, COND 6, DOOR 7,
+WHEEL 10, ELEC 13, FUEL 11, F/CTL 8. ลบ legend ปลอมของ BLEED 2 ตัวและกู้
+`Pack Compressor Outlet Temperature` กลับมาแล้ว
+
+รายการที่เอกสารมีแต่รูปไม่มีตำแหน่งให้กดจริง (conditional indication, ข้อมูลซ้ำ, WXR hardware
+คนละรุ่น) คง control และข้อความต้นฉบับไว้ แต่ใช้ `hotspotUnavailableReason` แทนการเดาพิกัด
+ส่วนหัวข้อที่เอกสารไม่มีคำอธิบายใช้ `bodyUnavailableReason`; `validate:strict` ตรวจว่าห้ามมีทั้ง
+เหตุผล unavailable และค่าจริงพร้อมกัน
+
+ลูกค้ายืนยันให้ overhead และ glareshield ทำตามเอกสารเดิมโดยกดบนรูป panel โดยตรง ไม่ต้องสร้าง
+section เพิ่ม; instrument มี PFD/ND/EWD และ pedestal มี ECAM 11 sections ตามเอกสาร
+
 ## Open items
 
-- callout count ยืนยันด้วยตาแล้ว 5 หน้า (hyd 13, apu 10, wheel 10, cond 6, f_ctl 8 — ตรงทั้งหมด)
-  เหลือ **press 7, door 7, elec 12, fuel 11, bleed 17** ที่ยังไม่ได้นับ callout จริง
-  ไม่ต้องนับตอนนี้ — ตอนวาง hotspot ต้องเปิดรูปอยู่แล้ว ถ้าเลขไม่พอกับจำนวน control จะเห็นทันทีใน mapper
-- `bleed` มี control ปลอม 2 ตัวจาก legend: `cp_c_cold_valve_closed`, `cp_h_hot_valve_open`
-  (`validate:data` จับได้แล้วว่า empty body)
-- `(4) Pack Compressor Outlet Temperature ...` ของ BLEED ยาวเกิน `MAX_HEADING_CHARS` (70)
-  เลยไม่ถูกจับเป็น control — ชื่อกับคำอธิบายติดกันในย่อหน้าเดียว
-- `overhead` / `instrument` / `glareshield` ยังไม่มี section เลย เพราะเอกสารไม่ได้ใช้ pattern ALLCAPS + `(1)`
-  โซนของ overhead เป็นสิ่งที่เรากำหนดเอง ต้องกรอกผ่าน `data/sections-manual.json` (extractor รองรับแล้ว)
+- ไม่มี data blocker ที่ยังไม่ได้จัดประเภท; รายการที่ไม่มี hotspot/body มีเหตุผลจาก source audit ครบและ
+  `npm run validate:strict` ต้องผ่านก่อนส่งทุกครั้ง

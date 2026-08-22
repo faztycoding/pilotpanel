@@ -30,7 +30,7 @@
     {
       "id": "gs_flight_director_fd_push_button",
       "name": "Flight Director (FD) push- button",
-      "type": "light",
+      "type": "pushbutton",
       "hotspot": {
         "x": 0.2805,
         "y": 0.7955,
@@ -155,13 +155,28 @@
         {
           "kind": "p",
           "text": "Pushing this displays all nearby airports within the Navigation Display (ND) screen that have been programmed into the system. The button lights up green to indicate its selection."
-        },
-        {
-          "kind": "p",
-          "text": "Mode Select Switch: This switches between various navigation display modes on the related ND display. The display modes include: Rose (ILS, VOR and NAV), ARC and PLAN. Each one shifts the ND's displays to display their relevant information and layout difference."
         }
       ],
       "sourceRef": "glareshield.docx#p35",
+      "needsReview": false
+    },
+    {
+      "id": "gs_mode_select_switch",
+      "name": "Mode Select Switch",
+      "type": "switch",
+      "hotspot": {
+        "x": 0.3297,
+        "y": 0.461,
+        "w": 0.0232,
+        "h": 0.2451
+      },
+      "body": [
+        {
+          "kind": "p",
+          "text": "This switches between various navigation display modes on the related ND display. The display modes include: Rose (ILS, VOR and NAV), ARC and PLAN. Each one shifts the ND's displays to display their relevant information and layout difference."
+        }
+      ],
+      "sourceRef": "glareshield.docx#p38",
       "needsReview": false
     },
     {

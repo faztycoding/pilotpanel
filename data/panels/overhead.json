@@ -214,7 +214,7 @@
         }
       ],
       "sourceRef": "Overhead Panel (finish).docx#p47",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "oh_adr_1_2_3_push_button",
@@ -247,7 +247,7 @@
         }
       ],
       "sourceRef": "Overhead Panel (finish).docx#p55",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "oh_blower_and_extract_push_buttons",
@@ -396,11 +396,22 @@
         {
           "kind": "p",
           "text": "When set to off, the start valve closes if the master switch of the engine is off."
-        },
-        {
-          "kind": "p",
-          "text": "COMMAND push button (guarded switch)"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p89",
+      "needsReview": false
+    },
+    {
+      "id": "oh_command_push_button_guarded_switch",
+      "name": "COMMAND push button (guarded switch)",
+      "type": "pushbutton",
+      "hotspot": {
+        "x": 0.1146,
+        "y": 0.4725,
+        "w": 0.0361,
+        "h": 0.0371
+      },
+      "body": [
         {
           "kind": "p",
           "text": "ON"
@@ -422,7 +433,7 @@
           "text": "The alert is stopped but EVAC light flashes red when the alert has been activated."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p89",
+      "sourceRef": "Overhead Panel (finish).docx#p100",
       "needsReview": false
     },
     {
@@ -926,10 +937,10 @@
       "name": "RAT AND EMER GEN light",
       "type": "light",
       "hotspot": {
-        "x": 0.797,
-        "y": 0.749,
-        "w": 0.0378,
-        "h": 0.0384
+        "x": 0.1728,
+        "y": 0.5519,
+        "w": 0.0355,
+        "h": 0.0352
       },
       "body": [
         {
@@ -939,11 +950,22 @@
         {
           "kind": "p",
           "text": "Comes on in red if the emergency generator fails to supply power in the event AC BUS 1 and 2 are not powered."
-        },
-        {
-          "kind": "p",
-          "text": "MAN ON push button (guarded switch)"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p227",
+      "needsReview": false
+    },
+    {
+      "id": "oh_man_on_push_button_guarded_switch",
+      "name": "MAN ON push button (guarded switch)",
+      "type": "pushbutton",
+      "hotspot": {
+        "x": 0.2135,
+        "y": 0.5391,
+        "w": 0.0268,
+        "h": 0.0519
+      },
+      "body": [
         {
           "kind": "p",
           "text": "AUTO"
@@ -957,7 +979,7 @@
           "text": "Pressed Manually: Selects manual RAT extension and generator coupling occurs 3 seconds after the RAT starts supplying emergency generator."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p227",
+      "sourceRef": "Overhead Panel (finish).docx#p231",
       "needsReview": false
     },
     {
@@ -1112,9 +1134,9 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.0727,
-        "y": 0.6255,
+        "y": 0.6411,
         "w": 0.0355,
-        "h": 0.0346
+        "h": 0.019
       },
       "body": [
         {
@@ -1134,10 +1156,10 @@
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.1731,
-        "y": 0.5499,
-        "w": 0.0364,
-        "h": 0.0365
+        "x": 0.0727,
+        "y": 0.6255,
+        "w": 0.0355,
+        "h": 0.0156
       },
       "body": [
         {
@@ -1323,11 +1345,22 @@
         {
           "kind": "p",
           "text": "If pressed and held in, it activates the test if CVR is on, GND CTL pressed or during first 5 minutes after aircraft is energized with electric power plus parking brake on."
-        },
-        {
-          "kind": "p",
-          "text": "AGENT 1 and 2 (Engines) and APU Agent push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p318",
+      "needsReview": false
+    },
+    {
+      "id": "oh_agent_1_and_2_engines_and_apu_agent_push_but",
+      "name": "AGENT 1 and 2 (Engines) and APU Agent push button",
+      "type": "pushbutton",
+      "hotspot": {
+        "x": 0.4654,
+        "y": 0.1786,
+        "w": 0.0349,
+        "h": 0.0365
+      },
+      "body": [
         {
           "kind": "p",
           "text": "The corresponding Agent switches become active once the associated red Fire push buttons (Either engines or APU) are pressed. As you can see each engine has two agents | and the APU has only one. Pressing an Agent button discharges the corresponding fire bottle."
@@ -1341,7 +1374,7 @@
           "text": "*'DISCH` lights up in amber when its fire extinguisher bottle has lost pressure showing therefore empty."
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p318",
+      "sourceRef": "Overhead Panel (finish).docx#p324",
       "needsReview": false
     },
     {
@@ -1573,19 +1606,30 @@
       "type": "pushbutton",
       "hotspot": {
         "x": 0.4386,
-        "y": 0.2976,
+        "y": 0.2702,
         "w": 0.0326,
-        "h": 0.0334
+        "h": 0.0608
       },
       "body": [
         {
           "kind": "p",
           "text": "The crew can extend the RAT manually by pressing this button but note that in a normal case, the RAT should deploy automatically if AC BUS 1 and 2 are lost."
-        },
-        {
-          "kind": "p",
-          "text": "BLUE ELEC PUMP guarded push button"
-        },
+        }
+      ],
+      "sourceRef": "Overhead Panel (finish).docx#p388",
+      "needsReview": false
+    },
+    {
+      "id": "oh_blue_elec_pump_guarded_push_button",
+      "name": "BLUE ELEC PUMP guarded push button",
+      "type": "pushbutton",
+      "hotspot": {
+        "x": 0.5026,
+        "y": 0.3048,
+        "w": 0.0355,
+        "h": 0.0204
+      },
+      "body": [
         {
           "kind": "p",
           "text": "AUTO"
@@ -1603,7 +1647,7 @@
           "text": "The pump is de-energized"
         }
       ],
-      "sourceRef": "Overhead Panel (finish).docx#p388",
+      "sourceRef": "Overhead Panel (finish).docx#p391",
       "needsReview": false
     },
     {
@@ -1611,10 +1655,10 @@
       "name": "FAULT Light",
       "type": "light",
       "hotspot": {
-        "x": 0.4386,
-        "y": 0.2702,
-        "w": 0.0326,
-        "h": 0.0274
+        "x": 0.5026,
+        "y": 0.2881,
+        "w": 0.0355,
+        "h": 0.0167
       },
       "body": [
         {

@@ -17,8 +17,8 @@ const STRICT = process.argv.includes("--strict");
 
 // baseline = จำนวนที่ extractor ดึงได้จริง ณ วันที่ตั้งค่า
 // หลัง QA ด้วยมือครบแล้วให้ล็อกตัวเลขนี้ใหม่และลด tolerance เหลือ 2
-const BASELINE = { overhead: 108, pedestal: 169, glareshield: 23, instrument: 31 };
-const BASELINE_TOLERANCE = 8;
+const BASELINE = { overhead: 110, pedestal: 173, glareshield: 24, instrument: 39 };
+const BASELINE_TOLERANCE = 2;
 
 // hit target ขั้นต่ำ: 44dp บนจอกว้าง 360dp ที่แสดงรูปเต็มความกว้าง
 // = 44/360 ≈ 0.122 ของความกว้างรูป ที่ zoom 1x
@@ -115,12 +115,17 @@ function validatePanel(file) {
     if (!Array.isArray(c.body) || c.body.length === 0) {
       // empty body + needsReview = เอกสารต้นฉบับไม่มีคำอธิบาย (เช่น backdrop/label บน ECAM)
       // ถือเป็นงานค้างตามแผน ไม่ใช่ regression
-      if (c.needsReview) {
+      if (c.bodyUnavailableReason?.trim()) {
+        warn(p, `${c.id}: empty body (${c.bodyUnavailableReason})`);
+      } else if (c.needsReview) {
         warn(p, `${c.id}: empty body (needsReview — เอกสารไม่มีคำอธิบาย)`);
       } else {
         err(p, `${c.id}: empty body — ปุ่มนี้กดแล้วจะไม่มีอะไรขึ้น`);
       }
     } else {
+      if (c.bodyUnavailableReason?.trim()) {
+        err(p, `${c.id}: มีทั้ง body และ bodyUnavailableReason`);
+      }
       for (const b of c.body) {
         if (!VALID_KINDS.includes(b.kind)) err(p, `${c.id}: invalid body kind "${b.kind}"`);
         if (b.kind !== "image" && !b.text?.trim()) err(p, `${c.id}: body block with empty text`);
@@ -131,8 +136,15 @@ function validatePanel(file) {
     const h = c.hotspot;
     if (h === null || h === undefined) {
       // ยังไม่ได้วางพิกัด = ปกติก่อนทำ T5 แต่ห้ามเหลือตอนส่งงาน
-      (STRICT ? err : warn)(p, `${c.id}: ยังไม่ได้วางพิกัด hotspot`);
+      if (c.hotspotUnavailableReason?.trim()) {
+        warn(p, `${c.id}: ไม่มี hotspot (${c.hotspotUnavailableReason})`);
+      } else {
+        (STRICT ? err : warn)(p, `${c.id}: ยังไม่ได้วางพิกัด hotspot`);
+      }
       continue;
+    }
+    if (c.hotspotUnavailableReason?.trim()) {
+      err(p, `${c.id}: มีทั้ง hotspot และ hotspotUnavailableReason`);
     }
 
     for (const k of ["x", "y", "w", "h"]) {

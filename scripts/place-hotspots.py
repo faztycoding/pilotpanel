@@ -91,6 +91,9 @@ def main() -> int:
     panel_path = PANEL_DIR / f"{args.panel}.json"
     panel = json.loads(panel_path.read_text("utf-8"))
     by_id = {c["id"]: c for c in panel["controls"]}
+    unavailable = {c["id"] for c in panel["controls"] if c.get("hotspotUnavailableReason")}
+    for control_id in unavailable:
+        by_id[control_id]["hotspot"] = None
     if args.reset:
         # ทุกชั้นการวางเป็น deterministic จากไฟล์มือ + ผลตรวจจับ จึงสร้างใหม่จากศูนย์ได้
         # จำเป็นเมื่อลบพิกัดออกจากไฟล์มือ (เช่นอ่านผิดสเกลแล้วต้องทิ้ง) ไม่งั้นค่าเก่าค้างในไฟล์
@@ -114,6 +117,8 @@ def main() -> int:
             continue
         if control_id not in by_id:
             print(f"  ! ปุ่ม {cand['n']}: ไม่มี controlId '{control_id}' ใน {args.panel}.json ข้าม")
+            continue
+        if control_id in unavailable:
             continue
         if control_id in chosen:
             # 1 control ในเอกสารตรงกับปุ่มจริงหลายปุ่ม (เช่น DISCH มี 7 ปุ่ม)
@@ -183,6 +188,8 @@ def main() -> int:
             if control is None:
                 print(f"  ! ไม่มี controlId '{control_id}' ใน {args.panel}.json")
                 continue
+            if control_id in unavailable:
+                continue
             sid = control.get("sectionId")
             base = section_size.get(sid) if sid else None
             declared_screens = {s["id"] for s in panel["sections"] if s.get("image")}
@@ -221,7 +228,7 @@ def main() -> int:
         img_w, img_h = panel["imageSize"]["w"], panel["imageSize"]["h"]
         for control_id, ref in anchors.items():
             control = by_id.get(control_id)
-            if control is None or control.get("hotspot"):
+            if control is None or control.get("hotspot") or control_id in unavailable:
                 continue
             cx = (ref["x0"] + ref["x1"]) / 2
             # ถ้ามีปุ่มที่ตรวจจับเจอ "ใต้ป้ายนี้พอดี" ให้ใช้กรอบจริงของปุ่มนั้น แม่นกว่ากรอบเดา
@@ -272,7 +279,7 @@ def main() -> int:
     lights = 0
     controls = panel["controls"]
     for i, control in enumerate(controls):
-        if control.get("hotspot") or not re.search(LIGHT_NAME, control["name"], re.I):
+        if control.get("hotspot") or control["id"] in unavailable or not re.search(LIGHT_NAME, control["name"], re.I):
             continue
         if re.search(NOT_A_LIGHT, control["name"], re.I):
             continue

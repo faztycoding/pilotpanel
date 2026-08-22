@@ -88,6 +88,8 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 | `controls[].id` | `<panelPrefix>_<snake_case>` ต้อง unique ทั้งไฟล์ **ห้ามเปลี่ยนหลังสร้าง** |
 | `controls[].type` | `pushbutton` \| `knob` \| `selector` \| `switch` \| `lever` \| `light` \| `display` \| `area` |
 | `hotspot` | ทุกค่าเป็น ratio 0..1 เทียบกับรูป ห้าม px |
+| `hotspotUnavailableReason` | optional เหตุผลจากการ audit ว่าต้นฉบับไม่มีตำแหน่งให้วาง เช่น conditional indication, ข้อมูลซ้ำ หรือ hardware คนละรุ่น; เมื่อมี field นี้ `hotspot` ต้องเป็น `null` |
+| `bodyUnavailableReason` | optional เหตุผลจากการ audit ว่าเอกสารมีเฉพาะชื่อหัวข้อและไม่มีคำอธิบาย; เมื่อมี field นี้อนุญาตให้ `body` ว่างได้ |
 | `body[].kind` | `p` \| `bullet` \| `note` \| `warning` |
 | `body[].label` | optional มีได้เฉพาะ `kind: "bullet"` — label สั้นที่ `extract.py` แยกออกมา เช่น `ON` / `FAULT` render เป็นตัวหนานำหน้า `text` |
 | `controls[].target` | optional `panelId` ปลายทาง ถ้ามี = แตะแล้ว navigate ไปหน้านั้นแทนการเปิดคำอธิบาย |
@@ -102,23 +104,23 @@ section รองรับ 2 แบบ ขึ้นกับว่าโซน�
 ## Invariants (validate-data.mjs ตรวจข้อเหล่านี้)
 
 1. `id` ไม่ซ้ำภายใน panel และไม่ซ้ำข้าม panel
-2. ทุก control มี `hotspot` และมี `body` อย่างน้อย 1 block
+2. ทุก control มี `hotspot` และมี `body` อย่างน้อย 1 block ยกเว้นมี `hotspotUnavailableReason`/`bodyUnavailableReason` ที่ผ่านการ audit แล้ว
 3. `0 <= x, y <= 1` และ `x + w <= 1`, `y + h <= 1`
 4. hotspot ไม่ซ้อนทับกันเกิน 30% ของพื้นที่อันที่เล็กกว่า
 5. hotspot ไม่เล็กเกินจนกดไม่โดน (ดู threshold ใน script)
 6. `sectionId` ทุกตัวต้องมีอยู่ใน `sections`
-7. จำนวน control ต่อ panel ต้องอยู่ในช่วง baseline ±5
+7. จำนวน control ต่อ panel ต้องอยู่ในช่วง baseline ±2
 8. ไม่มี `needsReview: true` เหลืออยู่ (บังคับเฉพาะโหมด `--strict` ก่อนส่งงาน)
 9. ถ้า section มี `entry` ต้อง `0 <= x,y,w,h <= 1` เหมือน hotspot ปกติ และต้องมี `image`+`imageSize` คู่กันเสมอ
 
 ## Baseline counts
 ```
-overhead    108
-pedestal    169
-glareshield  23
-instrument   31
-TOTAL       331
+overhead    110
+pedestal    173
+glareshield  24
+instrument   39
+TOTAL       346
 ```
-(อัปเดตจาก 93/164/311 เดิม — เจอบั๊ก extractor ที่ทำให้ปุ่มชื่อสั้น ๆ ตามด้วยคำนาม เช่น
-"ALL push button" / "TEST push button" ถูกดูดเข้า body ของปุ่มก่อนหน้าแทนที่จะแยกเป็น control
-ใหม่ เพราะ cap ratio รวมคำนามที่เป็นตัวเล็กเข้าไปเจือจางด้วย ดู docs/FAILURES.md)
+(อัปเดตหลัง audit DOCX ทุก panel: แยก heading ที่เคยถูกกลืนเข้า body เพิ่ม 4 controls ใน overhead,
+5 controls ใน pedestal, 1 control ใน glareshield และ 8 indications ใน instrument; รายการ conditional/duplicate/hardware คนละรุ่นยังคง id เดิม
+แต่ใช้ `hotspotUnavailableReason` แทนการเดาพิกัด ดู docs/FAILURES.md)

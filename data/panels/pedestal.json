@@ -708,7 +708,12 @@
       "id": "cp_pack_compressor_outlet_temperature",
       "name": "Pack Compressor Outlet Temperature",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.2803,
+        "y": 0.6413,
+        "w": 0.0848,
+        "h": 0.0177
+      },
       "body": [
         {
           "kind": "p",
@@ -1187,7 +1192,12 @@
       "id": "cp_safety_valve_position_safety",
       "name": "Safety Valve Position 'SAFETY'",
       "type": "area",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.6906,
+        "y": 0.5046,
+        "w": 0.0932,
+        "h": 0.1492
+      },
       "body": [
         {
           "kind": "p",
@@ -1435,8 +1445,9 @@
       },
       "body": [],
       "sourceRef": "Center Pedestal (finish).docx#p271",
-      "needsReview": true,
-      "sectionId": "hyd"
+      "needsReview": false,
+      "sectionId": "hyd",
+      "bodyUnavailableReason": "เอกสารต้นฉบับมีเฉพาะชื่อหัวข้อ ไม่มีคำอธิบายข้อความ"
     },
     {
       "id": "cp_fire_valve",
@@ -3347,7 +3358,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p715",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "cp_radio_com_selection_keys",
@@ -3378,7 +3389,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p718",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "cp_sel_indicator",
@@ -3473,7 +3484,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p739",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "cp_on_off_switch",
@@ -3523,7 +3534,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p746",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "cp_reception_knobs",
@@ -3574,25 +3585,47 @@
         {
           "kind": "p",
           "text": "Boom/mask mikes transmit on the radio selected on the ACP."
-        },
-        {
-          "kind": "p",
-          "text": "ON VOICE Key"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p758",
+      "needsReview": false
+    },
+    {
+      "id": "cp_on_voice_key",
+      "name": "ON VOICE Key",
+      "type": "area",
+      "hotspot": {
+        "x": 0.7676,
+        "y": 0.4101,
+        "w": 0.024,
+        "h": 0.0204
+      },
+      "body": [
         {
           "kind": "p",
           "text": "This key allows the crew to inhibit the audio navigation signals from beacons like the VOR/ADF. When pressed, the key filters out audio ident signals and Green light comes on."
-        },
-        {
-          "kind": "p",
-          "text": "SELCAL/RESET key"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p767",
+      "needsReview": false
+    },
+    {
+      "id": "cp_selcal_reset_key",
+      "name": "SELCAL/RESET key",
+      "type": "area",
+      "hotspot": {
+        "x": 0.7951,
+        "y": 0.4101,
+        "w": 0.0274,
+        "h": 0.0204
+      },
+      "body": [
         {
           "kind": "p",
           "text": "Pressing this button switches off the CALL, MECH and ATT lights."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p758",
+      "sourceRef": "Center Pedestal (finish).docx#p772",
       "needsReview": false
     },
     {
@@ -3624,7 +3657,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p775",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "cp_thrust_levers_trim_wheel",
@@ -3727,7 +3760,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p802",
-      "needsReview": true
+      "needsReview": false
     },
     {
       "id": "cp_radar_switch",
@@ -3762,11 +3795,18 @@
         {
           "kind": "p",
           "text": "In the above case, weather returns are only displayed on the ND when switch is set to \"1\"."
-        },
-        {
-          "kind": "p",
-          "text": "Display Mode Selector"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p819",
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
+    },
+    {
+      "id": "cp_display_mode_selector",
+      "name": "Display Mode Selector",
+      "type": "selector",
+      "hotspot": null,
+      "body": [
         {
           "kind": "p",
           "text": "WX (Weather Mode) Colors indicate the intensity of the weather returns/precipitation."
@@ -3776,19 +3816,15 @@
           "text": "(Black for the lowest intensity, green, amber and red indicate higher intensities)."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p819",
-      "needsReview": false
+      "sourceRef": "Center Pedestal (finish).docx#p829",
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
     },
     {
       "id": "cp_wx_turb_weather_turbulence_modes",
       "name": "WX/TURB (Weather + Turbulence Modes)",
       "type": "area",
-      "hotspot": {
-        "x": 0.1611,
-        "y": 0.5305,
-        "w": 0.026,
-        "h": 0.025
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "p",
@@ -3796,18 +3832,14 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p833",
-      "needsReview": true
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
     },
     {
       "id": "cp_map_map_mode",
       "name": "MAP (Map Mode)",
       "type": "area",
-      "hotspot": {
-        "x": 0.0973,
-        "y": 0.5445,
-        "w": 0.0192,
-        "h": 0.0099
-      },
+      "hotspot": null,
       "body": [
         {
           "kind": "p",
@@ -3815,7 +3847,8 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p836",
-      "needsReview": true
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
     },
     {
       "id": "cp_tilt_knob",
@@ -3829,7 +3862,8 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p839",
-      "needsReview": false
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
     },
     {
       "id": "cp_gain_knob",
@@ -3843,7 +3877,8 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p842",
-      "needsReview": false
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
     },
     {
       "id": "cp_windshear_switch",
@@ -3865,7 +3900,8 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p845",
-      "needsReview": false
+      "needsReview": false,
+      "hotspotUnavailableReason": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
     },
     {
       "id": "cp_capt_fo_display_mode_selector",
@@ -3955,11 +3991,22 @@
         {
           "kind": "bullet",
           "text": "*The Predictive Windshear (PWS) detection is available as soon as radar is set to ON and activation conditions are satisfied."
-        },
-        {
-          "kind": "p",
-          "text": "TURB and HZD mode selection"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p867",
+      "needsReview": false
+    },
+    {
+      "id": "cp_turb_and_hzd_mode_selection",
+      "name": "TURB and HZD mode selection",
+      "type": "area",
+      "hotspot": {
+        "x": 0.1611,
+        "y": 0.5305,
+        "w": 0.026,
+        "h": 0.025
+      },
+      "body": [
         {
           "kind": "p",
           "text": "TURB button - during normal operation, the TURB function is active (TURB light illuminated on). The crew can remove the turbulence display from the ND (e.g. for de-cluttering purposes) by pushing the TURB button again (light off). Turbulence zones are shown in Magenta color on the ND (within 60 NM)."
@@ -3973,7 +4020,7 @@
           "text": "function is active (HZD button light on). The crew can remove the HZD icon displays from the ND (e.g. for de-cluttering purposes) by pushing the HZD button again (light off)."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p867",
+      "sourceRef": "Center Pedestal (finish).docx#p876",
       "needsReview": false
     },
     {
@@ -4361,7 +4408,7 @@
       "body": [
         {
           "kind": "p",
-          "text": "The lever controls the position of the speed brake surfaces. As you move the lever down, the surfaces extend by a certain value and there is even a 1⁄2 way mark indicate along the scale. In the A320, extending the speed brakes with autopilot on is limited to only half value despite full down position. When the lever is pulled up from its top position (RET); this action arms the ground spoilers. During landing or rejected takeoff (> 70 knots), when the spoilers are armed like this they automatically deploy or when reverse thrust is selected."
+          "text": "The lever controls the position of the speed brake surfaces. As you move the lever down, the surfaces extend by a certain value and there is even a ½ way mark indicate along the scale. In the A320, extending the speed brakes with autopilot on is limited to only half value despite full down position. When the lever is pulled up from its top position (RET); this action arms the ground spoilers. During landing or rejected takeoff (> 70 knots), when the spoilers are armed like this they automatically deploy or when reverse thrust is selected."
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p1001",
@@ -4425,7 +4472,12 @@
       "id": "cp_cockpit_door_toggle_switch_fault_light",
       "name": "Cockpit Door Toggle switch + Fault light",
       "type": "switch",
-      "hotspot": null,
+      "hotspot": {
+        "x": 0.1525,
+        "y": 0.6588,
+        "w": 0.084,
+        "h": 0.0451
+      },
       "body": [
         {
           "kind": "p",
@@ -4481,17 +4533,28 @@
         {
           "kind": "p",
           "text": "FAULT Light: A failure has been detected in the cockpit door system."
-        },
-        {
-          "kind": "p",
-          "text": "Printer"
-        },
+        }
+      ],
+      "sourceRef": "Center Pedestal (finish).docx#p1026",
+      "needsReview": false
+    },
+    {
+      "id": "cp_printer",
+      "name": "Printer",
+      "type": "area",
+      "hotspot": {
+        "x": 0.1833,
+        "y": 0.7315,
+        "w": 0.1217,
+        "h": 0.032
+      },
+      "body": [
         {
           "kind": "p",
           "text": "Prints reports from the following systems (if installed) via the MCDU: ACARS, AIDS, FMGC, CFDIU and EVMU."
         }
       ],
-      "sourceRef": "Center Pedestal (finish).docx#p1026",
+      "sourceRef": "Center Pedestal (finish).docx#p1032",
       "needsReview": false
     },
     {
@@ -4530,7 +4593,7 @@
         }
       ],
       "sourceRef": "Center Pedestal (finish).docx#p1038",
-      "needsReview": true
+      "needsReview": false
     }
   ]
 }

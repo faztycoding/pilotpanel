@@ -5,7 +5,7 @@ Offline Android app (APK) สำหรับนักเรียนการบ
 โมเดลการใช้งาน: เปิดแอป -> เห็นภาพ cockpit -> แตะเลือก panel -> ซูม -> แตะปุ่ม -> อ่านคำอธิบาย
 
 **หัวใจของโปรเจกต์คือ data pipeline ไม่ใช่ UI**
-ตัวแอปเป็น image map ธรรมดา งานจริง 80% คือแปลง .docx 4 ไฟล์ -> JSON 331 controls
+ตัวแอปเป็น image map ธรรมดา งานจริง 80% คือแปลง .docx 4 ไฟล์ -> JSON 346 controls
 พร้อมพิกัด hotspot ที่กดถูกตัว
 
 ## Architecture
@@ -23,10 +23,10 @@ Offline Android app (APK) สำหรับนักเรียนการบ
 ## Data source of truth
 | ไฟล์ต้นทาง | Panel | controls โดยประมาณ |
 |---|---|---|
-| Overhead Panel (finish).docx | overhead | 108 |
-| Center Pedestal (finish).docx | pedestal | 169 |
-| glareshield.docx | glareshield | 23 |
-| Instrument Panel.docx | instrument | 31 |
+| Overhead Panel (finish).docx | overhead | 110 |
+| Center Pedestal (finish).docx | pedestal | 173 |
+| glareshield.docx | glareshield | 24 |
+| Instrument Panel.docx | instrument | 39 |
 
 ตัวเลขนี้คือ baseline ถ้า `validate:data` รายงานจำนวนต่างจากนี้เกิน ±5 แปลว่า extractor พัง
 

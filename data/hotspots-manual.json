@@ -194,12 +194,6 @@
       "x1": 2408,
       "y1": 3070
     },
-    "oh_fault_light_4": {
-      "x0": 595,
-      "y0": 1718,
-      "x1": 720,
-      "y1": 1832
-    },
     "oh_bus_tie_push_button": {
       "x0": 1726,
       "y0": 1653,
@@ -207,10 +201,34 @@
       "y1": 1788
     },
     "oh_rat_and_emer_gen_light": {
-      "x0": 2740,
-      "y0": 2340,
-      "x1": 2870,
-      "y1": 2460
+      "x0": 594,
+      "y0": 1724,
+      "x1": 716,
+      "y1": 1834
+    },
+    "oh_command_push_button_guarded_switch": {
+      "x0": 394,
+      "y0": 1476,
+      "x1": 518,
+      "y1": 1592
+    },
+    "oh_agent_1_and_2_engines_and_apu_agent_push_but": {
+      "x0": 1600,
+      "y0": 558,
+      "x1": 1720,
+      "y1": 672
+    },
+    "oh_man_on_push_button_guarded_switch": {
+      "x0": 734,
+      "y0": 1684,
+      "x1": 826,
+      "y1": 1846
+    },
+    "oh_blue_elec_pump_guarded_push_button": {
+      "x0": 1728,
+      "y0": 900,
+      "x1": 1850,
+      "y1": 1016
     },
     "oh_horn_shut_off_button": {
       "x0": 620,
@@ -370,6 +388,18 @@
       "x1": 2206,
       "y1": 1488
     },
+    "cp_on_voice_key": {
+      "x0": 2240,
+      "y0": 1410,
+      "x1": 2310,
+      "y1": 1480
+    },
+    "cp_selcal_reset_key": {
+      "x0": 2320,
+      "y0": 1410,
+      "x1": 2400,
+      "y1": 1480
+    },
     "cp_passenger_address_pa_function": {
       "x0": 2456,
       "y0": 1420,
@@ -502,17 +532,17 @@
       "x1": 2038,
       "y1": 2542
     },
-    "cp_toggle_switch": {
-      "x0": 674,
-      "y0": 2686,
-      "x1": 756,
-      "y1": 2742
+    "cp_cockpit_door_toggle_switch_fault_light": {
+      "x0": 445,
+      "y0": 2265,
+      "x1": 690,
+      "y1": 2420
     },
-    "cp_fault_light_2": {
-      "x0": 514,
-      "y0": 2680,
-      "x1": 616,
-      "y1": 2756
+    "cp_printer": {
+      "x0": 535,
+      "y0": 2515,
+      "x1": 890,
+      "y1": 2625
     },
     "cp_parking_brk_handle": {
       "x0": 1504,
@@ -1036,6 +1066,12 @@
       "x1": 946,
       "y1": 608
     },
+    "cp_safety_valve_position_safety": {
+      "x0": 1000,
+      "y0": 548,
+      "x1": 1135,
+      "y1": 710
+    },
     "cp_arrow": {
       "x0": 458,
       "y0": 460,
@@ -1102,6 +1138,12 @@
       "x1": 546,
       "y1": 1486
     },
+    "cp_pack_compressor_outlet_temperature": {
+      "x0": 423,
+      "y0": 1486,
+      "x1": 551,
+      "y1": 1527
+    },
     "cp_pack_flow": {
       "x0": 382,
       "y0": 1527,
@@ -1120,17 +1162,11 @@
       "x1": 950,
       "y1": 1305
     },
-    "cp_wx_turb_weather_turbulence_modes": {
+    "cp_turb_and_hzd_mode_selection": {
       "x0": 470,
       "y0": 1824,
       "x1": 546,
       "y1": 1910
-    },
-    "cp_map_map_mode": {
-      "x0": 284,
-      "y0": 1872,
-      "x1": 340,
-      "y1": 1906
     },
     "cp_fuel_used": {
       "x0": 165,
@@ -1237,10 +1273,28 @@
       "y1": 184
     },
     "ip_roll_scale": {
-      "x0": 420,
-      "y0": 198,
-      "x1": 772,
-      "y1": 322
+      "x0": 360,
+      "y0": 190,
+      "x1": 530,
+      "y1": 330
+    },
+    "ip_roll_index_yellow": {
+      "x0": 540,
+      "y0": 190,
+      "x1": 680,
+      "y1": 260
+    },
+    "ip_sideslip_index_yellow": {
+      "x0": 535,
+      "y0": 265,
+      "x1": 700,
+      "y1": 350
+    },
+    "ip_pitch_scale_white": {
+      "x0": 450,
+      "y0": 355,
+      "x1": 830,
+      "y1": 515
     },
     "ip_flight_control_protection_symbols": {
       "x0": 260,
@@ -1265,6 +1319,12 @@
       "y0": 510,
       "x1": 232,
       "y1": 547
+    },
+    "ip_target_airspeed_magenta_or_blue": {
+      "x0": 145,
+      "y0": 560,
+      "x1": 230,
+      "y1": 690
     },
     "ip_vertical_deviation_vdev_magenta": {
       "x0": 896,
@@ -1361,18 +1421,6 @@
       "y0": 1112,
       "x1": 940,
       "y1": 1166
-    },
-    "ip_idle_indication": {
-      "x0": 288,
-      "y0": 66,
-      "x1": 350,
-      "y1": 110
-    },
-    "ip_ground_reference": {
-      "x0": 1235,
-      "y0": 260,
-      "x1": 1274,
-      "y1": 750
     }
   },
   "glareshield": {
@@ -1423,6 +1471,12 @@
       "y0": 324,
       "x1": 5220,
       "y1": 448
+    },
+    "gs_mode_select_switch": {
+      "x0": 4475,
+      "y0": 568,
+      "x1": 4790,
+      "y1": 870
     },
     "gs_range_select_switch": {
       "x0": 4890,

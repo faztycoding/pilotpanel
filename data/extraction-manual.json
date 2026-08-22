@@ -1,0 +1,117 @@
+{
+  "_comment": [
+    "ผล audit ที่ต้องใช้ซ้ำทุกครั้งที่รัน scripts/extract.py",
+    "forcedHeadings แยก heading ที่ heuristic ปกติกลืนเข้า body ของ control ก่อนหน้า",
+    "reviewedControls คือ control ที่เทียบชื่อและ body กับ DOCX แล้ว",
+    "bodyUnavailable และ hotspotUnavailable บันทึกข้อจำกัดจากต้นฉบับ ห้ามเติมเนื้อหาหรือพิกัดด้วยการเดา"
+  ],
+  "forcedHeadings": {
+    "Overhead Panel (finish).docx": [
+      "COMMAND push button (guarded switch)",
+      "AGENT 1 and 2 (Engines) and APU Agent push button",
+      "MAN ON push button (guarded switch)",
+      "BLUE ELEC PUMP guarded push button"
+    ],
+    "Center Pedestal (finish).docx": [
+      "ON VOICE Key",
+      "SELCAL/RESET key",
+      "Display Mode Selector",
+      "TURB and HZD mode selection",
+      "Printer"
+    ],
+    "Instrument Panel.docx": [
+      "Roll Index (yellow)",
+      "Sideslip Index (yellow)",
+      "Pitch Scale (white)",
+      "ECON Speed range (magenta)",
+      "Speed Protection (green)",
+      "Target Airspeed (magenta or blue)",
+      "Mach Number (green)",
+      "Landing Elevation (brown)"
+    ]
+  },
+  "forcedHeadingNames": {
+    "glareshield.docx": {
+      "Mode Select Switch: This switches between various navigation display modes on the related ND display. The display modes include: Rose (ILS, VOR and NAV), ARC and PLAN. Each one shifts the ND's displays to display their relevant information and layout difference.": "Mode Select Switch"
+    }
+  },
+  "ignoredStructuralText": {
+    "glareshield.docx": [
+      "From left to right"
+    ],
+    "Instrument Panel.docx": [
+      "ECAM"
+    ]
+  },
+  "reviewedControls": {
+    "overhead": [
+      "oh_ir_1_2_3_mode_rotary_selector",
+      "oh_adr_1_2_3_push_button"
+    ],
+    "pedestal": [
+      "cp_yellow_elec_pump_control",
+      "cp_transfer_key",
+      "cp_radio_com_selection_keys",
+      "cp_radio_navigation_selection_keys",
+      "cp_transmission_keys",
+      "cp_passenger_address_pa_function",
+      "cp_pitch_trim_wheel",
+      "cp_wx_turb_weather_turbulence_modes",
+      "cp_map_map_mode",
+      "cp_gravity_gear_extn"
+    ],
+    "instrument": [
+      "ip_primary_flight_display",
+      "ip_fourth_column",
+      "ip_fifth_column",
+      "ip_column_2_and_3_annuciations",
+      "ip_roll_scale",
+      "ip_fixed_aircraft_symbol",
+      "ip_actual_airspeed_reference_line_and_scale",
+      "ip_speed_trend_arrow_yellow",
+      "ip_vertical_deviation_vdev_magenta",
+      "ip_digital_readout",
+      "ip_ground_reference",
+      "ip_barometric_reference",
+      "ip_ils_information",
+      "ip_ils_course",
+      "ip_selected_heading_or_track_index_blue",
+      "ip_heading_reference_line_yellow_and_scale",
+      "ip_actual_track_symbol_green",
+      "ip_heading_scale",
+      "ip_barometric_reference_2",
+      "ip_navigational_display",
+      "ip_lp_rotor_speed_n1"
+    ]
+  },
+  "bodyUnavailable": {
+    "pedestal": {
+      "cp_yellow_elec_pump_control": "เอกสารต้นฉบับมีเฉพาะชื่อหัวข้อ ไม่มีคำอธิบายข้อความ"
+    },
+    "instrument": {
+      "ip_primary_flight_display": "เอกสารต้นฉบับมีเฉพาะชื่อหัวข้อ Primary Flight Display",
+      "ip_navigational_display": "เอกสารต้นฉบับมีเฉพาะชื่อหัวข้อ Navigational Display"
+    }
+  },
+  "hotspotUnavailable": {
+    "pedestal": {
+      "cp_radar_switch": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่",
+      "cp_display_mode_selector": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่",
+      "cp_wx_turb_weather_turbulence_modes": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่",
+      "cp_map_map_mode": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่",
+      "cp_tilt_knob": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่",
+      "cp_gain_knob": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่",
+      "cp_windshear_switch": "เอกสารอธิบาย WXR hardware รุ่นเก่า แต่รูป panel เป็น WXR/PWS รุ่นใหม่"
+    },
+    "instrument": {
+      "ip_target_altitude_or_selected_flight_level_sym_2": "เอกสารอธิบายสัญลักษณ์เดิมซ้ำ และรูป PFD มีตำแหน่งเดียว",
+      "ip_barometric_reference_2": "เอกสารอธิบาย Barometric Reference เดิมซ้ำ และรูป PFD มีตำแหน่งเดียว",
+      "ip_ground_reference": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
+      "ip_idle_indication": "เป็น conditional indication ที่ไม่ปรากฏในรูป E/WD ที่ลูกค้าให้",
+      "ip_econ_speed_range_magenta": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
+      "ip_speed_protection_green": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
+      "ip_mach_number_green": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้",
+      "ip_landing_elevation_brown": "เป็น conditional indication ที่ไม่ปรากฏในรูป PFD ที่ลูกค้าให้"
+    }
+  }
+}
