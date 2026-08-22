@@ -126,17 +126,18 @@ export function getPanelImage(panelId: string): PanelImage | undefined {
 }
 
 /**
- * DEMO BUILD — จำกัดให้เข้าได้แค่แผงใน allowlist อย่างเดียว
+ * DEMO BUILD — กันแผงที่อยู่ใน blocklist ไม่ให้เข้าได้ (ที่เหลือใช้งานปกติทุกแผง)
  * ใช้ทั้งในหน้าแรก (กรองโซนกด) และหน้า panel (กัน deeplink เข้าตรง)
  * ปิด demo ให้เปลี่ยนเป็น undefined — คืนพฤติกรรมปกติทุกแผง
  */
-export const DEMO_ALLOWED_PANEL: string | undefined = Platform.OS === 'web' ? undefined : 'glareshield';
+export const DEMO_BLOCKED_PANELS: ReadonlySet<string> | undefined =
+  Platform.OS === 'web' ? undefined : new Set(['overhead']);
 
-/** true ถ้า demo เปิดและแผงนี้ไม่อยู่ใน allowlist — ใช้ guard ในหน้า panel */
+/** true ถ้า demo เปิดและแผงนี้อยู่ใน blocklist — ใช้ guard ในหน้า panel */
 export function isPanelBlockedByDemo(panelId: string | undefined): boolean {
-  if (DEMO_ALLOWED_PANEL === undefined) return false;
+  if (DEMO_BLOCKED_PANELS === undefined) return false;
   if (!panelId) return false;
-  return panelId !== DEMO_ALLOWED_PANEL;
+  return DEMO_BLOCKED_PANELS.has(panelId);
 }
 
 /**

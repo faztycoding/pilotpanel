@@ -152,3 +152,49 @@ section เพิ่ม; instrument มี PFD/ND/EWD และ pedestal มี 
 
 - ไม่มี data blocker ที่ยังไม่ได้จัดประเภท; รายการที่ไม่มี hotspot/body มีเหตุผลจาก source audit ครบและ
   `npm run validate:strict` ต้องผ่านก่อนส่งทุกครั้ง
+
+### Build APK local (macOS, เครื่อง locale ไทย) พัง 2 จุด — บันทึกไว้กันเจอซ้ำ
+
+เครื่องนี้ไม่มี Java runtime ติดตั้งแยก มีแต่ JBR ของ Android Studio (`/Applications/Android
+Studio.app/Contents/jbr`) ซึ่งเป็น **JDK 25** — ใหม่เกินไปสำหรับ AGP/RN ปัจจุบัน ทำให้
+`react-native-worklets:configureCMakeDebug` พังด้วย `WARNING: A restricted method in
+java.lang.System has been called` (JDK 24+ บล็อก native access ที่ CMake integration ของ Gradle เรียก)
+
+**แก้**: ดาวน์โหลด Temurin JDK 17 (aarch64) มาไว้ที่ `~/.jdks/` เอง (ไม่ต้อง sudo/brew):
+```bash
+curl -L -o /tmp/temurin17.tar.gz \
+  "https://api.adoptium.net/v3/binary/latest/17/ga/mac/aarch64/jdk/hotspot/normal/eclipse"
+mkdir -p ~/.jdks && tar xzf /tmp/temurin17.tar.gz -C ~/.jdks
+export JAVA_HOME=~/.jdks/jdk-17.*/Contents/Home
+```
+
+ตัวที่สองเจอหลังแก้ JDK แล้ว: `mergeDebugJavaResource` / `mergeReleaseJavaResource` พังด้วย
+`com.google.common.base.VerifyException` (ไม่มีข้อความ) — ไล่ stacktrace เจอต้นตอที่
+`MsDosDateTimeUtils.packDate`: **เครื่อง locale เป็น `th_TH` ทำให้ `Calendar.getInstance()` ของ Java
+คืน `BuddhistCalendar` (ปี พ.ศ. เช่น 2569 แทน ค.ศ. 2026)** พอลบ 1980 แล้วเกิน 127 (ขอบเขตของฟิลด์ปี
+แบบ MS-DOS ในฟอร์แมต zip) เลย verify fail ทุกครั้งที่ AGP พยายาม pack timestamp ของไฟล์ในปุ่ม merge —
+ไม่เกี่ยวกับโค้ดแอปเลย เป็นบั๊กของ locale เครื่อง build
+
+**แก้**: บังคับ default locale ของ JVM ที่ใช้รัน Gradle เป็น `en_US` ผ่าน `org.gradle.jvmargs` ใน
+`android/gradle.properties` (ไฟล์นี้ regenerate ใหม่ทุกครั้งที่ `expo prebuild` เลยต้องเติมใหม่ทุกรอบ):
+```
+org.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m -Duser.language=en -Duser.country=US
+```
+
+**สูตร build ที่ใช้ได้จริงบนเครื่องนี้** (release, arm64-v8a อย่างเดียว, minify+shrink เปิด, เซ็นด้วย
+debug keystore ของ template เพราะยังไม่มี release keystore จริง):
+```bash
+npx expo prebuild --platform android --clean
+# เติม -Duser.language=en -Duser.country=US ใน android/gradle.properties ตามด้านบน
+cd android
+export JAVA_HOME=~/.jdks/jdk-17.*/Contents/Home
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$JAVA_HOME/bin:$PATH"
+./gradlew assembleRelease \
+  -Pandroid.enableMinifyInReleaseBuilds=true \
+  -Pandroid.enableShrinkResourcesInReleaseBuilds=true \
+  -PreactNativeArchitectures=arm64-v8a
+```
+ได้ APK ~38MB (เทียบกับ debug ทุก ABI ที่ 231MB) — arm64-v8a ครอบคลุมทั้ง Poco X7 และ Tab S9 FE+
+(เครื่องเป้าหมายตาม AGENTS.md) ถ้าต้องแจกเครื่องรุ่นเก่า/x86 เพิ่ม ให้ใส่ ABI อื่นกลับใน
+`-PreactNativeArchitectures`
